@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  
+	<string name="app_name">SmartLock</string>
+
+  <string name="navi_home">HOME</string>
+  <string name="navi_lock">MY LOCKS</string>
+  <string name="navi_log">LOGS</string>
+  <string name="navi_setting">SETTINGS</string>
+
+</resources>

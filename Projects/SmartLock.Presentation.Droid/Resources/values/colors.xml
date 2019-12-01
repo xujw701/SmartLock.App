@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <color name="primary">#f7f7f7</color>
+    <!--<color name="primary">#7ab742</color>-->
+  
+    <color name="primaryDark">#c5c5c5</color>
+    <!--<color name="primaryDark">#609233</color>-->
+  
+    <color name="actionBarPrimaryTextColor">#323232</color>
+    <!--<color name="actionBarPrimaryTextColor">#FFFFFF</color>-->
+
+
+
+    <color name="accent">#519af7</color>
+    <!--<color name="accent">#418AFD</color>-->
+  
+    <color name="window_background">#FFFFFF</color>
+    <color name="gray_background">#BBBBBB</color>
+    <color name="gray_border">#e1e0e0</color>
+    <color name="gray_highlight">#e1e0e0</color>
+    <color name="gray_text">#757575</color>
+    <color name="splash_background">#FFFFFF</color>
+    
+    <color name="red_accent">#AD2004</color>
+    <color name="phone_green">#64AB21</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="warning_red">#B50220</color>
+    <color name="warning_red_status_bar">#A92D21</color>
+    <color name="warning_red_action_bar">#D33A2A</color>
+    <color name="warning_yellow">#E09E26</color>
+    <color name="warning_yellow_status_bar">#B5832A</color>
+    <color name="warning_yellow_action_bar">#E2A435</color>
+    
+    <color name="HomeViewButton_White">#323232</color>
+    <!--<color name="HomeViewButton_White">#FFFFFF</color>-->
+  
+    <color name="HomeViewButton_Accent">#7ab742</color>
+  
+  <!-- Navigation Drawer -->
+  <color name="navigation_drawer_background">#FAFAFA</color>
+
+  <!-- Navigation Drawer Header -->
+  <color name="navigation_drawer_header_background">#404040</color>
+  <color name="navigation_drawer_header_text">#FFFFFF</color>
+</resources>

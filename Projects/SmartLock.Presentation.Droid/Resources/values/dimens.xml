@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    <!-- top padding of menu items in a NavigationView (default is 8dp)
+        Below overrides go against android design guidelines -->
+    <dimen name="design_navigation_padding_top_default">0dp</dimen>
+    <dimen name="design_navigation_separator_vertical_padding">0dp</dimen>
+    <dimen name="design_navigation_padding_bottom">0dp</dimen>
+
+    <dimen name="left_margin">16dp</dimen>
+    <dimen name="left_margin_offset">20dp</dimen>
+    <dimen name="left_margin_offset_val">4dp</dimen>
+    <dimen name="left_margin_spinner">14dp</dimen>
+    <dimen name="left_margin_spinner_val">-2dp</dimen>
+    <dimen name="right_margin">16dp</dimen>
+
+    <dimen name="configurable_control_top_margin">16dp</dimen>
+    <dimen name="scrollview_top_space">30dp</dimen>
+    <dimen name="scrollview_bottom_space">148dp</dimen>
+</resources>

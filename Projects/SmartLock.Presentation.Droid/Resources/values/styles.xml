@@ -1,0 +1,103 @@
+﻿<resources>
+  <!-- Theme for styling the action bar only -->
+  <style name="SmartLockTheme.ActionBar" parent="ThemeOverlay.AppCompat.ActionBar">
+    <!-- title text color -->
+    <item name="android:textColorPrimary">@color/actionBarPrimaryTextColor</item>
+    <!-- subtitle text color -->
+    <item name="android:textColorSecondary">@color/actionBarPrimaryTextColor</item>
+    <!-- action menu item text color -->
+    <item name="actionMenuTextColor">@color/accent</item>
+    <!-- action menu item icon color - only applies to appcompat-v7 icons :( -->
+    <item name="colorControlNormal">@color/actionBarPrimaryTextColor</item>
+
+  </style>
+
+  <!-- Theme for styling the action bar only -->
+  <style name="SmartLockTheme.ActionBar.WhiteTitleText" parent="ThemeOverlay.AppCompat.ActionBar">
+    <!-- title text color -->
+    <item name="android:textColorPrimary">@android:color/white</item>
+    <!-- subtitle text color -->
+    <item name="android:textColorSecondary">@android:color/white</item>
+    <!-- action menu item icon color - only applies to appcompat-v7 icons :( -->
+    <item name="colorControlNormal">@android:color/white</item>  
+  </style>
+
+  <style name="SmartLockTheme.Base" parent="Theme.AppCompat.Light">
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/primary</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/primaryDark</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+             which is used to tint widgets -->
+    <item name="colorAccent">@color/accent</item>
+    <item name="android:windowBackground">@color/window_background</item>
+    <item name="actionBarTheme">@style/SmartLockTheme.ActionBar</item>
+    <item name="android:datePickerDialogTheme">@style/SmartLockTheme.DateTimePickerDialogTheme</item>
+    <item name="android:timePickerDialogTheme">@style/SmartLockTheme.DateTimePickerDialogTheme</item>
+  </style>
+
+  <!-- Main theme used for MOST pages, includes action bar with page title -->
+  <style name="SmartLockTheme" parent="SmartLockTheme.Base">
+
+  </style>
+
+  <!-- Used for pages without an action bar or pages that manually implement the action bar, e.g. pages with navigation -->
+  <style name="SmartLockTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/primary</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/primaryDark</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+             which is used to tint widgets -->
+    <item name="colorAccent">@color/accent</item>
+    <item name="android:windowBackground">@color/window_background</item>
+  </style>
+  
+  <!-- Used for pages with a white title text in action bar -->
+  <style name="SmartLockTheme.WhiteTitleActionBar" parent="SmartLockTheme.Base">
+    <item name="actionBarTheme">@style/SmartLockTheme.ActionBar.WhiteTitleText</item>
+  </style>
+
+  <!-- Theme used for the splash screen only -->
+  <style name="SmartLockTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
+  <style name="SmartLockTheme.DateTimePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+    <item name="android:colorAccent">@color/primary</item>
+    <!--
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item> 
+        
+        Can be much more specific in overriding datePickerStyle by changing the following attributes:
+            dayOfWeekBackground
+            dayOfWeekTextAppearance
+            headerMonthTextAppearance
+            headerDayOfMonthTextAppearance
+            headerYearTextAppearance
+            headerSelectedTextColor
+            yearListItemTextAppearance
+            yearListSelectorColor
+            calendarTextColor
+            calendarSelectedTextColor
+        -->
+  </style>
+  
+  <style name="TextLabelInput" parent="TextAppearance.AppCompat">
+    <!-- Hint color and label color in FALSE state -->
+    <item name="android:textColorHint">@color/gray_text</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@android:color/holo_red_dark</item>
+
+    <item name="colorControlNormal">@color/gray_text</item>
+    <item name="colorControlActivated">@color/gray_text</item>
+  </style>
+
+  <style name="ForgotPasswordButton">
+    <item name="android:textAllCaps">false</item>
+  </style>
+
+</resources>
