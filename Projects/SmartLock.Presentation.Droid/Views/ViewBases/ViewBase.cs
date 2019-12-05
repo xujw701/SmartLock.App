@@ -252,7 +252,9 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
                 || ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted
                 || ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) != (int)Permission.Granted
                 || ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != (int)Permission.Granted
-                || ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != (int)Permission.Granted)
+                || ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != (int)Permission.Granted
+                || ContextCompat.CheckSelfPermission(this, Manifest.Permission.Bluetooth) != (int)Permission.Granted
+                || ContextCompat.CheckSelfPermission(this, Manifest.Permission.BluetoothAdmin) != (int)Permission.Granted)
             {
                 RequestPermissions(new string[]
                                     {
@@ -260,7 +262,10 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
                                         Manifest.Permission.WriteExternalStorage,
                                         Manifest.Permission.Camera,
                                         Manifest.Permission.AccessCoarseLocation,
-                                        Manifest.Permission.AccessFineLocation},
+                                        Manifest.Permission.AccessFineLocation,
+                                        Manifest.Permission.Bluetooth,
+                                        Manifest.Permission.BluetoothAdmin,
+                                    },
                         REQUEST_PERMISSIONS);
 
                 return false;

@@ -60,6 +60,12 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.BLE, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.BLE.2.1.1\lib\MonoAndroid\Plugin.BLE.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.BLE.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Plugin.BLE.2.1.1\lib\MonoAndroid\Plugin.BLE.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -195,6 +201,7 @@
   <ItemGroup>
     <Compile Include="AndroidAppCore.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Platform\BlueToothLeService.cs" />
     <Compile Include="Platform\ContainedStorage.cs" />
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\PlatformServices.cs" />
