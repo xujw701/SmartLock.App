@@ -37,6 +37,9 @@ namespace SmartLock.Presentation.Droid.Platform
         private ICharacteristic _notifyCharacteristic;
         private ICharacteristic _batteryCharacteristic;
 
+        public event Action<BleDevice> OnDeviceDiscovered;
+        public event Action OnDeviceConnected;
+
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
         public bool DeviceConnected => _connectedDevice != null;
 
@@ -45,8 +48,8 @@ namespace SmartLock.Presentation.Droid.Platform
             _ble = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
 
-            _adapter.DeviceDiscovered += OnDeviceDiscovered;
-            _adapter.DeviceConnected += OnDeviceConnected;
+            _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
+            _adapter.DeviceConnected += Adapter_OnDeviceConnected;
         }
 
         public async void StartScanningForDevicesAsync()
@@ -108,9 +111,11 @@ namespace SmartLock.Presentation.Droid.Platform
             });
         }
 
-        private void OnDeviceDiscovered(object sender, DeviceEventArgs args)
+        private void Adapter_OnDeviceDiscovered(object sender, DeviceEventArgs args)
         {
             var device = args.Device;
+
+            if (string.IsNullOrEmpty(device.Name)) return;
 
             var bleDevice = new BleDevice()
             {
@@ -131,15 +136,17 @@ namespace SmartLock.Presentation.Droid.Platform
                 _discoveredBleDevices.Add(bleDevice);
             }
 
-#if DEBUG
-            if (!string.IsNullOrEmpty(device.Name) && device.Name.ToLower().Contains("lock"))
-            {
-                ConnectToDeviceAsync(bleDevice);
-            }
-#endif
+            OnDeviceDiscovered?.Invoke(bleDevice);
+
+//#if DEBUG
+//            if (!string.IsNullOrEmpty(device.Name) && device.Name.ToLower().Contains("lock"))
+//            {
+//                ConnectToDeviceAsync(bleDevice);
+//            }
+//#endif
         }
 
-        private async void OnDeviceConnected(object sender, DeviceEventArgs args)
+        private async void Adapter_OnDeviceConnected(object sender, DeviceEventArgs args)
         {
             _connectedDevice = args.Device;
 
@@ -154,6 +161,11 @@ namespace SmartLock.Presentation.Droid.Platform
                 _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
                 await _notifyCharacteristic.StartUpdatesAsync();
             }
+
+            Context.RunOnUiThread(() =>
+            {
+                OnDeviceConnected?.Invoke();
+            });
         }
 
         private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)
@@ -161,11 +173,11 @@ namespace SmartLock.Presentation.Droid.Platform
             var bytes = args.Characteristic.Value;
 
             // TODO: Validate the response
-            Context.RunOnUiThread(() =>
-            {
-                var toast = Toast.MakeText(Context, $"response: {bytes[0].ToString("X2")} {bytes[1].ToString("X2")} {bytes[2].ToString("X2")} {bytes[3].ToString("X2")}", ToastLength.Short);
-                toast.Show();
-            });
+            //Context.RunOnUiThread(() =>
+            //{
+            //    var toast = Toast.MakeText(Context, $"response: {bytes[0].ToString("X2")} {bytes[1].ToString("X2")} {bytes[2].ToString("X2")} {bytes[3].ToString("X2")}", ToastLength.Short);
+            //    toast.Show();
+            //});
         }
 
         private async void Auth()
@@ -176,12 +188,6 @@ namespace SmartLock.Presentation.Droid.Platform
             await _mainCharacteristic.WriteAsync(authCommand);
 
             await Task.Delay(50);
-
-            Context.RunOnUiThread(() =>
-            {
-                var toast = Toast.MakeText(Context, "Connected", ToastLength.Short);
-                toast.Show();
-            });
         }
 
         private async Task<ICharacteristic> FindCharacteristic(string serviceId, string characteristicId)
@@ -200,10 +206,9 @@ namespace SmartLock.Presentation.Droid.Platform
                 if (characteristics != null)
                 {
                     var characteristic = characteristics.FirstOrDefault(c => !string.IsNullOrEmpty(c.Uuid) && c.Uuid.ToLower().StartsWith(characteristicId));
-
+                     
                     return characteristic;
                 }
-
             }
             return null;
         }

@@ -15,7 +15,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.Title = "Login";
 
-            //Push<MainController>();
+            Push<PairingController>();
         }
     }
 }
