@@ -48,7 +48,16 @@
 	<string>Resources/AppIcons.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleName</key>
 	<string>SmartLock</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
+	</array>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Connecting to smart lock uses</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Connecting to smart lock uses</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.millionocean.smartlock.ios</string>
+	<string>com.millionocean.smartlock.ios.dev</string>
 </dict>
 </plist>

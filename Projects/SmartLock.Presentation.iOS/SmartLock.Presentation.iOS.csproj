@@ -113,8 +113,9 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignKey>Apple Development: zmx20121219@gmail.com (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>iOS Team Provisioning Profile: com.millionocean.smartlock.ios.dev</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -185,6 +186,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Platform\BlueToothLeService.cs" />
     <Compile Include="Platform\PlatformServices.cs" />
     <Compile Include="Controls\LoadingOverlay.cs" />
     <Compile Include="Main.cs" />

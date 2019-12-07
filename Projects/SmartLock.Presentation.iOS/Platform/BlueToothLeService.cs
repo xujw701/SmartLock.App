@@ -1,0 +1,214 @@
+﻿using SmartLock.Model.Services;
+using Plugin.BLE.Abstractions.Contracts;
+using System.Collections.Generic;
+using SmartLock.Model.BlueToothLe;
+using Plugin.BLE;
+using System.Linq;
+using System;
+using Plugin.BLE.Abstractions.EventArgs;
+using System.Threading.Tasks;
+
+namespace SmartLock.Presentation.iOS.Platform
+{
+    public class BlueToothLeService : IBlueToothLeService
+    {
+        private const string MainServiceId = "0000ffd5";
+        private const string NotifyServiceId = "0000ffd0";
+        private const string BatteryServiceId = "0000180f";
+
+        private const string MainCharacteristicId = "ffd9";
+        private const string NotifyCharacteristicId = "ffd4";
+        private const string BatteryCharacteristicId = "2a19";
+
+        private IBluetoothLE _ble;
+        private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter;
+        private IDevice _connectedDevice;
+
+        // Raw devices
+        private List<IDevice> _discoveredDevices;
+        private List<BleDevice> _discoveredBleDevices;
+
+        private ICharacteristic _mainCharacteristic;
+        private ICharacteristic _notifyCharacteristic;
+        private ICharacteristic _batteryCharacteristic;
+
+        public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
+        public bool DeviceConnected => _connectedDevice != null;
+
+        public BlueToothLeService()
+        {
+            _ble = CrossBluetoothLE.Current;
+            _adapter = CrossBluetoothLE.Current.Adapter;
+
+            _adapter.DeviceDiscovered += OnDeviceDiscovered;
+            _adapter.DeviceConnected += OnDeviceConnected;
+        }
+
+        public async void StartScanningForDevicesAsync()
+        {
+            // Clear the previous results
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
+
+            // Stop it first anyway
+            await _adapter.StopScanningForDevicesAsync();
+
+            await _adapter.StartScanningForDevicesAsync();
+        }
+
+        public async void StopScanningForDevicesAsync()
+        {
+            await _adapter.StopScanningForDevicesAsync();
+        }
+
+        public async void ConnectToDeviceAsync(BleDevice bleDevice)
+        {
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+
+            if (device == null) throw new Exception("Invalid device");
+
+            await _adapter.ConnectToDeviceAsync(device);
+        }
+
+        public async void SetLock(bool isLock)
+        {
+            if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
+
+            byte[] command = null;
+
+            if (isLock)
+            {
+                var closeCommand = StringToByteArray("FE434C4F5345000000FD");
+                command = closeCommand;
+            }
+            else
+            {
+                var openCommand = StringToByteArray("FE4F50454E00000000FD");
+                command = openCommand;
+            }
+
+            await _mainCharacteristic.WriteAsync(command);
+        }
+
+        public async void GetBatteryLevel()
+        {
+            if (_batteryCharacteristic == null) throw new Exception("Connect to a device first");
+
+            var result = await _batteryCharacteristic.ReadAsync();
+
+            //Context.RunOnUiThread(() =>
+            //{
+            //    var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
+            //    toast.Show();
+            //});
+        }
+
+        private void OnDeviceDiscovered(object sender, DeviceEventArgs args)
+        {
+            var device = args.Device;
+
+            var bleDevice = new BleDevice()
+            {
+                Id = device.Id,
+                Name = device.Name,
+                Rssi = device.Rssi,
+                NativeDevice = device.NativeDevice,
+                State = (DeviceState)device.State
+            };
+
+            if (!_discoveredDevices.Contains(device))
+            {
+                _discoveredDevices.Add(device);
+            }
+
+            if (!_discoveredBleDevices.Contains(bleDevice))
+            {
+                _discoveredBleDevices.Add(bleDevice);
+            }
+
+#if DEBUG
+            if (!string.IsNullOrEmpty(device.Name) && device.Name.ToLower().Contains("lock"))
+            {
+                ConnectToDeviceAsync(bleDevice);
+            }
+#endif
+        }
+
+        private async void OnDeviceConnected(object sender, DeviceEventArgs args)
+        {
+            _connectedDevice = args.Device;
+
+            _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
+            _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
+            _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
+
+            Auth();
+
+            if (_notifyCharacteristic != null)
+            {
+                _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
+                await _notifyCharacteristic.StartUpdatesAsync();
+            }
+        }
+
+        private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)
+        {
+            var bytes = args.Characteristic.Value;
+
+            // TODO: Validate the response
+            //Context.RunOnUiThread(() =>
+            //{
+            //    var toast = Toast.MakeText(Context, $"response: {bytes[0].ToString("X2")} {bytes[1].ToString("X2")} {bytes[2].ToString("X2")} {bytes[3].ToString("X2")}", ToastLength.Short);
+            //    toast.Show();
+            //});
+        }
+
+        private async void Auth()
+        {
+            if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
+
+            var authCommand = StringToByteArray("2901020304010228");
+            await _mainCharacteristic.WriteAsync(authCommand);
+
+            await Task.Delay(50);
+
+            //Context.RunOnUiThread(() =>
+            //{
+            //    var toast = Toast.MakeText(Context, "Connected", ToastLength.Short);
+            //    toast.Show();
+            //});
+        }
+
+        private async Task<ICharacteristic> FindCharacteristic(string serviceId, string characteristicId)
+        {
+            if (!DeviceConnected) throw new Exception("Connect to a device first");
+
+            // Let it take a 50ms break first
+            await Task.Delay(50);
+
+            var services = await _connectedDevice.GetServicesAsync();
+
+            var service = services.FirstOrDefault(srv => srv.Id != null && srv.Id.ToString().ToLower().StartsWith(serviceId));
+            if (service != null)
+            {
+                var characteristics = await service.GetCharacteristicsAsync();
+                if (characteristics != null)
+                {
+                    var characteristic = characteristics.FirstOrDefault(c => !string.IsNullOrEmpty(c.Uuid) && c.Uuid.ToLower().StartsWith(characteristicId));
+
+                    return characteristic;
+                }
+
+            }
+            return null;
+        }
+
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                             .Where(x => x % 2 == 0)
+                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                             .ToArray();
+        }
+    }
+}
