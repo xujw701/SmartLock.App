@@ -27,7 +27,7 @@ namespace SmartLock.Presentation.iOS.Views
 
         private UIView CreateHeader()
         {
-            var headerView = new UIView(new CGRect(0, 0, TableView.Frame.Width, 280));
+            var headerView = new UIView(new CGRect(0, 0, TableView.Frame.Width, 300));
 
             var connectButtonRect = new CGRect(0, 30, TableView.Frame.Width, 20);
             var unlockButtonRect = new CGRect(0, 60, TableView.Frame.Width, 60);

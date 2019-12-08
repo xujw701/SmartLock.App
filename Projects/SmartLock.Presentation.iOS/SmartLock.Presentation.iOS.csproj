@@ -161,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <InterfaceDefinition Include="Controls\Cells\BleDeviceCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -184,8 +185,22 @@
     </None>
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\.DS_Store" />
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Cells\IProvidesHeight.cs" />
+    <Compile Include="Controls\Sources\BleDeviceSource.cs" />
+    <Compile Include="Controls\TableSupport\TableSupportCell.cs" />
+    <Compile Include="Controls\TableSupport\TableSupportCellGroup.cs" />
+    <Compile Include="Controls\TableSupport\TableSupportSource.cs" />
     <Compile Include="Platform\BlueToothLeService.cs" />
     <Compile Include="Platform\PlatformServices.cs" />
     <Compile Include="Controls\LoadingOverlay.cs" />
@@ -194,6 +209,7 @@
     <Compile Include="Platform\ContainedStorage.cs" />
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\SettingsService.cs" />
+    <Compile Include="Views\PairingView.cs" />
     <Compile Include="Views\MyLockView.cs" />
     <Compile Include="Views\LogsView.cs" />
     <Compile Include="Views\SettingView.cs" />
@@ -204,6 +220,10 @@
     <Compile Include="Platform\ViewService.cs" />
     <Compile Include="Views\ViewBases\TableView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <Compile Include="Controls\Cells\BleDeviceCell.cs" />
+    <Compile Include="Controls\Cells\BleDeviceCell.designer.cs">
+      <DependentUpon>BleDeviceCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

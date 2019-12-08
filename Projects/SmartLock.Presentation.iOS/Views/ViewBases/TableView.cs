@@ -158,5 +158,49 @@ namespace SmartLock.Presentation.iOS.Views.ViewBases
         }
 
         public ViewController<TView> ViewController => _controller;
+
+        protected UIButton CreateButton(CGRect rect, string title, Action clicked, bool textOnly, bool? rightAlign = null)
+        {
+            var button = new UIButton(rect);
+            button.SetTitle(title, UIControlState.Normal);
+            button.TouchUpInside += (s, e) => { clicked?.Invoke(); };
+
+            if (textOnly)
+            {
+                button.SetTitleColor(View.TintColor, UIControlState.Normal);
+                button.Font = UIFont.PreferredBody.WithSize(14);
+            }
+            else
+            {
+                button.BackgroundColor = View.TintColor;
+                button.Layer.CornerRadius = 8;
+            }
+
+            if (rightAlign.HasValue)
+            {
+                button.HorizontalAlignment = rightAlign.Value ? UIControlContentHorizontalAlignment.Trailing : UIControlContentHorizontalAlignment.Leading;
+            }
+
+            return button;
+        }
+
+        protected UILabel CreateLabel(CGRect rect, string text, int fontSize = 17)
+        {
+            var label = new UILabel(rect);
+            label.Text = text;
+            label.Font = label.Font.WithSize(fontSize);
+            label.Lines = 0;
+            label.LineBreakMode = UILineBreakMode.WordWrap;
+
+            return label;
+        }
+
+        protected UIActivityIndicatorView CreateLoadingIndicator(CGRect rect)
+        {
+            var activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.Gray);
+            activitySpinner.Frame = rect;
+
+            return activitySpinner;
+        }
     }
 }

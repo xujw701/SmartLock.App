@@ -30,6 +30,8 @@ namespace SmartLock.Presentation.iOS.Platform
             _viewDictionary.Add(typeof(MyLockController), vc => new MyLockView(vc as MyLockController));
             _viewDictionary.Add(typeof(LogsController), vc => new LogsView(vc as LogsController));
             _viewDictionary.Add(typeof(SettingController), vc => new SettingView(vc as SettingController));
+
+            _viewDictionary.Add(typeof(PairingController), vc => new PairingView(vc as PairingController));
         }
 
         public override void Pop()
