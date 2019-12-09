@@ -11,6 +11,7 @@ namespace SmartLock.Model.Services
         event Action OnDeviceConnected;
 
         List<BleDevice> DiscoveredDevices { get; }
+        BleDevice ConnectedDevice { get; }
         bool DeviceConnected { get; }
 
         void StartScanningForDevicesAsync();

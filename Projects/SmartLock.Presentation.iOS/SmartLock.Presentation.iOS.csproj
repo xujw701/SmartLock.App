@@ -185,15 +185,33 @@
     </None>
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\.DS_Store" />
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\.DS_Store">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Cells\IProvidesHeight.cs" />

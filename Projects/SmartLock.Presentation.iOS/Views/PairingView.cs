@@ -24,6 +24,7 @@ namespace SmartLock.Presentation.iOS.Views
         public event Action<BleDevice> Connect;
 
         private IBlueToothLeService BlueToothLeService => IoC.Resolve<IBlueToothLeService>();
+        private ITrackedBleService TrackedBleService => IoC.Resolve<ITrackedBleService>();
 
         public PairingView(PairingController controller) : base(controller)
         {
@@ -34,6 +35,8 @@ namespace SmartLock.Presentation.iOS.Views
             base.ViewDidLoad();
 
             //TableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
+
+            TrackedBleService.Init();
         }
 
         public void Show(List<BleDevice> bleDevices)
@@ -99,8 +102,8 @@ namespace SmartLock.Presentation.iOS.Views
             var batteryButtonRect = new CGRect(margin, 170, TableView.Frame.Width - margin * 2, 30);
 
             var connectButton = CreateButton(connectButtonRect, "Connect", ConnectButtonClicked, false);
-            var unlockButton = CreateButton(unlockButtonRect, "Unlock", () => { BlueToothLeService.SetLock(false); }, false);
-            var lockButton = CreateButton(lockButtonRect, "Lock", () => { BlueToothLeService.SetLock(true); }, false);
+            var unlockButton = CreateButton(unlockButtonRect, "Unlock", () => { TrackedBleService.Unlock(); }, false);
+            var lockButton = CreateButton(lockButtonRect, "Lock", () => { TrackedBleService.Lock(); }, false);
             var batteryLevelButton = CreateButton(batteryButtonRect, "Battery Level", () => { BlueToothLeService.GetBatteryLevel(); }, false);
 
             footerView.AddSubview(connectButton);

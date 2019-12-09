@@ -35,6 +35,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action<BleDevice> Connect;
 
         private IBlueToothLeService BlueToothLeService => IoC.Resolve<IBlueToothLeService>();
+        private ITrackedBleService TrackedBleService => IoC.Resolve<ITrackedBleService>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -62,8 +63,10 @@ namespace SmartLock.Presentation.Droid.Views
             _btnLock = FindViewById<Button>(Resource.Id.btnLock);
             _btnbBattery = FindViewById<Button>(Resource.Id.battery);
 
-            _btnUnlock.Click += (s, a) => BlueToothLeService.SetLock(false);
-            _btnLock.Click += (s, a) => BlueToothLeService.SetLock(true);
+            TrackedBleService.Init();
+
+            _btnUnlock.Click += (s, a) => TrackedBleService.Unlock();
+            _btnLock.Click += (s, a) => TrackedBleService.Lock();
             _btnbBattery.Click += (s, a) => BlueToothLeService.GetBatteryLevel();
         }
 

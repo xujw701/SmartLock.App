@@ -36,6 +36,7 @@ namespace SmartLock.Presentation.iOS.Platform
         public event Action OnDeviceConnected;
 
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
+        public BleDevice ConnectedDevice => _connectedDevice != null ? new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State) : null;
         public bool DeviceConnected => _connectedDevice != null;
 
         public BlueToothLeService()
@@ -112,14 +113,7 @@ namespace SmartLock.Presentation.iOS.Platform
 
             if (string.IsNullOrEmpty(device.Name)) return;
 
-            var bleDevice = new BleDevice()
-            {
-                Id = device.Id,
-                Name = device.Name,
-                Rssi = device.Rssi,
-                NativeDevice = device.NativeDevice,
-                State = (DeviceState)device.State
-            };
+            var bleDevice = new BleDevice(device.Id, device.Name, device.Rssi, device.NativeDevice, (DeviceState)device.State);
 
             if (!_discoveredDevices.Contains(device))
             {

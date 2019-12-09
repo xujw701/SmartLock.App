@@ -5,6 +5,7 @@ using SmartLock.Model;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.ViewService;
 using SmartLock.Presentation.Core.ViewControllers;
+using SmartLock.Logic.Services;
 
 namespace SmartLock.Presentation.Core
 {
@@ -23,6 +24,7 @@ namespace SmartLock.Presentation.Core
 		private void RegisterServices()
 		{
 			IoC.Register<IWebService, WebServiceFunctions>();
+            IoC.RegisterSingleton<ITrackedBleService, TrackedBleService>();
         }
 
         /// <summary>

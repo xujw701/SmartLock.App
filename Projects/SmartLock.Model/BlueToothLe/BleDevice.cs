@@ -9,6 +9,15 @@ namespace SmartLock.Model.BlueToothLe
         public int Rssi { get; set; }
         public object NativeDevice { get; set; }
         public DeviceState State { get; set; }
+
+        public BleDevice(Guid id, string name, int rssi, object nativeDevice, DeviceState state)
+        {
+            Id = id;
+            Name = name;
+            Rssi = rssi;
+            NativeDevice = nativeDevice;
+            State = state;
+        }
     }
 
     public enum DeviceState
