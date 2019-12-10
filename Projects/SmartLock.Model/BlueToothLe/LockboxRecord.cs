@@ -9,7 +9,7 @@ namespace SmartLock.Model.BlueToothLe
         public LockActivity LockActivity { get; set; }
         public DateTime DateTime { get; set; }
 
-        public string DateTimeString => DateTime.ToString("hh:mm:ss dd/MM/yyyy");
+        public string DateTimeString => DateTime.ToString("HH:mm:ss dd/MM/yyyy");
     }
 
     public enum LockActivity

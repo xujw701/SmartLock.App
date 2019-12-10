@@ -8,7 +8,6 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
     public partial class BleDeviceCell : UITableViewCell
     {
         public static readonly NSString Key = new NSString("BleDeviceCell");
-
         public static readonly UINib Nib;
 
         static BleDeviceCell()

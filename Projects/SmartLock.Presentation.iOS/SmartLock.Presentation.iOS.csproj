@@ -162,6 +162,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Controls\Cells\BleDeviceCell.xib" />
+    <InterfaceDefinition Include="Controls\Cells\LockboxRecordCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -214,7 +215,6 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Cells\IProvidesHeight.cs" />
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
     <Compile Include="Controls\TableSupport\TableSupportCell.cs" />
     <Compile Include="Controls\TableSupport\TableSupportCellGroup.cs" />
@@ -242,6 +242,12 @@
     <Compile Include="Controls\Cells\BleDeviceCell.designer.cs">
       <DependentUpon>BleDeviceCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Cells\LockboxRecordCell.cs" />
+    <Compile Include="Controls\Cells\LockboxRecordCell.designer.cs">
+      <DependentUpon>LockboxRecordCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TableSupport\IProvidesHeight.cs" />
+    <Compile Include="Controls\Sources\LockboxRecordSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
