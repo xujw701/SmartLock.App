@@ -7,7 +7,7 @@ namespace SmartLock.Model.Services
 {
     public interface ITrackedBleService
     {
-        List<LockActivityRecord> Records { get; }
+        List<LockboxRecord> Records { get; }
 
         void Init();
         void Lock();

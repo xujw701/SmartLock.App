@@ -25,6 +25,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.Title = "Pairing";
             View.StartStop += View_StartStop;
             View.Connect += View_Connect;
+            View.ViewLogs += () => Push<LogsController>();
             View.Show(_blueToothLeService.DiscoveredDevices);
         }
 

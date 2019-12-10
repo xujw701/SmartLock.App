@@ -8,6 +8,7 @@ namespace SmartLock.Presentation.Core.Views
     {
         event Action<bool> StartStop;
         event Action<BleDevice> Connect;
+        event Action ViewLogs;
 
         void Show(List<BleDevice> bleDevices);
     }

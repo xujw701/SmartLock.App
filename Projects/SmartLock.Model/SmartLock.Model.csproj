@@ -41,8 +41,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlueToothLe\LockActivityRecords.cs" />
-    <Compile Include="BlueToothLe\LockActivityRecord.cs" />
+    <Compile Include="BlueToothLe\LockboxRecords.cs" />
+    <Compile Include="BlueToothLe\LockboxRecord.cs" />
     <Compile Include="BlueToothLe\BleDevice.cs" />
     <Compile Include="Services\ITrackedBleService.cs" />
     <Compile Include="Services\IPlatformServices.cs" />

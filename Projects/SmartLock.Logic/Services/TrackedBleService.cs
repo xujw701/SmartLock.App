@@ -16,9 +16,9 @@ namespace SmartLock.Logic.Services
         private readonly IBlueToothLeService _blueToothLeService;
         private readonly IContainedStorage _containedStorage;
 
-        private LockActivityRecords _lockActivityRecords;
+        private LockboxRecords _lockActivityRecords;
 
-        public List<LockActivityRecord> Records => _lockActivityRecords.Records;
+        public List<LockboxRecord> Records => _lockActivityRecords.Records;
 
         public TrackedBleService(IContainedStorage containedStorage, IBlueToothLeService  blueToothLeService)
         {
@@ -46,7 +46,7 @@ namespace SmartLock.Logic.Services
         {
             _blueToothLeService.SetLock(false);
 
-            var record = new LockActivityRecord()
+            var record = new LockboxRecord()
             {
                 LockId = _blueToothLeService.ConnectedDevice.Id.ToString(),
                 LockName = _blueToothLeService.ConnectedDevice.Name,
@@ -61,13 +61,13 @@ namespace SmartLock.Logic.Services
 
         private void LoadObject()
         {
-            _lockActivityRecords = _containedStorage.GetSerializedObject<LockActivityRecords>(LockActivityRecordKey);
+            _lockActivityRecords = _containedStorage.GetSerializedObject<LockboxRecords>(LockActivityRecordKey);
 
             if (_lockActivityRecords == null)
             {
-                _lockActivityRecords = new LockActivityRecords()
+                _lockActivityRecords = new LockboxRecords()
                 {
-                    Records = new List<LockActivityRecord>()
+                    Records = new List<LockboxRecord>()
                 };
             }
         }

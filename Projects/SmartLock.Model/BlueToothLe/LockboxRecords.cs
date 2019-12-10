@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace SmartLock.Model.BlueToothLe
 {
-    public class LockActivityRecords
+    public class LockboxRecords
     {
-        public List<LockActivityRecord> Records { get; set; }
+        public List<LockboxRecord> Records { get; set; }
     }
 }

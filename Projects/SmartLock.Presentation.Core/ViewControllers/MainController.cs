@@ -1,4 +1,5 @@
-﻿using SmartLock.Presentation.Core.Views;
+﻿using SmartLock.Model.Services;
+using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -10,11 +11,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly LogsController _logsViewController;
         private readonly SettingController _settingViewController;
 
-        public MainController(IViewService viewService) : base(viewService)
+        public MainController(IViewService viewService, ITrackedBleService trackedBleService) : base(viewService)
         {
             _homeViewController = new HomeController(viewService);
             _myLockViewController = new MyLockController(viewService);
-            _logsViewController = new LogsController(viewService);
+            _logsViewController = new LogsController(viewService, trackedBleService);
             _settingViewController = new SettingController(viewService);
         }
 

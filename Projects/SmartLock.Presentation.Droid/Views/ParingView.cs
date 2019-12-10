@@ -33,6 +33,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         public event Action<bool> StartStop;
         public event Action<BleDevice> Connect;
+        public event Action ViewLogs;
 
         private IBlueToothLeService BlueToothLeService => IoC.Resolve<IBlueToothLeService>();
         private ITrackedBleService TrackedBleService => IoC.Resolve<ITrackedBleService>();
@@ -67,7 +68,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             _btnUnlock.Click += (s, a) => TrackedBleService.Unlock();
             _btnLock.Click += (s, a) => TrackedBleService.Lock();
-            _btnbBattery.Click += (s, a) => BlueToothLeService.GetBatteryLevel();
+            _btnbBattery.Click += (s, a) => { /*BlueToothLeService.GetBatteryLevel();*/ ViewLogs?.Invoke(); };
         }
 
         public void Show(List<BleDevice> bleDevices)
