@@ -57,7 +57,7 @@ namespace SmartLock.Presentation.Droid.Views
             {
                 ToggleScanStatus();
 
-                Connect?.Invoke(_adapter.SelectedDevice);
+                //Connect?.Invoke(_adapter.SelectedDevice);
             };
 
             _btnUnlock = FindViewById<Button>(Resource.Id.unlock);
@@ -75,7 +75,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             if (_adapter == null)
             {
-                _adapter = new BleDeviceAdapter(bleDevices);
+                //_adapter = new BleDeviceAdapter(bleDevices);
                 _rvBleList.SetLayoutManager(new LinearLayoutManager(this));
                 _rvBleList.SetAdapter(_adapter);
             }

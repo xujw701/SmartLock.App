@@ -82,7 +82,7 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             {
                 var title = FindViewById<TextView>(Resource.Id.toolbarTitle);
                 if (title != null) return title.Text;
-                return SupportActionBar.Title;
+                return SupportActionBar?.Title ?? string.Empty;
             }
             set
             {
@@ -91,7 +91,7 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
                 {
                     title.Text = value;
                 }
-                else
+                if (SupportActionBar != null)
                 {
                     SupportActionBar.Title = value;
                 }

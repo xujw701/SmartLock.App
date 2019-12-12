@@ -68,14 +68,14 @@ namespace SmartLock.Presentation.Droid.Support
             return (int)inSampleSize;
         }
 
-        public static Bitmap ResizeBitmap(Bitmap bitmap, int expectPx)
+        public static Bitmap ResizeBitmap(Bitmap bitmap, int expectPx, bool force = false)
         {
             var bitmapWidth = bitmap.Width;
             var bitmapHeight = bitmap.Height;
 
             var longerSide = bitmapHeight >= bitmapWidth ? bitmapHeight : bitmapWidth;
 
-            if (expectPx > longerSide) return bitmap;
+            if (expectPx > longerSide && !force) return bitmap;
 
             var scale = expectPx / (float)longerSide;
             Matrix matrix = new Matrix();

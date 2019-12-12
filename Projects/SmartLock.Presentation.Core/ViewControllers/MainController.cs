@@ -13,10 +13,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         public MainController(IViewService viewService, ITrackedBleService trackedBleService) : base(viewService)
         {
-            _homeViewController = new HomeController(viewService);
-            _myLockViewController = new MyLockController(viewService);
-            _logsViewController = new LogsController(viewService, trackedBleService);
-            _settingViewController = new SettingController(viewService);
+            //_homeViewController = new HomeController(viewService);
+            //_myLockViewController = new MyLockController(viewService);
+            //_logsViewController = new LogsController(viewService, trackedBleService);
+            //_settingViewController = new SettingController(viewService);
         }
 
         protected override void OnViewLoaded()

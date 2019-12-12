@@ -10,6 +10,9 @@ namespace SmartLock.Model.BlueToothLe
         public object NativeDevice { get; set; }
         public DeviceState State { get; set; }
 
+        public int BatteryLevel { get; set; }
+        public string BatteryLevelString => BatteryLevel > 0 ? $"" : "UNKNOWN";
+
         public BleDevice(Guid id, string name, int rssi, object nativeDevice, DeviceState state)
         {
             Id = id;

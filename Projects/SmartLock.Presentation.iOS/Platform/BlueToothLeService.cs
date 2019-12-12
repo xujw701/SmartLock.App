@@ -33,8 +33,9 @@ namespace SmartLock.Presentation.iOS.Platform
         private ICharacteristic _batteryCharacteristic;
 
         public event Action<BleDevice> OnDeviceDiscovered;
-        public event Action OnDeviceConnected;
+        public event Action<BleDevice> OnDeviceConnected;
 
+        public bool IsOn => _ble.IsOn;
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
         public BleDevice ConnectedDevice => _connectedDevice != null ? new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State) : null;
         public bool DeviceConnected => _connectedDevice != null;
@@ -112,6 +113,7 @@ namespace SmartLock.Presentation.iOS.Platform
             var device = args.Device;
 
             if (string.IsNullOrEmpty(device.Name)) return;
+            if (!string.IsNullOrEmpty(device.Name) && !device.Name.ToLower().StartsWith("lock")) return;
 
             var bleDevice = new BleDevice(device.Id, device.Name, device.Rssi, device.NativeDevice, (DeviceState)device.State);
 
@@ -139,6 +141,8 @@ namespace SmartLock.Presentation.iOS.Platform
         {
             _connectedDevice = args.Device;
 
+            var bleDevice = new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State);
+
             _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
             _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
             _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
@@ -151,7 +155,7 @@ namespace SmartLock.Presentation.iOS.Platform
                 await _notifyCharacteristic.StartUpdatesAsync();
             }
 
-            OnDeviceConnected?.Invoke();
+            OnDeviceConnected?.Invoke(bleDevice);
         }
 
         private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)

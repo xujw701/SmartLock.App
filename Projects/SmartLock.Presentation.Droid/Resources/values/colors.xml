@@ -9,6 +9,10 @@
     <color name="actionBarPrimaryTextColor">#323232</color>
     <!--<color name="actionBarPrimaryTextColor">#FFFFFF</color>-->
 
+    <color name="greeting_blue">#2dfffe</color>
+    <color name="bt_status_green">#37d56a</color>
+    <color name="button_bg_blue">#006aff</color>
+
 
 
     <color name="accent">#519af7</color>

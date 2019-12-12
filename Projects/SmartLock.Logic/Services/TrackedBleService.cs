@@ -25,9 +25,7 @@ namespace SmartLock.Logic.Services
             _containedStorage = containedStorage;
             _blueToothLeService = blueToothLeService;
 
-            //_containedStorage.Init(StorageKey);
-
-            //LoadObject();
+            Init();
         }
 
         public void Init()

@@ -8,8 +8,9 @@ namespace SmartLock.Model.Services
     public interface IBlueToothLeService
     {
         event Action<BleDevice> OnDeviceDiscovered;
-        event Action OnDeviceConnected;
+        event Action<BleDevice> OnDeviceConnected;
 
+        bool IsOn { get; }
         List<BleDevice> DiscoveredDevices { get; }
         BleDevice ConnectedDevice { get; }
         bool DeviceConnected { get; }
