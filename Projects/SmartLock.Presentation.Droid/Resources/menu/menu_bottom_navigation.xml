@@ -3,22 +3,27 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
   <item
       android:id="@+id/nav_home"
-      android:icon="@drawable/baseline_home_black_24"
+      android:icon="@drawable/navi_home_button"
       android:title="@string/navi_home"
       android:showAsAction="always|withText"/>
   <item
-      android:id="@+id/nav_lock"
-      android:icon="@drawable/baseline_lock_black_24"
-      android:title="@string/navi_lock"
+      android:id="@+id/nav_lockbox"
+      android:icon="@drawable/navi_lockbox_button"
+      android:title="@string/navi_lockbox"
       android:showAsAction="always|withText"/>
   <item
-      android:id="@+id/nav_log"
-      android:icon="@drawable/baseline_timeline_black_24"
-      android:title="@string/navi_log"
+      android:id="@+id/nav_listing"
+      android:icon="@drawable/navi_listing_button"
+      android:title="@string/navi_listing"
+      android:showAsAction="always|withText"/>
+  <item
+      android:id="@+id/nav_nearby"
+      android:icon="@drawable/navi_nearby_button"
+      android:title="@string/navi_nearby"
       android:showAsAction="always|withText"/>
   <item
       android:id="@+id/nav_setting"
-      android:icon="@drawable/baseline_build_black_24"
+      android:icon="@drawable/navi_setting_button"
       android:title="@string/navi_setting"
       android:showAsAction="always|withText"/>
 </menu>

@@ -3,9 +3,9 @@ using SmartLock.Presentation.Core.ViewService;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
-    public class LoginController : ViewController<ILoginView>
+    public class KeyboxesController : ViewController<IKeyboxesView>
     {
-        public LoginController(IViewService viewService) : base(viewService)
+        public KeyboxesController(IViewService viewService) : base(viewService)
         {
         }
 
@@ -13,10 +13,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            View.Title = "Login";
-
-            //Push<PairingController>();
-            Push<MainController>();
+            View.Title = "My Locks";
         }
     }
 }

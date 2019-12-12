@@ -12,7 +12,7 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public class PairingView : TableView<IPairingView>, IPairingView
+    public class PairingView : TableView<INearbyView>, INearbyView
     {
         private UIActivityIndicatorView _loadingIndicator;
         private UIButton _startStopButton;
@@ -27,7 +27,7 @@ namespace SmartLock.Presentation.iOS.Views
         private IBlueToothLeService BlueToothLeService => IoC.Resolve<IBlueToothLeService>();
         private ITrackedBleService TrackedBleService => IoC.Resolve<ITrackedBleService>();
 
-        public PairingView(PairingController controller) : base(controller)
+        public PairingView(NearbyController controller) : base(controller)
         {
         }
 

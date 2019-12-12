@@ -12,6 +12,8 @@
     <color name="greeting_blue">#2dfffe</color>
     <color name="bt_status_green">#37d56a</color>
     <color name="button_bg_blue">#006aff</color>
+    <color name="bottom_bar_blue">#1677ff</color>
+    <color name="bottom_bar_gray">#a7a7a7</color>
 
 
 

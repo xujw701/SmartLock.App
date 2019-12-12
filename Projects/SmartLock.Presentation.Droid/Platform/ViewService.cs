@@ -30,11 +30,11 @@ namespace SmartLock.Presentation.Droid.Platform
             // Main Pages
             _viewcontrollerMappings.Add(typeof(MainController), typeof(MainView));
             _viewcontrollerMappings.Add(typeof(HomeController), typeof(HomeView));
-            _viewcontrollerMappings.Add(typeof(MyLockController), typeof(MyLockView));
-            _viewcontrollerMappings.Add(typeof(LogsController), typeof(LogsView));
+            _viewcontrollerMappings.Add(typeof(KeyboxesController), typeof(KeyboxesView));
+            _viewcontrollerMappings.Add(typeof(ListingController), typeof(ListingView));
             _viewcontrollerMappings.Add(typeof(SettingController), typeof(SettingView));
 
-            _viewcontrollerMappings.Add(typeof(PairingController), typeof(PairingView));
+            _viewcontrollerMappings.Add(typeof(NearbyController), typeof(PairingView));
         }
 
         public override void Pop()

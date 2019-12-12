@@ -1,0 +1,4 @@
+﻿<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/icon_nearby_nor" android:state_checked="false"/>
+    <item android:drawable="@drawable/icon_nearby_sel" android:state_checked="true"/>
+</selector>

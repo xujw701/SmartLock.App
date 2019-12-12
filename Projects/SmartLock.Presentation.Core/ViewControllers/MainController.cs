@@ -6,24 +6,26 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class MainController : ViewController<IMainView>
     {
-        private readonly HomeController _homeViewController;
-        private readonly MyLockController _myLockViewController;
-        private readonly LogsController _logsViewController;
-        private readonly SettingController _settingViewController;
+        private readonly HomeController _homeController;
+        private readonly KeyboxesController _keyboxesController;
+        private readonly ListingController _listingController;
+        private readonly NearbyController _nearbyController;
+        private readonly SettingController _settingController;
 
-        public MainController(IViewService viewService, ITrackedBleService trackedBleService) : base(viewService)
+        public MainController(IViewService viewService, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
         {
-            //_homeViewController = new HomeController(viewService);
-            //_myLockViewController = new MyLockController(viewService);
-            //_logsViewController = new LogsController(viewService, trackedBleService);
-            //_settingViewController = new SettingController(viewService);
+            _homeController = new HomeController(viewService, blueToothLeService, trackedBleService);
+            _keyboxesController = new KeyboxesController(viewService);
+            _listingController = new ListingController(viewService, trackedBleService);
+            _nearbyController = new NearbyController(viewService, blueToothLeService);
+            _settingController = new SettingController(viewService);
         }
 
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
 
-            View.SetTabs(_homeViewController, _myLockViewController, _logsViewController, _settingViewController);
+            View.SetTabs(_homeController, _keyboxesController, _listingController, _nearbyController, _settingController);
         }
     }
 }

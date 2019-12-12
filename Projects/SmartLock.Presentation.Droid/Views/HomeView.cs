@@ -15,7 +15,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 namespace SmartLock.Presentation.Droid.Views
 {
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
-    public class HomeView : ViewBase<IHomeView>, IHomeView
+    public class HomeView : FragmentView<IHomeView>, IHomeView
     {
         private const int StateSearchButton = 0;
         private const int StateLockList = 1;
@@ -44,21 +44,21 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action CancelConnect;
         public event Action UnlockClicked;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            _view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            _searchingBtnContainer = FindViewById<View>(Resource.Id.searchingBtnContainer);
-            _ivScanButton = FindViewById<ImageView>(Resource.Id.ivScanButton);
-            _tvScanButton = FindViewById<TextView>(Resource.Id.tvScanButton);
+            _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
+            _ivScanButton = _view.FindViewById<ImageView>(Resource.Id.ivScanButton);
+            _tvScanButton = _view.FindViewById<TextView>(Resource.Id.tvScanButton);
 
-            _rvBleList = FindViewById<RecyclerView>(Resource.Id.rvBleList);
+            _rvBleList = _view.FindViewById<RecyclerView>(Resource.Id.rvBleList);
 
-            _lockContainer = FindViewById<View>(Resource.Id.lockContainer);
-            _tvLockTitle = FindViewById<TextView>(Resource.Id.tvLockTitle);
-            _tvLockSubTitle = FindViewById<TextView>(Resource.Id.tvLockSubTitle);
-            _tvBatteryStatus = FindViewById<TextView>(Resource.Id.tvBatteryStatus);
-            _slideUnlockView = FindViewById<SlideUnlockView>(Resource.Id.SlideUnlockView);
+            _lockContainer = _view.FindViewById<View>(Resource.Id.lockContainer);
+            _tvLockTitle = _view.FindViewById<TextView>(Resource.Id.tvLockTitle);
+            _tvLockSubTitle = _view.FindViewById<TextView>(Resource.Id.tvLockSubTitle);
+            _tvBatteryStatus = _view.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
+            _slideUnlockView = _view.FindViewById<SlideUnlockView>(Resource.Id.SlideUnlockView);
 
             _ivScanButton.Click += (s, e) =>
             {
@@ -73,6 +73,8 @@ namespace SmartLock.Presentation.Droid.Views
             };
 
             SetMode(StateSearchButton);
+
+            return _view;
         }
 
         public void Show(List<BleDevice> bleDevices)
@@ -82,7 +84,7 @@ namespace SmartLock.Presentation.Droid.Views
             if (_adapter == null)
             {
                 _adapter = new BleDeviceAdapter(bleDevices, Connect, CancelConnect);
-                _rvBleList.SetLayoutManager(new LinearLayoutManager(this));
+                _rvBleList.SetLayoutManager(new LinearLayoutManager(Context));
                 _rvBleList.SetAdapter(_adapter);
             }
             else
@@ -118,7 +120,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         private void ConfigureRotatingButton(bool start)
         {
-            var anim = AnimationUtils.LoadAnimation(this, Resource.Animation.anim_rotate);
+            var anim = AnimationUtils.LoadAnimation(Context, Resource.Animation.anim_rotate);
             anim.FillAfter = true;
 
             if (start)

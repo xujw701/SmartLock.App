@@ -6,9 +6,9 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public partial class MyLockView : TableView<IMyLockView>, IMyLockView
+    public partial class MyLockView : TableView<IKeyboxesView>, IKeyboxesView
     {
-        public MyLockView(MyLockController controller) : base(controller)
+        public MyLockView(KeyboxesController controller) : base(controller)
         {
         }
 

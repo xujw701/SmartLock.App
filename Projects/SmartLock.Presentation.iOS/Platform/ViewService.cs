@@ -27,11 +27,11 @@ namespace SmartLock.Presentation.iOS.Platform
 
             _viewDictionary.Add(typeof(MainController), vc => new MainView(vc as MainController));
             _viewDictionary.Add(typeof(HomeController), vc => new HomeView(vc as HomeController));
-            _viewDictionary.Add(typeof(MyLockController), vc => new MyLockView(vc as MyLockController));
-            _viewDictionary.Add(typeof(LogsController), vc => new LogsView(vc as LogsController));
+            _viewDictionary.Add(typeof(KeyboxesController), vc => new MyLockView(vc as KeyboxesController));
+            _viewDictionary.Add(typeof(ListingController), vc => new LogsView(vc as ListingController));
             _viewDictionary.Add(typeof(SettingController), vc => new SettingView(vc as SettingController));
 
-            _viewDictionary.Add(typeof(PairingController), vc => new PairingView(vc as PairingController));
+            _viewDictionary.Add(typeof(NearbyController), vc => new PairingView(vc as NearbyController));
         }
 
         public override void Pop()

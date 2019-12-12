@@ -17,7 +17,7 @@ namespace SmartLock.Presentation.iOS.Views
             base.ViewDidLoad();
         }
 
-        public void SetTabs(HomeController homeViewController, MyLockController myLockViewController, LogsController logsViewController, SettingController settingViewController)
+        public void SetTabs(HomeController homeViewController, KeyboxesController myLockViewController, ListingController logsViewController, SettingController settingViewController)
         {
             ViewControllers = new UIViewController[]
             {

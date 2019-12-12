@@ -11,8 +11,7 @@
         android:layout_height="24dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:tint="@android:color/black"
-        android:src="@drawable/baseline_lock_black_24"/>
+        android:src="@drawable/icon_home_sel"/>
     <TextView
         android:id="@+id/tvText1"
         android:layout_width="match_parent"
