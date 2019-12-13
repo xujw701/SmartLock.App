@@ -11,6 +11,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action CancelConnect;
         event Action UnlockClicked;
 
+        void Show(string greeting, bool btStatus);
         void Show(List<BleDevice> bleDevices);
         void Show(BleDevice bleDevice);
     }

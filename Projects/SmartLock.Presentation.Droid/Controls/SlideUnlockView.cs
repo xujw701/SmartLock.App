@@ -79,7 +79,8 @@ namespace SmartLock.Presentation.Droid.Controls
         private int mTextSize;//文字大小
         private int mTextLeft;//文字距离左边
         private int mR;//滑块的半径
-        private float margin;
+        private int margin;
+        private int marginTop;
 
         private Rect mSliderRect;
         private int mSlidableLength;    // SlidableLength = BackgroundWidth - LeftMagins - RightMagins - SliderWidth
@@ -131,9 +132,9 @@ namespace SmartLock.Presentation.Droid.Controls
             FocusableInTouchMode = true;
 
             mSlidableLength = 200;
-            mText = ">>>  slide to unlock";
-            mTextSize = 70;//文字大小
-            mTextLeft = 30;//文字距离左边
+            mText = "Slide to unlock";
+            mTextSize = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 21);//文字大小
+            mTextLeft = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 84);//文字距离左边
             mMoveX = 0;
             mGradientIndex = 0;
             mSliPaint = new Paint();
@@ -147,14 +148,11 @@ namespace SmartLock.Presentation.Droid.Controls
             //该方法即为设置基线上那个点究竟是left,center,还是right
             mPaint.TextAlign = Paint.Align.Left;
 
-            bitmap = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.icon_key);
+            bitmap = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.icon_unlock_key);
 
             // Hard code it
-            var currentHeight = DisplayMetricsHelper.ConvertDpToPixel(_context, 50);
-            if (bitmap.Height < currentHeight)
-            {
-                bitmap = BitmapHelper.ResizeBitmap(bitmap, (int)currentHeight, true);
-            }
+            var currentHeight = DisplayMetricsHelper.ConvertDpToPixel(_context, 75);
+            bitmap = BitmapHelper.ResizeBitmap(bitmap, (int)currentHeight, true);
 
             mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
         }
@@ -178,15 +176,15 @@ namespace SmartLock.Presentation.Droid.Controls
                 _init = true;
             }
 
-            mTextLeft = (int)(height * 1.5);
-            margin = height / 20;
-            mR = (int)(((height - margin * 2) / 2) - margin);
+            margin = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 15);
+            marginTop = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 10);
+            mR = (int)(height / 2);
 
-            mSlidableLength = (int)(specWidthSize - mR * 2 - margin * 4);
+            mSlidableLength = (int)(specWidthSize - /*mR * 2 - */margin * 2);
             mEffectiveLength = mSlidableLength - 20;
 
             mSliderRect = new Rect((int)margin, (int)margin, (int)(mR * 2 + margin * 2),
-                    (int)(mR * 2 + margin * 2));
+                (int)(mR * 2 + margin * 2));
 
             mGradientColors = new int[]{Color.Argb(255, 170, 170, 170),
                     Color.Argb(255, 170, 170, 170), Color.Argb(255, 255, 255, 255)};
@@ -218,7 +216,7 @@ namespace SmartLock.Presentation.Droid.Controls
         {
             base.OnDraw(canvas);
 
-            RectF oval = new RectF(margin, margin * 2, width - margin, height - margin * 2);// 设置个新的长方形
+            RectF oval = new RectF(margin, marginTop, width - margin, height - marginTop);// 设置个新的长方形
             canvas.DrawRoundRect(oval, 30, 30, mBgPaint);//第二个参数是x半径，第三个参数是y半径
 
             mPaint.SetShader(mGradient);
@@ -229,7 +227,7 @@ namespace SmartLock.Presentation.Droid.Controls
             canvas.DrawText(mText, mTextLeft, baseLineY, mPaint);
 
             //canvas.DrawCircle(mR + mMoveX + margin * 2, height / 2, mR, mSliPaint);
-            canvas.DrawBitmap(bitmap, mMoveX + margin, 0, mSliPaint);
+            canvas.DrawBitmap(bitmap, mMoveX, -10, new Paint());
         }
 
         public void reset() {

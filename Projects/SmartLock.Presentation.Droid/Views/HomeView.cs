@@ -21,10 +21,15 @@ namespace SmartLock.Presentation.Droid.Views
         private const int StateLockList = 1;
         private const int StateLock = 2;
 
+
+        private TextView _tvGreeting;
+        private ImageView _ivMessage;
+
         private View _searchingBtnContainer;
-        
         private ImageView _ivScanButton;
         private TextView _tvScanButton;
+        private TextView _tvBtStatus;
+
         private RecyclerView _rvBleList;
 
         private View _lockContainer;
@@ -37,6 +42,8 @@ namespace SmartLock.Presentation.Droid.Views
 
         private BleDeviceAdapter _adapter;
 
+        private bool _isOn;
+
         protected override int LayoutId => Resource.Layout.View_Home;
 
         public event Action<bool> StartStop;
@@ -48,9 +55,13 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
 
+            _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
+            _ivMessage = _view.FindViewById<ImageView>(Resource.Id.ivMessage);
+
             _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
             _ivScanButton = _view.FindViewById<ImageView>(Resource.Id.ivScanButton);
             _tvScanButton = _view.FindViewById<TextView>(Resource.Id.tvScanButton);
+            _tvBtStatus = _view.FindViewById<TextView>(Resource.Id.tvBtStatus);
 
             _rvBleList = _view.FindViewById<RecyclerView>(Resource.Id.rvBleList);
 
@@ -75,6 +86,12 @@ namespace SmartLock.Presentation.Droid.Views
             SetMode(StateSearchButton);
 
             return _view;
+        }
+
+        public void Show(string greeting, bool btStatus)
+        {
+            _tvGreeting.Text = greeting;
+            _tvBtStatus.Text = _isOn ? "ON" : "OFF";
         }
 
         public void Show(List<BleDevice> bleDevices)
@@ -104,6 +121,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         private void SetMode(int state)
         {
+            _ivMessage.Visibility = state == StateSearchButton ? ViewStates.Visible : ViewStates.Gone;
             _searchingBtnContainer.Visibility = state == StateSearchButton ? ViewStates.Visible : ViewStates.Gone;
             _rvBleList.Visibility = state == StateLockList ? ViewStates.Visible : ViewStates.Gone;
             _lockContainer.Visibility = state == StateLock ? ViewStates.Visible : ViewStates.Gone;
@@ -114,7 +132,7 @@ namespace SmartLock.Presentation.Droid.Views
             isScanning = !isScanning && !forceStop;
 
             _tvScanButton.Text = isScanning ? "Searching" : "Search Lock";
-
+            _ivScanButton.SetImageResource(isScanning ? Resource.Drawable.searching_lock : Resource.Drawable.search_lock);
             ConfigureRotatingButton(isScanning);
         }
 

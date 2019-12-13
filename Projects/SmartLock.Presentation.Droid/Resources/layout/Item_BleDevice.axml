@@ -14,14 +14,17 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:paddingStart="18dp"
+            android:paddingTop="26dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="24dp">
             <ImageView
                 android:id="@+id/ivLock"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
-                android:tint="@android:color/black"
-                android:src="@android:drawable/stat_sys_data_bluetooth"/>
+                android:src="@drawable/icon_lock_medium"/>
             <TextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
@@ -39,53 +42,52 @@
                 android:layout_toEndOf="@+id/ivLock"
                 android:layout_below="@+id/tvTitle"
                 android:text="Albany, Auckland 0632"
-                android:textSize="16sp"/>
+                android:textSize="14sp"/>
             <ImageView
                 android:id="@+id/ivBt"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_gravity="center"
                 android:layout_below="@+id/tvSubTitle"
                 android:layout_alignStart="@+id/tvSubTitle"
-                android:tint="@android:color/black"
-                android:src="@android:drawable/stat_sys_data_bluetooth"/>
+                android:src="@drawable/icon_buletooth_small"/>
             <TextView
                 android:id="@+id/tvBtStatus"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="2dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="4dp"
                 android:layout_below="@+id/tvSubTitle"
                 android:layout_toEndOf="@+id/ivBt"
                 android:gravity="center_vertical"
                 android:text="Active"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/bt_status_green"/>
             <ImageView
                 android:id="@+id/ivBattery"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="26dp"
+                android:layout_marginStart="28dp"
                 android:layout_below="@+id/tvSubTitle"
                 android:layout_toEndOf="@+id/tvBtStatus"
-                android:tint="@android:color/black"
-                android:src="@android:drawable/ic_lock_idle_low_battery"/>
+                android:src="@drawable/icon_battery"/>
             <TextView
                 android:id="@+id/tvBatteryStatus"
                 android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_marginStart="2dp"
+                android:layout_height="18dp"
+                android:layout_marginStart="4dp"
                 android:layout_below="@+id/tvSubTitle"
                 android:layout_toEndOf="@+id/ivBattery"
                 android:gravity="center_vertical"
                 android:text="96%"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textColor="@color/bt_status_green"/>
             <Button
                 android:id="@+id/btnConnect"
-                android:layout_width="130dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:minWidth="120dp"
+                android:layout_marginTop="25dp"
                 android:layout_below="@+id/ivBt"
                 android:layout_alignStart="@+id/ivLock"
                 android:text="Connect"
@@ -94,9 +96,9 @@
                 style="@style/Widget.AppCompat.Button.Colored"/>
             <Button
                 android:id="@+id/btnCancel"
-                android:layout_width="130dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="25dp"
                 android:layout_below="@+id/ivBt"
                 android:layout_toEndOf="@+id/btnConnect"
                 android:text="Cancel"

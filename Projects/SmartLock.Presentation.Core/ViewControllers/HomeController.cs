@@ -1,6 +1,7 @@
 ﻿using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
@@ -26,6 +27,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.StartStop += View_StartStop;
             View.Connect += View_Connect;
             View.UnlockClicked += View_UnlockClicked;
+        }
+
+        protected override void OnViewWillShow()
+        {
+            base.OnViewWillShow();
+
+            View.Show(GenerateGreeting(), _blueToothLeService.IsOn);
         }
 
         private void BlueToothLeService_DeviceDiscovered(Model.BlueToothLe.BleDevice bleDevice)
@@ -60,6 +68,19 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private void View_UnlockClicked()
         {
             _trackedBleService.Unlock();
+        }
+
+        private string GenerateGreeting()
+        {
+            var hourNow = int.Parse(DateTime.Now.ToString("HH"));
+            if (hourNow >= 6 && hourNow < 12)
+                return "Good morning,";
+            else if (hourNow >= 12 && hourNow < 18)
+                return "Good afternoon,";
+            else if (hourNow >= 18 && hourNow < 22)
+                return "Good evening,";
+            else
+                return "Good night,";
         }
     }
 }
