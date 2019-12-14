@@ -14,6 +14,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
+
+            View.KeyboxClicked += (keybox) => Push<KeyboxDetailController>(vc => vc.Keybox = keybox);
         }
 
         protected override void OnViewWillShow()

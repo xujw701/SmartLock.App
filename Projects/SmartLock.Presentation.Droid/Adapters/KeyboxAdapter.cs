@@ -11,11 +11,15 @@ namespace SmartLock.Presentation.Droid.Adapters
 {
     public class KeyboxAdapter : RecyclerView.Adapter
     {
+        private Action<Keybox> _keyboxClicked;
+
         public List<Keybox> Keyboxes;
 
-        public KeyboxAdapter(List<Keybox> keyboxes)
+        public KeyboxAdapter(List<Keybox> keyboxes, Action<Keybox> keyboxClicked)
         {
             Keyboxes = keyboxes;
+
+            _keyboxClicked = keyboxClicked;
         }
 
         public override int ItemCount => Keyboxes.Count;
@@ -24,7 +28,7 @@ namespace SmartLock.Presentation.Droid.Adapters
         {
             var inflater = LayoutInflater.From(parent.Context);
             var itemView = inflater.Inflate(Resource.Layout.Item_Keybox, parent, false);
-            var holder = new KeyboxHolder(parent.Context, Keyboxes, itemView);
+            var holder = new KeyboxHolder(parent.Context, Keyboxes, _keyboxClicked, itemView);
             return holder;
         }
 
@@ -48,7 +52,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly TextView _tvText2;
             private readonly TextView _tvBattery;
 
-            public KeyboxHolder(Context context, List<Keybox> keyboxs, View itemView) : base(itemView)
+            public KeyboxHolder(Context context, List<Keybox> keyboxs, Action<Keybox> keyboxClicked, View itemView) : base(itemView)
             {
                 _context = context;
                 _keyboxs = keyboxs;
@@ -57,6 +61,11 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _tvText1 = itemView.FindViewById<TextView>(Resource.Id.tvText1);
                 _tvText2 = itemView.FindViewById<TextView>(Resource.Id.tvText2);
                 _tvBattery = itemView.FindViewById<TextView>(Resource.Id.tvBattery);
+
+                _container.Click += (s, e) =>
+                {
+                    keyboxClicked?.Invoke(_keyboxs[AdapterPosition]);
+                };
             }
 
             public void SetData(Keybox keybox)

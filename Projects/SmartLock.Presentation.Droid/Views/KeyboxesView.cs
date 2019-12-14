@@ -6,6 +6,7 @@ using SmartLock.Model.BlueToothLe;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;
 using SmartLock.Presentation.Droid.Views.ViewBases;
+using System;
 using System.Collections.Generic;
 
 namespace SmartLock.Presentation.Droid.Views
@@ -16,6 +17,8 @@ namespace SmartLock.Presentation.Droid.Views
         private RecyclerView _rvKeyboxList;
 
         private KeyboxAdapter _adapter;
+
+        public event Action<Keybox> KeyboxClicked;
 
         protected override int LayoutId => Resource.Layout.View_Keyboxes;
 
@@ -31,7 +34,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             if (_adapter == null)
             {
-                _adapter = new KeyboxAdapter(keyboxes);
+                _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
                 _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(Context));
                 _rvKeyboxList.SetAdapter(_adapter);
             }

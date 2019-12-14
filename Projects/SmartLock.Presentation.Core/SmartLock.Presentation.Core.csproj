@@ -41,6 +41,7 @@
     <Compile Include="AppCore.cs" />
     <Compile Include="IMessageBoxService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewControllers\KeyboxDetailController.cs" />
     <Compile Include="ViewControllers\NearbyController.cs" />
     <Compile Include="ViewControllers\LoginController.cs" />
     <Compile Include="ViewControllers\HomeController.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="ViewService\IViewService.cs" />
     <Compile Include="ViewService\ViewServiceBase.cs" />
+    <Compile Include="Views\IKeyboxDetailView.cs" />
     <Compile Include="Views\INearbyView.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="Views\IListingView.cs" />

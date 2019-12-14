@@ -6,6 +6,8 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface IKeyboxesView : IView
     {
+        event Action<Keybox> KeyboxClicked;
+
         void Show(List<Keybox> keyboxes);
     }
 }

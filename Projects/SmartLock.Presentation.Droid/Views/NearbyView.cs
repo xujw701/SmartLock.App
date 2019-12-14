@@ -15,7 +15,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 namespace SmartLock.Presentation.Droid.Views
 {
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
-    public class PairingView : FragmentView<INearbyView>, INearbyView
+    public class NearbyView : FragmentView<INearbyView>, INearbyView
     {
         protected override int LayoutId => Resource.Layout.View_Nearby;
 
