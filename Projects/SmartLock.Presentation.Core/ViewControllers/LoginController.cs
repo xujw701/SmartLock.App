@@ -1,5 +1,6 @@
 ﻿using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
@@ -13,9 +14,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            View.Title = "Login";
+            View.LoginClicked += () => DoSafeAsync(Login);
+        }
 
-            //Push<PairingController>();
+        private async Task Login()
+        {
+            await Task.Delay(300);
+
             Push<MainController>();
         }
     }
