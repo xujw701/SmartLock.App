@@ -75,6 +75,15 @@ namespace SmartLock.Presentation.iOS.Platform
             await _adapter.ConnectToDeviceAsync(device);
         }
 
+        public async void DisconnectDeviceAsync(BleDevice bleDevice)
+        {
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+
+            if (device == null) throw new Exception("Invalid device");
+
+            await _adapter.DisconnectDeviceAsync(device);
+        }
+
         public async void SetLock(bool isLock)
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");

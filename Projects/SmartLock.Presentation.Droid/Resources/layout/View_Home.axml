@@ -124,19 +124,33 @@
                 android:layout_alignParentEnd="true"
                 android:layout_margin="16dp"
                 android:src="@drawable/icon_close"/>
-            <ImageView
-                android:id="@+id/ivLock"
-                android:layout_width="128dp"
-                android:layout_height="128dp"
+            <LinearLayout
+                android:id="@+id/lockImageContainer"
+                android:layout_width="144dp"
+                android:layout_height="144dp"
                 android:layout_below="@+id/ivLockDisconnect"
                 android:layout_centerInParent="true"
-                android:src="@drawable/icon_lock_big"/>
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/ivLock"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_lock_big"/>
+                <ImageView
+                    android:id="@+id/ivUnlock"
+                    android:layout_width="144dp"
+                    android:layout_height="144dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_unlock"
+                    android:visibility="gone"/>
+            </LinearLayout>
             <TextView
                 android:id="@+id/tvLockTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:layout_below="@+id/ivLock"
+                android:layout_below="@+id/lockImageContainer"
                 android:gravity="center"
                 android:text="28e Oak View Terrace"
                 android:textSize="18sp"

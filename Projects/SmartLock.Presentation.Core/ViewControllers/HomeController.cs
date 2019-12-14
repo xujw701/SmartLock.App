@@ -24,9 +24,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _blueToothLeService.OnDeviceConnected += BlueToothLeService_OnDeviceConnected;
 
             View.Title = "Pairing";
-            View.StartStop += View_StartStop;
-            View.Connect += View_Connect;
-            View.UnlockClicked += View_UnlockClicked;
+            View.StartStop += (isScanning) => DoSafe(() => View_StartStop(isScanning));
+            View.Connect += (bleDevice) => DoSafe(() => View_Connect(bleDevice));
+            View.Disconnect += (bleDevice) => DoSafe(() => View_Disconnect(bleDevice));
+            View.UnlockClicked += () => DoSafe(View_UnlockClicked);
         }
 
         protected override void OnViewWillShow()
@@ -63,6 +64,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _blueToothLeService.StopScanningForDevicesAsync();
 
             _blueToothLeService.ConnectToDeviceAsync(bleDevice);
+        }
+
+        private void View_Disconnect(Model.BlueToothLe.BleDevice bleDevice)
+        {
+            _blueToothLeService.DisconnectDeviceAsync(bleDevice);
         }
 
         private void View_UnlockClicked()

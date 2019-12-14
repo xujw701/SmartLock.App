@@ -18,6 +18,7 @@ namespace SmartLock.Model.Services
         void StartScanningForDevicesAsync();
         void StopScanningForDevicesAsync();
         void ConnectToDeviceAsync(BleDevice bleDevice);
+        void DisconnectDeviceAsync(BleDevice bleDevice);
         void SetLock(bool isLock);
         void GetBatteryLevel();
     }

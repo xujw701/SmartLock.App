@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -17,10 +18,9 @@ namespace SmartLock.Presentation.Droid.Views
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
     public class HomeView : FragmentView<IHomeView>, IHomeView
     {
-        private const int StateSearchButton = 0;
+        private const int StateIdle = 0;
         private const int StateLockList = 1;
         private const int StateLock = 2;
-
 
         private TextView _tvGreeting;
         private ImageView _ivMessage;
@@ -33,6 +33,9 @@ namespace SmartLock.Presentation.Droid.Views
         private RecyclerView _rvBleList;
 
         private View _lockContainer;
+        private ImageView _ivLockDisconnect;
+        private ImageView _ivLock;
+        private ImageView _ivUnlock;
         private TextView _tvLockTitle;
         private TextView _tvLockSubTitle;
         private TextView _tvBatteryStatus;
@@ -42,13 +45,13 @@ namespace SmartLock.Presentation.Droid.Views
 
         private BleDeviceAdapter _adapter;
 
-        private bool _isOn;
+        private Handler _handler = new Handler();
 
         protected override int LayoutId => Resource.Layout.View_Home;
 
         public event Action<bool> StartStop;
         public event Action<BleDevice> Connect;
-        public event Action CancelConnect;
+        public event Action<BleDevice> Disconnect;
         public event Action UnlockClicked;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -66,6 +69,9 @@ namespace SmartLock.Presentation.Droid.Views
             _rvBleList = _view.FindViewById<RecyclerView>(Resource.Id.rvBleList);
 
             _lockContainer = _view.FindViewById<View>(Resource.Id.lockContainer);
+            _ivLockDisconnect = _view.FindViewById<ImageView>(Resource.Id.ivLockDisconnect);
+            _ivLock = _view.FindViewById<ImageView>(Resource.Id.ivLock);
+            _ivUnlock = _view.FindViewById<ImageView>(Resource.Id.ivUnlock);
             _tvLockTitle = _view.FindViewById<TextView>(Resource.Id.tvLockTitle);
             _tvLockSubTitle = _view.FindViewById<TextView>(Resource.Id.tvLockSubTitle);
             _tvBatteryStatus = _view.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
@@ -78,20 +84,31 @@ namespace SmartLock.Presentation.Droid.Views
                 StartStop?.Invoke(isScanning);
             };
 
+            _ivLockDisconnect.Click += (s, e) =>
+            {
+                SetMode(StateIdle);
+
+                Disconnect?.Invoke(_adapter.ConnectedDevice);
+            };
+
             _slideUnlockView.Unlocked += () =>
             {
                 UnlockClicked?.Invoke();
-            };
 
-            SetMode(StateSearchButton);
+                SetLockUI(false);
+
+                _handler.PostDelayed(() => SetLockUI(true), 4000);
+            };
 
             return _view;
         }
 
         public void Show(string greeting, bool btStatus)
         {
+            SetMode(StateIdle);
+
             _tvGreeting.Text = greeting;
-            _tvBtStatus.Text = _isOn ? "ON" : "OFF";
+            _tvBtStatus.Text = btStatus ? "ON" : "OFF";
         }
 
         public void Show(List<BleDevice> bleDevices)
@@ -100,7 +117,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             if (_adapter == null)
             {
-                _adapter = new BleDeviceAdapter(bleDevices, Connect, CancelConnect);
+                _adapter = new BleDeviceAdapter(bleDevices, Connect, Disconnect);
                 _rvBleList.SetLayoutManager(new LinearLayoutManager(Context));
                 _rvBleList.SetAdapter(_adapter);
             }
@@ -121,10 +138,12 @@ namespace SmartLock.Presentation.Droid.Views
 
         private void SetMode(int state)
         {
-            _ivMessage.Visibility = state == StateSearchButton ? ViewStates.Visible : ViewStates.Gone;
-            _searchingBtnContainer.Visibility = state == StateSearchButton ? ViewStates.Visible : ViewStates.Gone;
+            _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
+            _searchingBtnContainer.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
             _rvBleList.Visibility = state == StateLockList ? ViewStates.Visible : ViewStates.Gone;
             _lockContainer.Visibility = state == StateLock ? ViewStates.Visible : ViewStates.Gone;
+
+            if (state != StateIdle) ToggleScanStatus(true);
         }
 
         private void ToggleScanStatus(bool forceStop = false)
@@ -148,6 +167,17 @@ namespace SmartLock.Presentation.Droid.Views
             else
             {
                 _ivScanButton.ClearAnimation();
+            }
+        }
+
+        private void SetLockUI(bool locked)
+        {
+            _ivLock.Visibility = locked ? ViewStates.Visible : ViewStates.Gone;
+            _ivUnlock.Visibility = !locked ? ViewStates.Visible : ViewStates.Gone;
+
+            if (locked)
+            {
+                _slideUnlockView.Reset();
             }
         }
     }

@@ -8,7 +8,7 @@ namespace SmartLock.Presentation.Core.Views
     {
         event Action<bool> StartStop;
         event Action<BleDevice> Connect;
-        event Action CancelConnect;
+        event Action<BleDevice> Disconnect;
         event Action UnlockClicked;
 
         void Show(string greeting, bool btStatus);

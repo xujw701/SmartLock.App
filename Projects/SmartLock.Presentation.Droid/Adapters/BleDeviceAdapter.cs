@@ -14,15 +14,18 @@ namespace SmartLock.Presentation.Droid.Adapters
         private const int ItemBleDevice = 1;
 
         private Action<BleDevice> _connect;
-        private Action _cancelConnect;
+        private Action<BleDevice> _disconnect;
 
         public List<BleDevice> BleDevices;
+        public BleDevice ConnectedDevice;
 
-        public BleDeviceAdapter(List<BleDevice> bleDevices, Action<BleDevice> connect, Action cancelConnect)
+        public BleDeviceAdapter(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect)
         {
             BleDevices = bleDevices;
             _connect = connect;
-            _cancelConnect = cancelConnect;
+            _disconnect = disconnect;
+
+            _connect += (d) => ConnectedDevice = d;
         }
 
         public override int ItemCount => BleDevices.Count + 1;
@@ -44,7 +47,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             else
             {
                 var itemView = inflater.Inflate(Resource.Layout.Item_BleDevice, parent, false);
-                return new BleDeviceHolder(BleDevices, _connect, _cancelConnect, itemView);
+                return new BleDeviceHolder(BleDevices, _connect, _disconnect, itemView);
             }
         }
 
@@ -85,7 +88,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly Button _btnConnect;
             private readonly Button _btnCancel;
 
-            public BleDeviceHolder(List<BleDevice> bleDevices, Action<BleDevice> connect, Action cancelConnect, View itemView) : base(itemView)
+            public BleDeviceHolder(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect, View itemView) : base(itemView)
             {
                 _bleDevices = bleDevices;
 
@@ -103,7 +106,7 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _btnCancel.Click += (s, e) =>
                 {
                     UpdateUI(true);
-                    cancelConnect?.Invoke();
+                    disconnect?.Invoke(_bleDevices[AdapterPosition - 1]);
                 };
             }
 
