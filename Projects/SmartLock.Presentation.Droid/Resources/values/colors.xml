@@ -10,12 +10,15 @@
     <!--<color name="actionBarPrimaryTextColor">#FFFFFF</color>-->
 
     <color name="greeting_blue">#2dfffe</color>
-    <color name="bt_status_green">#37d56a</color>
+    <color name="bt_status_green">#00c23f</color>
+    <color name="bt_status_orange">#f47300</color>
+    <color name="bt_status_red">#ff1c1c</color>
     <color name="button_bg_blue">#006aff</color>
     <color name="bottom_bar_blue">#1677ff</color>
     <color name="bottom_bar_gray">#a7a7a7</color>
     <color name="harcourts_blue">#012b49</color>
 
+    <color name="text2_gray">#4f4f4f</color>
 
     <color name="accent">#519af7</color>
     <!--<color name="accent">#418AFD</color>-->
