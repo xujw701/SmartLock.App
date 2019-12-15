@@ -16,7 +16,7 @@ namespace SmartLock.Model.BlueToothLe
         public BleDevice(Guid id, string name, int rssi, object nativeDevice, DeviceState state)
         {
             Id = id;
-            Name = name;
+            Name = "28e Oak View Terrace";//name;
             Rssi = rssi;
             NativeDevice = nativeDevice;
             State = state;

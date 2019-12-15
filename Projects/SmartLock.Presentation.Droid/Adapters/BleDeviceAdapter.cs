@@ -105,7 +105,7 @@ namespace SmartLock.Presentation.Droid.Adapters
 
                 _btnCancel.Click += (s, e) =>
                 {
-                    UpdateUI(true);
+                    UpdateUI(false);
                     disconnect?.Invoke(_bleDevices[AdapterPosition - 1]);
                 };
             }

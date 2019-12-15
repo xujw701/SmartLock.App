@@ -10,8 +10,8 @@ namespace SmartLock.Model.Services
         List<KeyboxHistory> Records { get; }
 
         void Init();
-        void StartLock();
-        void StartUnlock();
+        Task StartLock();
+        Task StartUnlock();
         void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory);
     }
 }

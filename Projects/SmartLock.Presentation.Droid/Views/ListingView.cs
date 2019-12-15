@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -10,7 +11,7 @@ using System.Collections.Generic;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class ListingView : FragmentView<IListingView>, IListingView
     {
         private RecyclerView _rvBleRecordList;

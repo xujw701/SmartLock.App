@@ -12,13 +12,13 @@ namespace SmartLock.Presentation.Droid
 	[Activity(Theme = "@style/SmartLockTheme.Splash", MainLauncher = true, NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class Main : AppCompatActivity
     {
-        protected async override void OnResume()
+        protected override async void OnResume()
 		{
 			base.OnResume();
 
             ViewBase.CurrentActivity = this;
 
-            await Task.Delay(1000);
+            await Task.Delay(500);
 
             App.Current.Start();
 		}

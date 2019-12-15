@@ -47,7 +47,7 @@ namespace SmartLock.Presentation.Droid.Platform
         public event Action OnUnlocked;
 
         public bool IsOn => _ble.IsOn;
-        public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
+        public List<BleDevice> DiscoveredDevices => _discoveredBleDevices;
         public BleDevice ConnectedDevice => _connectedDevice != null ? new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State) : null;
         public bool DeviceConnected => _connectedDevice != null;
 
@@ -56,15 +56,16 @@ namespace SmartLock.Presentation.Droid.Platform
             _ble = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
 
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
+
             _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
         }
 
-        public async void StartScanningForDevicesAsync()
+        public async Task StartScanningForDevicesAsync()
         {
-            // Clear the previous results
-            _discoveredDevices = new List<IDevice>();
-            _discoveredBleDevices = new List<BleDevice>();
+            Clear();
 
             // Stop it first anyway
             await _adapter.StopScanningForDevicesAsync();
@@ -72,30 +73,32 @@ namespace SmartLock.Presentation.Droid.Platform
             await _adapter.StartScanningForDevicesAsync();
         }
 
-        public async void StopScanningForDevicesAsync()
+        public async Task StopScanningForDevicesAsync()
         {
             await _adapter.StopScanningForDevicesAsync();
         }
 
-        public async void ConnectToDeviceAsync(BleDevice bleDevice)
+        public async Task ConnectToDeviceAsync(BleDevice bleDevice)
         {
             var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.ConnectToDeviceAsync(device);
         }
 
-        public async void DisconnectDeviceAsync(BleDevice bleDevice)
+        public async Task DisconnectDeviceAsync(BleDevice bleDevice)
         {
             var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.DisconnectDeviceAsync(device);
+
+            Clear();
         }
 
-        public async void StartSetLock(bool isLock)
+        public async Task StartSetLock(bool isLock)
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 
@@ -115,7 +118,7 @@ namespace SmartLock.Presentation.Droid.Platform
             await _mainCharacteristic.WriteAsync(command);
         }
 
-        public async void GetBatteryLevel()
+        public async Task GetBatteryLevel()
         {
             if (_batteryCharacteristic == null) throw new Exception("Connect to a device first");
 
@@ -126,6 +129,15 @@ namespace SmartLock.Presentation.Droid.Platform
                 var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
                 toast.Show();
             });
+        }
+
+        private void Clear()
+        {
+            // Clear the previous results
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
+
+            _connectedDevice = null;
         }
 
         private void Adapter_OnDeviceDiscovered(object sender, DeviceEventArgs args)
@@ -214,7 +226,7 @@ namespace SmartLock.Presentation.Droid.Platform
             //});
         }
 
-        private async void Auth()
+        private async Task Auth()
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 

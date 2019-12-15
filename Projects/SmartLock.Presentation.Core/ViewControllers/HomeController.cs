@@ -2,6 +2,7 @@
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System;
+using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
@@ -23,17 +24,31 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _blueToothLeService.OnDeviceDiscovered += BlueToothLeService_DeviceDiscovered;
             _blueToothLeService.OnDeviceConnected += BlueToothLeService_OnDeviceConnected;
 
-            View.StartStop += (isScanning) => DoSafe(() => View_StartStop(isScanning));
-            View.Connect += (bleDevice) => DoSafe(() => View_Connect(bleDevice));
-            View.Disconnect += (bleDevice) => DoSafe(() => View_Disconnect(bleDevice));
-            View.UnlockClicked += () => DoSafe(View_UnlockClicked);
+            View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
+            View.Connect += (bleDevice) => DoSafeAsync(async () => await View_Connect(bleDevice));
+            View.Disconnect += (bleDevice) => DoSafeAsync(async () => await View_Disconnect(bleDevice));
+            View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_blueToothLeService.ConnectedDevice));
+            View.UnlockClicked += () => DoSafeAsync(View_UnlockClicked);
         }
 
         protected override void OnViewWillShow()
         {
             base.OnViewWillShow();
 
-            View.Show(GenerateGreeting(), _blueToothLeService.IsOn);
+            if (_blueToothLeService.ConnectedDevice != null)
+            {
+                View.Show(GenerateGreeting(), _blueToothLeService.IsOn, false);
+                View.Show(_blueToothLeService.ConnectedDevice);
+            }
+            else if (_blueToothLeService.DiscoveredDevices != null && _blueToothLeService.DiscoveredDevices.Count > 0)
+            {
+                View.Show(GenerateGreeting(), _blueToothLeService.IsOn, false);
+                View.Show(_blueToothLeService.DiscoveredDevices);
+            }
+            else
+            {
+                View.Show(GenerateGreeting(), _blueToothLeService.IsOn);
+            }
         }
 
         private void BlueToothLeService_DeviceDiscovered(Model.BlueToothLe.BleDevice bleDevice)
@@ -46,33 +61,36 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.Show(bleDevice);
         }
 
-        private void View_StartStop(bool isScanning)
+        private async Task View_StartStop(bool isScanning)
         {
             if (isScanning)
             {
-                _blueToothLeService.StartScanningForDevicesAsync();
+                await _blueToothLeService.StartScanningForDevicesAsync();
             }
             else
             {
-                _blueToothLeService.StopScanningForDevicesAsync();
+                await _blueToothLeService.StopScanningForDevicesAsync();
             }
         }
 
-        private void View_Connect(Model.BlueToothLe.BleDevice bleDevice)
+        private async Task View_Connect(Model.BlueToothLe.BleDevice bleDevice)
         {
-            _blueToothLeService.StopScanningForDevicesAsync();
+            await _blueToothLeService.StopScanningForDevicesAsync();
 
-            _blueToothLeService.ConnectToDeviceAsync(bleDevice);
+            await _blueToothLeService.ConnectToDeviceAsync(bleDevice);
         }
 
-        private void View_Disconnect(Model.BlueToothLe.BleDevice bleDevice)
+        private async Task View_Disconnect(Model.BlueToothLe.BleDevice bleDevice)
         {
-            _blueToothLeService.DisconnectDeviceAsync(bleDevice);
+            if (bleDevice != null)
+            {
+                await _blueToothLeService.DisconnectDeviceAsync(bleDevice);
+            }
         }
 
-        private void View_UnlockClicked()
+        private async Task View_UnlockClicked()
         {
-            _trackedBleService.StartUnlock();
+            await _trackedBleService.StartUnlock();
         }
 
         private string GenerateGreeting()

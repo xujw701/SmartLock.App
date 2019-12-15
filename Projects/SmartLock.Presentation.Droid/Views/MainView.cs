@@ -10,7 +10,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", LaunchMode = LaunchMode.SingleTask)]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainView : FragmentContainerView<IMainView>, IMainView
     {
         protected override int LayoutId => Resource.Layout.View_Main;
@@ -70,13 +70,13 @@ namespace SmartLock.Presentation.Droid.Views
                     DisplayFragment(_keyboxesController);
                     break;
                 case Resource.Id.nav_listing:
-                    DisplayFragment(_listingController);
+                    //DisplayFragment(_listingController);
                     break;
                 case Resource.Id.nav_nearby:
-                    DisplayFragment(_nearbyController);
+                    //DisplayFragment(_nearbyController);
                     break;
                 case Resource.Id.nav_setting:
-                    DisplayFragment(_settingController);
+                    //DisplayFragment(_settingController);
                     break;
             }
         }

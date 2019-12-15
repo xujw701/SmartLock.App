@@ -15,7 +15,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class HomeView : FragmentView<IHomeView>, IHomeView
     {
         private const int StateIdle = 0;
@@ -52,6 +52,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action<bool> StartStop;
         public event Action<BleDevice> Connect;
         public event Action<BleDevice> Disconnect;
+        public event Action DisconnectCurrent;
         public event Action UnlockClicked;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -88,7 +89,7 @@ namespace SmartLock.Presentation.Droid.Views
             {
                 SetMode(StateIdle);
 
-                Disconnect?.Invoke(_adapter.ConnectedDevice);
+                DisconnectCurrent?.Invoke();
             };
 
             _slideUnlockView.Unlocked += () =>
@@ -103,9 +104,12 @@ namespace SmartLock.Presentation.Droid.Views
             return _view;
         }
 
-        public void Show(string greeting, bool btStatus)
+        public void Show(string greeting, bool btStatus, bool setMode = true)
         {
-            SetMode(StateIdle);
+            if (setMode)
+            {
+                SetMode(StateIdle);
+            }
 
             _tvGreeting.Text = greeting;
             _tvBtStatus.Text = btStatus ? "ON" : "OFF";

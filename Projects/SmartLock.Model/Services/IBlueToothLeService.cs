@@ -17,11 +17,11 @@ namespace SmartLock.Model.Services
         BleDevice ConnectedDevice { get; }
         bool DeviceConnected { get; }
 
-        void StartScanningForDevicesAsync();
-        void StopScanningForDevicesAsync();
-        void ConnectToDeviceAsync(BleDevice bleDevice);
-        void DisconnectDeviceAsync(BleDevice bleDevice);
-        void StartSetLock(bool isLock);
-        void GetBatteryLevel();
+        Task StartScanningForDevicesAsync();
+        Task StopScanningForDevicesAsync();
+        Task ConnectToDeviceAsync(BleDevice bleDevice);
+        Task DisconnectDeviceAsync(BleDevice bleDevice);
+        Task StartSetLock(bool isLock);
+        Task GetBatteryLevel();
     }
 }

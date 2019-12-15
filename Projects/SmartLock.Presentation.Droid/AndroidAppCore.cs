@@ -19,6 +19,7 @@ namespace SmartLock.Presentation.Droid
             IoC.RegisterSingleton<IViewService, ViewService>();
             IoC.RegisterSingleton<ISettingsService, SettingsService>();
             IoC.RegisterSingleton<IBlueToothLeService, BlueToothLeService>();
+
             IoC.Register<IContainedStorage, ContainedStorage>();
             IoC.Register<IMessageBoxService, MessageBoxService>();
             IoC.Register<IPlatformServices, PlatformServices>();

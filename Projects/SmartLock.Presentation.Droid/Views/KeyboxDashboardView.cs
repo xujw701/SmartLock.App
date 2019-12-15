@@ -1,4 +1,5 @@
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Util;
@@ -13,7 +14,7 @@ using System.Collections.Generic;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class KeyboxDashboardView : ViewBase<IKeyboxDashboardView>, IKeyboxDashboardView
     {
         private ImageView _btnBack;

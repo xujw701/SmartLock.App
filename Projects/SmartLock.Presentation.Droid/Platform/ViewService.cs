@@ -12,11 +12,24 @@ namespace SmartLock.Presentation.Droid.Platform
 	public class ViewService : ViewServiceBase
 	{
         public const string PreviousViewTypeKey = "ViewService.From";
-        public static object CurrentViewController => ControllerStack[ControllerStack.Count - 1];
+
+        public static object CurrentViewController// => ControllerStack[ControllerStack.Count - 1];
+        {
+            get
+            {
+                if (ControllerStack.Count == 0)
+                {
+                    ControllerStack.Add(_rootViewController);
+                }
+
+                return ControllerStack[ControllerStack.Count - 1];
+            }
+        }
+
         public static List<object> ControllerStack = new List<object>();
 
         private readonly IMessageBoxService _messageBoxService;
-	    private object _rootViewController;
+	    private static object _rootViewController;
 
         private readonly Dictionary<Type, Type> _viewcontrollerMappings = new Dictionary<Type, Type>();
         

@@ -3,6 +3,7 @@ using SmartLock.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SmartLock.Logic.Services
 {
@@ -15,8 +16,9 @@ namespace SmartLock.Logic.Services
         private readonly IContainedStorage _containedStorage;
 
         private KeyboxHistories _keyboxHistories;
+        private KeyboxHistory _currenHistory;
 
-        public List<KeyboxHistory> Records => _keyboxHistories.Records;
+        public List<KeyboxHistory> Records => _keyboxHistories.Records.OrderByDescending(r => r.InTime).ToList();
 
         public TrackedBleService(IContainedStorage containedStorage, IBlueToothLeService  blueToothLeService)
         {
@@ -35,16 +37,16 @@ namespace SmartLock.Logic.Services
             LoadObject();
         }
 
-        public void StartLock()
+        public async Task StartLock()
         {
-            _blueToothLeService.StartSetLock(true);
+            await _blueToothLeService.StartSetLock(true);
         }
 
-        public void StartUnlock()
+        public async Task StartUnlock()
         {
-            _blueToothLeService.StartSetLock(false);
+            await _blueToothLeService.StartSetLock(false);
 
-            var record = new KeyboxHistory()
+            _currenHistory = new KeyboxHistory()
             {
                 Id = Guid.NewGuid().ToString(),
                 LockId = _blueToothLeService.ConnectedDevice.Id.ToString(),
@@ -52,7 +54,7 @@ namespace SmartLock.Logic.Services
                 InTime = DateTime.Now
             };
 
-            _keyboxHistories.Records.Add(record);
+            _keyboxHistories.Records.Add(_currenHistory);
 
             SaveObject();
         }
@@ -71,16 +73,11 @@ namespace SmartLock.Logic.Services
 
         private void BlueToothLeService_OnLocked()
         {
-            var bleDevice = _blueToothLeService.ConnectedDevice;
-
-            if (bleDevice != null)
+            if (_currenHistory != null)
             {
-                var record = _keyboxHistories.Records.FirstOrDefault(d => d.LockId.Equals(bleDevice.Id.ToString()) && d.OutTime == null);
+                SetKeyboxHistoryLocked(_currenHistory);
 
-                if (record != null)
-                {
-                    record.OutTime = DateTime.Now;
-                }
+                _currenHistory = null;
             }
         }
 

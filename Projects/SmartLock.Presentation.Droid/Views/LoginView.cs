@@ -1,5 +1,6 @@
 using System;
 using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
 using SmartLock.Presentation.Core.Views;
@@ -7,7 +8,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar")]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class LoginView : ViewBase<ILoginView>, ILoginView
     {
         protected override int LayoutId => Resource.Layout.View_Login;

@@ -29,8 +29,8 @@ namespace SmartLock.Presentation.iOS.Platform
         private IDevice _connectedDevice;
 
         // Raw devices
-        private List<IDevice> _discoveredDevices;
-        private List<BleDevice> _discoveredBleDevices;
+        private List<IDevice> _discoveredDevices = new List<IDevice>();
+        private List<BleDevice> _discoveredBleDevices = new List<BleDevice>();
 
         private ICharacteristic _mainCharacteristic;
         private ICharacteristic _notifyCharacteristic;
@@ -42,7 +42,7 @@ namespace SmartLock.Presentation.iOS.Platform
         public event Action OnUnlocked;
 
         public bool IsOn => _ble.IsOn;
-        public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
+        public List<BleDevice> DiscoveredDevices => _discoveredBleDevices;
         public BleDevice ConnectedDevice => _connectedDevice != null ? new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State) : null;
         public bool DeviceConnected => _connectedDevice != null;
 
@@ -57,9 +57,7 @@ namespace SmartLock.Presentation.iOS.Platform
 
         public async void StartScanningForDevicesAsync()
         {
-            // Clear the previous results
-            _discoveredDevices = new List<IDevice>();
-            _discoveredBleDevices = new List<BleDevice>();
+            Clear();
 
             // Stop it first anyway
             await _adapter.StopScanningForDevicesAsync();
@@ -88,9 +86,11 @@ namespace SmartLock.Presentation.iOS.Platform
             if (device == null) throw new Exception("Invalid device");
 
             await _adapter.DisconnectDeviceAsync(device);
+
+            Clear();
         }
 
-        public async void SetLock(bool isLock)
+        public async void StartSetLock(bool isLock)
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 
@@ -121,6 +121,15 @@ namespace SmartLock.Presentation.iOS.Platform
             //    var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
             //    toast.Show();
             //});
+        }
+
+        private void Clear()
+        {
+            // Clear the previous results
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
+
+            _connectedDevice = null;
         }
 
         private void Adapter_OnDeviceDiscovered(object sender, DeviceEventArgs args)
