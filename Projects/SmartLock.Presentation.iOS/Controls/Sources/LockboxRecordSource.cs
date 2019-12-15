@@ -9,9 +9,9 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 {
     public class LockboxRecordSource : UITableViewSource
     {
-        public List<LockboxRecord> LockboxRecords;
+        public List<KeyboxHistory> LockboxRecords;
 
-        public LockboxRecordSource(List<LockboxRecord> lockboxRecords)
+        public LockboxRecordSource(List<KeyboxHistory> lockboxRecords)
         {
             LockboxRecords = lockboxRecords;
         }

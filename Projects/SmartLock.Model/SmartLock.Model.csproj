@@ -41,8 +41,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlueToothLe\LockboxRecords.cs" />
-    <Compile Include="BlueToothLe\LockboxRecord.cs" />
+    <Compile Include="BlueToothLe\KeyboxHistories.cs" />
+    <Compile Include="BlueToothLe\KeyboxHistory.cs" />
     <Compile Include="BlueToothLe\BleDevice.cs" />
     <Compile Include="Models\Keybox.cs" />
     <Compile Include="Models\HomeViewModel.cs" />

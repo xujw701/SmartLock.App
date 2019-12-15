@@ -23,6 +23,10 @@ namespace SmartLock.Presentation.Droid.Platform
         private const string NotifyCharacteristicId = "0000ffd4";
         private const string BatteryCharacteristicId = "00002a19";
 
+        private const string ResponseLockActionHeader = "62";
+        private const string ResponseLockActionLcoked = "F0";
+        private const string ResponseLockActionUnlcoked = "0F";
+
         private AppCompatActivity Context => ViewBase.CurrentActivity;
 
         private IBluetoothLE _ble;
@@ -39,6 +43,8 @@ namespace SmartLock.Presentation.Droid.Platform
 
         public event Action<BleDevice> OnDeviceDiscovered;
         public event Action<BleDevice> OnDeviceConnected;
+        public event Action OnLocked;
+        public event Action OnUnlocked;
 
         public bool IsOn => _ble.IsOn;
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
@@ -89,7 +95,7 @@ namespace SmartLock.Presentation.Droid.Platform
             await _adapter.DisconnectDeviceAsync(device);
         }
 
-        public async void SetLock(bool isLock)
+        public async void StartSetLock(bool isLock)
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 
@@ -179,6 +185,27 @@ namespace SmartLock.Presentation.Droid.Platform
         {
             var bytes = args.Characteristic.Value;
 
+            if (bytes != null && bytes.Count() > 0)
+            {
+                var header = bytes[0].ToString("X2");
+
+                if (!string.IsNullOrEmpty(header))
+                {
+                    // Response sent after Lock/Unlock
+                    if (header.Equals(ResponseLockActionHeader))
+                    {
+                        var stat = bytes[1].ToString("X2");
+
+                        if (string.IsNullOrEmpty(stat)) return;
+
+                        if (stat.Equals(ResponseLockActionLcoked))
+                            OnLocked?.Invoke();
+                        else if (stat.Equals(ResponseLockActionUnlcoked))
+                            OnUnlocked?.Invoke();
+                    }
+                }
+            }
+
             // TODO: Validate the response
             //Context.RunOnUiThread(() =>
             //{
@@ -220,12 +247,23 @@ namespace SmartLock.Presentation.Droid.Platform
             return null;
         }
 
-        public static byte[] StringToByteArray(string hex)
+        private static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray();
+        }
+
+        private static string ByteArrayToString(byte[] bytes)
+        {
+            var result = string.Empty;
+
+            foreach(var b in bytes)
+            {
+                result = result + b.ToString("X2");
+            }
+            return result;
         }
     }
 }

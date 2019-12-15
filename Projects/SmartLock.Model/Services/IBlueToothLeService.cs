@@ -9,6 +9,8 @@ namespace SmartLock.Model.Services
     {
         event Action<BleDevice> OnDeviceDiscovered;
         event Action<BleDevice> OnDeviceConnected;
+        event Action OnLocked;
+        event Action OnUnlocked;
 
         bool IsOn { get; }
         List<BleDevice> DiscoveredDevices { get; }
@@ -19,7 +21,7 @@ namespace SmartLock.Model.Services
         void StopScanningForDevicesAsync();
         void ConnectToDeviceAsync(BleDevice bleDevice);
         void DisconnectDeviceAsync(BleDevice bleDevice);
-        void SetLock(bool isLock);
+        void StartSetLock(bool isLock);
         void GetBatteryLevel();
     }
 }

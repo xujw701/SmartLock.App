@@ -19,7 +19,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.BackClick += () => Pop();
             View.LockDashboardClick += () => Push<KeyboxDashboardController>();
-            View.LockHistoryClick += () => { };
+            View.LockHistoryClick += () => Push<KeyboxHistoryController>();
         }
 
         protected override void OnViewWillShow()

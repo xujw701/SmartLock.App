@@ -7,10 +7,11 @@ namespace SmartLock.Model.Services
 {
     public interface ITrackedBleService
     {
-        List<LockboxRecord> Records { get; }
+        List<KeyboxHistory> Records { get; }
 
         void Init();
-        void Lock();
-        void Unlock();
+        void StartLock();
+        void StartUnlock();
+        void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory);
     }
 }

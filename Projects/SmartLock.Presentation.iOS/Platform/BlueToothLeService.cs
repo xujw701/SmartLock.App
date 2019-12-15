@@ -20,6 +20,10 @@ namespace SmartLock.Presentation.iOS.Platform
         private const string NotifyCharacteristicId = "ffd4";
         private const string BatteryCharacteristicId = "2a19";
 
+        private const string ResponseLockActionHeader = "62";
+        private const string ResponseLockActionLcoked = "F0";
+        private const string ResponseLockActionUnlcoked = "0F";
+
         private IBluetoothLE _ble;
         private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter;
         private IDevice _connectedDevice;
@@ -34,6 +38,8 @@ namespace SmartLock.Presentation.iOS.Platform
 
         public event Action<BleDevice> OnDeviceDiscovered;
         public event Action<BleDevice> OnDeviceConnected;
+        public event Action OnLocked;
+        public event Action OnUnlocked;
 
         public bool IsOn => _ble.IsOn;
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices ?? new List<BleDevice>();
@@ -171,6 +177,27 @@ namespace SmartLock.Presentation.iOS.Platform
         {
             var bytes = args.Characteristic.Value;
 
+            if (bytes != null && bytes.Count() > 0)
+            {
+                var header = bytes[0].ToString("X2");
+
+                if (!string.IsNullOrEmpty(header))
+                {
+                    // Response sent after Lock/Unlock
+                    if (header.Equals(ResponseLockActionHeader))
+                    {
+                        var stat = bytes[1].ToString("X2");
+
+                        if (string.IsNullOrEmpty(stat)) return;
+
+                        if (stat.Equals(ResponseLockActionLcoked))
+                            OnLocked?.Invoke();
+                        else if (stat.Equals(ResponseLockActionUnlcoked))
+                            OnUnlocked?.Invoke();
+                    }
+                }
+            }
+
             // TODO: Validate the response
             //Context.RunOnUiThread(() =>
             //{
@@ -219,12 +246,23 @@ namespace SmartLock.Presentation.iOS.Platform
             return null;
         }
 
-        public static byte[] StringToByteArray(string hex)
+        private static byte[] StringToByteArray(string hex)
         {
             return Enumerable.Range(0, hex.Length)
                              .Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
                              .ToArray();
+        }
+
+        private static string ByteArrayToString(byte[] bytes)
+        {
+            var result = string.Empty;
+
+            foreach (var b in bytes)
+            {
+                result = result + b.ToString("X2");
+            }
+            return result;
         }
     }
 }

@@ -3,22 +3,20 @@ using SmartLock.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SmartLock.Logic.Services
 {
     public class TrackedBleService : ITrackedBleService
     {
         private const string StorageKey = "TrackedBleService";
-        private const string LockActivityRecordKey = "LockActivityRecord";
+        private const string KeyboxHistoryKey = "KeyboxHistory";
 
         private readonly IBlueToothLeService _blueToothLeService;
         private readonly IContainedStorage _containedStorage;
 
-        private LockboxRecords _lockActivityRecords;
+        private KeyboxHistories _keyboxHistories;
 
-        public List<LockboxRecord> Records => _lockActivityRecords.Records;
+        public List<KeyboxHistory> Records => _keyboxHistories.Records;
 
         public TrackedBleService(IContainedStorage containedStorage, IBlueToothLeService  blueToothLeService)
         {
@@ -32,52 +30,81 @@ namespace SmartLock.Logic.Services
         {
             _containedStorage.Init(StorageKey);
 
+            _blueToothLeService.OnLocked += BlueToothLeService_OnLocked;
+
             LoadObject();
         }
 
-        public void Lock()
+        public void StartLock()
         {
-            _blueToothLeService.SetLock(true);
+            _blueToothLeService.StartSetLock(true);
         }
 
-        public void Unlock()
+        public void StartUnlock()
         {
-            _blueToothLeService.SetLock(false);
+            _blueToothLeService.StartSetLock(false);
 
-            var record = new LockboxRecord()
+            var record = new KeyboxHistory()
             {
+                Id = Guid.NewGuid().ToString(),
                 LockId = _blueToothLeService.ConnectedDevice.Id.ToString(),
-                LockName = _blueToothLeService.ConnectedDevice.Name,
-                LockActivity = LockActivity.UnLock,
-                DateTime = DateTime.Now
+                Opener = "Wayne Leonard",
+                InTime = DateTime.Now
             };
 
-            _lockActivityRecords.Records.Add(record);
+            _keyboxHistories.Records.Add(record);
 
             SaveObject();
         }
 
+        public void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory)
+        {
+            var record = _keyboxHistories.Records.FirstOrDefault(d => !string.IsNullOrEmpty(d.Id) && d.Id.Equals(keyboxHistory.Id));
+
+            if (record != null)
+            {
+                record.OutTime = DateTime.Now;
+            }
+
+            SaveObject();
+        }
+
+        private void BlueToothLeService_OnLocked()
+        {
+            var bleDevice = _blueToothLeService.ConnectedDevice;
+
+            if (bleDevice != null)
+            {
+                var record = _keyboxHistories.Records.FirstOrDefault(d => d.LockId.Equals(bleDevice.Id.ToString()) && d.OutTime == null);
+
+                if (record != null)
+                {
+                    record.OutTime = DateTime.Now;
+                }
+            }
+        }
+
         private void LoadObject()
         {
-            _lockActivityRecords = _containedStorage.GetSerializedObject<LockboxRecords>(LockActivityRecordKey);
+            _keyboxHistories = _containedStorage.GetSerializedObject<KeyboxHistories>(KeyboxHistoryKey);
 
-            if (_lockActivityRecords == null)
+            if (_keyboxHistories == null)
             {
-                _lockActivityRecords = new LockboxRecords()
+                _keyboxHistories = new KeyboxHistories()
                 {
-                    Records = new List<LockboxRecord>()
+                    Records = new List<KeyboxHistory>()
                 };
             }
         }
 
         private void SaveObject()
         {
-            _containedStorage.StoreObjectSerialized(LockActivityRecordKey, _lockActivityRecords);
+            _containedStorage.StoreObjectSerialized(KeyboxHistoryKey, _keyboxHistories);
         }
 
         private void DeleteObject()
         {
-            _containedStorage.DeleteSerializedObject(LockActivityRecordKey);
+            _containedStorage.DeleteSerializedObject(KeyboxHistoryKey);
         }
     }
 }

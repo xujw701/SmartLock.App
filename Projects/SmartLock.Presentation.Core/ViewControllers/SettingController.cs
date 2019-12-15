@@ -12,8 +12,6 @@ namespace SmartLock.Presentation.Core.ViewControllers
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
-
-            View.Title = "Settings";
         }
     }
 }

@@ -22,7 +22,7 @@ namespace SmartLock.Presentation.iOS.Views
             base.ViewDidLoad();
         }
 
-        public void Show(List<LockboxRecord> lockboxRecords)
+        public void Show(List<KeyboxHistory> lockboxRecords)
         {
             if (_lockboxRecordSource == null)
             {

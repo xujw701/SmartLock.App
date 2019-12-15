@@ -199,7 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\KeyboxAdapter.cs" />
-    <Compile Include="Adapters\LockboxRecordAdapter.cs" />
+    <Compile Include="Adapters\KeyboxHistoryAdapter.cs" />
     <Compile Include="Adapters\BleDeviceAdapter.cs" />
     <Compile Include="AndroidAppCore.cs" />
     <Compile Include="App.cs" />
@@ -217,6 +217,7 @@
     <Compile Include="Support\FileHelper.cs" />
     <Compile Include="Support\ListViewHelper.cs" />
     <Compile Include="Support\SelectedFilePathHelper.cs" />
+    <Compile Include="Views\KeyboxHistoryView.cs" />
     <Compile Include="Views\KeyboxDashboardView.cs" />
     <Compile Include="Views\KeyboxDetailView.cs" />
     <Compile Include="Views\NearbyView.cs" />
@@ -309,7 +310,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Item_LockboxRecord.axml">
+    <AndroidResource Include="Resources\layout\Item_KeyboxHistory.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -592,6 +593,39 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\graph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\View_KeyboxHistory.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\portait1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\portait2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\portait3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\portait4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\portait5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_out.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

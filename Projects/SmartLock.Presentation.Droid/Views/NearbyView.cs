@@ -66,8 +66,8 @@ namespace SmartLock.Presentation.Droid.Views
 
             TrackedBleService.Init();
 
-            _btnUnlock.Click += (s, a) => TrackedBleService.Unlock();
-            _btnLock.Click += (s, a) => TrackedBleService.Lock();
+            //_btnUnlock.Click += (s, a) => TrackedBleService.Unlock();
+            //_btnLock.Click += (s, a) => TrackedBleService.Lock();
             _btnbBattery.Click += (s, a) => { /*BlueToothLeService.GetBatteryLevel();*/ ViewLogs?.Invoke(); };
 
             return _view;

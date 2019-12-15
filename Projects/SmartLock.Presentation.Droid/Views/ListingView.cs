@@ -14,7 +14,7 @@ namespace SmartLock.Presentation.Droid.Views
     public class ListingView : FragmentView<IListingView>, IListingView
     {
         private RecyclerView _rvBleRecordList;
-        private LockboxRecordAdapter _adapter;
+        private KeyboxHistoryAdapter _adapter;
 
         protected override int LayoutId => Resource.Layout.View_Listing;
 
@@ -27,7 +27,7 @@ namespace SmartLock.Presentation.Droid.Views
             return _view;
         }
 
-        public void Show(List<LockboxRecord> lockboxRecords)
+        public void Show(List<KeyboxHistory> lockboxRecords)
         {
             //if (_adapter == null)
             //{

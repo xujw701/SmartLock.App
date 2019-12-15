@@ -20,7 +20,6 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _blueToothLeService.OnDeviceDiscovered += BlueToothLeService_DeviceDiscovered;
             //_blueToothLeService.OnDeviceConnected += BlueToothLeService_OnDeviceConnected;
 
-            View.Title = "Pairing";
             View.StartStop += View_StartStop;
             View.Connect += View_Connect;
             View.ViewLogs += () => Push<ListingController>();

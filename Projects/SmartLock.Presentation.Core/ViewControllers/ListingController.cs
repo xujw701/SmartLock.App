@@ -19,7 +19,6 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             _trackedBleService.Init();
 
-            View.Title = "Logs";
             View.Show(_trackedBleService.Records);
         }
     }

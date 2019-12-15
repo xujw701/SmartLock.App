@@ -14,14 +14,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            View.LoginClicked += () => DoSafeAsync(Login);
+            View.LoginClicked += () => Push<MainController>();
         }
 
-        private async Task Login()
-        {
-            await Task.Delay(300);
+        //private async Task Login()
+        //{
+        //    await Task.Delay(300);
 
-            Push<MainController>();
-        }
+        //    Push<MainController>();
+        //}
     }
 }
