@@ -33,7 +33,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 {
                     Name = "28e Oak View Terrace",
                     Address = "Albany, Auckland",
-                    BatteryLevel = 96
+                    BatteryLevel = 100
                 },
                 new Keybox()
                 {

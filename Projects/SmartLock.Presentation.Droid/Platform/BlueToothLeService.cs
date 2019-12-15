@@ -118,17 +118,19 @@ namespace SmartLock.Presentation.Droid.Platform
             await _mainCharacteristic.WriteAsync(command);
         }
 
-        public async Task GetBatteryLevel()
+        public async Task<int> GetBatteryLevel()
         {
             if (_batteryCharacteristic == null) throw new Exception("Connect to a device first");
 
             var result = await _batteryCharacteristic.ReadAsync();
 
-            Context.RunOnUiThread(() =>
-            {
-                var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
-                toast.Show();
-            });
+            return int.Parse(result[0].ToString());
+
+            //Context.RunOnUiThread(() =>
+            //{
+            //    var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
+            //    toast.Show();
+            //});
         }
 
         private void Clear()
@@ -179,13 +181,15 @@ namespace SmartLock.Presentation.Droid.Platform
             _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
             _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
 
-            Auth();
+            await Auth();
 
             if (_notifyCharacteristic != null)
             {
                 _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
                 await _notifyCharacteristic.StartUpdatesAsync();
             }
+
+            bleDevice.BatteryLevel = await GetBatteryLevel();
 
             Context.RunOnUiThread(() =>
             {

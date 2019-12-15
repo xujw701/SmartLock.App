@@ -85,6 +85,7 @@ namespace SmartLock.Presentation.Droid.Adapters
 
             private readonly TextView _tvTitle;
             private readonly TextView _tvSubTitle;
+            private readonly TextView _tvBatteryStatus;
             private readonly Button _btnConnect;
             private readonly Button _btnCancel;
 
@@ -94,6 +95,7 @@ namespace SmartLock.Presentation.Droid.Adapters
 
                 _tvTitle = itemView.FindViewById<TextView>(Resource.Id.tvTitle);
                 _tvSubTitle = itemView.FindViewById<TextView>(Resource.Id.tvSubTitle);
+                _tvBatteryStatus = itemView.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
                 _btnConnect = itemView.FindViewById<Button>(Resource.Id.btnConnect);
                 _btnCancel = itemView.FindViewById<Button>(Resource.Id.btnCancel);
 
@@ -113,6 +115,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             public void SetData(BleDevice bleDevice)
             {
                 _tvTitle.Text = bleDevice.Name;
+                _tvBatteryStatus.Text = bleDevice.BatteryLevelString;
 
                 UpdateUI(bleDevice.State == DeviceState.Connecting);
             }

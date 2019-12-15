@@ -25,6 +25,9 @@
             android:layout_below="@+id/logo"
             android:paddingStart="16dp"
             android:hint="User name"
+            android:maxLines="1"
+            android:lines="1"
+            android:singleLine="true"
             android:background="@drawable/rounded_rectangle_white"/>
         <EditText
             android:id="@+id/etPassword"
@@ -34,6 +37,10 @@
             android:layout_below="@+id/etUsername"
             android:paddingStart="16dp"
             android:hint="Password"
+            android:maxLines="1"
+            android:lines="1"
+            android:singleLine="true"
+            android:inputType="textPassword"
             android:background="@drawable/rounded_rectangle_white"/>
         <Button
             android:id="@+id/btnLogin"

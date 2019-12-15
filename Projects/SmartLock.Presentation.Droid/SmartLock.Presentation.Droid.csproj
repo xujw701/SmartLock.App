@@ -203,6 +203,7 @@
     <Compile Include="Adapters\BleDeviceAdapter.cs" />
     <Compile Include="AndroidAppCore.cs" />
     <Compile Include="App.cs" />
+    <Compile Include="Controls\CustomArrayAdapter.cs" />
     <Compile Include="Controls\SlideUnlockView.cs" />
     <Compile Include="Platform\BlueToothLeService.cs" />
     <Compile Include="Platform\ContainedStorage.cs" />
@@ -626,6 +627,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Item_Spinner_Text.axml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

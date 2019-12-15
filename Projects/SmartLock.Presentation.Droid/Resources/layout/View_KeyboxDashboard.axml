@@ -71,6 +71,38 @@
                 android:layout_marginTop="12dp"
                 android:layout_gravity="center_horizontal"
                 android:src="@drawable/oval_blue"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal">
+                <Spinner
+                    android:id="@+id/spinDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+                <Spinner
+                    android:id="@+id/spinWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+                <Spinner
+                    android:id="@+id/spinGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:gravity="center"/>
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
