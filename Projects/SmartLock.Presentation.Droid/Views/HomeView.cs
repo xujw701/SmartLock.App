@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
@@ -77,6 +78,8 @@ namespace SmartLock.Presentation.Droid.Views
             _tvLockSubTitle = _view.FindViewById<TextView>(Resource.Id.tvLockSubTitle);
             _tvBatteryStatus = _view.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
             _slideUnlockView = _view.FindViewById<SlideUnlockView>(Resource.Id.SlideUnlockView);
+
+            ConfigureScanButtonSize();
 
             _ivScanButton.Click += (s, e) =>
             {
@@ -183,6 +186,22 @@ namespace SmartLock.Presentation.Droid.Views
             {
                 _slideUnlockView.Reset();
             }
+        }
+
+        private void ConfigureScanButtonSize()
+        {
+            var displayMetrics = new DisplayMetrics();
+            ViewBase.CurrentActivity.WindowManager.DefaultDisplay.GetMetrics(displayMetrics);
+            int width = displayMetrics.WidthPixels;
+
+            var ivWidth = width * 0.7333;
+            _ivScanButton.LayoutParameters.Width = (int)ivWidth;
+            _ivScanButton.LayoutParameters.Height = (int)ivWidth;
+            _ivScanButton.RequestLayout();
+
+            _tvScanButton.LayoutParameters.Width = (int)ivWidth;
+            _tvScanButton.LayoutParameters.Height = (int)ivWidth;
+            _tvScanButton.RequestLayout();
         }
     }
 }

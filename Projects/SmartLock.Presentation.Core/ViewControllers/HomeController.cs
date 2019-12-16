@@ -105,5 +105,26 @@ namespace SmartLock.Presentation.Core.ViewControllers
             else
                 return "Good night,";
         }
+
+        protected override async Task ShowErrorAsync(Exception exception)
+        {
+            var messageBoxService = Infrastructure.IoC.Resolve<IMessageBoxService>();
+
+            if (exception is Newtonsoft.Json.JsonException)
+            {
+                await messageBoxService.ShowMessageAsync("Error", "Error parsing JSON");
+            }
+            else
+            {
+                if (exception.Message.Contains("133"))
+                {
+                    await messageBoxService.ShowMessageAsync("Tips", "The lock is already connected to another user now, please try it later.");
+                }
+                else
+                {
+                    //await messageBoxService.ShowMessageAsync("Error", exception.Message);
+                }
+            }
+        }
     }
 }
