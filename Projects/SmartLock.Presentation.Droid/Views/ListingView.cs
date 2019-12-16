@@ -2,7 +2,9 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
+using Android.Util;
 using Android.Views;
+using Android.Widget;
 using SmartLock.Model.BlueToothLe;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;
@@ -14,8 +16,7 @@ namespace SmartLock.Presentation.Droid.Views
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class ListingView : FragmentView<IListingView>, IListingView
     {
-        private RecyclerView _rvBleRecordList;
-        private KeyboxHistoryAdapter _adapter;
+        private ImageView _ivGraph;
 
         protected override int LayoutId => Resource.Layout.View_Listing;
 
@@ -23,24 +24,22 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            //_rvBleRecordList = _view.FindViewById<RecyclerView>(Resource.Id.rvBleRecordList);
+            _ivGraph = _view.FindViewById<ImageView>(Resource.Id.ivListing);
+
+            ConfigureGraph();
 
             return _view;
         }
 
-        public void Show(List<KeyboxHistory> lockboxRecords)
+        private void ConfigureGraph()
         {
-            //if (_adapter == null)
-            //{
-            //    _adapter = new LockboxRecordAdapter(lockboxRecords);
-            //    _rvBleRecordList.SetLayoutManager(new LinearLayoutManager(Context));
-            //    _rvBleRecordList.SetAdapter(_adapter);
-            //}
-            //else
-            //{
-            //    _adapter.LockboxRecords = lockboxRecords;
-            //    _adapter.NotifyDataSetChanged();
-            //}
+            var displayMetrics = new DisplayMetrics();
+            ViewBase.CurrentActivity.WindowManager.DefaultDisplay.GetMetrics(displayMetrics);
+            int width = displayMetrics.WidthPixels;
+
+            var ivHeight = width / 0.5693;
+            _ivGraph.LayoutParameters.Height = (int)ivHeight;
+            _ivGraph.RequestLayout();
         }
     }
 }

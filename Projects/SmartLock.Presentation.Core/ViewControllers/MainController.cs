@@ -16,8 +16,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             _homeController = new HomeController(viewService, blueToothLeService, trackedBleService);
             _keyboxesController = new KeyboxesController(viewService);
-            _listingController = new ListingController(viewService, trackedBleService);
-            _nearbyController = new NearbyController(viewService, blueToothLeService);
+            _listingController = new ListingController(viewService);
+            _nearbyController = new NearbyController(viewService);
             _settingController = new SettingController(viewService);
         }
 

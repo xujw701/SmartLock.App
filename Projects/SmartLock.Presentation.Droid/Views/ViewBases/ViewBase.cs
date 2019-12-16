@@ -31,7 +31,7 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
 
         protected virtual int LayoutId => throw new System.Exception("Invalid layout set");
 
-        protected virtual int ToolBarId => Resource.Id.toolbar;
+        //protected virtual int ToolBarId => Resource.Id.toolbar;
 
         protected virtual int RightButtonId => 0;
 
@@ -58,11 +58,11 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
                     progressOverlay.Visibility = _isBusy ? ViewStates.Visible : ViewStates.Gone;
                 }
 
-                _swipeRefreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh_layout);
-                if (_swipeRefreshLayout != null)
-                {
-                    _swipeRefreshLayout.Refreshing = _isBusy;
-                }
+                //_swipeRefreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh_layout);
+                //if (_swipeRefreshLayout != null)
+                //{
+                //    _swipeRefreshLayout.Refreshing = _isBusy;
+                //}
             }
         }
 
@@ -80,17 +80,17 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
         {
             get
             {
-                var title = FindViewById<TextView>(Resource.Id.toolbarTitle);
-                if (title != null) return title.Text;
+                //var title = FindViewById<TextView>(Resource.Id.toolbarTitle);
+                //if (title != null) return title.Text;
                 return SupportActionBar?.Title ?? string.Empty;
             }
             set
             {
-                var title = FindViewById<TextView>(Resource.Id.toolbarTitle);
-                if (title != null)
-                {
-                    title.Text = value;
-                }
+                //var title = FindViewById<TextView>(Resource.Id.toolbarTitle);
+                //if (title != null)
+                //{
+                //    title.Text = value;
+                //}
                 if (SupportActionBar != null)
                 {
                     SupportActionBar.Title = value;
@@ -119,13 +119,13 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
         public void SetupToolbar()
         {
             // set up the action bar
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(ToolBarId);
+            //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(ToolBarId);
 
-            if (toolbar != null)
-            {
-                SetSupportActionBar(toolbar);
-                SupportActionBar.Title = string.Empty;
-            }
+            //if (toolbar != null)
+            //{
+            //    SetSupportActionBar(toolbar);
+            //    SupportActionBar.Title = string.Empty;
+            //}
 
         }
 
@@ -139,12 +139,12 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
 
             Window.SetSoftInputMode(SoftInput.StateHidden);
 
-            _swipeRefreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh_layout);
+            //_swipeRefreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh_layout);
 
-            if (_swipeRefreshLayout != null)
-            {
-                _swipeRefreshLayout.Enabled = SwipeRefresh;
-            }
+            //if (_swipeRefreshLayout != null)
+            //{
+            //    _swipeRefreshLayout.Enabled = SwipeRefresh;
+            //}
 
             RequestPermissions();
         }

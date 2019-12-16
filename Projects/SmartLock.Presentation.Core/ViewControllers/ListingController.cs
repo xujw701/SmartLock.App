@@ -6,20 +6,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class ListingController : ViewController<IListingView>
     {
-        private readonly ITrackedBleService _trackedBleService;
-
-        public ListingController(IViewService viewService, ITrackedBleService trackedBleService) : base(viewService)
+        public ListingController(IViewService viewService) : base(viewService)
         {
-            _trackedBleService = trackedBleService;
         }
 
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
-
-            _trackedBleService.Init();
-
-            View.Show(_trackedBleService.Records);
         }
     }
 }

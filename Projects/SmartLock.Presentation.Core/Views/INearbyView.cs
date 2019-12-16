@@ -6,10 +6,5 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface INearbyView : IView
     {
-        event Action<bool> StartStop;
-        event Action<BleDevice> Connect;
-        event Action ViewLogs;
-
-        void Show(List<BleDevice> bleDevices);
     }
 }

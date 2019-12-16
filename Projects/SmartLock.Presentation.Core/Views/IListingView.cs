@@ -6,6 +6,5 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface IListingView : IView
     {
-        void Show(List<KeyboxHistory> lockboxRecords);
     }
 }

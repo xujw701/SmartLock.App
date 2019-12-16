@@ -70,13 +70,13 @@ namespace SmartLock.Presentation.Droid.Views
                     DisplayFragment(_keyboxesController);
                     break;
                 case Resource.Id.nav_listing:
-                    //DisplayFragment(_listingController);
+                    DisplayFragment(_listingController);
                     break;
                 case Resource.Id.nav_nearby:
-                    //DisplayFragment(_nearbyController);
+                    DisplayFragment(_nearbyController);
                     break;
                 case Resource.Id.nav_setting:
-                    //DisplayFragment(_settingController);
+                    DisplayFragment(_settingController);
                     break;
             }
         }

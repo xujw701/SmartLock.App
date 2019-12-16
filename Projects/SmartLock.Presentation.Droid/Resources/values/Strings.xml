@@ -4,7 +4,7 @@
 	<string name="app_name">Smart E-Lock</string>
 
   <string name="navi_home">Home</string>
-  <string name="navi_lockbox">Keyboxes</string>
+  <string name="navi_lockbox">Keybox</string>
   <string name="navi_listing">Listing</string>
   <string name="navi_nearby">Nearby</string>
   <string name="navi_setting">Settings</string>

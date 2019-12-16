@@ -4,47 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/primaryDark"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_scrollFlags="scroll"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-            <TextView
-                android:id="@+id/toolbarTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/white"
-                android:layout_gravity="start"
-                android:textStyle="bold"
-                android:textSize="20dp"/>
-            <ImageView
-                android:id="@+id/ivRightButton"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="16dp"
-                android:layout_gravity="end"
-                android:tint="@android:color/white"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="20dp"
             android:orientation="vertical">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rvBleRecordList"
+            <ImageView
+                android:id="@+id/ivListing"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="250dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/listing"/>
         </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
