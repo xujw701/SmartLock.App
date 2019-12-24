@@ -16,17 +16,61 @@ namespace SmartLock.Presentation.iOS.Views
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField etUsername { get; set; }
+        UIKit.UIButton BtnForgotPassword { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnLogin { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnSignUp { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField EtPassword { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField EtUsername { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView ivLogo { get; set; }
 
+        [Action ("UIButton525_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton525_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("UIButton527_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void UIButton527_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
-            if (etUsername != null) {
-                etUsername.Dispose ();
-                etUsername = null;
+            if (BtnForgotPassword != null) {
+                BtnForgotPassword.Dispose ();
+                BtnForgotPassword = null;
+            }
+
+            if (BtnLogin != null) {
+                BtnLogin.Dispose ();
+                BtnLogin = null;
+            }
+
+            if (BtnSignUp != null) {
+                BtnSignUp.Dispose ();
+                BtnSignUp = null;
+            }
+
+            if (EtPassword != null) {
+                EtPassword.Dispose ();
+                EtPassword = null;
+            }
+
+            if (EtUsername != null) {
+                EtUsername.Dispose ();
+                EtUsername = null;
             }
 
             if (ivLogo != null) {

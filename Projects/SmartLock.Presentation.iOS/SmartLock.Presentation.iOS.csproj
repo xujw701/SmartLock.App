@@ -170,54 +170,55 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\build_black_24pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\home_black_24pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\timeline_black_24pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\lock_black_24pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
     <None Include="Info.plist">
       <SubType>Designer</SubType>
     </None>
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\bluetooth_black_48pt.imageset\bluetooth_black_48pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\.DS_Store">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\check_black_48pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\background.imageset\background.png" />
     <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\logo_harcourts.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -237,7 +238,6 @@
     <Compile Include="Views\ListingView.cs" />
     <Compile Include="Views\SettingView.cs" />
     <Compile Include="Views\HomeView.cs" />
-    <Compile Include="Views\LoginView2.cs" />
     <Compile Include="Views\ViewBases\TabView.cs" />
     <Compile Include="Views\ViewBases\View.cs" />
     <Compile Include="Platform\ViewService.cs" />
@@ -270,66 +270,16 @@
     <Folder Include="Resources\Images\" />
     <Folder Include="Assets.xcassets\background.imageset\" />
     <Folder Include="Assets.xcassets\logo_harcourts.imageset\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\build_black_24pt.imageset\baseline_build_black_24pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\build_black_24pt.imageset\baseline_build_black_24pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\build_black_24pt.imageset\baseline_build_black_24pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\home_black_24pt.imageset\baseline_home_black_24pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\home_black_24pt.imageset\baseline_home_black_24pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\home_black_24pt.imageset\baseline_home_black_24pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\timeline_black_24pt.imageset\baseline_timeline_black_24pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\timeline_black_24pt.imageset\baseline_timeline_black_24pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\timeline_black_24pt.imageset\baseline_timeline_black_24pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\lock_black_24pt.imageset\baseline_lock_black_24pt_1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\lock_black_24pt.imageset\baseline_lock_black_24pt_2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\lock_black_24pt.imageset\baseline_lock_black_24pt_3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <Folder Include="Assets.xcassets\icon_home_nor.imageset\" />
+    <Folder Include="Assets.xcassets\icon_home_sel.imageset\" />
+    <Folder Include="Assets.xcassets\icon_keboxes_nor.imageset\" />
+    <Folder Include="Assets.xcassets\icon_keyboxes_sel.imageset\" />
+    <Folder Include="Assets.xcassets\icon_listing_nor.imageset\" />
+    <Folder Include="Assets.xcassets\icon_listing_sel.imageset\" />
+    <Folder Include="Assets.xcassets\icon_nearby_nor.imageset\" />
+    <Folder Include="Assets.xcassets\icon_nearby_sel.imageset\" />
+    <Folder Include="Assets.xcassets\icon_settings_nor.imageset\" />
+    <Folder Include="Assets.xcassets\icon_settings_sel.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
