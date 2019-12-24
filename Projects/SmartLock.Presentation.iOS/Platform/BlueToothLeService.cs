@@ -55,7 +55,7 @@ namespace SmartLock.Presentation.iOS.Platform
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
         }
 
-        public async void StartScanningForDevicesAsync()
+        public async Task StartScanningForDevicesAsync()
         {
             Clear();
 
@@ -65,12 +65,12 @@ namespace SmartLock.Presentation.iOS.Platform
             await _adapter.StartScanningForDevicesAsync();
         }
 
-        public async void StopScanningForDevicesAsync()
+        public async Task StopScanningForDevicesAsync()
         {
             await _adapter.StopScanningForDevicesAsync();
         }
 
-        public async void ConnectToDeviceAsync(BleDevice bleDevice)
+        public async Task ConnectToDeviceAsync(BleDevice bleDevice)
         {
             var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
 
@@ -79,7 +79,7 @@ namespace SmartLock.Presentation.iOS.Platform
             await _adapter.ConnectToDeviceAsync(device);
         }
 
-        public async void DisconnectDeviceAsync(BleDevice bleDevice)
+        public async Task DisconnectDeviceAsync(BleDevice bleDevice)
         {
             var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
 
@@ -90,7 +90,7 @@ namespace SmartLock.Presentation.iOS.Platform
             Clear();
         }
 
-        public async void StartSetLock(bool isLock)
+        public async Task StartSetLock(bool isLock)
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 
@@ -110,12 +110,13 @@ namespace SmartLock.Presentation.iOS.Platform
             await _mainCharacteristic.WriteAsync(command);
         }
 
-        public async void GetBatteryLevel()
+        public async Task<int> GetBatteryLevel()
         {
             if (_batteryCharacteristic == null) throw new Exception("Connect to a device first");
 
             var result = await _batteryCharacteristic.ReadAsync();
 
+            return int.Parse(result[0].ToString());
             //Context.RunOnUiThread(() =>
             //{
             //    var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
@@ -215,7 +216,7 @@ namespace SmartLock.Presentation.iOS.Platform
             //});
         }
 
-        private async void Auth()
+        private async Task Auth()
         {
             if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
 

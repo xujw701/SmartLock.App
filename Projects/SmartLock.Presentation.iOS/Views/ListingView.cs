@@ -9,11 +9,11 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public class LogsView : TableView<IListingView>, IListingView
+    public class ListingView : TableView<IListingView>, IListingView
     {
         private LockboxRecordSource _lockboxRecordSource;
 
-        public LogsView(ListingController controller) : base(controller)
+        public ListingView(ListingController controller) : base(controller)
         {
         }
 

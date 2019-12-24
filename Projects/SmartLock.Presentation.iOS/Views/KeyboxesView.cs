@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using SmartLock.Model.BlueToothLe;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Views.ViewBases;
@@ -6,9 +8,15 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public partial class MyLockView : TableView<IKeyboxesView>, IKeyboxesView
+    public class KeyboxesView : TableView<IKeyboxesView>, IKeyboxesView
     {
-        public MyLockView(KeyboxesController controller) : base(controller)
+        public event Action<Keybox> KeyboxClicked;
+
+        public KeyboxesView(KeyboxesController controller) : base(controller)
+        {
+        }
+
+        public void Show(List<Keybox> keyboxes)
         {
         }
 

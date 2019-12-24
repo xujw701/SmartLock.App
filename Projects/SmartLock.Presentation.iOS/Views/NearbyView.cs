@@ -12,7 +12,7 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public class PairingView : TableView<INearbyView>, INearbyView
+    public class NearbyView : TableView<INearbyView>, INearbyView
     {
         private UIActivityIndicatorView _loadingIndicator;
         private UIButton _startStopButton;
@@ -27,7 +27,7 @@ namespace SmartLock.Presentation.iOS.Views
         private IBlueToothLeService BlueToothLeService => IoC.Resolve<IBlueToothLeService>();
         private ITrackedBleService TrackedBleService => IoC.Resolve<ITrackedBleService>();
 
-        public PairingView(NearbyController controller) : base(controller)
+        public NearbyView(NearbyController controller) : base(controller)
         {
         }
 
@@ -103,13 +103,13 @@ namespace SmartLock.Presentation.iOS.Views
             var batteryButtonRect = new CGRect(margin, 170, TableView.Frame.Width - margin * 2, 30);
 
             var connectButton = CreateButton(connectButtonRect, "Connect", ConnectButtonClicked, false);
-            var unlockButton = CreateButton(unlockButtonRect, "Unlock", () => { TrackedBleService.Unlock(); }, false);
-            var lockButton = CreateButton(lockButtonRect, "Lock", () => { TrackedBleService.Lock(); }, false);
+            //var unlockButton = CreateButton(unlockButtonRect, "Unlock", () => { TrackedBleService.Unlock(); }, false);
+            //var lockButton = CreateButton(lockButtonRect, "Lock", () => { TrackedBleService.Lock(); }, false);
             var batteryLevelButton = CreateButton(batteryButtonRect, "Battery Level", () => { /*BlueToothLeService.GetBatteryLevel();*/ ViewLogs?.Invoke(); }, false);
 
             footerView.AddSubview(connectButton);
-            footerView.AddSubview(unlockButton);
-            footerView.AddSubview(lockButton);
+            //footerView.AddSubview(unlockButton);
+            //footerView.AddSubview(lockButton);
             footerView.AddSubview(batteryLevelButton);
 
             return footerView;

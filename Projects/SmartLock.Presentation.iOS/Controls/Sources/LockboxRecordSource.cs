@@ -20,8 +20,8 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
         {
             var result = (LockboxRecordCell)tableView.DequeueReusableCell(LockboxRecordCell.Key) ?? LockboxRecordCell.Create();
 
-            var lockboxRecord = LockboxRecords[indexPath.Row];
-            result.Configure(lockboxRecord.LockName, lockboxRecord.DateTimeString);
+            //var lockboxRecord = LockboxRecords[indexPath.Row];
+            //result.Configure(lockboxRecord.LockName, lockboxRecord.DateTimeString);
 
             return result;
         }

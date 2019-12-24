@@ -163,6 +163,7 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Controls\Cells\BleDeviceCell.xib" />
     <InterfaceDefinition Include="Controls\Cells\LockboxRecordCell.xib" />
+    <InterfaceDefinition Include="Views\LoginView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -213,6 +214,10 @@
     <ImageAsset Include="Assets.xcassets\check_black_48pt.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\background.png" />
+    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\logo_harcourts.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -227,12 +232,12 @@
     <Compile Include="Platform\ContainedStorage.cs" />
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\SettingsService.cs" />
-    <Compile Include="Views\PairingView.cs" />
-    <Compile Include="Views\MyLockView.cs" />
-    <Compile Include="Views\LogsView.cs" />
+    <Compile Include="Views\NearbyView.cs" />
+    <Compile Include="Views\KeyboxesView.cs" />
+    <Compile Include="Views\ListingView.cs" />
     <Compile Include="Views\SettingView.cs" />
     <Compile Include="Views\HomeView.cs" />
-    <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\LoginView2.cs" />
     <Compile Include="Views\ViewBases\TabView.cs" />
     <Compile Include="Views\ViewBases\View.cs" />
     <Compile Include="Platform\ViewService.cs" />
@@ -248,6 +253,10 @@
     </Compile>
     <Compile Include="Controls\TableSupport\IProvidesHeight.cs" />
     <Compile Include="Controls\Sources\LockboxRecordSource.cs" />
+    <Compile Include="Views\LoginView.cs" />
+    <Compile Include="Views\LoginView.designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -259,6 +268,8 @@
   <ItemGroup>
     <Folder Include="Resources\Icons\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Assets.xcassets\background.imageset\" />
+    <Folder Include="Assets.xcassets\logo_harcourts.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\build_black_24pt.imageset\baseline_build_black_24pt_1x.png">
