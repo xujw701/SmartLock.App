@@ -10,9 +10,21 @@ using System.CodeDom.Compiler;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells
 {
-    [Register ("LockboxRecordCell")]
-    partial class LockboxRecordCell
+    [Register ("KeyboxCell")]
+    partial class KeyboxCell
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvBattery { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvLock { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblBattery { get; set; }
+
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText1 { get; set; }
@@ -23,6 +35,21 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         void ReleaseDesignerOutlets ()
         {
+            if (IvBattery != null) {
+                IvBattery.Dispose ();
+                IvBattery = null;
+            }
+
+            if (IvLock != null) {
+                IvLock.Dispose ();
+                IvLock = null;
+            }
+
+            if (LblBattery != null) {
+                LblBattery.Dispose ();
+                LblBattery = null;
+            }
+
             if (LblText1 != null) {
                 LblText1.Dispose ();
                 LblText1 = null;

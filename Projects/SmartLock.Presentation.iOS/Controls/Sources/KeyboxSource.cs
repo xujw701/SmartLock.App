@@ -7,21 +7,21 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Sources
 {
-    public class LockboxRecordSource : UITableViewSource
+    public class KeyboxSource : UITableViewSource
     {
-        public List<KeyboxHistory> LockboxRecords;
+        public List<Keybox> Keyboxes;
 
-        public LockboxRecordSource(List<KeyboxHistory> lockboxRecords)
+        public KeyboxSource(List<Keybox> keyboxes)
         {
-            LockboxRecords = lockboxRecords;
+            Keyboxes = keyboxes;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var result = (LockboxRecordCell)tableView.DequeueReusableCell(LockboxRecordCell.Key) ?? LockboxRecordCell.Create();
+            var result = (KeyboxCell)tableView.DequeueReusableCell(KeyboxCell.Key) ?? KeyboxCell.Create();
 
-            //var lockboxRecord = LockboxRecords[indexPath.Row];
-            //result.Configure(lockboxRecord.LockName, lockboxRecord.DateTimeString);
+            var keybox = Keyboxes[indexPath.Row];
+            result.SetData(keybox);
 
             return result;
         }
@@ -33,7 +33,7 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return LockboxRecords.Count;
+            return Keyboxes.Count;
         }
     }
 }

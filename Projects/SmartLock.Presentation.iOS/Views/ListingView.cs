@@ -11,7 +11,7 @@ namespace SmartLock.Presentation.iOS.Views
 {
     public class ListingView : TableView<IListingView>, IListingView
     {
-        private LockboxRecordSource _lockboxRecordSource;
+        //private LockboxRecordSource _lockboxRecordSource;
 
         public ListingView(ListingController controller) : base(controller)
         {
@@ -24,19 +24,19 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void Show(List<KeyboxHistory> lockboxRecords)
         {
-            if (_lockboxRecordSource == null)
-            {
-                _lockboxRecordSource = new LockboxRecordSource(lockboxRecords);
-                TableView.EstimatedRowHeight = 50f;
-                TableView.RowHeight = UITableView.AutomaticDimension;
-                TableView.Source = _lockboxRecordSource;
-            }
-            else
-            {
-                _lockboxRecordSource.LockboxRecords = lockboxRecords;
-            }
+            //if (_lockboxRecordSource == null)
+            //{
+            //    _lockboxRecordSource = new LockboxRecordSource(lockboxRecords);
+            //    TableView.EstimatedRowHeight = 50f;
+            //    TableView.RowHeight = UITableView.AutomaticDimension;
+            //    TableView.Source = _lockboxRecordSource;
+            //}
+            //else
+            //{
+            //    _lockboxRecordSource.LockboxRecords = lockboxRecords;
+            //}
 
-            TableView.ReloadData();
+            //TableView.ReloadData();
         }
     }
 }

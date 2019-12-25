@@ -162,9 +162,10 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Controls\Cells\BleDeviceCell.xib" />
-    <InterfaceDefinition Include="Controls\Cells\LockboxRecordCell.xib" />
+    <InterfaceDefinition Include="Controls\Cells\KeyboxCell.xib" />
     <InterfaceDefinition Include="Views\LoginView.xib" />
     <InterfaceDefinition Include="Views\HomeView.xib" />
+    <InterfaceDefinition Include="Views\KeyboxesView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -256,6 +257,10 @@
     <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock.png" />
     <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -271,7 +276,6 @@
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\SettingsService.cs" />
     <Compile Include="Views\NearbyView.cs" />
-    <Compile Include="Views\KeyboxesView.cs" />
     <Compile Include="Views\ListingView.cs" />
     <Compile Include="Views\SettingView.cs" />
     <Compile Include="Views\ViewBases\TabView.cs" />
@@ -283,12 +287,12 @@
     <Compile Include="Controls\Cells\BleDeviceCell.designer.cs">
       <DependentUpon>BleDeviceCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Cells\LockboxRecordCell.cs" />
-    <Compile Include="Controls\Cells\LockboxRecordCell.designer.cs">
-      <DependentUpon>LockboxRecordCell.cs</DependentUpon>
+    <Compile Include="Controls\Cells\KeyboxCell.cs" />
+    <Compile Include="Controls\Cells\KeyboxCell.designer.cs">
+      <DependentUpon>KeyboxCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TableSupport\IProvidesHeight.cs" />
-    <Compile Include="Controls\Sources\LockboxRecordSource.cs" />
+    <Compile Include="Controls\Sources\KeyboxSource.cs" />
     <Compile Include="Views\LoginView.cs" />
     <Compile Include="Views\LoginView.designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
@@ -298,6 +302,10 @@
       <DependentUpon>HomeView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomField\CustomTextField.cs" />
+    <Compile Include="Views\KeyboxesView.cs" />
+    <Compile Include="Views\KeyboxesView.designer.cs">
+      <DependentUpon>KeyboxesView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -332,6 +340,7 @@
     <Folder Include="Controls\CustomField\" />
     <Folder Include="Assets.xcassets\icon_close.imageset\" />
     <Folder Include="Assets.xcassets\icon_unlock.imageset\" />
+    <Folder Include="Assets.xcassets\icon_add.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

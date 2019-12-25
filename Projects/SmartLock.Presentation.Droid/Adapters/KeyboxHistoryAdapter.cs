@@ -80,31 +80,31 @@ namespace SmartLock.Presentation.Droid.Adapters
                 };
             }
 
-            public void SetData(KeyboxHistory lockboxRecord)
+            public void SetData(KeyboxHistory keyboxHistory)
             {
-                _tvName.Text = lockboxRecord.Opener;
-                _tvDuration.Text = lockboxRecord.Duration;
-                _tvIn.Text = lockboxRecord.InTimeString;
-                _tvOut.Text = lockboxRecord.OutTimeString;
+                _tvName.Text = keyboxHistory.Opener;
+                _tvDuration.Text = keyboxHistory.Duration;
+                _tvIn.Text = keyboxHistory.InTimeString;
+                _tvOut.Text = keyboxHistory.OutTimeString;
 
-                ConfigureDemoPortait(lockboxRecord);
+                ConfigureDemoPortait(keyboxHistory);
             }
 
-            private void ConfigureDemoPortait(KeyboxHistory lockboxRecord)
+            private void ConfigureDemoPortait(KeyboxHistory keyboxHistory)
             {
-                if (lockboxRecord.Opener.StartsWith("Della"))
+                if (keyboxHistory.Opener.StartsWith("Della"))
                 {
                     _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait1));
                 }
-                else if (lockboxRecord.Opener.StartsWith("Mol"))
+                else if (keyboxHistory.Opener.StartsWith("Mol"))
                 {
                     _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait3));
                 }
-                else if (lockboxRecord.Opener.StartsWith("Win"))
+                else if (keyboxHistory.Opener.StartsWith("Win"))
                 {
                     _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait5));
                 }
-                else if (lockboxRecord.Opener.StartsWith("Har"))
+                else if (keyboxHistory.Opener.StartsWith("Har"))
                 {
                     _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait2));
                 }

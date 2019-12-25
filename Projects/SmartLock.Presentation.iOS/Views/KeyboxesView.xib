@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboxesView">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="LblTitle" destination="313" id="name-outlet-313"/>
+                <outlet property="BtnAddLock" destination="316" id="name-outlet-316"/>
+                <outlet property="IvAdd" destination="322" id="name-outlet-322"/>
+                <outlet property="KeyboxesTableView" destination="341" id="name-outlet-341"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keyboxes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="313" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="24" y="64" width="141.5" height="38.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.002535683103" green="0.1058199927" blue="0.2512828708" alpha="1"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="316" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="282" y="64" width="100" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
+                    <state key="normal" title="    Add Lock">
+                        <color key="titleColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <constraints>
+                        <constraint id="319" firstAttribute="height" constant="32"/>
+                        <constraint id="320" firstAttribute="width" constant="100"/>
+                    </constraints>
+                    <connections>
+                        <action selector="BtnAddLock_TouchUpInside:" destination="-1" id="321" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="322" translatesAutoresizingMaskIntoConstraints="NO" image="icon_add">
+                    <rect key="frame" x="290" y="72" width="16" height="16"/>
+                    <constraints>
+                        <constraint id="325" firstAttribute="height" constant="16"/>
+                        <constraint id="326" firstAttribute="width" constant="16"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="341" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="87" y="157" width="240" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint id="314" firstItem="313" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64"/>
+                <constraint id="315" firstItem="313" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
+                <constraint id="317" firstItem="316" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64"/>
+                <constraint id="318" firstAttribute="trailing" secondItem="316" secondAttribute="trailing" constant="32"/>
+                <constraint id="323" firstItem="322" firstAttribute="centerY" secondItem="316" secondAttribute="centerY"/>
+                <constraint id="324" firstItem="322" firstAttribute="leading" secondItem="316" secondAttribute="leading" constant="8"/>
+                <constraint id="342" firstItem="341" firstAttribute="top" secondItem="313" secondAttribute="bottom" constant="23"/>
+                <constraint id="343" firstItem="341" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20"/>
+                <constraint id="344" firstAttribute="trailing" secondItem="341" secondAttribute="trailing" constant="20"/>
+                <constraint id="345" firstAttribute="bottom" secondItem="341" secondAttribute="bottom"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_add" width="32" height="32"/>
+    </resources>
+</document>
