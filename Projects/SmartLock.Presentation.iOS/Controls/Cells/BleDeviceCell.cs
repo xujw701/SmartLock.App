@@ -1,7 +1,7 @@
 ﻿using System;
-using CoreGraphics;
 using Foundation;
 using SmartLock.Model.BlueToothLe;
+using SmartLock.Presentation.iOS.Support;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells
@@ -24,6 +24,13 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         internal static BleDeviceCell Create()
         {
             return (BleDeviceCell)Nib.Instantiate(null, null)[0];
+        }
+
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+
+            ShadowHelper.AddShadow(ContentContainer);
         }
 
         public void SetData(BleDevice bleDevice, Action<BleDevice> connect, Action<BleDevice> disconnect)

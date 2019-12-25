@@ -15,6 +15,10 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView ContentContainer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvBattery { get; set; }
 
         [Outlet]
@@ -35,6 +39,11 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         void ReleaseDesignerOutlets ()
         {
+            if (ContentContainer != null) {
+                ContentContainer.Dispose ();
+                ContentContainer = null;
+            }
+
             if (IvBattery != null) {
                 IvBattery.Dispose ();
                 IvBattery = null;

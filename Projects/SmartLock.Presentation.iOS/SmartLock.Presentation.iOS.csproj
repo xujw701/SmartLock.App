@@ -306,6 +306,7 @@
     <Compile Include="Views\KeyboxesView.designer.cs">
       <DependentUpon>KeyboxesView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Support\ShadowHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -341,6 +342,7 @@
     <Folder Include="Assets.xcassets\icon_close.imageset\" />
     <Folder Include="Assets.xcassets\icon_unlock.imageset\" />
     <Folder Include="Assets.xcassets\icon_add.imageset\" />
+    <Folder Include="Support\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

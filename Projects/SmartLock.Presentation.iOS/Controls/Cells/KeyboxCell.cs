@@ -1,7 +1,7 @@
 ﻿using System;
-using CoreGraphics;
 using Foundation;
 using SmartLock.Model.BlueToothLe;
+using SmartLock.Presentation.iOS.Support;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells
@@ -26,10 +26,15 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             return (KeyboxCell)Nib.Instantiate(null, null)[0];
         }
 
+        public override void LayoutSubviews()
+        {
+            base.LayoutSubviews();
+
+            ShadowHelper.AddShadow(ContentContainer);
+        }
+
         public void SetData(Keybox keybox)
         {
-            ConfigureShadow();
-
             LblText1.Text = keybox.Name;
             LblText2.Text = keybox.Address;
             LblBattery.Text = keybox.BatteryLevelString;
@@ -51,21 +56,6 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             {
                 LblBattery.TextColor = UIColor.FromRGB(0, 194, 63);
             }
-        }
-
-        private void ConfigureShadow()
-        {
-            //Layer.ShadowRadius = 1f;
-            //Layer.ShadowColor = UIColor.FromRGB(176, 199, 226).CGColor;
-            //Layer.ShadowOffset = new CGSize(0, 0);
-            //Layer.ShadowOpacity = 0.5f;
-            //Layer.MasksToBounds = false;
-
-            //var shadowInsets = new UIEdgeInsets(-1.5f, -1.5f, -1.5f, -1.5f);
-            //var shadowPath = UIBezierPath.FromRect(shadowInsets.InsetRect(Bounds));
-            //Layer.ShadowPath = shadowPath.CGPath;
-            //Layer.ShouldRasterize = true;
-            //Layer.RasterizationScale = UIScreen.MainScreen.Scale;
         }
     }
 }

@@ -98,7 +98,7 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" id="24142" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="24" y="193" width="366" height="519"/>
+                    <rect key="frame" x="24" y="193" width="366" height="457.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="24147" translatesAutoresizingMaskIntoConstraints="NO" image="icon_close">
@@ -161,7 +161,13 @@
                         <constraint id="24210" firstItem="24209" firstAttribute="top" secondItem="24201" secondAttribute="bottom" constant="42"/>
                         <constraint id="24211" firstItem="24209" firstAttribute="leading" secondItem="24142" secondAttribute="leading" constant="32"/>
                         <constraint id="24212" firstAttribute="trailing" secondItem="24209" secondAttribute="trailing" constant="32"/>
+                        <constraint id="24625" firstAttribute="bottom" secondItem="24209" secondAttribute="bottom" constant="48"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <constraints>
@@ -193,7 +199,6 @@
                 <constraint id="24143" firstItem="24142" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
                 <constraint id="24144" firstAttribute="trailing" secondItem="24142" secondAttribute="trailing" constant="24"/>
                 <constraint id="24145" firstItem="24142" firstAttribute="top" secondItem="222" secondAttribute="bottom" constant="24"/>
-                <constraint id="24146" firstAttribute="bottom" secondItem="24142" secondAttribute="bottom" constant="24"/>
             </constraints>
         </view>
     </objects>

@@ -7,6 +7,7 @@ using SmartLock.Model.BlueToothLe;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;
+using SmartLock.Presentation.iOS.Support;
 using SmartLock.Presentation.iOS.Views.ViewBases;
 using UIKit;
 
@@ -92,6 +93,8 @@ namespace SmartLock.Presentation.iOS.Views
 
             LblText1.Text = bleDevice.Name;
             LblBattery.Text = bleDevice.BatteryLevelString;
+
+            ShadowHelper.AddShadow(LockContainer);
         }
 
         private void SetMode(int state)

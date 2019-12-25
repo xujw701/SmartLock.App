@@ -25,7 +25,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="316" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="282" y="64" width="100" height="32"/>
+                    <rect key="frame" x="282" y="69" width="100" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
                     <color key="backgroundColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
                     <state key="normal" title="    Add Lock">
@@ -45,13 +45,13 @@
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="322" translatesAutoresizingMaskIntoConstraints="NO" image="icon_add">
-                    <rect key="frame" x="290" y="72" width="16" height="16"/>
+                    <rect key="frame" x="290" y="77" width="16" height="16"/>
                     <constraints>
                         <constraint id="325" firstAttribute="height" constant="16"/>
                         <constraint id="326" firstAttribute="width" constant="16"/>
                     </constraints>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="341" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="341" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO">
                     <rect key="frame" x="87" y="157" width="240" height="128"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
@@ -59,7 +59,7 @@
             <constraints>
                 <constraint id="314" firstItem="313" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64"/>
                 <constraint id="315" firstItem="313" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
-                <constraint id="317" firstItem="316" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64"/>
+                <constraint id="317" firstItem="316" firstAttribute="top" secondItem="2" secondAttribute="top" constant="69"/>
                 <constraint id="318" firstAttribute="trailing" secondItem="316" secondAttribute="trailing" constant="32"/>
                 <constraint id="323" firstItem="322" firstAttribute="centerY" secondItem="316" secondAttribute="centerY"/>
                 <constraint id="324" firstItem="322" firstAttribute="leading" secondItem="316" secondAttribute="leading" constant="8"/>

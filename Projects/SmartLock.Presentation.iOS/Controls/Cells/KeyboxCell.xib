@@ -6,66 +6,84 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" customClass="KeyboxCell" id="cxk-wN-pdQ" rowHeight="71">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" customClass="KeyboxCell" id="cxk-wN-pdQ" rowHeight="95">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="157" translatesAutoresizingMaskIntoConstraints="NO" image="icon_lock_small">
-                        <rect key="frame" x="12" y="23.5" width="24" height="24"/>
+                    <view contentMode="scaleToFill" id="849" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="8" y="8" width="304" height="79"/>
+                        <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="157" translatesAutoresizingMaskIntoConstraints="NO" image="icon_lock_small">
+                                <rect key="frame" x="15" y="25.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint id="163" firstAttribute="width" constant="24"/>
+                                    <constraint id="164" firstAttribute="height" constant="24"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28e Oak View Terrace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="158" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="51" y="16" width="184.5" height="21.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="159" translatesAutoresizingMaskIntoConstraints="NO" text="Albany, Auckland" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="51" y="41.5" width="110.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.3097664118" green="0.3098254502" blue="0.3097627163" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="96%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="494" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="266" y="30.5" width="26" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="493" translatesAutoresizingMaskIntoConstraints="NO" image="icon_battery">
+                                <rect key="frame" x="242" y="30.5" width="16" height="16"/>
+                                <constraints>
+                                    <constraint id="497" firstAttribute="height" constant="16"/>
+                                    <constraint id="498" firstAttribute="width" constant="16"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <constraints>
-                            <constraint id="163" firstAttribute="width" constant="24"/>
-                            <constraint id="164" firstAttribute="height" constant="24"/>
+                            <constraint id="1184" firstItem="157" firstAttribute="leading" secondItem="849" secondAttribute="leading" constant="15"/>
+                            <constraint id="1187" firstItem="158" firstAttribute="top" secondItem="849" secondAttribute="top" constant="16"/>
+                            <constraint id="1188" firstItem="158" firstAttribute="leading" secondItem="157" secondAttribute="trailing" constant="12"/>
+                            <constraint id="1189" firstItem="159" firstAttribute="top" secondItem="158" secondAttribute="bottom" constant="4"/>
+                            <constraint id="1190" firstItem="159" firstAttribute="leading" secondItem="157" secondAttribute="trailing" constant="12"/>
+                            <constraint id="1192" firstAttribute="trailing" secondItem="494" secondAttribute="trailing" constant="12"/>
+                            <constraint id="1196" firstItem="494" firstAttribute="leading" secondItem="493" secondAttribute="trailing" constant="8"/>
+                            <constraint id="1197" firstAttribute="bottom" secondItem="159" secondAttribute="bottom" constant="18"/>
+                            <constraint id="1198" firstAttribute="centerY" secondItem="157" secondAttribute="centerY" constant="2"/>
+                            <constraint id="1199" firstAttribute="centerY" secondItem="494" secondAttribute="centerY" constant="2"/>
+                            <constraint id="1200" firstAttribute="centerY" secondItem="493" secondAttribute="centerY" constant="1"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28e Oak View Terrace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="158" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" misplaced="YES">
-                        <rect key="frame" x="48" y="16" width="184.5" height="21.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                        <color key="textColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="1"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="159" translatesAutoresizingMaskIntoConstraints="NO" text="Albany, Auckland" ambiguous="YES" misplaced="YES">
-                        <rect key="frame" x="48" y="41.5" width="110.5" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.3097664118" green="0.3098254502" blue="0.3097627163" alpha="1"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="493" translatesAutoresizingMaskIntoConstraints="NO" image="icon_battery">
-                        <rect key="frame" x="256" y="27.5" width="16" height="16"/>
-                        <constraints>
-                            <constraint id="497" firstAttribute="height" constant="16"/>
-                            <constraint id="498" firstAttribute="width" constant="16"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="96%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="494" translatesAutoresizingMaskIntoConstraints="NO">
-                        <rect key="frame" x="280" y="28.5" width="26" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint id="486" firstAttribute="centerY" secondItem="157" secondAttribute="centerY"/>
-                    <constraint id="487" firstItem="158" firstAttribute="leading" secondItem="157" secondAttribute="trailing" constant="12"/>
-                    <constraint id="488" firstItem="158" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="16"/>
-                    <constraint id="489" firstItem="159" firstAttribute="leading" secondItem="157" secondAttribute="trailing" constant="12"/>
-                    <constraint id="490" firstItem="159" firstAttribute="top" secondItem="158" secondAttribute="bottom" constant="4"/>
-                    <constraint id="491" firstItem="157" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="12"/>
-                    <constraint id="492" firstAttribute="bottom" secondItem="159" secondAttribute="bottom" constant="18"/>
-                    <constraint id="495" firstAttribute="trailing" secondItem="494" secondAttribute="trailing" constant="14"/>
-                    <constraint id="496" firstAttribute="centerY" secondItem="494" secondAttribute="centerY"/>
-                    <constraint id="499" firstAttribute="centerY" secondItem="493" secondAttribute="centerY"/>
-                    <constraint id="500" firstItem="494" firstAttribute="leading" secondItem="493" secondAttribute="trailing" constant="8"/>
+                    <constraint id="1175" firstItem="849" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8"/>
+                    <constraint id="1176" firstItem="849" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="8"/>
+                    <constraint id="1178" firstAttribute="trailing" secondItem="849" secondAttribute="trailing" constant="8"/>
+                    <constraint id="1179" firstAttribute="bottom" secondItem="849" secondAttribute="bottom" constant="8"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="ContentContainer" destination="849" id="name-outlet-849"/>
+                <outlet property="IvLock" destination="157" id="name-outlet-157"/>
                 <outlet property="LblText1" destination="158" id="name-outlet-158"/>
                 <outlet property="LblText2" destination="159" id="name-outlet-159"/>
-                <outlet property="IvLock" destination="157" id="name-outlet-157"/>
-                <outlet property="IvBattery" destination="493" id="name-outlet-493"/>
                 <outlet property="LblBattery" destination="494" id="name-outlet-494"/>
+                <outlet property="IvBattery" destination="493" id="name-outlet-493"/>
             </connections>
             <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
         </tableViewCell>
