@@ -166,6 +166,7 @@
     <InterfaceDefinition Include="Views\LoginView.xib" />
     <InterfaceDefinition Include="Views\HomeView.xib" />
     <InterfaceDefinition Include="Views\KeyboxesView.xib" />
+    <InterfaceDefinition Include="Views\KeyboxDetailView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -261,6 +262,56 @@
     <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add.png" />
     <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\image.png" />
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back.png" />
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data.png" />
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit.png" />
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback.png" />
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history.png" />
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more.png" />
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out.png" />
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share.png" />
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square.png" />
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -307,6 +358,10 @@
       <DependentUpon>KeyboxesView.cs</DependentUpon>
     </Compile>
     <Compile Include="Support\ShadowHelper.cs" />
+    <Compile Include="Views\KeyboxDetailView.cs" />
+    <Compile Include="Views\KeyboxDetailView.designer.cs">
+      <DependentUpon>KeyboxDetailView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -343,6 +398,18 @@
     <Folder Include="Assets.xcassets\icon_unlock.imageset\" />
     <Folder Include="Assets.xcassets\icon_add.imageset\" />
     <Folder Include="Support\" />
+    <Folder Include="Assets.xcassets\icon_back.imageset\" />
+    <Folder Include="Assets.xcassets\icon_bathroom.imageset\" />
+    <Folder Include="Assets.xcassets\icon_bed.imageset\" />
+    <Folder Include="Assets.xcassets\icon_dashboard.imageset\" />
+    <Folder Include="Assets.xcassets\icon_data.imageset\" />
+    <Folder Include="Assets.xcassets\icon_edit.imageset\" />
+    <Folder Include="Assets.xcassets\icon_feedback.imageset\" />
+    <Folder Include="Assets.xcassets\icon_history.imageset\" />
+    <Folder Include="Assets.xcassets\icon_more.imageset\" />
+    <Folder Include="Assets.xcassets\icon_out.imageset\" />
+    <Folder Include="Assets.xcassets\icon_share.imageset\" />
+    <Folder Include="Assets.xcassets\icon_square.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

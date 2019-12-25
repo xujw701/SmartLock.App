@@ -9,11 +9,15 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 {
     public class KeyboxSource : UITableViewSource
     {
+        private Action<Keybox> _keyboxClicked;
+
         public List<Keybox> Keyboxes;
 
-        public KeyboxSource(List<Keybox> keyboxes)
+        public KeyboxSource(List<Keybox> keyboxes, Action<Keybox> keyboxClicked)
         {
             Keyboxes = keyboxes;
+
+            _keyboxClicked = keyboxClicked;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -28,6 +32,8 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
+            _keyboxClicked?.Invoke(Keyboxes[indexPath.Row]);
+
             tableView.DeselectRow(indexPath, true);
         }
 

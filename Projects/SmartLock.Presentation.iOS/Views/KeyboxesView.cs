@@ -28,7 +28,7 @@ namespace SmartLock.Presentation.iOS.Views
         {
             if (_keyboxSource == null)
             {
-                _keyboxSource = new KeyboxSource(keyboxes);
+                _keyboxSource = new KeyboxSource(keyboxes, KeyboxClicked);
 
                 KeyboxesTableView.EstimatedRowHeight = 190f;
                 KeyboxesTableView.RowHeight = UITableView.AutomaticDimension;
