@@ -18,8 +18,6 @@ namespace SmartLock.Presentation.iOS.Views
         {
             base.ViewDidLoad();
 
-            NavigationController.NavigationBarHidden = true;
-
             BtnLogin.TouchUpInside += (s, e) => LoginClicked?.Invoke();
         }
     }

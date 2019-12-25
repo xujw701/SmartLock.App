@@ -1,6 +1,7 @@
 ﻿using System;
-
+using CoreGraphics;
 using Foundation;
+using SmartLock.Model.BlueToothLe;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells
@@ -25,10 +26,30 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             return (BleDeviceCell)Nib.Instantiate(null, null)[0];
         }
 
-        public void Configure(string name, bool isChecked)
+        public void SetData(BleDevice bleDevice, Action<BleDevice> connect, Action<BleDevice> disconnect)
         {
-            LblTitle.Text = name;
-            IvCheck.Hidden = !isChecked;
+            LblText1.Text = bleDevice.Name;
+            LblBattery.Text = bleDevice.BatteryLevelString;
+
+            BtnConnect.TouchUpInside += (s, e) =>
+            {
+                UpdateUI(true);
+                connect?.Invoke(bleDevice);
+            };
+
+            BtnCancel.TouchUpInside += (s, e) =>
+            {
+                UpdateUI(false);
+                connect?.Invoke(bleDevice);
+            };
+
+            UpdateUI(bleDevice.State == DeviceState.Connecting);
+        }
+
+        private void UpdateUI(bool connecting)
+        {
+            BtnConnect.SetTitle(connecting ? "Connecting..." : "Connect", UIControlState.Normal);
+            BtnCancel.Hidden = !connecting;
         }
     }
 }

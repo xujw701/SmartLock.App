@@ -28,11 +28,11 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField EtPassword { get; set; }
+        SmartLock.Presentation.iOS.Controls.CustomField.CustomTextField EtPassword { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField EtUsername { get; set; }
+        SmartLock.Presentation.iOS.Controls.CustomField.CustomTextField EtUsername { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

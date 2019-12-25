@@ -42,22 +42,22 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void Show(List<BleDevice> bleDevices)
         {
-            if (_bleDeviceSource == null)
-            {
-                _bleDeviceSource = new BleDeviceSource(bleDevices);
+            //if (_bleDeviceSource == null)
+            //{
+            //    _bleDeviceSource = new BleDeviceSource(bleDevices);
 
-                TableView.TableHeaderView = CreateHeader();
-                TableView.TableFooterView = CreateFooter();
-                TableView.EstimatedRowHeight = 50f;
-                TableView.RowHeight = UITableView.AutomaticDimension;
-                TableView.Source = _bleDeviceSource;
-            }
-            else
-            {
-                _bleDeviceSource.BleDevices = bleDevices;
-            }
+            //    TableView.TableHeaderView = CreateHeader();
+            //    TableView.TableFooterView = CreateFooter();
+            //    TableView.EstimatedRowHeight = 50f;
+            //    TableView.RowHeight = UITableView.AutomaticDimension;
+            //    TableView.Source = _bleDeviceSource;
+            //}
+            //else
+            //{
+            //    _bleDeviceSource.BleDevices = bleDevices;
+            //}
 
-            TableView.ReloadData();
+            //TableView.ReloadData();
         }
 
         protected override void OnIsBusyChanged()
@@ -126,7 +126,7 @@ namespace SmartLock.Presentation.iOS.Views
         {
             ToggleScanStatus();
 
-            Connect?.Invoke(_bleDeviceSource.SelectedDevice);
+            //Connect?.Invoke(_bleDeviceSource.SelectedDevice);
         }
 
         private void ToggleScanStatus()

@@ -9,29 +9,33 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 {
     public class BleDeviceSource : UITableViewSource
     {
-        public List<BleDevice> BleDevices;
-        public BleDevice SelectedDevice;
+        private Action<BleDevice> _connect;
+        private Action<BleDevice> _disconnect;
 
-        public BleDeviceSource(List<BleDevice> bleDevices)
+        public List<BleDevice> BleDevices;
+        public BleDevice ConnectedDevice;
+
+        public BleDeviceSource(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect)
         {
             BleDevices = bleDevices;
+            _connect = connect;
+            _disconnect = disconnect;
+
+            _connect += (d) => ConnectedDevice = d;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var result = (BleDeviceCell)tableView.DequeueReusableCell(BleDeviceCell.Key) ?? BleDeviceCell.Create();
 
-            var bleDevice = BleDevices[indexPath.Row];
-            result.Configure(bleDevice.Name, bleDevice == SelectedDevice);
+            result.SetData(BleDevices[indexPath.Row], _connect, _disconnect);
 
             return result;
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            SelectedDevice = BleDevices[indexPath.Row];
             tableView.DeselectRow(indexPath, true);
-            tableView.ReloadData();
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)

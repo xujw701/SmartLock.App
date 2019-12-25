@@ -30,22 +30,34 @@
                         <constraint id="181" firstAttribute="height" constant="42"/>
                     </constraints>
                 </imageView>
-                <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="184" translatesAutoresizingMaskIntoConstraints="NO" placeholder="User name" misplaced="YES" clearButtonMode="whileEditing" opaque="NO" borderStyle="roundedRect">
-                    <rect key="frame" x="41" y="269" width="333" height="30"/>
+                <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="184" translatesAutoresizingMaskIntoConstraints="NO" placeholder="User name" clearButtonMode="whileEditing" opaque="NO" customClass="CustomTextField">
+                    <rect key="frame" x="40" y="265" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <constraints>
                         <constraint id="188" firstAttribute="height" constant="48"/>
                     </constraints>
                     <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="513" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" placeholder="Password" clearButtonMode="whileEditing">
-                    <rect key="frame" x="40" y="331" width="334" height="30"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="513" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password" clearButtonMode="whileEditing" customClass="CustomTextField">
+                    <rect key="frame" x="40" y="321" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                     <constraints>
                         <constraint id="517" firstAttribute="height" constant="48"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="519" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                     <rect key="frame" x="40" y="388" width="334" height="48"/>

@@ -113,9 +113,9 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>Apple Development: zmx20121219@gmail.com (4B2YB2TL7D)</CodesignKey>
+    <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>iOS Team Provisioning Profile: com.millionocean.smartlock.ios.dev</CodesignProvision>
+    <CodesignProvision>SmartLock iOS Dev</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -164,6 +164,7 @@
     <InterfaceDefinition Include="Controls\Cells\BleDeviceCell.xib" />
     <InterfaceDefinition Include="Controls\Cells\LockboxRecordCell.xib" />
     <InterfaceDefinition Include="Views\LoginView.xib" />
+    <InterfaceDefinition Include="Views\HomeView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -219,6 +220,42 @@
     <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel.png" />
     <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message.png" />
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%403x.png" />
+    <ImageAsset Include="Assets.xcassets\search_lock.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\search_lock.imageset\search_lock.png" />
+    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\searching_lock.png" />
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small.png" />
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery.png" />
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close.png" />
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock.png" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -237,7 +274,6 @@
     <Compile Include="Views\KeyboxesView.cs" />
     <Compile Include="Views\ListingView.cs" />
     <Compile Include="Views\SettingView.cs" />
-    <Compile Include="Views\HomeView.cs" />
     <Compile Include="Views\ViewBases\TabView.cs" />
     <Compile Include="Views\ViewBases\View.cs" />
     <Compile Include="Platform\ViewService.cs" />
@@ -257,6 +293,11 @@
     <Compile Include="Views\LoginView.designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\HomeView.cs" />
+    <Compile Include="Views\HomeView.designer.cs">
+      <DependentUpon>HomeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomField\CustomTextField.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -280,6 +321,17 @@
     <Folder Include="Assets.xcassets\icon_nearby_sel.imageset\" />
     <Folder Include="Assets.xcassets\icon_settings_nor.imageset\" />
     <Folder Include="Assets.xcassets\icon_settings_sel.imageset\" />
+    <Folder Include="Assets.xcassets\icon_message.imageset\" />
+    <Folder Include="Assets.xcassets\search_lock.imageset\" />
+    <Folder Include="Assets.xcassets\searching_lock.imageset\" />
+    <Folder Include="Assets.xcassets\icon_buletooth_small.imageset\" />
+    <Folder Include="Assets.xcassets\icon_lock_small.imageset\" />
+    <Folder Include="Assets.xcassets\icon_lock_medium.imageset\" />
+    <Folder Include="Assets.xcassets\icon_lock_big.imageset\" />
+    <Folder Include="Assets.xcassets\icon_battery.imageset\" />
+    <Folder Include="Controls\CustomField\" />
+    <Folder Include="Assets.xcassets\icon_close.imageset\" />
+    <Folder Include="Assets.xcassets\icon_unlock.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

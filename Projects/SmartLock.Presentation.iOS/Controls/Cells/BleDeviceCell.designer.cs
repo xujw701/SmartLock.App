@@ -15,22 +15,71 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView IvCheck { get; set; }
+        UIKit.UIButton BtnCancel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel LblTitle { get; set; }
+        UIKit.UIButton BtnConnect { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvBattery { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvBt { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblBattery { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblText1 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblText2 { get; set; }
+
+        [Action ("BtnCancel_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnCancel_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (IvCheck != null) {
-                IvCheck.Dispose ();
-                IvCheck = null;
+            if (BtnCancel != null) {
+                BtnCancel.Dispose ();
+                BtnCancel = null;
             }
 
-            if (LblTitle != null) {
-                LblTitle.Dispose ();
-                LblTitle = null;
+            if (BtnConnect != null) {
+                BtnConnect.Dispose ();
+                BtnConnect = null;
+            }
+
+            if (IvBattery != null) {
+                IvBattery.Dispose ();
+                IvBattery = null;
+            }
+
+            if (IvBt != null) {
+                IvBt.Dispose ();
+                IvBt = null;
+            }
+
+            if (LblBattery != null) {
+                LblBattery.Dispose ();
+                LblBattery = null;
+            }
+
+            if (LblText1 != null) {
+                LblText1.Dispose ();
+                LblText1 = null;
+            }
+
+            if (LblText2 != null) {
+                LblText2.Dispose ();
+                LblText2 = null;
             }
         }
     }
