@@ -167,6 +167,9 @@
     <InterfaceDefinition Include="Views\HomeView.xib" />
     <InterfaceDefinition Include="Views\KeyboxesView.xib" />
     <InterfaceDefinition Include="Views\KeyboxDetailView.xib" />
+    <InterfaceDefinition Include="Views\ListingView.xib" />
+    <InterfaceDefinition Include="Views\NearbyView.xib" />
+    <InterfaceDefinition Include="Views\SettingView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -312,6 +315,12 @@
     <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square.png" />
     <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%403x.png" />
+    <ImageAsset Include="Assets.xcassets\listing.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\listing.imageset\listing.png" />
+    <ImageAsset Include="Assets.xcassets\nearby.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\nearby.imageset\nearby.png" />
+    <ImageAsset Include="Assets.xcassets\setting.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\setting.imageset\setting.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -326,9 +335,6 @@
     <Compile Include="Platform\ContainedStorage.cs" />
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\SettingsService.cs" />
-    <Compile Include="Views\NearbyView.cs" />
-    <Compile Include="Views\ListingView.cs" />
-    <Compile Include="Views\SettingView.cs" />
     <Compile Include="Views\ViewBases\TabView.cs" />
     <Compile Include="Views\ViewBases\View.cs" />
     <Compile Include="Platform\ViewService.cs" />
@@ -361,6 +367,18 @@
     <Compile Include="Views\KeyboxDetailView.cs" />
     <Compile Include="Views\KeyboxDetailView.designer.cs">
       <DependentUpon>KeyboxDetailView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ListingView.cs" />
+    <Compile Include="Views\ListingView.designer.cs">
+      <DependentUpon>ListingView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NearbyView.cs" />
+    <Compile Include="Views\NearbyView.designer.cs">
+      <DependentUpon>NearbyView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingView.cs" />
+    <Compile Include="Views\SettingView.designer.cs">
+      <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -410,6 +428,9 @@
     <Folder Include="Assets.xcassets\icon_out.imageset\" />
     <Folder Include="Assets.xcassets\icon_share.imageset\" />
     <Folder Include="Assets.xcassets\icon_square.imageset\" />
+    <Folder Include="Assets.xcassets\listing.imageset\" />
+    <Folder Include="Assets.xcassets\nearby.imageset\" />
+    <Folder Include="Assets.xcassets\setting.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

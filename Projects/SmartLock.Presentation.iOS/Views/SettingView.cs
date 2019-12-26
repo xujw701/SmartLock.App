@@ -6,15 +6,17 @@ using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public partial class SettingView : TableView<ISettingView>, ISettingView
+    public partial class SettingView : View<ISettingView>, ISettingView
     {
-        public SettingView(SettingController controller) : base(controller)
+        public SettingView(SettingController controller) : base(controller, "SettingView")
         {
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            IvSetting.WidthAnchor.ConstraintEqualTo(UIScreen.MainScreen.Bounds.Width).Active = true;
         }
     }
 }

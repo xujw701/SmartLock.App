@@ -1,42 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using SmartLock.Model.BlueToothLe;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.iOS.Controls.Sources;
 using SmartLock.Presentation.iOS.Views.ViewBases;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Views
 {
-    public class ListingView : TableView<IListingView>, IListingView
+    public partial class ListingView : View<IListingView>, IListingView
     {
-        //private LockboxRecordSource _lockboxRecordSource;
-
-        public ListingView(ListingController controller) : base(controller)
+        public ListingView(ListingController controller) : base(controller, "ListingView")
         {
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-        }
 
-        public void Show(List<KeyboxHistory> lockboxRecords)
-        {
-            //if (_lockboxRecordSource == null)
-            //{
-            //    _lockboxRecordSource = new LockboxRecordSource(lockboxRecords);
-            //    TableView.EstimatedRowHeight = 50f;
-            //    TableView.RowHeight = UITableView.AutomaticDimension;
-            //    TableView.Source = _lockboxRecordSource;
-            //}
-            //else
-            //{
-            //    _lockboxRecordSource.LockboxRecords = lockboxRecords;
-            //}
-
-            //TableView.ReloadData();
+            IvListing.WidthAnchor.ConstraintEqualTo(UIScreen.MainScreen.Bounds.Width).Active = true;
         }
     }
 }

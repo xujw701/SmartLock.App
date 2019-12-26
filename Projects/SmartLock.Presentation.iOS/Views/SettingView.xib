@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingView">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="IvSetting" destination="622" id="name-outlet-622"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="507" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="622" translatesAutoresizingMaskIntoConstraints="NO" image="setting" misplaced="YES">
+                            <rect key="frame" x="87" y="173" width="240" height="128"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint id="633" firstItem="622" firstAttribute="top" secondItem="507" secondAttribute="top"/>
+                        <constraint id="644" firstItem="622" firstAttribute="leading" secondItem="507" secondAttribute="leading"/>
+                        <constraint id="655" firstAttribute="bottom" secondItem="622" secondAttribute="bottom"/>
+                        <constraint id="666" firstAttribute="trailing" secondItem="622" secondAttribute="trailing"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint id="538" firstItem="507" firstAttribute="top" secondItem="2" secondAttribute="top"/>
+                <constraint id="549" firstAttribute="trailing" secondItem="507" secondAttribute="trailing"/>
+                <constraint id="560" firstItem="507" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
+                <constraint id="571" firstAttribute="bottom" secondItem="507" secondAttribute="bottom"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="setting" width="360" height="702.3333"/>
+    </resources>
+</document>
