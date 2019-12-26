@@ -170,6 +170,9 @@
     <InterfaceDefinition Include="Views\ListingView.xib" />
     <InterfaceDefinition Include="Views\NearbyView.xib" />
     <InterfaceDefinition Include="Views\SettingView.xib" />
+    <InterfaceDefinition Include="Views\KeyboxDashboardView.xib" />
+    <InterfaceDefinition Include="Views\KeyboxHistoryView.xib" />
+    <InterfaceDefinition Include="Controls\Cells\KeyboxHistoryCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -321,6 +324,24 @@
     <ImageAsset Include="Assets.xcassets\nearby.imageset\nearby.png" />
     <ImageAsset Include="Assets.xcassets\setting.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\setting.imageset\setting.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\icon_dot.png" />
+    <ImageAsset Include="Assets.xcassets\graph.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\graph.imageset\graph.png" />
+    <ImageAsset Include="Assets.xcassets\portait1.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\portait1.imageset\portait1.png" />
+    <ImageAsset Include="Assets.xcassets\portait2.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\portait2.imageset\portait2.png" />
+    <ImageAsset Include="Assets.xcassets\portait3.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\portait3.imageset\portait3.png" />
+    <ImageAsset Include="Assets.xcassets\portait4.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\portait4.imageset\portait4.png" />
+    <ImageAsset Include="Assets.xcassets\portait5.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\portait5.imageset\portait5.png" />
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in.png" />
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%402x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -380,6 +401,19 @@
     <Compile Include="Views\SettingView.designer.cs">
       <DependentUpon>SettingView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\KeyboxDashboardView.cs" />
+    <Compile Include="Views\KeyboxDashboardView.designer.cs">
+      <DependentUpon>KeyboxDashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KeyboxHistoryView.cs" />
+    <Compile Include="Views\KeyboxHistoryView.designer.cs">
+      <DependentUpon>KeyboxHistoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Cells\KeyboxHistoryCell.cs" />
+    <Compile Include="Controls\Cells\KeyboxHistoryCell.designer.cs">
+      <DependentUpon>KeyboxHistoryCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sources\KeyboxHistorySource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -431,6 +465,14 @@
     <Folder Include="Assets.xcassets\listing.imageset\" />
     <Folder Include="Assets.xcassets\nearby.imageset\" />
     <Folder Include="Assets.xcassets\setting.imageset\" />
+    <Folder Include="Assets.xcassets\icon_dot.imageset\" />
+    <Folder Include="Assets.xcassets\graph.imageset\" />
+    <Folder Include="Assets.xcassets\portait1.imageset\" />
+    <Folder Include="Assets.xcassets\portait2.imageset\" />
+    <Folder Include="Assets.xcassets\portait3.imageset\" />
+    <Folder Include="Assets.xcassets\portait4.imageset\" />
+    <Folder Include="Assets.xcassets\portait5.imageset\" />
+    <Folder Include="Assets.xcassets\icon_in.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

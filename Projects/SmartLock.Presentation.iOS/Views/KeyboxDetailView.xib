@@ -37,14 +37,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="343" translatesAutoresizingMaskIntoConstraints="NO" image="icon_back">
-                            <rect key="frame" x="20" y="48" width="24" height="24"/>
+                            <rect key="frame" x="20" y="32" width="24" height="24"/>
                             <constraints>
                                 <constraint id="346" firstAttribute="height" constant="24"/>
                                 <constraint id="347" firstAttribute="width" constant="24"/>
                             </constraints>
                         </imageView>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="348" translatesAutoresizingMaskIntoConstraints="NO" image="icon_share" misplaced="YES">
-                            <rect key="frame" x="365" y="48" width="24" height="24"/>
+                            <rect key="frame" x="365" y="32" width="24" height="24"/>
                             <constraints>
                                 <constraint id="351" firstAttribute="height" constant="24"/>
                                 <constraint id="352" firstAttribute="width" constant="24"/>
@@ -113,7 +113,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5,600,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="626" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5,600,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="626" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                             <rect key="frame" x="15" y="357" width="332" height="22"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                             <nil key="textColor"/>
@@ -295,9 +295,9 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint id="1222" firstItem="343" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="48"/>
+                        <constraint id="1222" firstItem="343" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="32"/>
                         <constraint id="1223" firstItem="343" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="1228" firstItem="348" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="48"/>
+                        <constraint id="1228" firstItem="348" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="32"/>
                         <constraint id="1229" firstAttribute="trailing" secondItem="348" secondAttribute="trailing" constant="20"/>
                         <constraint id="1245" firstItem="342" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
                         <constraint id="1590" firstAttribute="trailing" secondItem="342" secondAttribute="trailing" constant="20"/>

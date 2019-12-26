@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboxHistoryView">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="HistoryTableView" destination="1251" id="name-outlet-1251"/>
+                <outlet property="IvBack" destination="576" id="name-outlet-576"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="576" translatesAutoresizingMaskIntoConstraints="NO" image="icon_back">
+                    <rect key="frame" x="24" y="84" width="24" height="24"/>
+                    <constraints>
+                        <constraint id="577" firstAttribute="height" constant="24"/>
+                        <constraint id="578" firstAttribute="width" constant="24"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" id="638" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="62" y="154" width="85" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="639" translatesAutoresizingMaskIntoConstraints="NO" text="Week">
+                            <rect key="frame" x="0.0" y="0.0" width="85" height="21.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.5946111083" green="0.6383441091" blue="0.6966101527" alpha="1"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="640" translatesAutoresizingMaskIntoConstraints="NO" image="icon_dot" hidden="YES" misplaced="YES">
+                            <rect key="frame" x="14.5" y="29.5" width="12" height="12"/>
+                            <constraints>
+                                <constraint id="641" firstAttribute="height" constant="12"/>
+                                <constraint id="642" firstAttribute="width" constant="12"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint id="643" firstItem="639" firstAttribute="top" secondItem="638" secondAttribute="top"/>
+                        <constraint id="644" firstItem="639" firstAttribute="leading" secondItem="638" secondAttribute="leading"/>
+                        <constraint id="645" firstAttribute="trailing" secondItem="639" secondAttribute="trailing"/>
+                        <constraint id="646" firstItem="640" firstAttribute="top" secondItem="639" secondAttribute="bottom" constant="8"/>
+                        <constraint id="647" firstAttribute="centerX" secondItem="640" secondAttribute="centerX"/>
+                        <constraint id="648" firstAttribute="width" constant="85"/>
+                        <constraint id="649" firstAttribute="height" constant="45"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="650" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="172" y="154" width="70" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="651" translatesAutoresizingMaskIntoConstraints="NO" text="Month">
+                            <rect key="frame" x="0.0" y="0.0" width="70" height="21.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.002535683103" green="0.1058199927" blue="0.2512828708" alpha="1"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="652" translatesAutoresizingMaskIntoConstraints="NO" image="icon_dot">
+                            <rect key="frame" x="29" y="29.5" width="12" height="12"/>
+                            <constraints>
+                                <constraint id="653" firstAttribute="height" constant="12"/>
+                                <constraint id="654" firstAttribute="width" constant="12"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint id="655" firstItem="651" firstAttribute="top" secondItem="650" secondAttribute="top"/>
+                        <constraint id="656" firstItem="651" firstAttribute="leading" secondItem="650" secondAttribute="leading"/>
+                        <constraint id="657" firstAttribute="trailing" secondItem="651" secondAttribute="trailing"/>
+                        <constraint id="658" firstItem="652" firstAttribute="top" secondItem="651" secondAttribute="bottom" constant="8"/>
+                        <constraint id="659" firstAttribute="centerX" secondItem="652" secondAttribute="centerX"/>
+                        <constraint id="660" firstAttribute="width" constant="70"/>
+                        <constraint id="661" firstAttribute="height" constant="45"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="662" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="267" y="154" width="85" height="45"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="663" translatesAutoresizingMaskIntoConstraints="NO" text="3 Months" misplaced="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="21.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.5946111083" green="0.6383441091" blue="0.6966101527" alpha="1"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="664" translatesAutoresizingMaskIntoConstraints="NO" image="icon_dot" hidden="YES" misplaced="YES">
+                            <rect key="frame" x="14.5" y="29.5" width="12" height="12"/>
+                            <constraints>
+                                <constraint id="665" firstAttribute="height" constant="12"/>
+                                <constraint id="666" firstAttribute="width" constant="12"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint id="667" firstItem="663" firstAttribute="top" secondItem="662" secondAttribute="top"/>
+                        <constraint id="668" firstItem="663" firstAttribute="leading" secondItem="662" secondAttribute="leading"/>
+                        <constraint id="669" firstAttribute="trailing" secondItem="663" secondAttribute="trailing"/>
+                        <constraint id="670" firstItem="664" firstAttribute="top" secondItem="663" secondAttribute="bottom" constant="8"/>
+                        <constraint id="671" firstAttribute="centerX" secondItem="664" secondAttribute="centerX"/>
+                        <constraint id="672" firstAttribute="width" constant="85"/>
+                        <constraint id="673" firstAttribute="height" constant="45"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1251" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                    <rect key="frame" x="24" y="222" width="366" height="457"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint id="733" firstItem="576" firstAttribute="top" secondItem="2" secondAttribute="top" constant="84"/>
+                <constraint id="793" firstItem="576" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
+                <constraint id="853" firstItem="638" firstAttribute="top" secondItem="576" secondAttribute="bottom" constant="46"/>
+                <constraint id="913" firstItem="650" firstAttribute="top" secondItem="576" secondAttribute="bottom" constant="46"/>
+                <constraint id="973" firstItem="662" firstAttribute="top" secondItem="576" secondAttribute="bottom" constant="46"/>
+                <constraint id="1033" firstItem="650" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="1093" firstItem="650" firstAttribute="leading" secondItem="638" secondAttribute="trailing" constant="25"/>
+                <constraint id="1153" firstItem="662" firstAttribute="leading" secondItem="650" secondAttribute="trailing" constant="25"/>
+                <constraint id="1429" firstItem="1251" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
+                <constraint id="1489" firstAttribute="trailing" secondItem="1251" secondAttribute="trailing" constant="24"/>
+                <constraint id="1667" firstAttribute="bottom" secondItem="1251" secondAttribute="bottom" constant="32"/>
+                <constraint id="3317" firstItem="1251" firstAttribute="top" secondItem="650" secondAttribute="bottom" constant="18"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back" width="64" height="64"/>
+        <image name="icon_dot" width="66.66666" height="66.66666"/>
+    </resources>
+</document>
