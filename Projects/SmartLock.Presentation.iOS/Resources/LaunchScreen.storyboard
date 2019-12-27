@@ -17,14 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23" misplaced="YES">
-                                <rect key="frame" x="199" y="360" width="16" height="16"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23" image="logo">
+                                <rect key="frame" x="177" y="338" width="60" height="60"/>
                                 <color key="tintColor" red="0.0" green="0.52549019607843139" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.9137254901960784" green="0.90980392156862744" blue="0.91764705882352937" alpha="1"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0.90588235294117647" green="0.90196078431372551" blue="0.90980392156862744" alpha="1"/>
+                        <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.992049396" green="0.9922187924" blue="0.9920386672" alpha="1"/>
                         <constraints>
                             <constraint firstItem="23" firstAttribute="centerY" secondItem="yd7-JS-zBw" secondAttribute="centerY" priority="1" id="39"/>
                             <constraint firstItem="23" firstAttribute="centerX" secondItem="yd7-JS-zBw" secondAttribute="centerX" priority="1" id="41"/>
@@ -37,5 +36,6 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="60" height="60"/>
     </resources>
 </document>

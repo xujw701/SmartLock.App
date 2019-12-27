@@ -356,6 +356,10 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png" />
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\180.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\120.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\60.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -437,8 +441,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Icons\" />
-    <Folder Include="Resources\Images\" />
     <Folder Include="Assets.xcassets\background.imageset\" />
     <Folder Include="Assets.xcassets\logo_harcourts.imageset\" />
     <Folder Include="Assets.xcassets\icon_home_nor.imageset\" />
@@ -487,6 +489,7 @@
     <Folder Include="Assets.xcassets\portait4.imageset\" />
     <Folder Include="Assets.xcassets\portait5.imageset\" />
     <Folder Include="Assets.xcassets\icon_in.imageset\" />
+    <Folder Include="Assets.xcassets\logo.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
