@@ -342,6 +342,20 @@
     <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in.png" />
     <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%402x.png" />
     <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%403x.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />

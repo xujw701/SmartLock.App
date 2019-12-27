@@ -45,7 +45,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>XSAppIconAssets</key>
-	<string>Resources/AppIcons.xcassets/AppIcons.appiconset</string>
+	<string>AppIcons.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleName</key>
 	<string>SmartLock</string>
 	<key>UIBackgroundModes</key>
