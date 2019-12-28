@@ -18,12 +18,12 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="498" translatesAutoresizingMaskIntoConstraints="NO">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="503" translatesAutoresizingMaskIntoConstraints="NO" image="nearby">
-                            <rect key="frame" x="0.0" y="0.0" width="360" height="703"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="503" translatesAutoresizingMaskIntoConstraints="NO" image="nearby" misplaced="YES">
+                            <rect key="frame" x="0.0" y="34" width="360" height="669"/>
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint id="504" firstItem="503" firstAttribute="top" secondItem="498" secondAttribute="top"/>
+                        <constraint id="504" firstItem="503" firstAttribute="top" secondItem="498" secondAttribute="top" constant="32"/>
                         <constraint id="505" firstItem="503" firstAttribute="leading" secondItem="498" secondAttribute="leading"/>
                         <constraint id="506" firstAttribute="bottom" secondItem="503" secondAttribute="bottom"/>
                         <constraint id="507" firstAttribute="trailing" secondItem="503" secondAttribute="trailing"/>

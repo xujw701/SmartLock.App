@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
@@ -19,6 +20,8 @@ namespace SmartLock.Presentation.iOS.Views
         private const int StateLockList = 1;
         private const int StateLock = 2;
 
+        private Timer _lockUiTimer;
+
         private BleDeviceSource _bleDeviceSource;
         private bool isScanning;
 
@@ -30,6 +33,18 @@ namespace SmartLock.Presentation.iOS.Views
 
         public HomeView(HomeController controller) : base(controller, "HomeView")
         {
+            _lockUiTimer = new Timer();
+            _lockUiTimer.Interval = 4000;
+            _lockUiTimer.Enabled = true;
+            _lockUiTimer.Elapsed += (s, e) =>
+            {
+                InvokeOnMainThread(() =>
+                {
+                    _lockUiTimer.Stop();
+
+                    SetLockUI(true);
+                });
+            };
         }
 
         public override void ViewDidLoad()
@@ -50,9 +65,13 @@ namespace SmartLock.Presentation.iOS.Views
                 DisconnectCurrent?.Invoke();
             }));
 
-            BtnUnlock.TouchUpInside += (s, e) =>
+            UnlockSlider.Unlocked += () =>
             {
                 UnlockClicked?.Invoke();
+
+                SetLockUI(false);
+
+                _lockUiTimer.Start();
             };
         }
 
@@ -95,6 +114,8 @@ namespace SmartLock.Presentation.iOS.Views
             LblBattery.Text = bleDevice.BatteryLevelString;
 
             ShadowHelper.AddShadow(LockContainer);
+
+            SetLockUI(true);
         }
 
         private void SetMode(int state)
@@ -136,6 +157,15 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 IvScanButton.Layer.RemoveAllAnimations();
             }
+        }
+
+        private void SetLockUI(bool locked)
+        {
+            UnlockSlider.Reset();
+
+            LblSliderText.Text = locked ? "         Slide to unlock" : "Unlocked";
+
+            IvLockIcon.Image = locked ? UIImage.FromBundle("icon_lock_big") : UIImage.FromBundle("icon_unlock");
         }
     }
 }

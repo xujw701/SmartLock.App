@@ -360,6 +360,8 @@
     <ImageAsset Include="Assets.xcassets\logo.imageset\180.png" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\120.png" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\60.png" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\icon_unlock_key %284%29.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -432,6 +434,7 @@
       <DependentUpon>KeyboxHistoryCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Sources\KeyboxHistorySource.cs" />
+    <Compile Include="Controls\CustomField\UnlockSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -490,6 +493,7 @@
     <Folder Include="Assets.xcassets\portait5.imageset\" />
     <Folder Include="Assets.xcassets\icon_in.imageset\" />
     <Folder Include="Assets.xcassets\logo.imageset\" />
+    <Folder Include="Assets.xcassets\icon_unlock_key.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

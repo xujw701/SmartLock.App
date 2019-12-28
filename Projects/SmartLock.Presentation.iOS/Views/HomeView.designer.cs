@@ -20,10 +20,6 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnUnlock { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvBattery { get; set; }
 
         [Outlet]
@@ -72,6 +68,10 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblSliderText { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText1 { get; set; }
 
         [Outlet]
@@ -82,16 +82,19 @@ namespace SmartLock.Presentation.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView LockContainer { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView SliderContainer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        SmartLock.Presentation.iOS.Controls.CustomField.UnlockSlider UnlockSlider { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (BleDeviceTableView != null) {
                 BleDeviceTableView.Dispose ();
                 BleDeviceTableView = null;
-            }
-
-            if (BtnUnlock != null) {
-                BtnUnlock.Dispose ();
-                BtnUnlock = null;
             }
 
             if (IvBattery != null) {
@@ -154,6 +157,11 @@ namespace SmartLock.Presentation.iOS.Views
                 LblScanButton = null;
             }
 
+            if (LblSliderText != null) {
+                LblSliderText.Dispose ();
+                LblSliderText = null;
+            }
+
             if (LblText1 != null) {
                 LblText1.Dispose ();
                 LblText1 = null;
@@ -167,6 +175,16 @@ namespace SmartLock.Presentation.iOS.Views
             if (LockContainer != null) {
                 LockContainer.Dispose ();
                 LockContainer = null;
+            }
+
+            if (SliderContainer != null) {
+                SliderContainer.Dispose ();
+                SliderContainer = null;
+            }
+
+            if (UnlockSlider != null) {
+                UnlockSlider.Dispose ();
+                UnlockSlider = null;
             }
         }
     }
