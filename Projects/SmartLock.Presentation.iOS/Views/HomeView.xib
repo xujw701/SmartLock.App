@@ -103,7 +103,7 @@
                     <rect key="frame" x="24" y="193" width="366" height="524.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="24147" translatesAutoresizingMaskIntoConstraints="NO" image="icon_close">
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="24147" translatesAutoresizingMaskIntoConstraints="NO" image="icon_close">
                             <rect key="frame" x="326" y="16" width="24" height="24"/>
                             <constraints>
                                 <constraint id="24150" firstAttribute="width" constant="24"/>

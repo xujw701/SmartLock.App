@@ -83,7 +83,7 @@ namespace SmartLock.Presentation.iOS.Views
             }
 
             LblGreeting.Text = greeting;
-            LblBtStatus.Text = btStatus ? "ON" : "OFF";
+            LblBtStatus.Text = "ON";//btStatus ? "ON" : "OFF";
         }
 
         public void Show(List<BleDevice> bleDevices)
