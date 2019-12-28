@@ -53,9 +53,9 @@
 		<string>bluetooth-peripheral</string>
 	</array>
 	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Connecting to smart lock uses</string>
+	<string>Smart E-Lock uses Bluetooth to connect to the locks.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Connecting to smart lock uses</string>
+	<string>Smart E-Lock uses Bluetooth to connect to the locks.</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.millionocean.smartlock.ios.dev</string>
 	<key>UIMainStoryboardFile</key>
