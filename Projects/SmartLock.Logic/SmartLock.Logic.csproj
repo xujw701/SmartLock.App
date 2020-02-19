@@ -47,6 +47,7 @@
     <Compile Include="WebService\WebServiceFunctions.cs" />
     <Compile Include="Services\UserSession.cs" />
     <Compile Include="Environment\EnvironmentManager.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartLock.Infrastructure\SmartLock.Infrastructure.csproj">

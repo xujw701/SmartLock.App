@@ -1,27 +1,49 @@
-﻿using SmartLock.Presentation.Core.Views;
+﻿using SmartLock.Model.Services;
+using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class LoginController : ViewController<ILoginView>
     {
-        public LoginController(IViewService viewService) : base(viewService)
+        private readonly IUserSession _userSession;
+        private readonly IUserService _userService;
+        private readonly IMessageBoxService _messageBoxService;
+
+        public LoginController(IViewService viewService, IUserSession userSession, IUserService userService, IMessageBoxService messageBoxService) : base(viewService)
         {
+            _userSession = userSession;
+            _userService = userService;
+            _messageBoxService = messageBoxService;
         }
 
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
 
-            View.LoginClicked += () => Push<MainController>();
+            if (_userSession.IsLoggedIn)
+            {
+                Push<MainController>();
+            }
+
+            View.LoginClicked += View_LoginClicked;
         }
 
-        //private async Task Login()
-        //{
-        //    await Task.Delay(300);
+        private void View_LoginClicked(string username, string password)
+        {
+            DoSafeAsync(async () =>
+                await _userService.Login(username, password),
+                successAcction: () =>
+                {
+                    Push<MainController>();
+                });
+        }
 
-        //    Push<MainController>();
-        //}
+        protected override async Task ShowErrorAsync(Exception exception)
+        {
+            await _messageBoxService.ShowMessageAsync("Login Failed", "Please check your username and password.");
+        }
     }
 }

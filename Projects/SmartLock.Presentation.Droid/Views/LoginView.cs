@@ -13,15 +13,17 @@ namespace SmartLock.Presentation.Droid.Views
     {
         protected override int LayoutId => Resource.Layout.View_Login;
 
-        public event Action LoginClicked;
+        public event Action<string, string> LoginClicked;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
+            var etUsername = FindViewById<EditText>(Resource.Id.etUsername);
+            var etPassword = FindViewById<EditText>(Resource.Id.etPassword);
 
-            btnLogin.Click += (s, e) => { LoginClicked?.Invoke(); };
+            btnLogin.Click += (s, e) => { LoginClicked?.Invoke(etUsername.Text, etPassword.Text); };
         }
     }
 }

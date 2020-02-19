@@ -4,6 +4,6 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface ILoginView : IView
     {
-        event Action LoginClicked;
+        event Action<string, string> LoginClicked;
     }
 }

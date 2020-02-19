@@ -70,6 +70,7 @@
     <Compile Include="Response\KeyboxHistoryGetResponseDto.cs" />
     <Compile Include="Request\FeedbackPostDto.cs" />
     <Compile Include="Response\PropertyFeedbackGetResponseDto.cs" />
+    <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
