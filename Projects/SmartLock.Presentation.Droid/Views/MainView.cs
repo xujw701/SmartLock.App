@@ -46,12 +46,12 @@ namespace SmartLock.Presentation.Droid.Views
             navigationView.ItemTextColor = csl;
         }
 
-        public void SetTabs(HomeController homeController, KeyboxesController keyboxesController, ListingController listingController, NearbyController nearbyController, SettingController settingController)
+        public void SetTabs(HomeController homeController, KeyboxesController keyboxesController, /*ListingController listingController, NearbyController nearbyController,*/ SettingController settingController)
         {
             _homeController = homeController;
             _keyboxesController = keyboxesController;
-            _listingController = listingController;
-            _nearbyController = nearbyController;
+            //_listingController = listingController;
+            //_nearbyController = nearbyController;
             _settingController = settingController;
 
             // Set first fragment to display
@@ -69,12 +69,12 @@ namespace SmartLock.Presentation.Droid.Views
                 case Resource.Id.nav_lockbox:
                     DisplayFragment(_keyboxesController);
                     break;
-                case Resource.Id.nav_listing:
-                    DisplayFragment(_listingController);
-                    break;
-                case Resource.Id.nav_nearby:
-                    DisplayFragment(_nearbyController);
-                    break;
+                //case Resource.Id.nav_listing:
+                //    DisplayFragment(_listingController);
+                //    break;
+                //case Resource.Id.nav_nearby:
+                //    DisplayFragment(_nearbyController);
+                //    break;
                 case Resource.Id.nav_setting:
                     DisplayFragment(_settingController);
                     break;

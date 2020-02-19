@@ -11,7 +11,7 @@
       android:icon="@drawable/navi_lockbox_button"
       android:title="@string/navi_lockbox"
       android:showAsAction="always|withText"/>
-  <item
+  <!-- <item 
       android:id="@+id/nav_listing"
       android:icon="@drawable/navi_listing_button"
       android:title="@string/navi_listing"
@@ -20,7 +20,7 @@
       android:id="@+id/nav_nearby"
       android:icon="@drawable/navi_nearby_button"
       android:title="@string/navi_nearby"
-      android:showAsAction="always|withText"/>
+      android:showAsAction="always|withText"/> -->
   <item
       android:id="@+id/nav_setting"
       android:icon="@drawable/navi_setting_button"

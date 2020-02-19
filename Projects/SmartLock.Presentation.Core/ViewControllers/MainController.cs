@@ -25,7 +25,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            View.SetTabs(_homeController, _keyboxesController, _listingController, _nearbyController, _settingController);
+            View.SetTabs(_homeController, _keyboxesController, /*_listingController, _nearbyController,*/ _settingController);
         }
     }
 }
