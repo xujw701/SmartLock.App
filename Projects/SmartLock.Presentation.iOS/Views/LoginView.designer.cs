@@ -38,14 +38,6 @@ namespace SmartLock.Presentation.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView ivLogo { get; set; }
 
-        [Action ("UIButton525_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton525_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("UIButton527_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton527_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (BtnForgotPassword != null) {

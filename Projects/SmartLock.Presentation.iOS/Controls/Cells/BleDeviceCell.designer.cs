@@ -45,10 +45,6 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText2 { get; set; }
 
-        [Action ("BtnCancel_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void BtnCancel_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (BtnCancel != null) {

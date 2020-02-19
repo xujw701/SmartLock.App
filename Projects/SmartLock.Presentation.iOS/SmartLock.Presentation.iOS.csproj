@@ -55,8 +55,8 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchFloat32>False</MtouchFloat32>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
-    <CodesignProvision>iOS Team Provisioning Profile: com.lwa.poal.debug</CodesignProvision>
-    <CodesignKey>iPhone Developer: xujw0701@gmail.com (7C797V6P4E)</CodesignKey>
+    <CodesignProvision>SmartLock iOS Dev</CodesignProvision>
+    <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
@@ -67,8 +67,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution</CodesignKey>
-    <CodesignProvision>b1630e3b-70ac-4552-8916-c5a72b737e7d</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Yang Zhou (AHD9D55V5T)</CodesignKey>
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
   </PropertyGroup>
@@ -100,6 +99,8 @@
     </MtouchSdkVersion>
     <MtouchI18n>
     </MtouchI18n>
+    <CodesignKey>iPhone Distribution: Yang Zhou (AHD9D55V5T)</CodesignKey>
+    <CodesignProvision>Smart ELock PRD</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -362,6 +363,9 @@
     <ImageAsset Include="Assets.xcassets\logo.imageset\60.png" />
     <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\icon_unlock_key %284%29.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\76.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\152.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />

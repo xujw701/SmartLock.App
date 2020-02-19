@@ -40,9 +40,6 @@
                         <constraint id="319" firstAttribute="height" constant="32"/>
                         <constraint id="320" firstAttribute="width" constant="100"/>
                     </constraints>
-                    <connections>
-                        <action selector="BtnAddLock_TouchUpInside:" destination="-1" id="321" eventType="touchUpInside"/>
-                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="322" translatesAutoresizingMaskIntoConstraints="NO" image="icon_add">
                     <rect key="frame" x="290" y="77" width="16" height="16"/>

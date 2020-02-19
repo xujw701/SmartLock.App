@@ -85,9 +85,6 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" colorSpace="custom" customColorSpace="sRGB" red="0" green="0.4163498282" blue="0.9997336268" alpha="1"/>
                                 </state>
-                                <connections>
-                                    <action selector="BtnCancel_TouchUpInside:" destination="cxk-wN-pdQ" id="12408" eventType="touchUpInside"/>
-                                </connections>
                                 <constraints>
                                     <constraint id="12220" firstAttribute="height" constant="40"/>
                                     <constraint id="12296" firstAttribute="width" constant="140"/>
