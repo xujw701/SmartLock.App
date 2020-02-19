@@ -54,6 +54,22 @@
     <Compile Include="Services\ISettingsService.cs" />
     <Compile Include="Services\IBlueToothLeService.cs" />
     <Compile Include="Services\IWebService.cs" />
+    <Compile Include="Services\IUserSession.cs" />
+    <Compile Include="Response\TokenPostResponseDto.cs" />
+    <Compile Include="Response\MePostResponseDto.cs" />
+    <Compile Include="Request\TokenPostDto.cs" />
+    <Compile Include="WebApiEnvironment.cs" />
+    <Compile Include="Services\IEnvironmentManager.cs" />
+    <Compile Include="Request\MePutDto.cs" />
+    <Compile Include="Response\KeyboxGetResponseDto.cs" />
+    <Compile Include="Response\DefaultCreatedPostResponseDto.cs" />
+    <Compile Include="Request\KeyboxPropertyPostPutDto.cs" />
+    <Compile Include="Response\PropertyGetResponseDto.cs" />
+    <Compile Include="Response\LockUnlockResponseDto.cs" />
+    <Compile Include="Request\KeyboxHistoryPostDto.cs" />
+    <Compile Include="Response\KeyboxHistoryGetResponseDto.cs" />
+    <Compile Include="Request\FeedbackPostDto.cs" />
+    <Compile Include="Response\PropertyFeedbackGetResponseDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -78,6 +94,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Response\" />
+    <Folder Include="Request\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

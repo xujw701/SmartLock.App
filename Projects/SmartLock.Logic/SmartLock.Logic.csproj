@@ -45,6 +45,8 @@
     <Compile Include="Services\TrackedBleService.cs" />
     <Compile Include="WebService\WebServiceClient.cs" />
     <Compile Include="WebService\WebServiceFunctions.cs" />
+    <Compile Include="Services\UserSession.cs" />
+    <Compile Include="Environment\EnvironmentManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartLock.Infrastructure\SmartLock.Infrastructure.csproj">
@@ -78,6 +80,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Environment\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

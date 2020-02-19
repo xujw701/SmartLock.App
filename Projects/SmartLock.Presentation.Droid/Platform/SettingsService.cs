@@ -78,5 +78,15 @@ namespace SmartLock.Presentation.Droid.Platform
             var contents = JsonConvert.SerializeObject(value);
             File.WriteAllText(filename, contents);
         }
+
+        public void DeleteObject(string key)
+        {
+            var filename = CreateFilePath(key);
+
+            if (System.IO.File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+        }
     }
 }

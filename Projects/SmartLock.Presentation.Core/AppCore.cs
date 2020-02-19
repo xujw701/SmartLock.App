@@ -6,6 +6,7 @@ using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.ViewService;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Logic.Services;
+using SmartLock.Logic.Environment;
 
 namespace SmartLock.Presentation.Core
 {
@@ -24,6 +25,10 @@ namespace SmartLock.Presentation.Core
 		private void RegisterServices()
 		{
 			IoC.Register<IWebService, WebServiceFunctions>();
+
+            IoC.RegisterSingleton<IEnvironmentManager, EnvironmentManager>();
+            IoC.RegisterSingleton<IUserSession, UserSession>();
+
             IoC.RegisterSingleton<ITrackedBleService, TrackedBleService>();
         }
 

@@ -14,6 +14,6 @@
 
         T LoadObject<T>(string key) where T : class;
 
-        void SaveConfiguration();
+        void DeleteObject(string key);
     }
 }

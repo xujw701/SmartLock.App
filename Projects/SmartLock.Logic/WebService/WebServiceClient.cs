@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using SmartLock.Model.Server;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+using SmartLock.Model.Services;
 
 namespace SmartLock.Logic.Services.WebUtilities
 {
     public class WebServiceClient
     {
-        //private readonly IUserSession _userSession;
+        private readonly IUserSession _userSession;
 
-        public WebServiceClient(/*IUserSession userSession = null*/)
+        public WebServiceClient(IUserSession userSession = null)
         {
-            //_userSession = userSession;
+            _userSession = userSession;
         }
 
         public async Task<TResponse> PostAsync<TResponse>(Uri uri, object data)
@@ -185,11 +182,11 @@ namespace SmartLock.Logic.Services.WebUtilities
         {
             var client = new HttpClient();
 
-            //if (_userSession != null)
-            //{
-            //    client.DefaultRequestHeaders.Add("UserId", _userSession.UserId.ToString());
-            //    client.DefaultRequestHeaders.Add("Bearer", _userSession.Token);
-            //}
+            if (_userSession != null)
+            {
+                client.DefaultRequestHeaders.Add("UserId", _userSession.UserId.ToString());
+                client.DefaultRequestHeaders.Add("Bearer", _userSession.Token);
+            }
 
             return client;
         }
