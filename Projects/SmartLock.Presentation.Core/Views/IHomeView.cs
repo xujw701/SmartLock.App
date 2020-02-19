@@ -12,7 +12,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action DisconnectCurrent;
         event Action UnlockClicked;
 
-        void Show(string greeting, bool btStatuss, bool setMode = true);
+        void Show(string greeting, string name, bool btStatuss, bool setMode = true);
         void Show(List<BleDevice> bleDevices);
         void Show(BleDevice bleDevice);
     }

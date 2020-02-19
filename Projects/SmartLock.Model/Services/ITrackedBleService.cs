@@ -13,5 +13,6 @@ namespace SmartLock.Model.Services
         Task StartLock();
         Task StartUnlock();
         void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory);
+        Task<bool> ValidateKeybox(BleDevice bleDevice);
     }
 }

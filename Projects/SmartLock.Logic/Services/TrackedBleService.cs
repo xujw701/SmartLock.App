@@ -12,17 +12,21 @@ namespace SmartLock.Logic.Services
         private const string StorageKey = "TrackedBleService";
         private const string KeyboxHistoryKey = "KeyboxHistory";
 
-        private readonly IBlueToothLeService _blueToothLeService;
         private readonly IContainedStorage _containedStorage;
+        private readonly IWebService _webService;
+        private readonly IUserSession _userSession;
+        private readonly IBlueToothLeService _blueToothLeService;
 
         private KeyboxHistories _keyboxHistories;
         private KeyboxHistory _currenHistory;
 
         public List<KeyboxHistory> Records => _keyboxHistories.Records.OrderByDescending(r => r.InTime).ToList();
 
-        public TrackedBleService(IContainedStorage containedStorage, IBlueToothLeService  blueToothLeService)
+        public TrackedBleService(IContainedStorage containedStorage, IWebService webService, IUserSession userSession, IBlueToothLeService blueToothLeService)
         {
             _containedStorage = containedStorage;
+            _webService = webService;
+            _userSession = userSession;
             _blueToothLeService = blueToothLeService;
 
             Init();
@@ -69,6 +73,12 @@ namespace SmartLock.Logic.Services
             }
 
             SaveObject();
+        }
+
+        public async Task<bool> ValidateKeybox(BleDevice bleDevice)
+        {
+            var keyboxGetResponse = await _webService.GetKeybox(uuid: bleDevice.Id.ToString());
+            return keyboxGetResponse != null;
         }
 
         private void BlueToothLeService_OnLocked()

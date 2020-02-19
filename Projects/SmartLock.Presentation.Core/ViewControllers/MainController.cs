@@ -12,9 +12,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly NearbyController _nearbyController;
         private readonly SettingController _settingController;
 
-        public MainController(IViewService viewService, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
+        public MainController(IViewService viewService, IUserSession userSession, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
         {
-            _homeController = new HomeController(viewService, blueToothLeService, trackedBleService);
+            _homeController = new HomeController(viewService, userSession, blueToothLeService, trackedBleService);
             _keyboxesController = new KeyboxesController(viewService);
             _listingController = new ListingController(viewService);
             _nearbyController = new NearbyController(viewService);

@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.Services;
+﻿using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System;
@@ -8,11 +9,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class HomeController : ViewController<IHomeView>
     {
+        private readonly IUserSession _userSession;
         private readonly IBlueToothLeService _blueToothLeService;
         private readonly ITrackedBleService _trackedBleService;
 
-        public HomeController(IViewService viewService, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
+        public HomeController(IViewService viewService, IUserSession userSession, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
         {
+            _userSession = userSession;
             _blueToothLeService = blueToothLeService;
             _trackedBleService = trackedBleService;
         }
@@ -37,26 +40,30 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             if (_blueToothLeService.ConnectedDevice != null)
             {
-                View.Show(GenerateGreeting(), _blueToothLeService.IsOn, false);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn, false);
                 View.Show(_blueToothLeService.ConnectedDevice);
             }
             else if (_blueToothLeService.DiscoveredDevices != null && _blueToothLeService.DiscoveredDevices.Count > 0)
             {
-                View.Show(GenerateGreeting(), _blueToothLeService.IsOn, false);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn, false);
                 View.Show(_blueToothLeService.DiscoveredDevices);
             }
             else
             {
-                View.Show(GenerateGreeting(), _blueToothLeService.IsOn);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn);
             }
         }
 
-        private void BlueToothLeService_DeviceDiscovered(Model.BlueToothLe.BleDevice bleDevice)
+        private async void BlueToothLeService_DeviceDiscovered(BleDevice bleDevice)
         {
-           View.Show(_blueToothLeService.DiscoveredDevices);
+            var isValid = await _trackedBleService.ValidateKeybox(bleDevice);
+            if (isValid)
+            {
+                View.Show(_blueToothLeService.DiscoveredDevices);
+            }
         }
 
-        private void BlueToothLeService_OnDeviceConnected(Model.BlueToothLe.BleDevice bleDevice)
+        private void BlueToothLeService_OnDeviceConnected(BleDevice bleDevice)
         {
             View.Show(bleDevice);
         }

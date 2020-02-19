@@ -24,6 +24,7 @@ namespace SmartLock.Presentation.Droid.Views
         private const int StateLock = 2;
 
         private TextView _tvGreeting;
+        private TextView _tvName;
         private ImageView _ivMessage;
 
         private View _searchingBtnContainer;
@@ -61,6 +62,7 @@ namespace SmartLock.Presentation.Droid.Views
             _view = base.OnCreateView(inflater, container, savedInstanceState);
 
             _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
+            _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
             _ivMessage = _view.FindViewById<ImageView>(Resource.Id.ivMessage);
 
             _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
@@ -107,7 +109,7 @@ namespace SmartLock.Presentation.Droid.Views
             return _view;
         }
 
-        public void Show(string greeting, bool btStatus, bool setMode = true)
+        public void Show(string greeting, string name, bool btStatus, bool setMode = true)
         {
             if (setMode)
             {
@@ -115,6 +117,7 @@ namespace SmartLock.Presentation.Droid.Views
             }
 
             _tvGreeting.Text = greeting;
+            _tvName.Text = name;
             _tvBtStatus.Text = btStatus ? "ON" : "OFF";
         }
 
