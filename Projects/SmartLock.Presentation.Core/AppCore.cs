@@ -7,6 +7,8 @@ using SmartLock.Presentation.Core.ViewService;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Logic.Services;
 using SmartLock.Logic.Environment;
+using SmartLock.Model.PushNotification;
+using SmartLock.Logic.PushNotification;
 
 namespace SmartLock.Presentation.Core
 {
@@ -31,6 +33,8 @@ namespace SmartLock.Presentation.Core
             IoC.RegisterSingleton<IUserSession, UserSession>();
 
             IoC.RegisterSingleton<ITrackedBleService, TrackedBleService>();
+
+            IoC.RegisterSingleton<IPushNotificationService, PushNotificationService>();
         }
 
         /// <summary>

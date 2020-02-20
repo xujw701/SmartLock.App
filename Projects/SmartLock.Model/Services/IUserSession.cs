@@ -15,9 +15,11 @@ namespace SmartLock.Model.Services
         string Phone { get; }
         string Email { get; }
         int ResPortraitId { get; }
+        string PushRegId { get; }
 
         void Start(TokenPostResponseDto dto);
         void Start(MePostResponseDto dto);
         void LogOut();
+        void SavePushRegId(string pushRegId);
     }
 }

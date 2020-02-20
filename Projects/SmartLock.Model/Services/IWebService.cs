@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SmartLock.Model.PushNotification;
 using SmartLock.Model.Request;
 using SmartLock.Model.Response;
 
@@ -23,5 +24,8 @@ namespace SmartLock.Model.Services
         Task CreatePropertyFeedback(int keyboxId, int propertyId, FeedbackPostDto feedbackPostDto);
         Task<List<PropertyFeedbackGetResponseDto>> GetPropertyFeedback(int keyboxId, int propertyId);
         Task CreateFeedback(FeedbackPostDto feedbackPostDto);
+        Task<string> RequestNotificationRegistrationId(NotificationHandle notificationHandle);
+        Task UpsertRegistration(string registrationId, DeviceRegistration deviceRegistration);
+        Task RemoveRegistration(string registrationId);
     }
 }

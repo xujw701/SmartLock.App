@@ -20,6 +20,7 @@ namespace SmartLock.Logic.Services
         public string Phone => _settingsModel?.Phone ?? throw new Exception("Login process must be started to retrieve phone");
         public string Email => _settingsModel?.Email ?? throw new Exception("Login process must be started to retrieve email");
         public int ResPortraitId => _settingsModel?.ResPortraitId ?? 0;
+        public string PushRegId => _settingsModel?.PushRegId;
 
         public UserSession(ISettingsService settings)
         {
@@ -63,6 +64,16 @@ namespace SmartLock.Logic.Services
             DeleteObject();
         }
 
+        public void SavePushRegId(string pushRegId)
+        {
+            if (_settingsModel == null)
+            {
+                throw new Exception("The account must have started login");
+            }
+            _settingsModel.PushRegId = pushRegId;
+            SaveObject();
+        }
+
         private void LoadObject()
         {
             _settingsModel = _settings.LoadObject<SettingsModel>(ObjectIdentifier);
@@ -89,6 +100,7 @@ namespace SmartLock.Logic.Services
             public string Phone { get; set; }
             public string Email { get; set; }
             public int? ResPortraitId { get; set; }
+            public string PushRegId { get; set; }
         }
     }
 }

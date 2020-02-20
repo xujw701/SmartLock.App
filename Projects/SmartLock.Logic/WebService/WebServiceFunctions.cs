@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SmartLock.Logic.Services.WebUtilities;
+using SmartLock.Model.PushNotification;
 using SmartLock.Model.Request;
 using SmartLock.Model.Response;
 using SmartLock.Model.Services;
@@ -134,6 +135,24 @@ namespace SmartLock.Logic
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"feedback");
 
             await new WebServiceClient(_userSession).PostAsync(uri, feedbackPostDto);
+        }
+
+        public async Task<string> RequestNotificationRegistrationId(NotificationHandle notificationHandle)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"notification");
+            return await new WebServiceClient(_userSession).PostAsync<string>(uri, notificationHandle);
+        }
+
+        public async Task UpsertRegistration(string registrationId, DeviceRegistration deviceRegistration)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"notification/{registrationId}");
+            await new WebServiceClient(_userSession).PutAsync(uri, deviceRegistration);
+        }
+
+        public async Task RemoveRegistration(string registrationId)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"notification/{registrationId}");
+            await new WebServiceClient(_userSession).DeleteAsync(uri);
         }
     }
 }

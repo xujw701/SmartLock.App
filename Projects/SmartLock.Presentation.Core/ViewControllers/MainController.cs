@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.Services;
+﻿using SmartLock.Model.PushNotification;
+using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 
@@ -6,14 +7,20 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class MainController : ViewController<IMainView>
     {
+        private readonly IUserSession _userSession;
+        private readonly IPushNotificationService _pushNotificationService;
+
         private readonly HomeController _homeController;
         private readonly KeyboxesController _keyboxesController;
         private readonly ListingController _listingController;
         private readonly NearbyController _nearbyController;
         private readonly SettingController _settingController;
 
-        public MainController(IViewService viewService, IUserSession userSession, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
+        public MainController(IViewService viewService, IUserSession userSession, IPushNotificationService pushNotificationService, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
         {
+            _userSession = userSession;
+            _pushNotificationService = pushNotificationService;
+
             _homeController = new HomeController(viewService, userSession, blueToothLeService, trackedBleService);
             _keyboxesController = new KeyboxesController(viewService);
             _listingController = new ListingController(viewService);
@@ -26,6 +33,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
             base.OnViewLoaded();
 
             View.SetTabs(_homeController, _keyboxesController, /*_listingController, _nearbyController,*/ _settingController);
+
+            if (_userSession.IsLoggedIn)
+            {
+                // Register for push notifications
+                _pushNotificationService.Register();
+            }
         }
     }
 }

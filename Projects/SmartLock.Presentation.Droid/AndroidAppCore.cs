@@ -6,6 +6,8 @@ using SmartLock.Presentation.Core;
 using SmartLock.Presentation.Core.ViewService;
 using System.Collections.Generic;
 using Android.Views;
+using SmartLock.Model.PushNotification;
+using SmartLock.Presentation.Droid.PushNotification;
 
 namespace SmartLock.Presentation.Droid
 {
@@ -19,6 +21,7 @@ namespace SmartLock.Presentation.Droid
             IoC.RegisterSingleton<IViewService, ViewService>();
             IoC.RegisterSingleton<ISettingsService, SettingsService>();
             IoC.RegisterSingleton<IBlueToothLeService, BlueToothLeService>();
+            IoC.RegisterSingleton<IDevicePushNotifications, DevicePushNotifications>();
 
             IoC.Register<IContainedStorage, ContainedStorage>();
             IoC.Register<IMessageBoxService, MessageBoxService>();

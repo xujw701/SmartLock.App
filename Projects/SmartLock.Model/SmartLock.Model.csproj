@@ -46,6 +46,10 @@
     <Compile Include="BlueToothLe\BleDevice.cs" />
     <Compile Include="Models\Keybox.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="PushNotification\DeviceRegistration.cs" />
+    <Compile Include="PushNotification\IDevicePushNotifications.cs" />
+    <Compile Include="PushNotification\IPushNotificationService.cs" />
+    <Compile Include="PushNotification\NotificationHandle.cs" />
     <Compile Include="Services\ITrackedBleService.cs" />
     <Compile Include="Services\IPlatformServices.cs" />
     <Compile Include="Server\WebServiceClientException.cs" />
@@ -95,10 +99,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Response\" />
-    <Folder Include="Request\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

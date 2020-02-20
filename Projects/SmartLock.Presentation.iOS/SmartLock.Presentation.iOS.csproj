@@ -185,187 +185,549 @@
     </None>
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
-    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\background.imageset\background.png" />
-    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\logo_harcourts.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_message.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message.png" />
-    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%403x.png" />
-    <ImageAsset Include="Assets.xcassets\search_lock.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\search_lock.imageset\search_lock.png" />
-    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\searching_lock.png" />
-    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small.png" />
-    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery.png" />
-    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_close.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close.png" />
-    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock.png" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\image.png" />
-    <ImageAsset Include="Assets.xcassets\icon_back.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back.png" />
-    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_data.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data.png" />
-    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit.png" />
-    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback.png" />
-    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_history.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history.png" />
-    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_more.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more.png" />
-    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_out.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out.png" />
-    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_share.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share.png" />
-    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_square.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square.png" />
-    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%403x.png" />
-    <ImageAsset Include="Assets.xcassets\listing.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\listing.imageset\listing.png" />
-    <ImageAsset Include="Assets.xcassets\nearby.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\nearby.imageset\nearby.png" />
-    <ImageAsset Include="Assets.xcassets\setting.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\setting.imageset\setting.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\icon_dot.png" />
-    <ImageAsset Include="Assets.xcassets\graph.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\graph.imageset\graph.png" />
-    <ImageAsset Include="Assets.xcassets\portait1.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\portait1.imageset\portait1.png" />
-    <ImageAsset Include="Assets.xcassets\portait2.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\portait2.imageset\portait2.png" />
-    <ImageAsset Include="Assets.xcassets\portait3.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\portait3.imageset\portait3.png" />
-    <ImageAsset Include="Assets.xcassets\portait4.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\portait4.imageset\portait4.png" />
-    <ImageAsset Include="Assets.xcassets\portait5.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\portait5.imageset\portait5.png" />
-    <ImageAsset Include="Assets.xcassets\icon_in.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in.png" />
-    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%403x.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
-    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\logo.imageset\180.png" />
-    <ImageAsset Include="Assets.xcassets\logo.imageset\120.png" />
-    <ImageAsset Include="Assets.xcassets\logo.imageset\60.png" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\icon_unlock_key %284%29.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\76.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\152.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png" />
+    <ImageAsset Include="Assets.xcassets\background.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\background.imageset\background.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo_harcourts.imageset\logo_harcourts.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_nor.imageset\icon_home_nor%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_home_sel.imageset\icon_home_sel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keboxes_nor.imageset\icon_keboxes_nor%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_keyboxes_sel.imageset\icon_keyboxes_sel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_nor.imageset\icon_listing_nor%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_listing_sel.imageset\icon_listing_sel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_nor.imageset\icon_nearby_nor%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_nearby_sel.imageset\icon_nearby_sel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_nor.imageset\icon_settings_nor%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_settings_sel.imageset\icon_settings_sel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_message.imageset\icon_message%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\search_lock.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\search_lock.imageset\search_lock.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\searching_lock.imageset\searching_lock.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_buletooth_small.imageset\icon_buletooth_small%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_small.imageset\icon_lock_small%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_medium.imageset\icon_lock_medium%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_lock_big.imageset\icon_lock_big%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_battery.imageset\icon_battery%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon_close%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock.imageset\icon_unlock%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add.imageset\icon_add%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\image.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_back.imageset\icon_back%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bathroom.imageset\icon_bathroom%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_bed.imageset\icon_bed%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dashboard.imageset\icon_dashboard%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_data.imageset\icon_data%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_edit.imageset\icon_edit%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_feedback.imageset\icon_feedback%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_history.imageset\icon_history%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_more.imageset\icon_more%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_out.imageset\icon_out%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_share.imageset\icon_share%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_square.imageset\icon_square%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\listing.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\listing.imageset\listing.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\nearby.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\nearby.imageset\nearby.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\setting.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\setting.imageset\setting.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dot.imageset\icon_dot.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\graph.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\graph.imageset\graph.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait1.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait1.imageset\portait1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait2.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait2.imageset\portait2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait3.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait3.imageset\portait3.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait4.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait4.imageset\portait4.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait5.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\portait5.imageset\portait5.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\icon_unlock_key %284%29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />

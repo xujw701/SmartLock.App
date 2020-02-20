@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.Services;
+﻿using SmartLock.Model.PushNotification;
+using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System;
@@ -11,12 +12,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IUserSession _userSession;
         private readonly IUserService _userService;
         private readonly IMessageBoxService _messageBoxService;
+        private readonly IPushNotificationService _pushNotificationService;
 
-        public LoginController(IViewService viewService, IUserSession userSession, IUserService userService, IMessageBoxService messageBoxService) : base(viewService)
+        public LoginController(IViewService viewService, IUserSession userSession, IUserService userService, IMessageBoxService messageBoxService, IPushNotificationService pushNotificationService) : base(viewService)
         {
             _userSession = userSession;
             _userService = userService;
             _messageBoxService = messageBoxService;
+            _pushNotificationService = pushNotificationService;
         }
 
         protected override void OnViewLoaded()
@@ -29,6 +32,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
 
             View.LoginClicked += View_LoginClicked;
+
+            _pushNotificationService.BindDeviceTokenListener();
         }
 
         private void View_LoginClicked(string username, string password)

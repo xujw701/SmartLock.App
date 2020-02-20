@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props" Condition="Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -41,7 +42,8 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
-    <AndroidKeyStore></AndroidKeyStore>
+    <AndroidKeyStore>
+    </AndroidKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -181,6 +183,39 @@
     <Reference Include="Xamarin.Android.Support.ViewPager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Support.ViewPager.28.0.0.3\lib\monoandroid90\Xamarin.Android.Support.ViewPager.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Azure.NotificationHubs.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Azure.NotificationHubs.Android.0.6.0\lib\monoandroid80\Xamarin.Azure.NotificationHubs.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Firebase.Common.71.1610.0\lib\monoandroid90\Xamarin.Firebase.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Iid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Firebase.Iid.71.1710.0\lib\monoandroid90\Xamarin.Firebase.Iid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Iid.Interop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Firebase.Iid.Interop.71.1601.0\lib\monoandroid90\Xamarin.Firebase.Iid.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Measurement.Connector, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Firebase.Measurement.Connector.71.1701.0\lib\monoandroid90\Xamarin.Firebase.Measurement.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Firebase.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Firebase.Messaging.71.1740.0\lib\monoandroid90\Xamarin.Firebase.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Google.AutoValue.Annotations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Google.AutoValue.Annotations.1.6.5\lib\monoandroid80\Xamarin.Google.AutoValue.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Base.71.1610.0\lib\monoandroid90\Xamarin.GooglePlayServices.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Basement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Basement.71.1620.0\lib\monoandroid90\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Stats, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Stats.71.1601.0\lib\monoandroid90\Xamarin.GooglePlayServices.Stats.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Tasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.GooglePlayServices.Tasks.71.1601.0\lib\monoandroid90\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartLock.Infrastructure\SmartLock.Infrastructure.csproj">
@@ -214,6 +249,10 @@
     <Compile Include="Platform\PlatformServices.cs" />
     <Compile Include="Platform\SettingsService.cs" />
     <Compile Include="Platform\ViewService.cs" />
+    <Compile Include="PushNotification\Constants.cs" />
+    <Compile Include="PushNotification\DevicePushNotifications.cs" />
+    <Compile Include="PushNotification\SmartELockFirebaseIIDService.cs" />
+    <Compile Include="PushNotification\SmartELockFirebaseMessagingService.cs" />
     <Compile Include="Support\ImageHelper.cs" />
     <Compile Include="Support\BitmapHelper.cs" />
     <Compile Include="Support\NetworkHelper.cs" />
@@ -241,6 +280,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -685,6 +725,17 @@
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.AppCompat.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.AppCompat.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.v7.RecyclerView.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.RecyclerView.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.v7.RecyclerView.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.RecyclerView.targets'))" />
     <Error Condition="!Exists('..\..\packages\Xamarin.Android.Support.Design.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Design.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Android.Support.Design.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Design.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Tasks.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Tasks.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Base.71.1610.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Base.71.1610.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Measurement.Connector.71.1701.0\build\MonoAndroid90\Xamarin.Firebase.Measurement.Connector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Measurement.Connector.71.1701.0\build\MonoAndroid90\Xamarin.Firebase.Measurement.Connector.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.GooglePlayServices.Stats.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.GooglePlayServices.Stats.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Common.71.1610.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Common.71.1610.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Iid.Interop.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Iid.Interop.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Iid.71.1710.0\build\MonoAndroid90\Xamarin.Firebase.Iid.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Iid.71.1710.0\build\MonoAndroid90\Xamarin.Firebase.Iid.targets'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.Firebase.Messaging.71.1740.0\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Firebase.Messaging.71.1740.0\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets'))" />
   </Target>
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Annotations.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Annotations.targets')" />
@@ -723,4 +774,14 @@
   <Import Project="..\..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.v7.AppCompat.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.AppCompat.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.v7.RecyclerView.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.v7.RecyclerView.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.v7.RecyclerView.targets')" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Design.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Design.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Design.28.0.0.3\build\monoandroid90\Xamarin.Android.Support.Design.targets')" />
+  <Import Project="..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets')" />
+  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Tasks.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Tasks.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Tasks.targets')" />
+  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Base.71.1610.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Base.71.1610.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Base.targets')" />
+  <Import Project="..\..\packages\Xamarin.Firebase.Measurement.Connector.71.1701.0\build\MonoAndroid90\Xamarin.Firebase.Measurement.Connector.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Measurement.Connector.71.1701.0\build\MonoAndroid90\Xamarin.Firebase.Measurement.Connector.targets')" />
+  <Import Project="..\..\packages\Xamarin.GooglePlayServices.Stats.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Stats.71.1601.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Stats.targets')" />
+  <Import Project="..\..\packages\Xamarin.Firebase.Common.71.1610.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Common.71.1610.0\build\MonoAndroid90\Xamarin.Firebase.Common.targets')" />
+  <Import Project="..\..\packages\Xamarin.Firebase.Iid.Interop.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Iid.Interop.71.1601.0\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets')" />
+  <Import Project="..\..\packages\Xamarin.Firebase.Iid.71.1710.0\build\MonoAndroid90\Xamarin.Firebase.Iid.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Iid.71.1710.0\build\MonoAndroid90\Xamarin.Firebase.Iid.targets')" />
+  <Import Project="..\..\packages\Xamarin.Firebase.Messaging.71.1740.0\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets" Condition="Exists('..\..\packages\Xamarin.Firebase.Messaging.71.1740.0\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets')" />
 </Project>
