@@ -66,7 +66,7 @@ namespace SmartLock.Presentation.Droid.Platform
             ControllerStack.Clear();
             ControllerStack.Add(_rootViewController);
 
-            Intent intent = new Intent(ViewBase.CurrentActivity, typeof(MainView));
+            Intent intent = new Intent(ViewBase.CurrentActivity, typeof(LoginView));
             intent.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask);
             ViewBase.CurrentActivity.StartActivity(intent);
         }

@@ -25,7 +25,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxesController = new KeyboxesController(viewService, userSession, keyboxService);
             _listingController = new ListingController(viewService);
             _nearbyController = new NearbyController(viewService);
-            _settingController = new SettingController(viewService);
+            _settingController = new SettingController(viewService, userSession, messageBoxService);
         }
 
         protected override void OnViewLoaded()
