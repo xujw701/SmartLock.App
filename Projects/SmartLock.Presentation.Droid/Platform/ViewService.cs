@@ -51,6 +51,7 @@ namespace SmartLock.Presentation.Droid.Platform
             _viewcontrollerMappings.Add(typeof(KeyboxDetailController), typeof(KeyboxDetailView));
             _viewcontrollerMappings.Add(typeof(KeyboxDashboardController), typeof(KeyboxDashboardView));
             _viewcontrollerMappings.Add(typeof(KeyboxHistoryController), typeof(KeyboxHistoryView));
+            _viewcontrollerMappings.Add(typeof(KeyboxPlaceController), typeof(KeyboxPlaceView));
         }
 
         public override void Pop()

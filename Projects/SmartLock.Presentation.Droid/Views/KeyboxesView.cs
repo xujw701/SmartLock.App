@@ -23,6 +23,7 @@ namespace SmartLock.Presentation.Droid.Views
         private KeyboxAdapter _adapter;
 
         public event Action<Keybox> KeyboxClicked;
+        public event Action PlaceKeyboxClicked;
 
         protected override int LayoutId => Resource.Layout.View_Keyboxes;
 
@@ -35,7 +36,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             _btnPlaceLock.Click += (s, e) =>
             {
-
+                PlaceKeyboxClicked?.Invoke();
             };
 
             return _view;

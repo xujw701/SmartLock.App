@@ -100,4 +100,9 @@
     <item name="android:textAllCaps">false</item>
   </style>
 
+  <style name="customHintStyle" parent="TextAppearance.AppCompat">
+    <item name="android:textColor">@color/hint_color_floating</item>
+    <item name="android:textSize">12sp</item>
+  </style>
+
 </resources>

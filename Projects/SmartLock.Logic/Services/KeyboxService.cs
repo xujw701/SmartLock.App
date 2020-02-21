@@ -131,6 +131,31 @@ namespace SmartLock.Logic.Services
             return keyboxHistories;
         }
 
+        public async Task<bool> PlaceLock(Keybox keybox, Property property)
+        {
+            var result = await _webService.CreateKeyboxProperty(keybox.KeyboxId, new KeyboxPropertyPostPutDto()
+            {
+                CompanyId = keybox.CompanyId,
+                BranchId = keybox.BranchId,
+                KeyboxName = property.PropertyName,
+                PropertyName = property.PropertyName,
+                Address = property.Address,
+                Notes = property.Notes,
+                Price = property.Price,
+                Bedrooms = property.Bedrooms,
+                Bathrooms = property.Bathrooms,
+                FloorArea = property.FloorArea,
+                LandArea = property.LandArea
+            });
+
+            if (result != null)
+            {
+                return result.Id > 0;
+            }
+
+            return false;
+        }
+
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
             Task.Run(async () =>
@@ -157,6 +182,7 @@ namespace SmartLock.Logic.Services
 
             if (keybox != null)
             {
+                keybox.KeyboxName = bleDevice.Name;
                 keybox.BatteryLevel = bleDevice.BatteryLevel;
                 keybox.State = bleDevice.State;
 

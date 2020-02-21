@@ -40,7 +40,7 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
     <AndroidKeyStore>
     </AndroidKeyStore>
@@ -264,6 +264,7 @@
     <Compile Include="Support\FileHelper.cs" />
     <Compile Include="Support\ListViewHelper.cs" />
     <Compile Include="Support\SelectedFilePathHelper.cs" />
+    <Compile Include="Views\KeyboxPlaceView.cs" />
     <Compile Include="Views\KeyboxHistoryView.cs" />
     <Compile Include="Views\KeyboxDashboardView.cs" />
     <Compile Include="Views\KeyboxDetailView.cs" />
@@ -686,6 +687,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\View_KeyboxPlace.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

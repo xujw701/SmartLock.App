@@ -22,6 +22,9 @@
     <color name="text2_gray">#4f4f4f</color>
     <color name="divider">#d8d8d8</color>
 
+    <color name="hint_color_floating">#8f8f8f</color>
+    <color name="hint_color">#838fa0</color>
+
     <color name="accent">#1677ff</color>
     <!--<color name="accent">#418AFD</color>-->
   
