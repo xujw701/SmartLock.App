@@ -51,15 +51,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="28e Oak View Terrace"
-                android:textSize="18sp"
+                android:text=""
+                android:textSize="20sp"
                 android:textColor="@android:color/black"/>
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Albany, Auckland"
-                android:textSize="14sp"
+                android:text=""
+                android:textSize="18sp"
                 android:textColor="@color/text2_gray"/>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/ivRoom"
                     android:layout_marginStart="8dp"
-                    android:text="6"
+                    android:text="0"
                     android:textSize="12sp"
                     android:textColor="@color/text2_gray"/>
                 <ImageView
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/ivToilet"
                     android:layout_marginStart="8dp"
-                    android:text="2"
+                    android:text="0"
                     android:textSize="12sp"
                     android:textColor="@color/text2_gray"/>
                 <ImageView
@@ -108,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/ivArea"
                     android:layout_marginStart="8dp"
-                    android:text="9850m2"
+                    android:text="N/A"
                     android:textSize="12sp"
                     android:textColor="@color/text2_gray"/>
             </RelativeLayout>
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="$5,600,000"
+                android:text=""
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
             <LinearLayout
@@ -162,7 +162,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -216,7 +217,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
@@ -232,4 +234,5 @@
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <include layout="@layout/include_progressoverlay"/>
 </LinearLayout>

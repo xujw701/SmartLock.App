@@ -70,8 +70,8 @@ namespace SmartLock.Presentation.Droid.Adapters
 
             public void SetData(Keybox keybox)
             {
-                _tvText1.Text = keybox.Name;
-                _tvText2.Text = keybox.Address;
+                _tvText1.Text = keybox.KeyboxName;
+                _tvText2.Text = keybox.KeyboxName;
                 _tvBattery.Text = keybox.BatteryLevelString;
 
                 SetBatteryColor(keybox);

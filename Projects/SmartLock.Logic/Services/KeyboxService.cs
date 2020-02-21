@@ -119,6 +119,25 @@ namespace SmartLock.Logic.Services
             SaveObject();
         }
 
+        public async Task<List<Keybox>> GetMyListingKeyboxes()
+        {
+            var keyboxes = await _webService.GetMyKeybox();
+
+            if (keyboxes != null)
+            {
+                return keyboxes.Where(k => k.PropertyId.HasValue).ToList();
+            }
+
+            return new List<Keybox>();
+        }
+
+        public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId)
+        {
+            var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);
+
+            return property;
+        }
+
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
             Task.Run(async () =>
@@ -128,7 +147,7 @@ namespace SmartLock.Logic.Services
 
                 var keybox = await _webService.GetKeybox(uuid: bleDevice.Id.ToString());
 
-                if (keybox != null && !_discoveredKeyboxes.Exists(d => d.Id.ToString().Equals(keybox.Uuid)))
+                if (keybox != null && !_discoveredKeyboxes.Exists(d => d.Uuid.ToString().Equals(keybox.Uuid)))
                 {
                     keybox.State = bleDevice.State;
 

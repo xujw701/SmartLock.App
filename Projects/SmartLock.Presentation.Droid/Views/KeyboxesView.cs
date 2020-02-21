@@ -32,6 +32,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             return _view;
         }
+
         public void Show(List<Keybox> keyboxes)
         {
             if (_adapter == null)

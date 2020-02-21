@@ -39,8 +39,15 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             set
             {
                 _isBusy = value;
+
                 if (_view != null)
                 {
+                    var progressOverlay = _view.FindViewById<FrameLayout>(Resource.Id.progressOverlay);
+                    if (progressOverlay != null)
+                    {
+                        progressOverlay.Visibility = _isBusy ? ViewStates.Visible : ViewStates.Gone;
+                    }
+
                     //var swipeRefreshLayout = _view.FindViewById<SwipeRefreshLayout>(Resource.Id.swipe_refresh_layout);
                     //if (swipeRefreshLayout != null)
                     //{

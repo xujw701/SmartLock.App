@@ -27,5 +27,8 @@ namespace SmartLock.Model.Services
         Task StartLock();
         Task StartUnlock();
         void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory);
+
+        Task<List<Keybox>> GetMyListingKeyboxes();
+        Task<Property> GetKeyboxProperty(int keyboxId, int propertyId);
     }
 }

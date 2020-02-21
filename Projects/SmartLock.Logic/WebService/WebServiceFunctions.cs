@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using SmartLock.Logic.Services.WebUtilities;
 using SmartLock.Model.Models;
@@ -64,30 +65,46 @@ namespace SmartLock.Logic
 
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes{parameters}");
 
-            var result =  await new WebServiceClient(_userSession).GetAsync<KeyboxGetResponseDto>(uri);
+            var keyboxDto =  await new WebServiceClient(_userSession).GetAsync<KeyboxGetResponseDto>(uri);
 
-            if (result != null)
+            if (keyboxDto != null)
             {
                 return new Keybox()
                 {
-                    KeyboxId = result.KeyboxId,
-                    CompanyId = result.CompanyId,
-                    BranchId = result.BranchId,
-                    Uuid = result.Uuid,
-                    PropertyId = result.PropertyId,
-                    KeyboxName = result.KeyboxName,
-                    BatteryLevel = result.BatteryLevel,
+                    KeyboxId = keyboxDto.KeyboxId,
+                    CompanyId = keyboxDto.CompanyId,
+                    BranchId = keyboxDto.BranchId,
+                    Uuid = keyboxDto.Uuid,
+                    PropertyId = keyboxDto.PropertyId,
+                    KeyboxName = keyboxDto.KeyboxName,
+                    BatteryLevel = keyboxDto.BatteryLevel,
                 };
             }
 
             return null;
         }
 
-        public async Task<List<KeyboxGetResponseDto>> GetMyKeybox()
+        public async Task<List<Keybox>> GetMyKeybox()
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/mine");
 
-            return await new WebServiceClient(_userSession).GetAsync<List<KeyboxGetResponseDto>>(uri);
+            var keyboxListDto = await new WebServiceClient(_userSession).GetAsync<List<KeyboxGetResponseDto>>(uri);
+
+            if (keyboxListDto != null)
+            {
+                return keyboxListDto.Select(dto => new Keybox()
+                {
+                    KeyboxId = dto.KeyboxId,
+                    CompanyId = dto.CompanyId,
+                    BranchId = dto.BranchId,
+                    Uuid = dto.Uuid,
+                    PropertyId = dto.PropertyId,
+                    KeyboxName = dto.KeyboxName,
+                    BatteryLevel = dto.BatteryLevel,
+                }).ToList();
+            }
+
+            return null;
         }
 
         public async Task<DefaultCreatedPostResponseDto> CreateKeyboxProperty(int keyboxId, KeyboxPropertyPostPutDto keyboxPropertyPostDto)
@@ -97,11 +114,29 @@ namespace SmartLock.Logic
             return await new WebServiceClient(_userSession).PostAsync<DefaultCreatedPostResponseDto>(uri, keyboxPropertyPostDto);
         }
 
-        public async Task<PropertyGetResponseDto> GetKeyboxProperty(int keyboxId, int propertyId)
+        public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId)
         {
-            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property{propertyId}");
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}");
 
-            return await new WebServiceClient(_userSession).GetAsync<PropertyGetResponseDto>(uri);
+            var propertyDto = await new WebServiceClient(_userSession).GetAsync<PropertyGetResponseDto>(uri);
+
+            if (propertyDto != null)
+            {
+                return new Property()
+                {
+                    PropertyId = propertyDto.PropertyId,
+                    PropertyName = propertyDto.PropertyName,
+                    Address = propertyDto.Address,
+                    Notes = propertyDto.Notes,
+                    Price = propertyDto.Price,
+                    Bedrooms = propertyDto.Bedrooms,
+                    Bathrooms = propertyDto.Bathrooms,
+                    FloorArea = propertyDto.FloorArea,
+                    LandArea = propertyDto.LandArea
+                };
+            }
+
+            return null;
         }
 
         public async Task UpdateKeyboxProperty(int keyboxId, int propertyId, KeyboxPropertyPostPutDto keyboxPropertyPutDto)

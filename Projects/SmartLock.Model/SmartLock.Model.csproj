@@ -52,7 +52,7 @@
     <Compile Include="PushNotification\IDevicePushNotifications.cs" />
     <Compile Include="PushNotification\IPushNotificationService.cs" />
     <Compile Include="PushNotification\NotificationHandle.cs" />
-    <Compile Include="Services\ISmartBleService.cs" />
+    <Compile Include="Services\IKeyboxService.cs" />
     <Compile Include="Services\IPlatformServices.cs" />
     <Compile Include="Server\WebServiceClientException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
