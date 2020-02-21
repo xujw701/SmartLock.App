@@ -143,14 +143,14 @@ namespace SmartLock.Logic
 
         public async Task UpdateKeyboxProperty(int keyboxId, int propertyId, KeyboxPropertyPostPutDto keyboxPropertyPutDto)
         {
-            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property{propertyId}");
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}");
 
             await new WebServiceClient(_userSession).PutAsync(uri, keyboxPropertyPutDto);
         }
 
         public async Task EndKeyboxProperty(int keyboxId, int propertyId)
         {
-            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property{propertyId}");
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}");
 
             await new WebServiceClient(_userSession).DeleteAsync(uri);
         }

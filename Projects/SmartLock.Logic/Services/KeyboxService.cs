@@ -156,6 +156,26 @@ namespace SmartLock.Logic.Services
             return false;
         }
 
+        public async Task<bool> PlaceLockUpdate(Keybox keybox, Property property)
+        {
+            await _webService.UpdateKeyboxProperty(keybox.KeyboxId, property.PropertyId, new KeyboxPropertyPostPutDto()
+            {
+                CompanyId = keybox.CompanyId,
+                BranchId = keybox.BranchId,
+                KeyboxName = property.PropertyName,
+                PropertyName = property.PropertyName,
+                Address = property.Address,
+                Notes = property.Notes,
+                Price = property.Price,
+                Bedrooms = property.Bedrooms,
+                Bathrooms = property.Bathrooms,
+                FloorArea = property.FloorArea,
+                LandArea = property.LandArea
+            });
+
+            return true;
+        }
+
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
             Task.Run(async () =>

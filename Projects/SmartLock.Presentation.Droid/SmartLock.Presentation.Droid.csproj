@@ -264,6 +264,7 @@
     <Compile Include="Support\FileHelper.cs" />
     <Compile Include="Support\ListViewHelper.cs" />
     <Compile Include="Support\SelectedFilePathHelper.cs" />
+    <Compile Include="Views\KeyboxPlaceUpdateView.cs" />
     <Compile Include="Views\KeyboxPlaceView.cs" />
     <Compile Include="Views\KeyboxHistoryView.cs" />
     <Compile Include="Views\KeyboxDashboardView.cs" />

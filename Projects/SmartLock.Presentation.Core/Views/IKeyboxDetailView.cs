@@ -8,7 +8,9 @@ namespace SmartLock.Presentation.Core.Views
     {
         event Action BackClick;
         event Action LockHistoryClick;
+        event Action LockEditClick;
         event Action LockDashboardClick;
+        event Action LockDataClick;
 
         void Show(Keybox keybox, Property property);
     }

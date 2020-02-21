@@ -11,14 +11,16 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class KeyboxDetailController : ViewController<IKeyboxDetailView>
     {
+        private readonly IMessageBoxService _messageBoxService;
         private readonly IKeyboxService _keyboxService;
 
         private Property _property;
 
         public Keybox Keybox;
  
-        public KeyboxDetailController(IViewService viewService, IKeyboxService keyboxService) : base(viewService)
+        public KeyboxDetailController(IViewService viewService, IMessageBoxService messageBoxService, IKeyboxService keyboxService) : base(viewService)
         {
+            _messageBoxService = messageBoxService;
             _keyboxService = keyboxService;
         }
 
@@ -30,7 +32,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.BackClick += () => Pop();
             View.LockDashboardClick += () => Push<KeyboxDashboardController>();
+            View.LockEditClick += () => Push<KeyboxPlaceUpdateController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
             View.LockHistoryClick += () => Push<KeyboxHistoryController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
+            View.LockDataClick += () => _messageBoxService.ShowMessage("Data at door", _property.Notes);
         }
 
         protected override void OnViewWillShow()
