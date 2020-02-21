@@ -3,7 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Widget;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;
 using SmartLock.Presentation.Droid.Views.ViewBases;
@@ -22,7 +22,6 @@ namespace SmartLock.Presentation.Droid.Views
         private KeyboxHistoryAdapter _adapter;
 
         public event Action BackClick;
-        public event Action<KeyboxHistory> KeyboxSetOut;
 
         protected override int LayoutId => Resource.Layout.View_KeyboxHistory;
 
@@ -40,7 +39,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             if (_adapter == null)
             {
-                _adapter = new KeyboxHistoryAdapter(keyboxHistories, KeyboxSetOut);
+                _adapter = new KeyboxHistoryAdapter(keyboxHistories);
                 _rvHistoryList.SetLayoutManager(new LinearLayoutManager(this));
                 _rvHistoryList.SetAdapter(_adapter);
             }

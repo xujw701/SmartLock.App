@@ -11,16 +11,9 @@ namespace SmartLock.Logic.Services
 {
     public class KeyboxService : IKeyboxService
     {
-        private const string StorageKey = "KeyboxService";
-        private const string KeyboxHistoryKey = "KeyboxHistory";
-
-        private readonly IContainedStorage _containedStorage;
         private readonly IWebService _webService;
         private readonly IUserSession _userSession;
         private readonly ILocalBleService _localBleService;
-
-        private KeyboxHistories _keyboxHistories;
-        private KeyboxHistory _currenHistory;
 
         private Keybox _connectedKeybox;
 
@@ -36,11 +29,10 @@ namespace SmartLock.Logic.Services
         public Keybox ConnectedKeybox => _connectedKeybox;
         public bool DeviceConnected => _localBleService.DeviceConnected;
 
-        public List<KeyboxHistory> Records => _keyboxHistories.Records.OrderByDescending(r => r.InTime).ToList();
+        //public List<KeyboxHistory> Records => _keyboxHistories.Records.OrderByDescending(r => r.InTime).ToList();
 
-        public KeyboxService(IContainedStorage containedStorage, IWebService webService, IUserSession userSession, ILocalBleService localBleService)
+        public KeyboxService(IWebService webService, IUserSession userSession, ILocalBleService localBleService)
         {
-            _containedStorage = containedStorage;
             _webService = webService;
             _userSession = userSession;
             _localBleService = localBleService;
@@ -50,8 +42,6 @@ namespace SmartLock.Logic.Services
 
         public void Init()
         {
-            _containedStorage.Init(StorageKey);
-
             _discoveredKeyboxes = new List<Keybox>();
 
             _localBleService.OnDeviceDiscovered += LocalBleService_OnDeviceDiscovered;
@@ -59,8 +49,6 @@ namespace SmartLock.Logic.Services
 
             _localBleService.OnLocked += LocalBleService_OnLocked;
             _localBleService.OnUnlocked += LocalBleService_OnUnlocked;
-
-            LoadObject();
         }
 
         public async Task StartScanningForKeyboxesAsync()
@@ -94,29 +82,17 @@ namespace SmartLock.Logic.Services
         {
             await _localBleService.StartSetLock(false);
 
-            _currenHistory = new KeyboxHistory()
-            {
-                Id = Guid.NewGuid().ToString(),
-                LockId = _localBleService.ConnectedDevice.Id.ToString(),
-                Opener = "Wayne Leonard",
-                InTime = DateTime.Now
-            };
+            //_currenHistory = new KeyboxHistory()
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    LockId = _localBleService.ConnectedDevice.Id.ToString(),
+            //    Opener = "Wayne Leonard",
+            //    InTime = DateTime.Now
+            //};
 
-            _keyboxHistories.Records.Add(_currenHistory);
+            //_keyboxHistories.Records.Add(_currenHistory);
 
-            SaveObject();
-        }
-
-        public void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory)
-        {
-            var record = _keyboxHistories.Records.FirstOrDefault(d => !string.IsNullOrEmpty(d.Id) && d.Id.Equals(keyboxHistory.Id));
-
-            if (record != null)
-            {
-                record.OutTime = DateTime.Now;
-            }
-
-            SaveObject();
+            //SaveObject();
         }
 
         public async Task<List<Keybox>> GetMyListingKeyboxes()
@@ -136,6 +112,13 @@ namespace SmartLock.Logic.Services
             var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);
 
             return property;
+        }
+
+        public async Task<List<KeyboxHistory>> GetKeyboxHistories(int keyboxId, int propertyId)
+        {
+            var keyboxHistories = await _webService.GetHistories(keyboxId, propertyId);
+
+            return keyboxHistories;
         }
 
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
@@ -175,12 +158,12 @@ namespace SmartLock.Logic.Services
 
         private void LocalBleService_OnLocked()
         {
-            if (_currenHistory != null)
-            {
-                SetKeyboxHistoryLocked(_currenHistory);
+            //if (_currenHistory != null)
+            //{
+            //    SetKeyboxHistoryLocked(_currenHistory);
 
-                _currenHistory = null;
-            }
+            //    _currenHistory = null;
+            //}
 
             OnLocked?.Invoke();
         }
@@ -189,32 +172,5 @@ namespace SmartLock.Logic.Services
         {
             OnUnlocked?.Invoke();
         }
-
-        #region ContainedStorage
-
-        private void LoadObject()
-        {
-            _keyboxHistories = _containedStorage.GetSerializedObject<KeyboxHistories>(KeyboxHistoryKey);
-
-            if (_keyboxHistories == null)
-            {
-                _keyboxHistories = new KeyboxHistories()
-                {
-                    Records = new List<KeyboxHistory>()
-                };
-            }
-        }
-
-        private void SaveObject()
-        {
-            _containedStorage.StoreObjectSerialized(KeyboxHistoryKey, _keyboxHistories);
-        }
-
-        private void DeleteObject()
-        {
-            _containedStorage.DeleteSerializedObject(KeyboxHistoryKey);
-        }
-
-        #endregion
     }
 }

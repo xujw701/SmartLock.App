@@ -4,21 +4,17 @@ using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 
 namespace SmartLock.Presentation.Droid.Adapters
 {
     public class KeyboxHistoryAdapter : RecyclerView.Adapter
     {
-        private Action<KeyboxHistory> _keyboxSetOut;
-
         public List<KeyboxHistory> KeyboxHistories;
 
-        public KeyboxHistoryAdapter(List<KeyboxHistory> keyboxHistories, Action<KeyboxHistory> keyboxSetOut)
+        public KeyboxHistoryAdapter(List<KeyboxHistory> keyboxHistories)
         {
             KeyboxHistories = keyboxHistories;
-
-            _keyboxSetOut = keyboxSetOut;
         }
 
         public override int ItemCount => KeyboxHistories.Count;
@@ -27,7 +23,7 @@ namespace SmartLock.Presentation.Droid.Adapters
         {
             var inflater = LayoutInflater.From(parent.Context);
             var itemView = inflater.Inflate(Resource.Layout.Item_KeyboxHistory, parent, false);
-            var holder = new LockboxRecordHolder(parent.Context, KeyboxHistories, _keyboxSetOut, itemView);
+            var holder = new LockboxRecordHolder(parent.Context, KeyboxHistories, itemView);
             return holder;
         }
 
@@ -45,7 +41,6 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly Context _context;
 
             private readonly List<KeyboxHistory> _keyboxHistories;
-            private readonly Action<KeyboxHistory> _keyboxSetOut;
 
             private readonly View _container;
             private readonly ImageView _ivPortrait;
@@ -55,11 +50,10 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly TextView _tvOut;
             private readonly View _btnOut;
 
-            public LockboxRecordHolder(Context context, List<KeyboxHistory> keyboxHistories, Action<KeyboxHistory> keyboxSetOut, View itemView) : base(itemView)
+            public LockboxRecordHolder(Context context, List<KeyboxHistory> keyboxHistories, View itemView) : base(itemView)
             {
                 _context = context;
                 _keyboxHistories = keyboxHistories;
-                _keyboxSetOut = keyboxSetOut;
 
                 _container = itemView.FindViewById<View>(Resource.Id.container);
 
@@ -69,49 +63,21 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _tvIn = itemView.FindViewById<TextView>(Resource.Id.tvIn);
                 _tvOut = itemView.FindViewById<TextView>(Resource.Id.tvOut);
                 _btnOut = itemView.FindViewById<View>(Resource.Id.btnOut);
-
-                _btnOut.Click += (s, e) =>
-                {
-                    var history = keyboxHistories[AdapterPosition];
-                    if (history.OutTime == null)
-                    {
-                        _keyboxSetOut?.Invoke(history);
-                    }
-                };
             }
 
             public void SetData(KeyboxHistory keyboxHistory)
             {
-                _tvName.Text = keyboxHistory.Opener;
+                _tvName.Text = keyboxHistory.Name;
                 _tvDuration.Text = keyboxHistory.Duration;
-                _tvIn.Text = keyboxHistory.InTimeString;
-                _tvOut.Text = keyboxHistory.OutTimeString;
+                _tvIn.Text = keyboxHistory.InOnString;
+                _tvOut.Text = keyboxHistory.OutOnString;
 
                 ConfigureDemoPortait(keyboxHistory);
             }
 
             private void ConfigureDemoPortait(KeyboxHistory keyboxHistory)
             {
-                if (keyboxHistory.Opener.StartsWith("Della"))
-                {
-                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait1));
-                }
-                else if (keyboxHistory.Opener.StartsWith("Mol"))
-                {
-                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait3));
-                }
-                else if (keyboxHistory.Opener.StartsWith("Win"))
-                {
-                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait5));
-                }
-                else if (keyboxHistory.Opener.StartsWith("Har"))
-                {
-                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait2));
-                }
-                else
-                {
-                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait4));
-                }
+                _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait4));
             }
         }
     }

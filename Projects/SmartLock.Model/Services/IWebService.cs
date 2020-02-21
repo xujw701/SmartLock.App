@@ -21,7 +21,7 @@ namespace SmartLock.Model.Services
         Task EndKeyboxProperty(int keyboxId, int propertyId);
         Task<LockUnlockResponseDto> Unlock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto);
         Task<LockUnlockResponseDto> Lock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto);
-        Task<List<KeyboxHistoryGetResponseDto>> GetHistories(int keyboxId, int propertyId);
+        Task<List<KeyboxHistory>> GetHistories(int keyboxId, int propertyId);
         Task CreatePropertyFeedback(int keyboxId, int propertyId, FeedbackPostDto feedbackPostDto);
         Task<List<PropertyFeedbackGetResponseDto>> GetPropertyFeedback(int keyboxId, int propertyId);
         Task CreateFeedback(FeedbackPostDto feedbackPostDto);

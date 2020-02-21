@@ -10,11 +10,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class HomeController : ViewController<IHomeView>
     {
+        private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
 
-        public HomeController(IViewService viewService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
+        public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
+            _messageBoxService = messageBoxService;
             _userSession = userSession;
             _keyboxService = keyboxService;
         }
@@ -110,21 +112,19 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         protected override async Task ShowErrorAsync(Exception exception)
         {
-            var messageBoxService = Infrastructure.IoC.Resolve<IMessageBoxService>();
-
             if (exception is Newtonsoft.Json.JsonException)
             {
-                await messageBoxService.ShowMessageAsync("Error", "Error parsing JSON");
+                await _messageBoxService.ShowMessageAsync("Error", "Error parsing JSON");
             }
             else
             {
                 if (exception.Message.Contains("133"))
                 {
-                    await messageBoxService.ShowMessageAsync("Tips", "The lock is already connected to another user now, please try it later.");
+                    await _messageBoxService.ShowMessageAsync("Tips", "The lock is already connected to another user now, please try it later.");
                 }
                 else
                 {
-                    //await messageBoxService.ShowMessageAsync("Error", exception.Message);
+                    //await _messageBoxService.ShowMessageAsync("Error", exception.Message);
                 }
             }
         }

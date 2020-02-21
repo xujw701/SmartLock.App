@@ -167,11 +167,28 @@ namespace SmartLock.Logic
             return await new WebServiceClient(_userSession).PostAsync<LockUnlockResponseDto>(uri, keyboxHistoryPostDto);
         }
 
-        public async Task<List<KeyboxHistoryGetResponseDto>> GetHistories(int keyboxId, int propertyId)
+        public async Task<List<KeyboxHistory>> GetHistories(int keyboxId, int propertyId)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}/histories");
 
-            return await new WebServiceClient(_userSession).GetAsync<List<KeyboxHistoryGetResponseDto>>(uri);
+            var keyboxHistoryListDto = await new WebServiceClient(_userSession).GetAsync<List<KeyboxHistoryGetResponseDto>>(uri);
+
+            if (keyboxHistoryListDto != null)
+            {
+                return keyboxHistoryListDto.Select(dto => new KeyboxHistory()
+                {
+                    KeyboxHistoryId = dto.KeyboxHistoryId,
+                    KeyboxId = dto.KeyboxId,
+                    UserId = dto.UserId,
+                    PropertyId = dto.PropertyId,
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    InOn = dto.InOn,
+                    OutOn = dto.OutOn
+                }).ToList();
+            }
+
+            return new List<KeyboxHistory>();
         }
 
         public async Task CreatePropertyFeedback(int keyboxId, int propertyId, FeedbackPostDto feedbackPostDto)

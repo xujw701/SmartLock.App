@@ -17,7 +17,6 @@ namespace SmartLock.Model.Services
         Keybox ConnectedKeybox { get; }
 
         List<Keybox> DiscoveredKeyboxes { get; }
-        List<KeyboxHistory> Records { get; }
 
         void Init();
         Task StartScanningForKeyboxesAsync();
@@ -26,9 +25,9 @@ namespace SmartLock.Model.Services
         Task DisconnectKeyboxAsync(Keybox keybox);
         Task StartLock();
         Task StartUnlock();
-        void SetKeyboxHistoryLocked(KeyboxHistory keyboxHistory);
 
         Task<List<Keybox>> GetMyListingKeyboxes();
         Task<Property> GetKeyboxProperty(int keyboxId, int propertyId);
+        Task<List<KeyboxHistory>> GetKeyboxHistories(int keyboxId, int propertyId);
     }
 }
