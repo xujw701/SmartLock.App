@@ -21,6 +21,7 @@ namespace SmartLock.Logic.Services
         public string Email => _settingsModel?.Email ?? throw new Exception("Login process must be started to retrieve email");
         public int ResPortraitId => _settingsModel?.ResPortraitId ?? 0;
         public string PushRegId => _settingsModel?.PushRegId;
+        public bool KeyboxStatus => _settingsModel != null &&  _settingsModel.KeyboxStatus;
 
         public UserSession(ISettingsService settings)
         {
@@ -74,6 +75,16 @@ namespace SmartLock.Logic.Services
             SaveObject();
         }
 
+        public void SaveKeyboxStatus(bool status)
+        {
+            if (_settingsModel == null)
+            {
+                throw new Exception("The account must have started login");
+            }
+            _settingsModel.KeyboxStatus = status;
+            SaveObject();
+        }
+
         private void LoadObject()
         {
             _settingsModel = _settings.LoadObject<SettingsModel>(ObjectIdentifier);
@@ -101,6 +112,8 @@ namespace SmartLock.Logic.Services
             public string Email { get; set; }
             public int? ResPortraitId { get; set; }
             public string PushRegId { get; set; }
+
+            public bool KeyboxStatus { get; set; }
         }
     }
 }

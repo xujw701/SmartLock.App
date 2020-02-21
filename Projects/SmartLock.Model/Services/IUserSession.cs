@@ -17,9 +17,12 @@ namespace SmartLock.Model.Services
         int ResPortraitId { get; }
         string PushRegId { get; }
 
+        bool KeyboxStatus { get; }
+
         void Start(TokenPostResponseDto dto);
         void Start(MePostResponseDto dto);
         void LogOut();
         void SavePushRegId(string pushRegId);
+        void SaveKeyboxStatus(bool status);
     }
 }

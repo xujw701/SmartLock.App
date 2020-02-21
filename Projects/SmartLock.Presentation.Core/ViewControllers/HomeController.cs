@@ -94,7 +94,16 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task View_UnlockClicked()
         {
-            await _keyboxService.StartUnlock();
+            var unlocked = await _keyboxService.StartUnlock();
+
+            if (unlocked)
+            {
+                View.Unlocked();
+            }
+            else
+            {
+                await _messageBoxService.ShowMessageAsync("Unlock Failed", "The keybox isn't listed or you don't have permission to unlock it.");
+            }
         }
 
         private string GenerateGreeting()

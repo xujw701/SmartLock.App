@@ -1,5 +1,6 @@
 ﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
+using SmartLock.Model.Request;
 using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using System;
@@ -21,6 +22,8 @@ namespace SmartLock.Logic.Services
 
         public event Action<Keybox> OnKeyboxDiscovered;
         public event Action<Keybox> OnKeyboxConnected;
+        public event Action OnKeyboxDisconnected;
+
         public event Action OnLocked;
         public event Action OnUnlocked;
 
@@ -28,8 +31,6 @@ namespace SmartLock.Logic.Services
         public List<Keybox> DiscoveredKeyboxes => _discoveredKeyboxes;
         public Keybox ConnectedKeybox => _connectedKeybox;
         public bool DeviceConnected => _localBleService.DeviceConnected;
-
-        //public List<KeyboxHistory> Records => _keyboxHistories.Records.OrderByDescending(r => r.InTime).ToList();
 
         public KeyboxService(IWebService webService, IUserSession userSession, ILocalBleService localBleService)
         {
@@ -46,6 +47,7 @@ namespace SmartLock.Logic.Services
 
             _localBleService.OnDeviceDiscovered += LocalBleService_OnDeviceDiscovered;
             _localBleService.OnDeviceConnected += LocalBleService_OnDeviceConnected;
+            _localBleService.OnDeviceDisconnected += LocalBleService_OnDeviceDisconnected;
 
             _localBleService.OnLocked += LocalBleService_OnLocked;
             _localBleService.OnUnlocked += LocalBleService_OnUnlocked;
@@ -53,6 +55,8 @@ namespace SmartLock.Logic.Services
 
         public async Task StartScanningForKeyboxesAsync()
         {
+            Clear();
+
             await _localBleService.StartScanningForDevicesAsync();
         }
 
@@ -71,6 +75,8 @@ namespace SmartLock.Logic.Services
         {
             await _localBleService.DisconnectDeviceAsync(keybox.Uuid);
             keybox.State = DeviceState.Disconnected;
+
+            Clear();
         }
 
         public async Task StartLock()
@@ -78,21 +84,25 @@ namespace SmartLock.Logic.Services
             await _localBleService.StartSetLock(true);
         }
 
-        public async Task StartUnlock()
+        public async Task<bool> StartUnlock()
         {
-            await _localBleService.StartSetLock(false);
+            var allow = await _webService.Unlock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
+            {
+                DateTime = DateTime.Now
+            });
 
-            //_currenHistory = new KeyboxHistory()
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    LockId = _localBleService.ConnectedDevice.Id.ToString(),
-            //    Opener = "Wayne Leonard",
-            //    InTime = DateTime.Now
-            //};
+            if (allow)
+            {
+                await _localBleService.StartSetLock(false);
 
-            //_keyboxHistories.Records.Add(_currenHistory);
+                await Task.Delay(5000);
 
-            //SaveObject();
+                await _localBleService.StartSetLock(true);
+
+                _userSession.SaveKeyboxStatus(true);
+            }
+
+            return allow;
         }
 
         public async Task<List<Keybox>> GetMyListingKeyboxes()
@@ -156,21 +166,38 @@ namespace SmartLock.Logic.Services
             }
         }
 
+        private void LocalBleService_OnDeviceDisconnected()
+        {
+            OnKeyboxDisconnected?.Invoke();
+        }
+
         private void LocalBleService_OnLocked()
         {
-            //if (_currenHistory != null)
-            //{
-            //    SetKeyboxHistoryLocked(_currenHistory);
-
-            //    _currenHistory = null;
-            //}
-
             OnLocked?.Invoke();
         }
 
         private void LocalBleService_OnUnlocked()
         {
+            if (_userSession.KeyboxStatus)
+            {
+                Task.Run(async () =>
+                {
+                    var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
+                    {
+                        DateTime = DateTime.Now
+                    });
+                });
+            }
+
             OnUnlocked?.Invoke();
+        }
+
+        private void Clear()
+        {
+            // Clear the previous results
+            _discoveredKeyboxes = new List<Keybox>();
+
+            _connectedKeybox = null;
         }
     }
 }

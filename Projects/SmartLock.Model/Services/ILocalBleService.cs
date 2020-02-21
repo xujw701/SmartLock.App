@@ -9,6 +9,7 @@ namespace SmartLock.Model.Services
     {
         event Action<BleDevice> OnDeviceDiscovered;
         event Action<BleDevice> OnDeviceConnected;
+        event Action OnDeviceDisconnected;
         event Action OnLocked;
         event Action OnUnlocked;
 

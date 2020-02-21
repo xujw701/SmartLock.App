@@ -10,6 +10,7 @@ namespace SmartLock.Model.Services
     {
         event Action<Keybox> OnKeyboxDiscovered;
         event Action<Keybox> OnKeyboxConnected;
+        event Action OnKeyboxDisconnected;
         event Action OnLocked;
         event Action OnUnlocked;
 
@@ -24,7 +25,7 @@ namespace SmartLock.Model.Services
         Task ConnectToKeyboxAsync(Keybox keybox);
         Task DisconnectKeyboxAsync(Keybox keybox);
         Task StartLock();
-        Task StartUnlock();
+        Task<bool> StartUnlock();
 
         Task<List<Keybox>> GetMyListingKeyboxes();
         Task<Property> GetKeyboxProperty(int keyboxId, int propertyId);

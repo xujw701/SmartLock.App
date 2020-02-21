@@ -153,18 +153,32 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).DeleteAsync(uri);
         }
 
-        public async Task<LockUnlockResponseDto> Unlock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto)
+        public async Task<bool> Unlock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/unlock");
 
-            return await new WebServiceClient(_userSession).PostAsync<LockUnlockResponseDto>(uri, keyboxHistoryPostDto);
+            var result = await new WebServiceClient(_userSession).PostAsync<LockUnlockResponseDto>(uri, keyboxHistoryPostDto);
+
+            if (result != null)
+            {
+                return result.Success;
+            }
+
+            return false;
         }
 
-        public async Task<LockUnlockResponseDto> Lock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto)
+        public async Task<bool> Lock(int keyboxId, KeyboxHistoryPostDto keyboxHistoryPostDto)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/lock");
 
-            return await new WebServiceClient(_userSession).PostAsync<LockUnlockResponseDto>(uri, keyboxHistoryPostDto);
+            var result = await new WebServiceClient(_userSession).PostAsync<LockUnlockResponseDto>(uri, keyboxHistoryPostDto);
+
+            if (result != null)
+            {
+                return result.Success;
+            }
+
+            return false;
         }
 
         public async Task<List<KeyboxHistory>> GetHistories(int keyboxId, int propertyId)

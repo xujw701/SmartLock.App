@@ -22,6 +22,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
+            _keyboxService.OnKeyboxConnected += (keybox) => { View.UpdatePlaceLockButton(true); };
+            _keyboxService.OnKeyboxDisconnected += () => { View.UpdatePlaceLockButton(true); };
+
             View.KeyboxClicked += (keybox) => Push<KeyboxDetailController>(vc => vc.Keybox = keybox);
         }
 
@@ -36,7 +39,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             _keyboxes = await _keyboxService.GetMyListingKeyboxes();
 
-            View.Show(_keyboxes);
+            View.Show(_keyboxes, _keyboxService.ConnectedKeybox != null);
         }
     }
 }

@@ -42,6 +42,7 @@ namespace SmartLock.Presentation.Droid.Platform
 
         public event Action<BleDevice> OnDeviceDiscovered;
         public event Action<BleDevice> OnDeviceConnected;
+        public event Action OnDeviceDisconnected;
         public event Action OnLocked;
         public event Action OnUnlocked;
 
@@ -60,6 +61,7 @@ namespace SmartLock.Presentation.Droid.Platform
 
             _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
+            _adapter.DeviceDisconnected += Adapter_DeviceDisconnected;
         }
 
         public async Task StartScanningForDevicesAsync()
@@ -194,6 +196,11 @@ namespace SmartLock.Presentation.Droid.Platform
             {
                 OnDeviceConnected?.Invoke(bleDevice);
             });
+        }
+
+        private void Adapter_DeviceDisconnected(object sender, DeviceEventArgs e)
+        {
+            OnDeviceDisconnected?.Invoke();
         }
 
         private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)

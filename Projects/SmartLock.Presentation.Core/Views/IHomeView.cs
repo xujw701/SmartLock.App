@@ -16,5 +16,6 @@ namespace SmartLock.Presentation.Core.Views
         void Show(string greeting, string name, bool btStatuss, bool setMode = true);
         void Show(List<Keybox> keyboxes);
         void Show(Keybox keybox);
+        void Unlocked();
     }
 }

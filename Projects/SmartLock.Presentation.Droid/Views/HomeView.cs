@@ -101,10 +101,6 @@ namespace SmartLock.Presentation.Droid.Views
             _slideUnlockView.Unlocked += () =>
             {
                 UnlockClicked?.Invoke();
-
-                SetLockUI(false);
-
-                _handler.PostDelayed(() => SetLockUI(true), 4000);
             };
 
             return _view;
@@ -148,6 +144,13 @@ namespace SmartLock.Presentation.Droid.Views
 
             _tvLockTitle.Text = keybox.KeyboxName;
             _tvBatteryStatus.Text = keybox.BatteryLevelString;
+        }
+
+        public void Unlocked()
+        {
+            SetLockUI(false);
+
+            _handler.PostDelayed(() => SetLockUI(true), 4000);
         }
 
         private void SetMode(int state)
