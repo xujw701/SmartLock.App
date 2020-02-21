@@ -140,6 +140,7 @@
                     android:textColor="@color/text2_gray"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btnLockEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -178,6 +179,7 @@
                     android:textColor="@color/text2_gray"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btnLockData"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -196,6 +198,7 @@
                     android:textColor="@color/text2_gray"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/btnFeedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
