@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 
 namespace SmartLock.Logic.Services.WebUtilities
@@ -174,7 +175,7 @@ namespace SmartLock.Logic.Services.WebUtilities
             }
             catch (Exception ex)
             {
-                //throw new WebServiceClientException(ex.Message, ex, response);
+                throw new WebServiceClientException(ex.Message, ex, response);
             }
         }
 

@@ -8,7 +8,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Infrastructure;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;

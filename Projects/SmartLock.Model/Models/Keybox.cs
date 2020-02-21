@@ -1,13 +1,25 @@
-﻿using System;
+﻿using SmartLock.Model.Ble;
+using System;
 
-namespace SmartLock.Model.BlueToothLe
+namespace SmartLock.Model.Models
 {
     public class Keybox
     {
+        public int KeyboxId { get; set; }
+        public int CompanyId { get; set; }
+        public int BranchId { get; set; }
+        public string Uuid { get; set; }
+        public int? PropertyId { get; set; }
+        public string KeyboxName { get; set; }
+        public int BatteryLevel { get; set; }
+
+        // Local var
+        public DeviceState State { get; set; }
+
+        // To be cleared
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public int BatteryLevel { get; set; }
         public int Rooms { get; set; }
         public int Toilets { get; set; }
         public int Area { get; set; }

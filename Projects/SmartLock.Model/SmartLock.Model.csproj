@@ -41,22 +41,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BlueToothLe\KeyboxHistories.cs" />
-    <Compile Include="BlueToothLe\KeyboxHistory.cs" />
-    <Compile Include="BlueToothLe\BleDevice.cs" />
+    <Compile Include="Ble\DeviceState.cs" />
+    <Compile Include="Ble\KeyboxHistories.cs" />
+    <Compile Include="Ble\KeyboxHistory.cs" />
+    <Compile Include="Ble\BleDevice.cs" />
+    <Compile Include="Models\Property.cs" />
     <Compile Include="Models\Keybox.cs" />
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="PushNotification\DeviceRegistration.cs" />
     <Compile Include="PushNotification\IDevicePushNotifications.cs" />
     <Compile Include="PushNotification\IPushNotificationService.cs" />
     <Compile Include="PushNotification\NotificationHandle.cs" />
-    <Compile Include="Services\ITrackedBleService.cs" />
+    <Compile Include="Services\ISmartBleService.cs" />
     <Compile Include="Services\IPlatformServices.cs" />
     <Compile Include="Server\WebServiceClientException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IContainedStorage.cs" />
     <Compile Include="Services\ISettingsService.cs" />
-    <Compile Include="Services\IBlueToothLeService.cs" />
+    <Compile Include="Services\ILocalBleService.cs" />
     <Compile Include="Services\IWebService.cs" />
     <Compile Include="Services\IUserSession.cs" />
     <Compile Include="Response\TokenPostResponseDto.cs" />

@@ -20,7 +20,7 @@ namespace SmartLock.Presentation.Droid
         {
             IoC.RegisterSingleton<IViewService, ViewService>();
             IoC.RegisterSingleton<ISettingsService, SettingsService>();
-            IoC.RegisterSingleton<IBlueToothLeService, BlueToothLeService>();
+            IoC.RegisterSingleton<ILocalBleService, LocalBleService>();
             IoC.RegisterSingleton<IDevicePushNotifications, DevicePushNotifications>();
 
             IoC.Register<IContainedStorage, ContainedStorage>();

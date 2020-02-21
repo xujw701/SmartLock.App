@@ -1,4 +1,4 @@
-﻿using SmartLock.Model.BlueToothLe;
+﻿using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System.Collections.Generic;

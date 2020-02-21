@@ -25,7 +25,7 @@ namespace SmartLock.Presentation.iOS
         {
             IoC.RegisterSingleton<ISettingsService, SettingsService>();
             IoC.RegisterSingleton<IViewService, ViewService>();
-            IoC.RegisterSingleton<IBlueToothLeService, BlueToothLeService>();
+            IoC.RegisterSingleton<ILocalBleService, LocalBleService>();
             IoC.Register<IContainedStorage, ContainedStorage>();
             IoC.Register<IMessageBoxService, MessageBoxService>();
             IoC.Register<IPlatformServices, PlatformServices>();

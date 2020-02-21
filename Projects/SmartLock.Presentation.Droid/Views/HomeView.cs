@@ -8,7 +8,8 @@ using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;
 using SmartLock.Presentation.Droid.Controls;
@@ -52,8 +53,8 @@ namespace SmartLock.Presentation.Droid.Views
         protected override int LayoutId => Resource.Layout.View_Home;
 
         public event Action<bool> StartStop;
-        public event Action<BleDevice> Connect;
-        public event Action<BleDevice> Disconnect;
+        public event Action<Keybox> Connect;
+        public event Action<Keybox> Disconnect;
         public event Action DisconnectCurrent;
         public event Action UnlockClicked;
 
@@ -121,29 +122,32 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBtStatus.Text = btStatus ? "ON" : "OFF";
         }
 
-        public void Show(List<BleDevice> bleDevices)
+        public void Show(List<Keybox> keyboxes)
         {
-            SetMode(StateLockList);
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                SetMode(StateLockList);
 
-            if (_adapter == null)
-            {
-                _adapter = new BleDeviceAdapter(bleDevices, Connect, Disconnect);
-                _rvBleList.SetLayoutManager(new LinearLayoutManager(Context));
-                _rvBleList.SetAdapter(_adapter);
-            }
-            else
-            {
-                _adapter.BleDevices = bleDevices;
-                _adapter.NotifyDataSetChanged();
-            }
+                if (_adapter == null)
+                {
+                    _adapter = new BleDeviceAdapter(keyboxes, Connect, Disconnect);
+                    _rvBleList.SetLayoutManager(new LinearLayoutManager(Context));
+                    _rvBleList.SetAdapter(_adapter);
+                }
+                else
+                {
+                    _adapter.Keyboxes = keyboxes;
+                    _adapter.NotifyDataSetChanged();
+                }
+            });
         }
 
-        public void Show(BleDevice bleDevice)
+        public void Show(Keybox keybox)
         {
             SetMode(StateLock);
 
-            _tvLockTitle.Text = bleDevice.Name;
-            _tvBatteryStatus.Text = bleDevice.BatteryLevelString;
+            _tvLockTitle.Text = keybox.KeyboxName;
+            _tvBatteryStatus.Text = keybox.BatteryLevelString;
         }
 
         private void SetMode(int state)

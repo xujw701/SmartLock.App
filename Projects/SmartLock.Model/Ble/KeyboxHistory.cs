@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartLock.Model.BlueToothLe
+namespace SmartLock.Model.Ble
 {
     public class KeyboxHistory
     {

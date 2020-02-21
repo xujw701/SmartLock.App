@@ -1,36 +1,40 @@
-﻿using SmartLock.Model.Services;
-using Plugin.BLE.Abstractions.Contracts;
-using System.Collections.Generic;
-using SmartLock.Model.BlueToothLe;
+﻿using Android.Support.V7.App;
 using Plugin.BLE;
-using System.Linq;
-using System;
+using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
+using SmartLock.Model.Ble;
+using SmartLock.Model.Services;
+using SmartLock.Presentation.Droid.Views.ViewBases;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace SmartLock.Presentation.iOS.Platform
+namespace SmartLock.Presentation.Droid.Platform
 {
-    public class BlueToothLeService : IBlueToothLeService
+    public class LocalBleService : ILocalBleService
     {
         private const string MainServiceId = "0000ffd5";
         private const string NotifyServiceId = "0000ffd0";
         private const string BatteryServiceId = "0000180f";
 
-        private const string MainCharacteristicId = "ffd9";
-        private const string NotifyCharacteristicId = "ffd4";
-        private const string BatteryCharacteristicId = "2a19";
+        private const string MainCharacteristicId = "0000ffd9";
+        private const string NotifyCharacteristicId = "0000ffd4";
+        private const string BatteryCharacteristicId = "00002a19";
 
         private const string ResponseLockActionHeader = "62";
         private const string ResponseLockActionLcoked = "F0";
         private const string ResponseLockActionUnlcoked = "0F";
+
+        private AppCompatActivity Context => ViewBase.CurrentActivity;
 
         private IBluetoothLE _ble;
         private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter;
         private IDevice _connectedDevice;
 
         // Raw devices
-        private List<IDevice> _discoveredDevices = new List<IDevice>();
-        private List<BleDevice> _discoveredBleDevices = new List<BleDevice>();
+        private List<IDevice> _discoveredDevices;
+        private List<BleDevice> _discoveredBleDevices;
 
         private ICharacteristic _mainCharacteristic;
         private ICharacteristic _notifyCharacteristic;
@@ -46,10 +50,13 @@ namespace SmartLock.Presentation.iOS.Platform
         public BleDevice ConnectedDevice => _connectedDevice != null ? new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State) : null;
         public bool DeviceConnected => _connectedDevice != null;
 
-        public BlueToothLeService()
+        public LocalBleService()
         {
             _ble = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
+
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
 
             _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
@@ -70,20 +77,20 @@ namespace SmartLock.Presentation.iOS.Platform
             await _adapter.StopScanningForDevicesAsync();
         }
 
-        public async Task ConnectToDeviceAsync(BleDevice bleDevice)
+        public async Task ConnectToDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.ConnectToDeviceAsync(device);
         }
 
-        public async Task DisconnectDeviceAsync(BleDevice bleDevice)
+        public async Task DisconnectDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.DisconnectDeviceAsync(device);
 
@@ -117,6 +124,7 @@ namespace SmartLock.Presentation.iOS.Platform
             var result = await _batteryCharacteristic.ReadAsync();
 
             return int.Parse(result[0].ToString());
+
             //Context.RunOnUiThread(() =>
             //{
             //    var toast = Toast.MakeText(Context, "Battery " + result[0].ToString(), ToastLength.Short);
@@ -142,12 +150,12 @@ namespace SmartLock.Presentation.iOS.Platform
 
             var bleDevice = new BleDevice(device.Id, device.Name, device.Rssi, device.NativeDevice, (DeviceState)device.State);
 
-            if (!_discoveredDevices.Contains(device))
+            if (!_discoveredDevices.Exists(d => d.Id.ToString().Equals(device.Id.ToString())))
             {
                 _discoveredDevices.Add(device);
             }
 
-            if (!_discoveredBleDevices.Contains(bleDevice))
+            if (!_discoveredBleDevices.Exists(d => d.Id.Equals(device.Id.ToString())))
             {
                 _discoveredBleDevices.Add(bleDevice);
             }
@@ -172,7 +180,7 @@ namespace SmartLock.Presentation.iOS.Platform
             _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
             _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
 
-            Auth();
+            await Auth();
 
             if (_notifyCharacteristic != null)
             {
@@ -180,7 +188,12 @@ namespace SmartLock.Presentation.iOS.Platform
                 await _notifyCharacteristic.StartUpdatesAsync();
             }
 
-            OnDeviceConnected?.Invoke(bleDevice);
+            bleDevice.BatteryLevel = await GetBatteryLevel();
+
+            Context.RunOnUiThread(() =>
+            {
+                OnDeviceConnected?.Invoke(bleDevice);
+            });
         }
 
         private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)
@@ -224,12 +237,6 @@ namespace SmartLock.Presentation.iOS.Platform
             await _mainCharacteristic.WriteAsync(authCommand);
 
             await Task.Delay(50);
-
-            //Context.RunOnUiThread(() =>
-            //{
-            //    var toast = Toast.MakeText(Context, "Connected", ToastLength.Short);
-            //    toast.Show();
-            //});
         }
 
         private async Task<ICharacteristic> FindCharacteristic(string serviceId, string characteristicId)
@@ -248,10 +255,9 @@ namespace SmartLock.Presentation.iOS.Platform
                 if (characteristics != null)
                 {
                     var characteristic = characteristics.FirstOrDefault(c => !string.IsNullOrEmpty(c.Uuid) && c.Uuid.ToLower().StartsWith(characteristicId));
-
+                     
                     return characteristic;
                 }
-
             }
             return null;
         }
@@ -268,7 +274,7 @@ namespace SmartLock.Presentation.iOS.Platform
         {
             var result = string.Empty;
 
-            foreach (var b in bytes)
+            foreach(var b in bytes)
             {
                 result = result + b.ToString("X2");
             }

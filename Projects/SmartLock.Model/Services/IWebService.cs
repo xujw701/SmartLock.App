@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SmartLock.Model.Models;
 using SmartLock.Model.PushNotification;
 using SmartLock.Model.Request;
 using SmartLock.Model.Response;
@@ -12,7 +13,7 @@ namespace SmartLock.Model.Services
         Task<TokenPostResponseDto> Token(TokenPostDto tokenPostDto);
         Task<MePostResponseDto> GetMe();
         Task UpdateMe(MePutDto mePutDto);
-        Task<KeyboxGetResponseDto> GetKeybox(int? keyboxId = null, string uuid = null);
+        Task<Keybox> GetKeybox(int? keyboxId = null, string uuid = null);
         Task<List<KeyboxGetResponseDto>> GetMyKeybox();
         Task<DefaultCreatedPostResponseDto> CreateKeyboxProperty(int keyboxId, KeyboxPropertyPostPutDto keyboxPropertyPostDto);
         Task<PropertyGetResponseDto> GetKeyboxProperty(int keyboxId, int propertyId);

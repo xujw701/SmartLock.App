@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.BlueToothLe;
+﻿using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
@@ -10,27 +11,25 @@ namespace SmartLock.Presentation.Core.ViewControllers
     public class HomeController : ViewController<IHomeView>
     {
         private readonly IUserSession _userSession;
-        private readonly IBlueToothLeService _blueToothLeService;
-        private readonly ITrackedBleService _trackedBleService;
+        private readonly IKeyboxService _keyboxService;
 
-        public HomeController(IViewService viewService, IUserSession userSession, IBlueToothLeService blueToothLeService, ITrackedBleService trackedBleService) : base(viewService)
+        public HomeController(IViewService viewService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
             _userSession = userSession;
-            _blueToothLeService = blueToothLeService;
-            _trackedBleService = trackedBleService;
+            _keyboxService = keyboxService;
         }
 
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
 
-            _blueToothLeService.OnDeviceDiscovered += BlueToothLeService_DeviceDiscovered;
-            _blueToothLeService.OnDeviceConnected += BlueToothLeService_OnDeviceConnected;
+            _keyboxService.OnKeyboxDiscovered += OnKeyboxDiscovered;
+            _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
 
             View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
-            View.Connect += (bleDevice) => DoSafeAsync(async () => await View_Connect(bleDevice));
-            View.Disconnect += (bleDevice) => DoSafeAsync(async () => await View_Disconnect(bleDevice));
-            View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_blueToothLeService.ConnectedDevice));
+            View.Connect += (keybox) => DoSafeAsync(async () => await View_Connect(keybox));
+            View.Disconnect += (keybox) => DoSafeAsync(async () => await View_Disconnect(keybox));
+            View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_keyboxService.ConnectedKeybox));
             View.UnlockClicked += () => DoSafeAsync(View_UnlockClicked);
         }
 
@@ -38,66 +37,62 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewWillShow();
 
-            if (_blueToothLeService.ConnectedDevice != null)
+            if (_keyboxService.ConnectedKeybox != null)
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn, false);
-                View.Show(_blueToothLeService.ConnectedDevice);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn, false);
+                View.Show(_keyboxService.ConnectedKeybox);
             }
-            else if (_blueToothLeService.DiscoveredDevices != null && _blueToothLeService.DiscoveredDevices.Count > 0)
+            else if (_keyboxService.DiscoveredKeyboxes != null && _keyboxService.DiscoveredKeyboxes.Count > 0)
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn, false);
-                View.Show(_blueToothLeService.DiscoveredDevices);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn, false);
+                View.Show(_keyboxService.DiscoveredKeyboxes);
             }
             else
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _blueToothLeService.IsOn);
+                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
             }
         }
 
-        private async void BlueToothLeService_DeviceDiscovered(BleDevice bleDevice)
+        private void OnKeyboxDiscovered(Keybox keybox)
         {
-            var isValid = await _trackedBleService.ValidateKeybox(bleDevice);
-            if (isValid)
-            {
-                View.Show(_blueToothLeService.DiscoveredDevices);
-            }
+            View.Show(_keyboxService.DiscoveredKeyboxes);
         }
 
-        private void BlueToothLeService_OnDeviceConnected(BleDevice bleDevice)
+        private void OnKeyboxConnected(Keybox keybox)
         {
-            View.Show(bleDevice);
+            View.Show(keybox);
         }
 
         private async Task View_StartStop(bool isScanning)
         {
             if (isScanning)
             {
-                await _blueToothLeService.StartScanningForDevicesAsync();
+                await _keyboxService.StartScanningForKeyboxesAsync();
             }
             else
             {
-                await _blueToothLeService.StopScanningForDevicesAsync();
+                await _keyboxService.StopScanningForKeyboxesAsync();
             }
         }
 
-        private async Task View_Connect(Model.BlueToothLe.BleDevice bleDevice)
+        private async Task View_Connect(Keybox keybox)
         {
-            await _blueToothLeService.StopScanningForDevicesAsync();
+            await _keyboxService.StopScanningForKeyboxesAsync();
 
-            await _blueToothLeService.ConnectToDeviceAsync(bleDevice);
+            await _keyboxService.ConnectToKeyboxAsync(keybox);
         }
 
-        private async Task View_Disconnect(Model.BlueToothLe.BleDevice bleDevice)
+        private async Task View_Disconnect(Keybox keybox)
         {
-            if (bleDevice != null)
+            if (keybox != null)
             {
-                await _blueToothLeService.DisconnectDeviceAsync(bleDevice);
+                await _keyboxService.DisconnectKeyboxAsync(keybox);
             }
         }
 
         private async Task View_UnlockClicked()
         {
-            await _trackedBleService.StartUnlock();
+            await _keyboxService.StartUnlock();
         }
 
         private string GenerateGreeting()

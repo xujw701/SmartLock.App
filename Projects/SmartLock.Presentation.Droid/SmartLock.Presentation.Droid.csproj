@@ -44,6 +44,10 @@
     <Debugger>Xamarin</Debugger>
     <AndroidKeyStore>
     </AndroidKeyStore>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -243,7 +247,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Controls\CustomArrayAdapter.cs" />
     <Compile Include="Controls\SlideUnlockView.cs" />
-    <Compile Include="Platform\BlueToothLeService.cs" />
+    <Compile Include="Platform\LocalBleService.cs" />
     <Compile Include="Platform\ContainedStorage.cs" />
     <Compile Include="Platform\MessageBoxService.cs" />
     <Compile Include="Platform\PlatformServices.cs" />

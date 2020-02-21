@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;

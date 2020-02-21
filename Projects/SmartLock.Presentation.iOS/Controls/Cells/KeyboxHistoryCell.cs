@@ -1,6 +1,6 @@
 ﻿using System;
 using Foundation;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells

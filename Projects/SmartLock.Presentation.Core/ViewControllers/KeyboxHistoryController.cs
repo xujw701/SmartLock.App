@@ -1,4 +1,4 @@
-﻿using SmartLock.Model.BlueToothLe;
+﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
@@ -10,12 +10,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class KeyboxHistoryController : ViewController<IKeyboxHistoryView>
     {
-        private readonly ITrackedBleService _trackedBleService;
+        private readonly IKeyboxService _keyboxService;
         private readonly IMessageBoxService _messageBoxService;
 
-        public KeyboxHistoryController(IViewService viewService, ITrackedBleService trackedBleService, IMessageBoxService messageBoxService) : base(viewService)
+        public KeyboxHistoryController(IViewService viewService, IKeyboxService keyboxService, IMessageBoxService messageBoxService) : base(viewService)
         {
-            _trackedBleService = trackedBleService;
+            _keyboxService = keyboxService;
             _messageBoxService = messageBoxService;
         }
 
@@ -34,7 +34,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             if (ok)
             {
-                _trackedBleService.SetKeyboxHistoryLocked(keyboxHistory);
+                _keyboxService.SetKeyboxHistoryLocked(keyboxHistory);
 
                 View.Show(LoadData());
             }
@@ -42,7 +42,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private List<KeyboxHistory> LoadData()
         {
-            var result = _trackedBleService.Records;
+            var result = _keyboxService.Records;
 
             var demoData = new List<KeyboxHistory>()
             {

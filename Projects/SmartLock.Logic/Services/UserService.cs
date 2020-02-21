@@ -1,4 +1,4 @@
-﻿using SmartLock.Model.BlueToothLe;
+﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Request;
 using SmartLock.Model.Services;
 using System;

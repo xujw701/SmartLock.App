@@ -4,7 +4,7 @@ using System.Timers;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;

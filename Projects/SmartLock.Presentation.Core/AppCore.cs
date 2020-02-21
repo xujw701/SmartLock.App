@@ -32,7 +32,7 @@ namespace SmartLock.Presentation.Core
             IoC.RegisterSingleton<IEnvironmentManager, EnvironmentManager>();
             IoC.RegisterSingleton<IUserSession, UserSession>();
 
-            IoC.RegisterSingleton<ITrackedBleService, TrackedBleService>();
+            IoC.RegisterSingleton<IKeyboxService, KeyboxService>();
 
             IoC.RegisterSingleton<IPushNotificationService, PushNotificationService>();
         }

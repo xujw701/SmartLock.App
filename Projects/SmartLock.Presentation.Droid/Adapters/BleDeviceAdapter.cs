@@ -4,7 +4,8 @@ using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 
 namespace SmartLock.Presentation.Droid.Adapters
 {
@@ -13,22 +14,22 @@ namespace SmartLock.Presentation.Droid.Adapters
         private const int ItemHeader = 0;
         private const int ItemBleDevice = 1;
 
-        private Action<BleDevice> _connect;
-        private Action<BleDevice> _disconnect;
+        private Action<Keybox> _connect;
+        private Action<Keybox> _disconnect;
 
-        public List<BleDevice> BleDevices;
-        public BleDevice ConnectedDevice;
+        public List<Keybox> Keyboxes;
+        public Keybox ConnectedKeybox;
 
-        public BleDeviceAdapter(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect)
+        public BleDeviceAdapter(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect)
         {
-            BleDevices = bleDevices;
+            Keyboxes = keyboxes;
             _connect = connect;
             _disconnect = disconnect;
 
-            _connect += (d) => ConnectedDevice = d;
+            _connect += (d) => ConnectedKeybox = d;
         }
 
-        public override int ItemCount => BleDevices.Count + 1;
+        public override int ItemCount => Keyboxes.Count + 1;
 
         public override int GetItemViewType(int position)
         {
@@ -47,7 +48,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             else
             {
                 var itemView = inflater.Inflate(Resource.Layout.Item_BleDevice, parent, false);
-                return new BleDeviceHolder(BleDevices, _connect, _disconnect, itemView);
+                return new BleDeviceHolder(Keyboxes, _connect, _disconnect, itemView);
             }
         }
 
@@ -55,11 +56,11 @@ namespace SmartLock.Presentation.Droid.Adapters
         {
             if (holder is HeaderHolder headerHolder)
             {
-                headerHolder.SetData(BleDevices.Count);
+                headerHolder.SetData(Keyboxes.Count);
             }
             else if (holder is BleDeviceHolder reviewHolder)
             {
-                reviewHolder.SetData(BleDevices[position - 1]);
+                reviewHolder.SetData(Keyboxes[position - 1]);
             }
         }
 
@@ -81,7 +82,7 @@ namespace SmartLock.Presentation.Droid.Adapters
 
         public class BleDeviceHolder : RecyclerView.ViewHolder
         {
-            private readonly List<BleDevice> _bleDevices;
+            private readonly List<Keybox> _keyboxes;
 
             private readonly TextView _tvTitle;
             private readonly TextView _tvSubTitle;
@@ -89,9 +90,9 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly Button _btnConnect;
             private readonly Button _btnCancel;
 
-            public BleDeviceHolder(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect, View itemView) : base(itemView)
+            public BleDeviceHolder(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, View itemView) : base(itemView)
             {
-                _bleDevices = bleDevices;
+                _keyboxes = keyboxes;
 
                 _tvTitle = itemView.FindViewById<TextView>(Resource.Id.tvTitle);
                 _tvSubTitle = itemView.FindViewById<TextView>(Resource.Id.tvSubTitle);
@@ -102,22 +103,22 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _btnConnect.Click += (s, e) =>
                 {
                     UpdateUI(true);
-                    connect?.Invoke(_bleDevices[AdapterPosition - 1]);
+                    connect?.Invoke(_keyboxes[AdapterPosition - 1]);
                 };
 
                 _btnCancel.Click += (s, e) =>
                 {
                     UpdateUI(false);
-                    disconnect?.Invoke(_bleDevices[AdapterPosition - 1]);
+                    disconnect?.Invoke(_keyboxes[AdapterPosition - 1]);
                 };
             }
 
-            public void SetData(BleDevice bleDevice)
+            public void SetData(Keybox keybox)
             {
-                _tvTitle.Text = bleDevice.Name;
-                _tvBatteryStatus.Text = bleDevice.BatteryLevelString;
+                _tvTitle.Text = keybox.KeyboxName;
+                _tvBatteryStatus.Text = keybox.BatteryLevelString;
 
-                UpdateUI(bleDevice.State == DeviceState.Connecting);
+                UpdateUI(keybox.State == DeviceState.Connecting);
             }
 
             private void UpdateUI(bool connecting)

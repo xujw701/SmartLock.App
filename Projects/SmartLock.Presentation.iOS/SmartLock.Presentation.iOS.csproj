@@ -734,7 +734,7 @@
     <Compile Include="Controls\TableSupport\TableSupportCell.cs" />
     <Compile Include="Controls\TableSupport\TableSupportCellGroup.cs" />
     <Compile Include="Controls\TableSupport\TableSupportSource.cs" />
-    <Compile Include="Platform\BlueToothLeService.cs" />
+    <Compile Include="Platform\LocalBleService.cs" />
     <Compile Include="Platform\PlatformServices.cs" />
     <Compile Include="Controls\LoadingOverlay.cs" />
     <Compile Include="Main.cs" />
@@ -809,58 +809,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets.xcassets\background.imageset\" />
-    <Folder Include="Assets.xcassets\logo_harcourts.imageset\" />
-    <Folder Include="Assets.xcassets\icon_home_nor.imageset\" />
-    <Folder Include="Assets.xcassets\icon_home_sel.imageset\" />
-    <Folder Include="Assets.xcassets\icon_keboxes_nor.imageset\" />
-    <Folder Include="Assets.xcassets\icon_keyboxes_sel.imageset\" />
-    <Folder Include="Assets.xcassets\icon_listing_nor.imageset\" />
-    <Folder Include="Assets.xcassets\icon_listing_sel.imageset\" />
-    <Folder Include="Assets.xcassets\icon_nearby_nor.imageset\" />
-    <Folder Include="Assets.xcassets\icon_nearby_sel.imageset\" />
-    <Folder Include="Assets.xcassets\icon_settings_nor.imageset\" />
-    <Folder Include="Assets.xcassets\icon_settings_sel.imageset\" />
-    <Folder Include="Assets.xcassets\icon_message.imageset\" />
-    <Folder Include="Assets.xcassets\search_lock.imageset\" />
-    <Folder Include="Assets.xcassets\searching_lock.imageset\" />
-    <Folder Include="Assets.xcassets\icon_buletooth_small.imageset\" />
-    <Folder Include="Assets.xcassets\icon_lock_small.imageset\" />
-    <Folder Include="Assets.xcassets\icon_lock_medium.imageset\" />
-    <Folder Include="Assets.xcassets\icon_lock_big.imageset\" />
-    <Folder Include="Assets.xcassets\icon_battery.imageset\" />
-    <Folder Include="Controls\CustomField\" />
-    <Folder Include="Assets.xcassets\icon_close.imageset\" />
-    <Folder Include="Assets.xcassets\icon_unlock.imageset\" />
-    <Folder Include="Assets.xcassets\icon_add.imageset\" />
-    <Folder Include="Support\" />
-    <Folder Include="Assets.xcassets\icon_back.imageset\" />
-    <Folder Include="Assets.xcassets\icon_bathroom.imageset\" />
-    <Folder Include="Assets.xcassets\icon_bed.imageset\" />
-    <Folder Include="Assets.xcassets\icon_dashboard.imageset\" />
-    <Folder Include="Assets.xcassets\icon_data.imageset\" />
-    <Folder Include="Assets.xcassets\icon_edit.imageset\" />
-    <Folder Include="Assets.xcassets\icon_feedback.imageset\" />
-    <Folder Include="Assets.xcassets\icon_history.imageset\" />
-    <Folder Include="Assets.xcassets\icon_more.imageset\" />
-    <Folder Include="Assets.xcassets\icon_out.imageset\" />
-    <Folder Include="Assets.xcassets\icon_share.imageset\" />
-    <Folder Include="Assets.xcassets\icon_square.imageset\" />
-    <Folder Include="Assets.xcassets\listing.imageset\" />
-    <Folder Include="Assets.xcassets\nearby.imageset\" />
-    <Folder Include="Assets.xcassets\setting.imageset\" />
-    <Folder Include="Assets.xcassets\icon_dot.imageset\" />
-    <Folder Include="Assets.xcassets\graph.imageset\" />
-    <Folder Include="Assets.xcassets\portait1.imageset\" />
-    <Folder Include="Assets.xcassets\portait2.imageset\" />
-    <Folder Include="Assets.xcassets\portait3.imageset\" />
-    <Folder Include="Assets.xcassets\portait4.imageset\" />
-    <Folder Include="Assets.xcassets\portait5.imageset\" />
-    <Folder Include="Assets.xcassets\icon_in.imageset\" />
-    <Folder Include="Assets.xcassets\logo.imageset\" />
-    <Folder Include="Assets.xcassets\icon_unlock_key.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

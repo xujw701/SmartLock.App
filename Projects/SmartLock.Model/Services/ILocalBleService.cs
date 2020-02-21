@@ -1,11 +1,11 @@
-﻿using SmartLock.Model.BlueToothLe;
+﻿using SmartLock.Model.Ble;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SmartLock.Model.Services
 {
-    public interface IBlueToothLeService
+    public interface ILocalBleService
     {
         event Action<BleDevice> OnDeviceDiscovered;
         event Action<BleDevice> OnDeviceConnected;
@@ -19,8 +19,8 @@ namespace SmartLock.Model.Services
 
         Task StartScanningForDevicesAsync();
         Task StopScanningForDevicesAsync();
-        Task ConnectToDeviceAsync(BleDevice bleDevice);
-        Task DisconnectDeviceAsync(BleDevice bleDevice);
+        Task ConnectToDeviceAsync(string uuid);
+        Task DisconnectDeviceAsync(string uuid);
         Task StartSetLock(bool isLock);
         Task<int> GetBatteryLevel();
     }

@@ -5,7 +5,7 @@ using Android.Graphics;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using SmartLock.Model.BlueToothLe;
+using SmartLock.Model.Models;
 
 namespace SmartLock.Presentation.Droid.Adapters
 {

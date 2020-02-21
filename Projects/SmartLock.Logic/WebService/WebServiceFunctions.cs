@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SmartLock.Logic.Services.WebUtilities;
+using SmartLock.Model.Models;
 using SmartLock.Model.PushNotification;
 using SmartLock.Model.Request;
 using SmartLock.Model.Response;
@@ -48,16 +49,38 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).PutAsync(uri, mePutDto);
         }
 
-        public async Task<KeyboxGetResponseDto> GetKeybox(int? keyboxId = null, string uuid = null)
+        public async Task<Keybox> GetKeybox(int? keyboxId = null, string uuid = null)
         {
             var parameters = string.Empty;
 
-            if (keyboxId.HasValue) parameters += $"&keyboxId={keyboxId.Value}";
-            if (!string.IsNullOrEmpty(uuid)) parameters += $"&uuid={uuid}";
+            if (keyboxId.HasValue)
+            {
+                parameters += $"?keyboxId={keyboxId.Value}";
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(uuid)) parameters += $"?uuid={uuid}";
+            }
 
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes{parameters}");
 
-            return await new WebServiceClient(_userSession).GetAsync<KeyboxGetResponseDto>(uri);
+            var result =  await new WebServiceClient(_userSession).GetAsync<KeyboxGetResponseDto>(uri);
+
+            if (result != null)
+            {
+                return new Keybox()
+                {
+                    KeyboxId = result.KeyboxId,
+                    CompanyId = result.CompanyId,
+                    BranchId = result.BranchId,
+                    Uuid = result.Uuid,
+                    PropertyId = result.PropertyId,
+                    KeyboxName = result.KeyboxName,
+                    BatteryLevel = result.BatteryLevel,
+                };
+            }
+
+            return null;
         }
 
         public async Task<List<KeyboxGetResponseDto>> GetMyKeybox()
