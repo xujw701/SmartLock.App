@@ -10,6 +10,7 @@ namespace SmartLock.Model.Services
 {
     public interface IWebService
     {
+        Task<bool> Auth(TokenPostDto tokenPostDto);
         Task<TokenPostResponseDto> Token(TokenPostDto tokenPostDto);
         Task<MePostResponseDto> GetMe();
         Task UpdateMe(MePutDto mePutDto);

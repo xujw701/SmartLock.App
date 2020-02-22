@@ -265,6 +265,8 @@
     <Compile Include="Support\ListViewHelper.cs" />
     <Compile Include="Support\SelectedFilePathHelper.cs" />
     <Compile Include="Views\KeyboxPlaceUpdateView.cs" />
+    <Compile Include="Views\PasswordView.cs" />
+    <Compile Include="Views\MyProfileView.cs" />
     <Compile Include="Views\KeyboxPlaceView.cs" />
     <Compile Include="Views\KeyboxHistoryView.cs" />
     <Compile Include="Views\KeyboxDashboardView.cs" />
@@ -697,6 +699,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\rounded_rectangle_light.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\View_Profile.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\View_Password.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

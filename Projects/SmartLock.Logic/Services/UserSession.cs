@@ -14,6 +14,7 @@ namespace SmartLock.Logic.Services
 
         public bool IsLoggedIn => _settingsModel != null && _settingsModel.UserId > 0;
         public int UserId => _settingsModel?.UserId ?? throw new Exception("Login process must be started to retrieve user id");
+        public string UserName => _settingsModel?.UserName ?? throw new Exception("Login process must be started to retrieve token");
         public string Token => _settingsModel?.Token ?? throw new Exception("Login process must be started to retrieve token");
         public string FirstName => _settingsModel?.FirstName ?? throw new Exception("Login process must be started to retrieve name");
         public string LastName => _settingsModel?.LastName ?? throw new Exception("Login process must be started to retrieve name");
@@ -50,11 +51,22 @@ namespace SmartLock.Logic.Services
         {
             _settingsModel.CompanyId = dto.CompanyId;
             _settingsModel.BranchId = dto.BranchId;
+            _settingsModel.UserName = dto.UserName;
             _settingsModel.FirstName = dto.FirstName;
             _settingsModel.LastName = dto.LastName;
             _settingsModel.Phone = dto.Phone;
             _settingsModel.Email = dto.Email;
             _settingsModel.ResPortraitId = dto.ResPortraitId;
+
+            SaveObject();
+        }
+
+        public void Update(string firstName, string lastName, string email, string phone)
+        {
+            _settingsModel.FirstName = firstName;
+            _settingsModel.LastName = lastName;
+            _settingsModel.Phone = email;
+            _settingsModel.Email = phone;
 
             SaveObject();
         }
@@ -103,6 +115,7 @@ namespace SmartLock.Logic.Services
         public class SettingsModel
         {
             public int UserId { get; set; }
+            public string UserName { get; set; }
             public string Token { get; set; }
             public int CompanyId { get; set; }
             public int BranchId { get; set; }

@@ -19,8 +19,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            View.ProfileClick += () => { };
-            View.PasswordClick += () => { };
+            View.ProfileClick += () => { Push<MyProfileController>(); };
+            View.PasswordClick += () => { Push<PasswordController>(); };
             View.FeedbackClick += () => { };
             View.LogoutClick += async () =>
             {

@@ -34,6 +34,19 @@ namespace SmartLock.Logic
             return result;
         }
 
+        public async Task<bool> Auth(TokenPostDto tokenPostDto)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"users/auth");
+
+            var result = await new WebServiceClient(_userSession).PostAsync<DefaultCreatedPostResponseDto>(uri, tokenPostDto);
+
+            if (result != null)
+            {
+                return result.Id > 0;
+            }
+            return false;
+        }
+
         public async Task<MePostResponseDto> GetMe()
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"users/me");
