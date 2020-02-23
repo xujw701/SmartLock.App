@@ -284,6 +284,7 @@
     <Compile Include="Support\ListViewHelper.cs" />
     <Compile Include="Support\SelectedFilePathHelper.cs" />
     <Compile Include="Views\KeyboxPlaceUpdateView.cs" />
+    <Compile Include="Views\FeedbackView.cs" />
     <Compile Include="Views\PropertyFeedbackView.cs" />
     <Compile Include="Views\PasswordView.cs" />
     <Compile Include="Views\MyProfileView.cs" />
@@ -779,6 +780,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\rounded_rectangle_add_lock_disabled.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\View_Feedback.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

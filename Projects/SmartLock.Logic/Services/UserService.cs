@@ -80,6 +80,14 @@ namespace SmartLock.Logic.Services
             return false;
         }
 
+        public async Task CreateFeedback(string feedback)
+        {
+            await _webService.CreateFeedback(new FeedbackPostDto()
+            {
+                Content = feedback
+            });
+        }
+
         public void Logout()
         {
             _userSession.LogOut();

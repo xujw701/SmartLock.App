@@ -25,7 +25,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.ProfileClick += () => { Push<MyProfileController>(); };
             View.PasswordClick += () => { Push<PasswordController>(); };
-            View.FeedbackClick += () => { };
+            View.FeedbackClick += () => { Push<FeedbackController>(); };
             View.LogoutClick += async () =>
             {
                 var result = await _messageBoxService.ShowQuestion("Log out", "Are you sure to log out?", "Cancel", "OK");
