@@ -33,11 +33,6 @@ namespace SmartLock.Logic.Services
 
         public void Start(TokenPostResponseDto dto)
         {
-            if (IsLoggedIn)
-            {
-                throw new Exception("The account has already logged in");
-            }
-
             _settingsModel = new SettingsModel
             {
                 UserId = dto.UserId,

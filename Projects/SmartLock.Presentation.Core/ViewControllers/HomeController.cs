@@ -15,6 +15,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IKeyboxService _keyboxService;
         private readonly IPlatformServices _platformServices;
 
+        private Keybox _lastKeybox;
+
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
             _messageBoxService = messageBoxService;
@@ -88,6 +90,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task View_Connect(Keybox keybox)
         {
+            _lastKeybox = keybox;
+
             await _keyboxService.StopScanningForKeyboxesAsync();
 
             await _keyboxService.ConnectToKeyboxAsync(keybox);
@@ -138,7 +142,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 if (exception.Message.Contains("133"))
                 {
-                    await _messageBoxService.ShowMessageAsync("Tips", "The lock is already connected to another user now, please try it later.");
+                    _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
+
+                    if (_lastKeybox != null)
+                    {
+                        await _keyboxService.DisconnectKeyboxAsync(_lastKeybox);
+                    }
                 }
                 else
                 {
