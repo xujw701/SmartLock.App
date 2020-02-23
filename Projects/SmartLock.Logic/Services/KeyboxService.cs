@@ -130,7 +130,7 @@ namespace SmartLock.Logic.Services
         {
             var keyboxHistories = await _webService.GetHistories(keyboxId, propertyId);
 
-            return keyboxHistories;
+            return keyboxHistories.OrderByDescending(h => h.InOn).ToList();
         }
 
         public async Task<bool> PlaceLock(Keybox keybox, Property property)

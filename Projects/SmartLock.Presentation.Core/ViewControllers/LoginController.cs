@@ -25,11 +25,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
-
-            //if (_userSession.IsLoggedIn)
-            //{
-            //    Push<MainController>();
-            //}
+#if DEBUG
+            if (_userSession.IsLoggedIn)
+            {
+                Push<MainController>();
+            }
+#endif
 
             View.LoginClicked += View_LoginClicked;
 
