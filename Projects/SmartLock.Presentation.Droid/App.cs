@@ -2,6 +2,9 @@ using System;
 using Android.App;
 using Android.OS;
 using Android.Runtime;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace SmartLock.Presentation.Droid
 {
@@ -18,8 +21,12 @@ namespace SmartLock.Presentation.Droid
         public override void OnCreate()
 		{
 			base.OnCreate();
-			Current = new AndroidAppCore();
-		}
+
+            AppCenter.Start("f643e23e-fe4a-4c37-bd51-98bd270d4018",
+                   typeof(Analytics), typeof(Crashes));
+
+            Current = new AndroidAppCore();
+        }
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
