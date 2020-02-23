@@ -26,10 +26,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            if (_userSession.IsLoggedIn)
-            {
-                Push<MainController>();
-            }
+            //if (_userSession.IsLoggedIn)
+            //{
+            //    Push<MainController>();
+            //}
 
             View.LoginClicked += View_LoginClicked;
 
