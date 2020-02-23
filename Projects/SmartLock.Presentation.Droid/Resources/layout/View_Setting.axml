@@ -18,7 +18,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="82dp"
+                android:layout_marginTop="56dp"
                 android:src="@drawable/portait4"/>
             <TextView
                 android:id="@+id/tvName"
@@ -29,41 +29,107 @@
                 android:text="Raymond Leonard"
                 android:textSize="16sp"
                 android:textColor="@color/text_blue"/>
-            <Button
+            <RelativeLayout
                 android:id="@+id/btnProfile"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="52dp"
-                android:textAllCaps="false"
-                android:text="My Profile"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:background="@drawable/rounded_rectangle_dark"/>
-            <Button
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp">
+                <LinearLayout
+                    android:id="@+id/tvProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="My Profile"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_blue"/>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_chevron_right"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_below="@+id/tvProfile"
+                    android:background="@color/splash_background"/>
+            </RelativeLayout>
+            <RelativeLayout
                 android:id="@+id/btnPassword"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="26dp"
-                android:textAllCaps="false"
-                android:text="Change Password"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:background="@drawable/rounded_rectangle_dark"/>
-            <Button
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp">
+                <LinearLayout
+                    android:id="@+id/tvPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Change Password"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_blue"/>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_chevron_right"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_below="@+id/tvPassword"
+                    android:background="@color/splash_background"/>
+            </RelativeLayout>
+            <RelativeLayout
                 android:id="@+id/btnFeedback"
                 android:layout_width="match_parent"
-                android:layout_height="46dp"
-                android:layout_marginTop="26dp"
-                android:textAllCaps="false"
-                android:text="Feedback"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:background="@drawable/rounded_rectangle_dark"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp">
+                <LinearLayout
+                    android:id="@+id/tvFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:text="Feedback"
+                        android:textSize="18sp"
+                        android:textColor="@color/text_blue"/>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_chevron_right"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_below="@+id/tvFeedback"
+                    android:background="@color/splash_background"/>
+            </RelativeLayout>
             <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="64dp"
                 android:textAllCaps="false"
                 android:text="Log out"
                 android:textColor="@android:color/white"

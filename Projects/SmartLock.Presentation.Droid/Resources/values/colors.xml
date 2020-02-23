@@ -35,7 +35,8 @@
     <color name="gray_highlight">#e1e0e0</color>
     <color name="gray_text">#757575</color>
     <color name="splash_background">#e1e0e0</color>
-    
+    <color name="divider_color">#eaeaea</color>
+
     <color name="red_accent">#AD2004</color>
     <color name="phone_green">#64AB21</color>
     <color name="transparent">#00000000</color>

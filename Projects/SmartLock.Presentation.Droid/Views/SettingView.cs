@@ -15,9 +15,9 @@ namespace SmartLock.Presentation.Droid.Views
     {
         private TextView _tvName;
 
-        private Button _btnProfile;
-        private Button _btnPassword;
-        private Button _btnFeedback;
+        private View _btnProfile;
+        private View _btnPassword;
+        private View _btnFeedback;
         private Button _btnLogout;
 
         public event Action ProfileClick;
@@ -33,9 +33,9 @@ namespace SmartLock.Presentation.Droid.Views
 
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
 
-            _btnProfile = _view.FindViewById<Button>(Resource.Id.btnProfile);
-            _btnPassword = _view.FindViewById<Button>(Resource.Id.btnPassword);
-            _btnFeedback = _view.FindViewById<Button>(Resource.Id.btnFeedback);
+            _btnProfile = _view.FindViewById<View>(Resource.Id.btnProfile);
+            _btnPassword = _view.FindViewById<View>(Resource.Id.btnPassword);
+            _btnFeedback = _view.FindViewById<View>(Resource.Id.btnFeedback);
             _btnLogout = _view.FindViewById<Button>(Resource.Id.btnLogout);
 
             _btnProfile.Click += (s, e) => ProfileClick?.Invoke();
