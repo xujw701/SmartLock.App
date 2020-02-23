@@ -1,18 +1,22 @@
-﻿using SmartLock.Model.Services;
+﻿using SmartLock.Model.PushNotification;
+using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class SettingController : ViewController<ISettingView>
     {
-        private readonly IUserSession _userSession;
         private readonly IMessageBoxService _messageBoxService;
+        private readonly IUserSession _userSession;
+        private readonly IPushNotificationService _pushNotificationService;
 
-        public SettingController(IViewService viewService, IUserSession userSession, IMessageBoxService messageBoxService) : base(viewService)
+        public SettingController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IPushNotificationService pushNotificationService) : base(viewService)
         {
-            _userSession = userSession;
             _messageBoxService = messageBoxService;
+            _userSession = userSession;
+            _pushNotificationService = pushNotificationService;
         }
 
         protected override void OnViewLoaded()
@@ -24,13 +28,17 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.FeedbackClick += () => { };
             View.LogoutClick += async () =>
             {
-                var result = await _messageBoxService.ShowQuestion("Log out", "Are you sure to log out?", "Yes", "Cancel");
+                var result = await _messageBoxService.ShowQuestion("Log out", "Are you sure to log out?", "Cancel", "OK");
 
-                if (result == MessageBoxButtons.Button1)
+                if (result == MessageBoxButtons.Button2)
                 {
-                    _userSession.LogOut();
-                    PopToRoot();
+                    DoSafeAsync(LogOut);
                 }
+            };
+
+            View.Refresh += async () =>
+            {
+                View.Show($"{_userSession.FirstName} {_userSession.LastName}");
             };
         }
 
@@ -39,6 +47,15 @@ namespace SmartLock.Presentation.Core.ViewControllers
             base.OnViewWillShow();
 
             View.Show($"{_userSession.FirstName} {_userSession.LastName}");
+        }
+
+        private async Task LogOut()
+        {
+            await _pushNotificationService.UnregisterAsync();
+
+            _userSession.LogOut();
+
+            PopToRoot();
         }
     }
 }

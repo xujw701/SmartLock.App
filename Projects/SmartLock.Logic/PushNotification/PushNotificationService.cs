@@ -98,7 +98,7 @@ namespace SmartLock.Logic.PushNotification
             }
         }
 
-        private async Task UnregisterAsync()
+        public async Task UnregisterAsync()
         {
             if (!string.IsNullOrEmpty(_userSession.PushRegId))
             {

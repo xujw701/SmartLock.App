@@ -24,5 +24,7 @@ namespace SmartLock.Model.PushNotification
         /// Reregiser to clear the location tag
         /// </summary>
         void Reregiser();
+
+        Task UnregisterAsync();
     }
 }

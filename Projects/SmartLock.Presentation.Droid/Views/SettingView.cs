@@ -24,6 +24,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action PasswordClick;
         public event Action FeedbackClick;
         public event Action LogoutClick;
+        public event Action Refresh;
 
         protected override int LayoutId => Resource.Layout.View_Setting;
 
@@ -46,9 +47,19 @@ namespace SmartLock.Presentation.Droid.Views
             return _view;
         }
 
+        public override void OnResume()
+        {
+            base.OnResume();
+
+            Refresh?.Invoke();
+        }
+
         public void Show(string name)
         {
-            _tvName.Text = name;
+            if (_tvName != null)
+            {
+                _tvName.Text = name;
+            }
         }
     }
 }

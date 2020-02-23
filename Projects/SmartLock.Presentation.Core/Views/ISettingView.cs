@@ -8,6 +8,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action PasswordClick;
         event Action FeedbackClick;
         event Action LogoutClick;
+        event Action Refresh;
 
         void Show(string name);
     }

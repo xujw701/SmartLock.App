@@ -137,4 +137,5 @@
                 android:background="@drawable/rounded_rectangle_dark"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+    <include layout="@layout/include_progressoverlay"/>
 </LinearLayout>
