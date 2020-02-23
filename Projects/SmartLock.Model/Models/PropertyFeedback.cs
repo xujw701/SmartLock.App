@@ -16,5 +16,7 @@ namespace SmartLock.Model.Models
 
         public string Name => $"{FirstName} {LastName}";
         public string CreatedOnString => CreatedOn.ToString("dd/MM/yy HH:mm");
+
+        public string KeyboxName { get; set; }
     }
 }

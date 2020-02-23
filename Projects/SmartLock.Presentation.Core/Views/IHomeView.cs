@@ -7,6 +7,7 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface IHomeView : IView
     {
+        event Action MessageClick;
         event Action<bool> StartStop;
         event Action<Keybox> Connect;
         event Action<Keybox> Disconnect;

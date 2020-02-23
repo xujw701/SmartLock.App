@@ -51,14 +51,14 @@ namespace SmartLock.Presentation.Droid.Views
             _rvPropertyFeedback.Visibility = ViewStates.Gone;
         }
 
-        public void Show(Keybox keybox, List<PropertyFeedback> propertyFeedbacks)
+        public void Show(List<PropertyFeedback> propertyFeedbacks)
         {
             _writeFeedbackContainer.Visibility = ViewStates.Gone;
             _rvPropertyFeedback.Visibility = ViewStates.Visible;
 
             if (_adapter == null)
             {
-                _adapter = new PropertyFeedbackAdapter(keybox, propertyFeedbacks);
+                _adapter = new PropertyFeedbackAdapter(propertyFeedbacks);
                 _rvPropertyFeedback.SetLayoutManager(new LinearLayoutManager(this));
                 _rvPropertyFeedback.SetAdapter(_adapter);
             }

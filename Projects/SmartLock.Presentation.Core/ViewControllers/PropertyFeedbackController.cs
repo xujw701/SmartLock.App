@@ -13,6 +13,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
 
+        public bool Mine;
+
         public Keybox Keybox;
         public Property Property;
 
@@ -35,6 +37,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewWillShow();
 
+            if (Mine)
+            {
+                DoSafeAsync(LoadAllMyFeedback);
+
+                return;
+            }
+
             if (!Keybox.UserId.HasValue) throw new Exception("Invalid keybox.");
 
             // My keybox
@@ -48,11 +57,18 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
         }
 
+        private async Task LoadAllMyFeedback()
+        {
+            var feedbacks = await _keyboxService.GetAllPropertyFeedback();
+
+            View.Show(feedbacks);
+        }
+
         private async Task LoadData()
         {
-            var feedbacks = await _keyboxService.GetPropertyFeedback(Keybox.KeyboxId, Property.PropertyId);
+            var feedbacks = await _keyboxService.GetPropertyFeedback(Keybox, Property.PropertyId);
 
-            View.Show(Keybox, feedbacks);
+            View.Show(feedbacks);
         }
 
         private void View_SubmitClick(string feedback)

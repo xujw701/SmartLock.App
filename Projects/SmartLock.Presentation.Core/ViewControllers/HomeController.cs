@@ -33,6 +33,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.OnKeyboxDiscovered += OnKeyboxDiscovered;
             _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
 
+            View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
             View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
             View.Connect += (keybox) => DoSafeAsync(async () => await View_Connect(keybox));
             View.Disconnect += (keybox) => DoSafeAsync(async () => await View_Disconnect(keybox));

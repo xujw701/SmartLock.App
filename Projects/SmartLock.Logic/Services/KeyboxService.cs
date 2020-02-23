@@ -191,9 +191,40 @@ namespace SmartLock.Logic.Services
             });
         }
 
-        public async Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId)
+        public async Task<List<PropertyFeedback>> GetAllPropertyFeedback()
         {
-            return await _webService.GetPropertyFeedback(keyboxId, propertyId);
+            var feedbacks = new List<PropertyFeedback>();
+
+            var keyboxes = await _webService.GetMyKeybox();
+
+            foreach (var keybox in keyboxes)
+            {
+                if (keybox.PropertyId.HasValue)
+                {
+                    var feedback = await _webService.GetPropertyFeedback(keybox.KeyboxId, keybox.PropertyId.Value);
+
+                    foreach (var f in feedback)
+                    {
+                        f.KeyboxName = keybox.KeyboxName;
+                    }
+
+                    feedbacks.AddRange(feedback);
+                }
+            }
+
+            return feedbacks.OrderByDescending(f => f.CreatedOn).ToList();
+        }
+
+        public async Task<List<PropertyFeedback>> GetPropertyFeedback(Keybox keybox, int propertyId)
+        {
+            var feedbacks = await _webService.GetPropertyFeedback(keybox.KeyboxId, propertyId);
+
+            foreach (var feedback in feedbacks)
+            {
+                feedback.KeyboxName = keybox.KeyboxName;
+            }
+
+            return feedbacks;
         }
 
         private void LocalBleService_OnBleStateChanged(bool isOn)

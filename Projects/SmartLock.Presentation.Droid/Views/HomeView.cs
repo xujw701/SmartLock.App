@@ -56,6 +56,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         protected override int LayoutId => Resource.Layout.View_Home;
 
+        public event Action MessageClick;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
         public event Action<Keybox> Disconnect;
@@ -90,6 +91,11 @@ namespace SmartLock.Presentation.Droid.Views
             _slideUnlockView = _view.FindViewById<SlideUnlockView>(Resource.Id.SlideUnlockView);
 
             ConfigureScanButtonSize();
+
+            _ivMessage.Click += (s, e) =>
+            {
+                MessageClick?.Invoke();
+            };
 
             _ivScanButton.Click += (s, e) =>
             {

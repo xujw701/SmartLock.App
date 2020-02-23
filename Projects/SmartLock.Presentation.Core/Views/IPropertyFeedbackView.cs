@@ -10,6 +10,6 @@ namespace SmartLock.Presentation.Core.Views
         event Action<string> SubmitClick;
 
         void Show();
-        void Show(Keybox keybox, List<PropertyFeedback> propertyFeedbacks);
+        void Show(List<PropertyFeedback> propertyFeedbacks);
     }
 }

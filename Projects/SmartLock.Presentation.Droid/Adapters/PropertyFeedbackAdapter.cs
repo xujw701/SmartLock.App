@@ -10,14 +10,10 @@ namespace SmartLock.Presentation.Droid.Adapters
 {
     public class PropertyFeedbackAdapter : RecyclerView.Adapter
     {
-        private Keybox _keybox;
-
         public List<PropertyFeedback> PropertyFeedbacks;
 
-        public PropertyFeedbackAdapter(Keybox keybox, List<PropertyFeedback> propertyFeedbacks)
+        public PropertyFeedbackAdapter(List<PropertyFeedback> propertyFeedbacks)
         {
-            _keybox = keybox;
-
             PropertyFeedbacks = propertyFeedbacks;
         }
 
@@ -35,7 +31,7 @@ namespace SmartLock.Presentation.Droid.Adapters
         {
             if (holder is PropertyFeedbackHolder propertyFeedbackHolder)
             {
-                propertyFeedbackHolder.SetData(_keybox, PropertyFeedbacks[position]);
+                propertyFeedbackHolder.SetData(PropertyFeedbacks[position]);
             }
         }
 
@@ -75,9 +71,9 @@ namespace SmartLock.Presentation.Droid.Adapters
                 };
             }
 
-            public void SetData(Keybox keybox, PropertyFeedback propertyFeedback)
+            public void SetData(PropertyFeedback propertyFeedback)
             {
-                _tvKeyboxName.Text = keybox.KeyboxName;
+                _tvKeyboxName.Text = propertyFeedback.KeyboxName;
                 _tvName.Text = propertyFeedback.Name;
                 _tvDateTime.Text = propertyFeedback.CreatedOnString;
                 _tvNotes.Text = propertyFeedback.Content;
