@@ -9,13 +9,21 @@ namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class KeyboxesController : ViewController<IKeyboxesView>
     {
+        private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
 
         private List<Keybox> _keyboxes;
 
-        public KeyboxesController(IViewService viewService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
+        private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox;
+
+        private bool CanPlaceLock => ConnectedKeybox != null
+                && ConnectedKeybox.UserId.HasValue
+                && ConnectedKeybox.UserId.Value == _userSession.UserId;
+
+        public KeyboxesController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
+            _messageBoxService = messageBoxService;
             _userSession = userSession;
             _keyboxService = keyboxService;
         }
@@ -24,16 +32,28 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            _keyboxService.OnKeyboxConnected += (keybox) => { View.UpdatePlaceLockButton(CanPlaceLock()); };
-            _keyboxService.OnKeyboxDisconnected += () => { View.UpdatePlaceLockButton(CanPlaceLock()); };
+            _keyboxService.OnKeyboxConnected += (keybox) => { View.UpdatePlaceLockButton(CanPlaceLock); };
+            _keyboxService.OnKeyboxDisconnected += () => { View.UpdatePlaceLockButton(CanPlaceLock); };
 
             View.KeyboxClicked += (keybox) => Push<KeyboxDetailController>(vc => vc.Keybox = keybox);
-            View.PlaceKeyboxClicked += () => Push<KeyboxPlaceController>();
+            View.PlaceKeyboxClicked += () =>
+            {
+                if (CanPlaceLock)
+                {
+                    Push<KeyboxPlaceController>();
+                }
+                else
+                {
+                    _messageBoxService.ShowMessage("Cannot place keybox", "Please connect to a keybox first.");
+                }
+            };
         }
 
         protected override void OnViewWillShow()
         {
             base.OnViewWillShow();
+
+            View.UpdatePlaceLockButton(CanPlaceLock);
 
             DoSafeAsync(LoadData);
         }
@@ -42,15 +62,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             _keyboxes = await _keyboxService.GetMyListingKeyboxes();
 
-            View.Show(_keyboxes, CanPlaceLock());
-        }
-
-        private bool CanPlaceLock()
-        {
-            var connectedKeybox = _keyboxService.ConnectedKeybox;
-            return connectedKeybox != null
-                && !connectedKeybox.PropertyId.HasValue
-                && connectedKeybox.UserId.HasValue && connectedKeybox.UserId.Value == _userSession.UserId;
+            View.Show(_keyboxes, CanPlaceLock);
         }
     }
 }

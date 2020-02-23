@@ -1,5 +1,7 @@
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Views;
@@ -16,6 +18,8 @@ namespace SmartLock.Presentation.Droid.Views
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class KeyboxesView : FragmentView<IKeyboxesView>, IKeyboxesView
     {
+        private Context _context;
+
         private Button _btnPlaceLock;
 
         private RecyclerView _rvKeyboxList;
@@ -30,6 +34,8 @@ namespace SmartLock.Presentation.Droid.Views
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
+
+            _context = _view.Context;
 
             _btnPlaceLock = _view.FindViewById<Button>(Resource.Id.btnPlaceLock);
             _rvKeyboxList = _view.FindViewById<RecyclerView>(Resource.Id.rvKeyboxList);
@@ -49,7 +55,7 @@ namespace SmartLock.Presentation.Droid.Views
             if (_adapter == null)
             {
                 _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
-                _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(Context));
+                _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
                 _rvKeyboxList.SetAdapter(_adapter);
             }
             else
@@ -61,7 +67,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void UpdatePlaceLockButton(bool enabled)
         {
-            _btnPlaceLock.Visibility = enabled ? ViewStates.Visible : ViewStates.Invisible;
+            _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
         }
     }
 }

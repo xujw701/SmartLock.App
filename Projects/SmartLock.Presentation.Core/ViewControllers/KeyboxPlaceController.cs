@@ -3,6 +3,7 @@ using SmartLock.Model.Models;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -10,13 +11,18 @@ namespace SmartLock.Presentation.Core.ViewControllers
     public class KeyboxPlaceController : ViewController<IKeyboxPlaceView>
     {
         private readonly IMessageBoxService _messageBoxService;
+        private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
 
         private Property _property;
 
-        public KeyboxPlaceController(IViewService viewService, IMessageBoxService messageBoxService, IKeyboxService keyboxService) : base(viewService)
+        private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox ?? throw new Exception("Please connect to a keybox first.");
+        private bool IsListed => ConnectedKeybox != null && ConnectedKeybox.PropertyId.HasValue;
+
+        public KeyboxPlaceController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
             _messageBoxService = messageBoxService;
+            _userSession = userSession;
             _keyboxService = keyboxService;
         }
 
@@ -38,11 +44,21 @@ namespace SmartLock.Presentation.Core.ViewControllers
             base.OnViewWillShow();
 
             View.Show(_keyboxService.ConnectedKeybox, _property);
+
+            if (IsListed)
+            {
+                _messageBoxService.ShowMessage("Please notice", "This keybox has been placed already. Place this lock will end your last listing.");
+            }
         }
 
         private async Task SubmitData()
         {
-            var result = await _keyboxService.PlaceLock(_keyboxService.ConnectedKeybox, _property);
+            if (IsListed)
+            {
+                await _keyboxService.EndKeyboxProperty(ConnectedKeybox.KeyboxId, ConnectedKeybox.PropertyId.Value);
+            }
+
+            var result = await _keyboxService.PlaceLock(ConnectedKeybox, _property);
 
             if (result)
             {

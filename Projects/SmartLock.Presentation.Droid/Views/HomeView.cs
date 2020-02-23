@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
@@ -24,6 +25,8 @@ namespace SmartLock.Presentation.Droid.Views
         private const int StateIdle = 0;
         private const int StateLockList = 1;
         private const int StateLock = 2;
+
+        private Context _context;
 
         private TextView _tvGreeting;
         private TextView _tvName;
@@ -63,6 +66,8 @@ namespace SmartLock.Presentation.Droid.Views
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
+
+            _context = _view.Context;
 
             _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
@@ -133,7 +138,7 @@ namespace SmartLock.Presentation.Droid.Views
                 if (_adapter == null)
                 {
                     _adapter = new BleDeviceAdapter(keyboxes, Connect, Disconnect);
-                    _rvBleList.SetLayoutManager(new LinearLayoutManager(Context));
+                    _rvBleList.SetLayoutManager(new LinearLayoutManager(_context));
                     _rvBleList.SetAdapter(_adapter);
                 }
                 else
@@ -162,7 +167,7 @@ namespace SmartLock.Presentation.Droid.Views
         public void SetBleIndicator(bool isOn)
         {
             _tvBtStatus.Text = isOn ? "ON" : "OFF";
-            _tvBtStatus.SetTextColor(new Color(Context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
+            _tvBtStatus.SetTextColor(new Color(_context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
         }
 
         private void SetMode(int state)
@@ -186,7 +191,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         private void ConfigureRotatingButton(bool start)
         {
-            var anim = AnimationUtils.LoadAnimation(Context, Resource.Animation.anim_rotate);
+            var anim = AnimationUtils.LoadAnimation(_context, Resource.Animation.anim_rotate);
             anim.FillAfter = true;
 
             if (start)

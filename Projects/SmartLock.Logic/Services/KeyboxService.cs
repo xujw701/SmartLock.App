@@ -178,6 +178,11 @@ namespace SmartLock.Logic.Services
             return true;
         }
 
+        public async Task EndKeyboxProperty(int keyboxId, int propertyId)
+        {
+            await _webService.EndKeyboxProperty(keyboxId, propertyId);
+        }
+
         public async Task CreatePropertyFeedback(int keyboxId, int propertyId, string content)
         {
             await _webService.CreatePropertyFeedback(keyboxId, propertyId, new FeedbackPostDto()

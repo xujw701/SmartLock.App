@@ -3449,13 +3449,13 @@ namespace SmartLock.Presentation.Droid
 			public const int rounded_rectangle_add_lock = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int rounded_rectangle_button = 2131165379;
+			public const int rounded_rectangle_add_lock_disabled = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int rounded_rectangle_dark = 2131165380;
+			public const int rounded_rectangle_button = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int rounded_rectangle_light = 2131165381;
+			public const int rounded_rectangle_dark = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
 			public const int rounded_rectangle_white = 2131165382;

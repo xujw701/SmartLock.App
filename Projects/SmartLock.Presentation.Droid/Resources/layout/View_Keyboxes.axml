@@ -35,8 +35,7 @@
             android:paddingStart="12dp"
             android:drawablePadding="6dp"
             android:drawableStart="@drawable/embedded_add_icon"
-            android:background="@drawable/rounded_rectangle_add_lock"
-            android:visibility="invisible"/>
+            android:background="@drawable/rounded_rectangle_add_lock_disabled"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvKeyboxList"

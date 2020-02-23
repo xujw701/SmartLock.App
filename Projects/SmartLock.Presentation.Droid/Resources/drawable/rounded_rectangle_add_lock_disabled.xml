@@ -3,10 +3,10 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:shape="rectangle">
   <solid
-    android:color="@color/harcourts_blue_light"/>
+    android:color="@color/hint_color"/>
   <corners
-    android:radius="8dip"/>
+    android:radius="20dip"/>
   <stroke
     android:width="1px"
-    android:color="@color/harcourts_blue_light"/>
+    android:color="@color/hint_color"/>
 </shape>
