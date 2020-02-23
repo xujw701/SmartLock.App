@@ -1,7 +1,8 @@
 ﻿using System;
-namespace SmartLock.Model.Response
+
+namespace SmartLock.Model.Models
 {
-    public class PropertyFeedbackGetResponseDto
+    public class PropertyFeedback
     {
         public int PropertyFeedbackId { get; set; }
         public int PropertyId { get; set; }
@@ -12,5 +13,8 @@ namespace SmartLock.Model.Response
         public int? ResPortraitId { get; set; }
         public string Content { get; set; }
         public DateTime CreatedOn { get; set; }
+
+        public string Name => $"{FirstName} {LastName}";
+        public string CreatedOnString => CreatedOn.ToString("dd/MM/yy HH:mm");
     }
 }

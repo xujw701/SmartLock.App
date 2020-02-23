@@ -32,5 +32,7 @@ namespace SmartLock.Model.Services
         Task<List<KeyboxHistory>> GetKeyboxHistories(int keyboxId, int propertyId);
         Task<bool> PlaceLock(Keybox keybox, Property property);
         Task<bool> PlaceLockUpdate(Keybox keybox, Property property);
+        Task CreatePropertyFeedback(int keyboxId, int propertyId, string content);
+        Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId);
     }
 }

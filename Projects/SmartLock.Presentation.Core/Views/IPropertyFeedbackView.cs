@@ -1,0 +1,15 @@
+﻿using SmartLock.Model.Models;
+using System;
+using System.Collections.Generic;
+
+namespace SmartLock.Presentation.Core.Views
+{
+    public interface IPropertyFeedbackView : IView
+    {
+        event Action BackClick;
+        event Action<string> SubmitClick;
+
+        void Show();
+        void Show(Keybox keybox, List<PropertyFeedback> propertyFeedbacks);
+    }
+}

@@ -227,11 +227,29 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).PostAsync(uri, feedbackPostDto);
         }
 
-        public async Task<List<PropertyFeedbackGetResponseDto>> GetPropertyFeedback(int keyboxId, int propertyId)
+        public async Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}/feedback");
 
-            return await new WebServiceClient(_userSession).GetAsync<List<PropertyFeedbackGetResponseDto>>(uri);
+            var propertyFeedbacksDto = await new WebServiceClient(_userSession).GetAsync<List<PropertyFeedbackGetResponseDto>>(uri);
+
+            if (propertyFeedbacksDto != null)
+            {
+                return propertyFeedbacksDto.Select(dto => new PropertyFeedback()
+                {
+                    PropertyFeedbackId = dto.PropertyFeedbackId,
+                    PropertyId = dto.PropertyId,
+                    UserId = dto.UserId,
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Phone = dto.Phone,
+                    ResPortraitId = dto.ResPortraitId,
+                    Content = dto.Content,
+                    CreatedOn = dto.CreatedOn,
+                }).ToList();
+            }
+
+            return new List<PropertyFeedback>();
         }
 
         public async Task CreateFeedback(FeedbackPostDto feedbackPostDto)

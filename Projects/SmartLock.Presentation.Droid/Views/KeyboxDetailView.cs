@@ -18,6 +18,7 @@ namespace SmartLock.Presentation.Droid.Views
         private View _btnLockEdit;
         private View _btnLockDashboard;
         private View _btnLockData;
+        private View _btnFeedback;
 
         private TextView _tvName;
         private TextView _tvAddress;
@@ -31,6 +32,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action LockEditClick;
         public event Action LockDashboardClick;
         public event Action LockDataClick;
+        public event Action FeedbackClick;
 
         protected override int LayoutId => Resource.Layout.View_KeyboxDetail;
 
@@ -43,6 +45,7 @@ namespace SmartLock.Presentation.Droid.Views
             _btnLockEdit = FindViewById<View>(Resource.Id.btnLockEdit);
             _btnLockDashboard = FindViewById<View>(Resource.Id.btnLockDashboard);
             _btnLockData = FindViewById<View>(Resource.Id.btnLockData);
+            _btnFeedback = FindViewById<View>(Resource.Id.btnFeedback);
 
             _tvName = FindViewById<TextView>(Resource.Id.tvName);
             _tvAddress = FindViewById<TextView>(Resource.Id.tvAddress);
@@ -56,6 +59,7 @@ namespace SmartLock.Presentation.Droid.Views
             _btnLockEdit.Click += (s, e) => LockEditClick?.Invoke();
             _btnLockDashboard.Click += (s, e) => LockDashboardClick?.Invoke();
             _btnLockData.Click += (s, e) => LockDataClick?.Invoke();
+            _btnFeedback.Click += (s, e) => FeedbackClick?.Invoke();
         }
 
         public void Show(Keybox keybox, Property property)

@@ -11,6 +11,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action LockEditClick;
         event Action LockDashboardClick;
         event Action LockDataClick;
+        event Action FeedbackClick;
 
         void Show(Keybox keybox, Property property);
     }

@@ -35,6 +35,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.LockEditClick += () => Push<KeyboxPlaceUpdateController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
             View.LockHistoryClick += () => Push<KeyboxHistoryController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
             View.LockDataClick += () => _messageBoxService.ShowMessage("Data at door", _property.Notes);
+            View.FeedbackClick += () => Push<PropertyFeedbackController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
         }
 
         protected override void OnViewWillShow()

@@ -44,6 +44,7 @@
     <Compile Include="Ble\DeviceState.cs" />
     <Compile Include="Models\KeyboxHistory.cs" />
     <Compile Include="Ble\BleDevice.cs" />
+    <Compile Include="Models\PropertyFeedback.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\Keybox.cs" />
     <Compile Include="Models\HomeViewModel.cs" />

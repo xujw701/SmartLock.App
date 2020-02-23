@@ -41,6 +41,7 @@
     <Compile Include="AppCore.cs" />
     <Compile Include="IMessageBoxService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewControllers\PropertyFeedbackController.cs" />
     <Compile Include="ViewControllers\PasswordController.cs" />
     <Compile Include="ViewControllers\MyProfileController.cs" />
     <Compile Include="ViewControllers\KeyboxPlaceUpdateController.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="ViewControllers\ViewController.cs" />
     <Compile Include="ViewService\IViewService.cs" />
     <Compile Include="ViewService\ViewServiceBase.cs" />
+    <Compile Include="Views\IPropertyFeedbackView.cs" />
     <Compile Include="Views\IPasswordView.cs" />
     <Compile Include="Views\IMyProfileView.cs" />
     <Compile Include="Views\IKeyboxPlaceUpdateView.cs" />

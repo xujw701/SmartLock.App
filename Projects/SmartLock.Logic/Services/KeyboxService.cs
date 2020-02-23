@@ -176,6 +176,19 @@ namespace SmartLock.Logic.Services
             return true;
         }
 
+        public async Task CreatePropertyFeedback(int keyboxId, int propertyId, string content)
+        {
+            await _webService.CreatePropertyFeedback(keyboxId, propertyId, new FeedbackPostDto()
+            {
+                Content = content
+            });
+        }
+
+        public async Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId)
+        {
+            return await _webService.GetPropertyFeedback(keyboxId, propertyId);
+        }
+
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
             Task.Run(async () =>
