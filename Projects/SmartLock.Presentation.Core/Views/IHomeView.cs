@@ -12,10 +12,12 @@ namespace SmartLock.Presentation.Core.Views
         event Action<Keybox> Disconnect;
         event Action DisconnectCurrent;
         event Action UnlockClicked;
+        event Action BtClicked;
 
-        void Show(string greeting, string name, bool btStatuss, bool setMode = true);
+        void Show(string greeting, string name, bool setMode = true);
         void Show(List<Keybox> keyboxes);
         void Show(Keybox keybox);
         void Unlocked();
+        void SetBleIndicator(bool isOn);
     }
 }

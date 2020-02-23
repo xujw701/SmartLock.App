@@ -8,6 +8,7 @@ namespace SmartLock.Model.Services
 {
     public interface IKeyboxService
     {
+        event Action<bool> OnBleStateChanged;
         event Action<Keybox> OnKeyboxDiscovered;
         event Action<Keybox> OnKeyboxConnected;
         event Action OnKeyboxDisconnected;

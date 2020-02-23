@@ -40,6 +40,7 @@ namespace SmartLock.Presentation.Droid.Platform
         private ICharacteristic _notifyCharacteristic;
         private ICharacteristic _batteryCharacteristic;
 
+        public event Action<bool> OnBleStateChanged;
         public event Action<BleDevice> OnDeviceDiscovered;
         public event Action<BleDevice> OnDeviceConnected;
         public event Action OnDeviceDisconnected;
@@ -58,6 +59,8 @@ namespace SmartLock.Presentation.Droid.Platform
 
             _discoveredDevices = new List<IDevice>();
             _discoveredBleDevices = new List<BleDevice>();
+
+            _ble.StateChanged += Ble_StateChanged;
 
             _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
@@ -141,6 +144,11 @@ namespace SmartLock.Presentation.Droid.Platform
             _discoveredBleDevices = new List<BleDevice>();
 
             _connectedDevice = null;
+        }
+
+        private void Ble_StateChanged(object sender, BluetoothStateChangedArgs e)
+        {
+            OnBleStateChanged?.Invoke(e.NewState == BluetoothState.On);
         }
 
         private void Adapter_OnDeviceDiscovered(object sender, DeviceEventArgs args)

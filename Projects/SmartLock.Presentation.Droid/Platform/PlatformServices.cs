@@ -55,6 +55,20 @@ namespace SmartLock.Presentation.Droid.Platform
             }
         }
 
+        public void Bt()
+        {
+            var intent = new Intent();
+            intent.SetAction(Android.Provider.Settings.ActionBluetoothSettings);
+            if (intent.ResolveActivity(ViewBase.CurrentActivity.PackageManager) != null)
+            {
+                ViewBase.CurrentActivity.StartActivity(intent);
+            }
+            else
+            {
+                IoC.Resolve<IMessageBoxService>().ShowMessage("Service unavailable", "Cannot open bluetooth settings.");
+            }
+        }
+
         public void Exit()
         {
             Android.OS.Process.KillProcess(Android.OS.Process.MyPid());

@@ -7,6 +7,7 @@ namespace SmartLock.Model.Services
 {
     public interface ILocalBleService
     {
+        event Action<bool> OnBleStateChanged;
         event Action<BleDevice> OnDeviceDiscovered;
         event Action<BleDevice> OnDeviceConnected;
         event Action OnDeviceDisconnected;

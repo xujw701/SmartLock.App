@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Android.App;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.Widget;
 using Android.Util;
@@ -57,6 +58,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action<Keybox> Disconnect;
         public event Action DisconnectCurrent;
         public event Action UnlockClicked;
+        public event Action BtClicked;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -103,10 +105,15 @@ namespace SmartLock.Presentation.Droid.Views
                 UnlockClicked?.Invoke();
             };
 
+            _tvBtStatus.Click += (s, e) =>
+            {
+                BtClicked?.Invoke();
+            };
+
             return _view;
         }
 
-        public void Show(string greeting, string name, bool btStatus, bool setMode = true)
+        public void Show(string greeting, string name, bool setMode = true)
         {
             if (setMode)
             {
@@ -115,7 +122,6 @@ namespace SmartLock.Presentation.Droid.Views
 
             _tvGreeting.Text = greeting;
             _tvName.Text = name;
-            _tvBtStatus.Text = btStatus ? "ON" : "OFF";
         }
 
         public void Show(List<Keybox> keyboxes)
@@ -151,6 +157,12 @@ namespace SmartLock.Presentation.Droid.Views
             SetLockUI(false);
 
             _handler.PostDelayed(() => SetLockUI(true), 4000);
+        }
+
+        public void SetBleIndicator(bool isOn)
+        {
+            _tvBtStatus.Text = isOn ? "ON" : "OFF";
+            _tvBtStatus.SetTextColor(new Color(Context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
         }
 
         private void SetMode(int state)

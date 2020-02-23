@@ -20,6 +20,7 @@ namespace SmartLock.Logic.Services
 
         private List<Keybox> _discoveredKeyboxes;
 
+        public event Action<bool> OnBleStateChanged;
         public event Action<Keybox> OnKeyboxDiscovered;
         public event Action<Keybox> OnKeyboxConnected;
         public event Action OnKeyboxDisconnected;
@@ -45,6 +46,7 @@ namespace SmartLock.Logic.Services
         {
             _discoveredKeyboxes = new List<Keybox>();
 
+            _localBleService.OnBleStateChanged += LocalBleService_OnBleStateChanged;
             _localBleService.OnDeviceDiscovered += LocalBleService_OnDeviceDiscovered;
             _localBleService.OnDeviceConnected += LocalBleService_OnDeviceConnected;
             _localBleService.OnDeviceDisconnected += LocalBleService_OnDeviceDisconnected;
@@ -187,6 +189,11 @@ namespace SmartLock.Logic.Services
         public async Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId)
         {
             return await _webService.GetPropertyFeedback(keyboxId, propertyId);
+        }
+
+        private void LocalBleService_OnBleStateChanged(bool isOn)
+        {
+            OnBleStateChanged?.Invoke(isOn);
         }
 
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)

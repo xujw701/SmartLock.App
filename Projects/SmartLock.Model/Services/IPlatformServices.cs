@@ -9,5 +9,7 @@
         void Email(string emailAddress);
 
         void Exit();
+
+        void Bt();
     }
 }

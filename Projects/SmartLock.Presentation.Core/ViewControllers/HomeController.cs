@@ -13,18 +13,21 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
+        private readonly IPlatformServices _platformServices;
 
-        public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
+        public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
             _messageBoxService = messageBoxService;
             _userSession = userSession;
             _keyboxService = keyboxService;
+            _platformServices = platformServices;
         }
 
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
 
+            _keyboxService.OnBleStateChanged += OnBleStateChanged;
             _keyboxService.OnKeyboxDiscovered += OnKeyboxDiscovered;
             _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
 
@@ -33,6 +36,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.Disconnect += (keybox) => DoSafeAsync(async () => await View_Disconnect(keybox));
             View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_keyboxService.ConnectedKeybox));
             View.UnlockClicked += () => DoSafeAsync(View_UnlockClicked);
+            View.BtClicked += () => _platformServices.Bt();
         }
 
         protected override void OnViewWillShow()
@@ -41,18 +45,23 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             if (_keyboxService.ConnectedKeybox != null)
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn, false);
+                View.Show(GenerateGreeting(), _userSession.FirstName, false);
                 View.Show(_keyboxService.ConnectedKeybox);
             }
             else if (_keyboxService.DiscoveredKeyboxes != null && _keyboxService.DiscoveredKeyboxes.Count > 0)
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn, false);
+                View.Show(GenerateGreeting(), _userSession.FirstName, false);
                 View.Show(_keyboxService.DiscoveredKeyboxes);
             }
             else
             {
                 View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
             }
+        }
+
+        private void OnBleStateChanged(bool isOn)
+        {
+            View.SetBleIndicator(isOn);
         }
 
         private void OnKeyboxDiscovered(Keybox keybox)

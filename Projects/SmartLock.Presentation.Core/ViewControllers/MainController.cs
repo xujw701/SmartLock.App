@@ -16,12 +16,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly NearbyController _nearbyController;
         private readonly SettingController _settingController;
 
-        public MainController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IPushNotificationService pushNotificationService, IKeyboxService keyboxService) : base(viewService)
+        public MainController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IPushNotificationService pushNotificationService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
             _userSession = userSession;
             _pushNotificationService = pushNotificationService;
 
-            _homeController = new HomeController(viewService, messageBoxService, userSession, keyboxService);
+            _homeController = new HomeController(viewService, messageBoxService, userSession, keyboxService, platformServices);
             _keyboxesController = new KeyboxesController(viewService, userSession, keyboxService);
             _listingController = new ListingController(viewService);
             _nearbyController = new NearbyController(viewService);
