@@ -44,7 +44,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
                 else
                 {
-                    _messageBoxService.ShowMessage("Cannot place keybox", "Please connect to a keybox first.");
+                    if (ConnectedKeybox == null)
+                    {
+                        _messageBoxService.ShowMessage("Cannot place keybox", "Please connect to a keybox first.");
+                    }
+                    else
+                    {
+                        _messageBoxService.ShowMessage("Cannot place keybox", "You are not the owner of this keybox.");
+                    }
                 }
             };
         }

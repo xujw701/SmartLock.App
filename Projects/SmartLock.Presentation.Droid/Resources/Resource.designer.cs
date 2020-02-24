@@ -3452,31 +3452,34 @@ namespace SmartLock.Presentation.Droid
 			public const int rounded_rectangle_add_lock_disabled = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int rounded_rectangle_button = 2131165380;
+			public const int rounded_rectangle_blue = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int rounded_rectangle_dark = 2131165381;
+			public const int rounded_rectangle_button = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int rounded_rectangle_white = 2131165382;
-			
-			// aapt resource value: 0x7F0700C8
-			public const int searching_lock = 2131165384;
+			public const int rounded_rectangle_dark = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int search_lock = 2131165383;
+			public const int rounded_rectangle_white = 2131165383;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int setting = 2131165385;
+			public const int searching_lock = 2131165385;
+			
+			// aapt resource value: 0x7F0700C8
+			public const int search_lock = 2131165384;
 			
 			// aapt resource value: 0x7F0700CA
-			public const int splash_screen = 2131165386;
+			public const int setting = 2131165386;
 			
 			// aapt resource value: 0x7F0700CB
-			public const int tooltip_frame_dark = 2131165387;
+			public const int splash_screen = 2131165387;
 			
 			// aapt resource value: 0x7F0700CC
-			public const int tooltip_frame_light = 2131165388;
+			public const int tooltip_frame_dark = 2131165388;
+			
+			// aapt resource value: 0x7F0700CD
+			public const int tooltip_frame_light = 2131165389;
 			
 			static Drawable()
 			{

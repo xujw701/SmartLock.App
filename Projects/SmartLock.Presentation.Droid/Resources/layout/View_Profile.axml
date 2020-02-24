@@ -155,7 +155,7 @@
                     android:text="Update Profile"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    android:background="@drawable/rounded_rectangle_dark"/>
+                    android:background="@drawable/rounded_rectangle_blue"/>
             </RelativeLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

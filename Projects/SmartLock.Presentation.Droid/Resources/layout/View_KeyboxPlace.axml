@@ -264,7 +264,7 @@
                             android:background="@drawable/rounded_rectangle_white"
                             android:inputType="textMultiLine"
                             android:padding="15dp"
-                            android:hint="Notes"
+                            android:hint="Data at door"
                             android:textColorHint="@color/hint_color"
                             android:textSize="15sp"/>
                     </android.support.design.widget.TextInputLayout>
@@ -273,13 +273,13 @@
                     android:id="@+id/btnPlace"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="100dp"
                     android:layout_below="@+id/NotesLayout"
                     android:textAllCaps="false"
                     android:text="Place Keybox"
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    android:background="@drawable/rounded_rectangle_dark"/>
+                    android:background="@drawable/rounded_rectangle_blue"/>
             </RelativeLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

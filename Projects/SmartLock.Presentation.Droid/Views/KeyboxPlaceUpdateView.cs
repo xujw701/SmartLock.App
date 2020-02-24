@@ -117,13 +117,16 @@ namespace SmartLock.Presentation.Droid.Views
             switch(property.Price.ToString())
             {
                 case "Auction":
-                    _spinPriceOption.SetSelection(1);
+                    _spinPriceOption.SetSelection(0);
+                    SelectPriceOption("Auction", true);
                     break;
                 case "Negotiation":
-                    _spinPriceOption.SetSelection(2);
+                    _spinPriceOption.SetSelection(1);
+                    SelectPriceOption("Negotiation", true);
                     break;
-                case "Input Amount":
-                    _spinPriceOption.SetSelection(3);
+                default:
+                    _spinPriceOption.SetSelection(2);
+                    SelectPriceOption("Input Amount", true);
                     break;
             }
         }
@@ -132,43 +135,49 @@ namespace SmartLock.Presentation.Droid.Views
         {
             ConfigueSpinner(_spinBedroomOption, "Bedroom", new List<string>()
             {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
+                "1 Bedroom",
+                "2 Bedrooms",
+                "3 Bedrooms",
+                "4 Bedrooms",
+                "5 Bedrooms",
+                "6 Bedrooms",
+                "7 Bedrooms",
+                "8 Bedrooms",
+                "9 Bedrooms"
             });
 
             _spinBedroomOption.ItemSelected += (s, e) =>
             {
                 if (_property != null)
                 {
-                    _property.Bedrooms = double.Parse(_spinBedroomOption.SelectedItem.ToString());
+                    var itemString = _spinBedroomOption.SelectedItem.ToString();
+                    itemString = itemString.Replace(" Bedroom", "");
+                    itemString = itemString.Replace("s", "");
+                    _property.Bedrooms = double.Parse(itemString);
                 }
             };
 
             ConfigueSpinner(_spinBathroomOption, "Bathroom", new List<string>()
             {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
+                "1 Bathroom",
+                "2 Bathrooms",
+                "3 Bathrooms",
+                "4 Bathrooms",
+                "5 Bathrooms",
+                "6 Bathrooms",
+                "7 Bathrooms",
+                "8 Bathrooms",
+                "9 Bathrooms"
             });
 
             _spinBathroomOption.ItemSelected += (s, e) =>
             {
                 if (_property != null)
                 {
-                    _property.Bathrooms = double.Parse(_spinBathroomOption.SelectedItem.ToString());
+                    var itemString = _spinBathroomOption.SelectedItem.ToString();
+                    itemString = itemString.Replace(" Bathroom", "");
+                    itemString = itemString.Replace("s", "");
+                    _property.Bathrooms = double.Parse(itemString);
                 }
             };
 
@@ -181,20 +190,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             _spinPriceOption.ItemSelected += (s, e) =>
             {
-                var selectedItem = _spinPriceOption.SelectedItem.ToString();
-
-                if (selectedItem.Equals("Input Amount"))
-                {
-                    _priceLayout.Visibility = ViewStates.Visible;
-                }
-                else
-                {
-                    _priceLayout.Visibility = ViewStates.Gone;
-                    if (_property != null)
-                    {
-                        _property.Price = selectedItem;
-                    }
-                }
+                SelectPriceOption(_spinPriceOption.SelectedItem.ToString());
             };
         }
 
@@ -207,6 +203,24 @@ namespace SmartLock.Presentation.Droid.Views
 
             spinner.Adapter = adapter;
             spinner.SetSelection(items.Count - 1, true);
+        }
+
+        private void SelectPriceOption(string optionString, bool isInit = false)
+        {
+            if (optionString.Equals("Input Amount"))
+            {
+                _priceLayout.Visibility = ViewStates.Visible;
+
+                if (isInit) _etPrice.Text = _property.Price;
+            }
+            else
+            {
+                _priceLayout.Visibility = ViewStates.Gone;
+                if (_property != null)
+                {
+                    _property.Price = optionString;
+                }
+            }
         }
     }
 }

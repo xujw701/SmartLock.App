@@ -15,6 +15,16 @@ namespace SmartLock.Model.Models
         public double? LandArea { get; set; }
 
         public string FloorAreaString => FloorArea.HasValue ? $"{FloorArea.Value}m2" : "N/A";
-        public string PriceString => $"${String.Format("{0:n0}", Price)}";
+        public string PriceString => GetPriceString();
+
+        private string GetPriceString()
+        {
+            if (double.TryParse(Price, out double result))
+            {
+                return $"$ {String.Format("{0:n0}", result)}";
+            }
+
+            return Price;
+        }
     }
 }

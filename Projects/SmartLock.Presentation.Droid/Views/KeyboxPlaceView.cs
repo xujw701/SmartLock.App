@@ -107,43 +107,49 @@ namespace SmartLock.Presentation.Droid.Views
         {
             ConfigueSpinner(_spinBedroomOption, "Bedroom", new List<string>()
             {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
+                "1 Bedroom",
+                "2 Bedrooms",
+                "3 Bedrooms",
+                "4 Bedrooms",
+                "5 Bedrooms",
+                "6 Bedrooms",
+                "7 Bedrooms",
+                "8 Bedrooms",
+                "9 Bedrooms"
             });
 
             _spinBedroomOption.ItemSelected += (s, e) =>
             {
                 if (_property != null)
                 {
-                    _property.Bedrooms = double.Parse(_spinBedroomOption.SelectedItem.ToString());
+                    var itemString = _spinBedroomOption.SelectedItem.ToString();
+                    itemString = itemString.Replace(" Bedroom", "");
+                    itemString = itemString.Replace("s", "");
+                    _property.Bedrooms = double.Parse(itemString);
                 }
             };
 
             ConfigueSpinner(_spinBathroomOption, "Bathroom", new List<string>()
             {
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-                "6",
-                "7",
-                "8",
-                "9"
+                "1 Bathroom",
+                "2 Bathrooms",
+                "3 Bathrooms",
+                "4 Bathrooms",
+                "5 Bathrooms",
+                "6 Bathrooms",
+                "7 Bathrooms",
+                "8 Bathrooms",
+                "9 Bathrooms"
             });
 
             _spinBathroomOption.ItemSelected += (s, e) =>
             {
                 if (_property != null)
                 {
-                    _property.Bathrooms = double.Parse(_spinBathroomOption.SelectedItem.ToString());
+                    var itemString = _spinBathroomOption.SelectedItem.ToString();
+                    itemString = itemString.Replace(" Bathroom", "");
+                    itemString = itemString.Replace("s", "");
+                    _property.Bathrooms = double.Parse(itemString);
                 }
             };
 

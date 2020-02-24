@@ -33,6 +33,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action LockDashboardClick;
         public event Action LockDataClick;
         public event Action FeedbackClick;
+        public event Action Refresh;
 
         protected override int LayoutId => Resource.Layout.View_KeyboxDetail;
 
@@ -62,10 +63,17 @@ namespace SmartLock.Presentation.Droid.Views
             _btnFeedback.Click += (s, e) => FeedbackClick?.Invoke();
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            Refresh?.Invoke();
+        }
+
         public void Show(Keybox keybox, Property property)
         {
             _tvName.Text = property.Address;
-            _tvAddress.Text = keybox.KeyboxName;
+            _tvAddress.Text = property.PropertyName;
             _tvRoom.Text = property.Bedrooms.HasValue ? property.Bedrooms.Value.ToString() : "N/A";
             _tvToilet.Text = property.Bathrooms.HasValue ? property.Bathrooms.Value.ToString() : "N/A";
             _tvArea.Text = property.FloorAreaString;
