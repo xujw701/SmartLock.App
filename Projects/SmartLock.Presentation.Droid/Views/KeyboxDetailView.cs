@@ -70,7 +70,7 @@ namespace SmartLock.Presentation.Droid.Views
             Refresh?.Invoke();
         }
 
-        public void Show(Keybox keybox, Property property)
+        public void Show(Keybox keybox, Property property, bool mine)
         {
             _tvName.Text = property.Address;
             _tvAddress.Text = property.PropertyName;
@@ -78,6 +78,9 @@ namespace SmartLock.Presentation.Droid.Views
             _tvToilet.Text = property.Bathrooms.HasValue ? property.Bathrooms.Value.ToString() : "N/A";
             _tvArea.Text = property.FloorAreaString;
             _tvPrice.Text = property.PriceString;
+
+            _btnLockHistory.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
+            _btnLockEdit.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
         }
     }
 }

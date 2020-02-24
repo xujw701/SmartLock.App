@@ -86,6 +86,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             await _keyboxService.CreatePropertyFeedback(Keybox.KeyboxId, Property.PropertyId, feedback);
 
             await _messageBoxService.ShowMessageAsync("Success", "Your feedback has been sent successfully.");
+
+            Pop();
         }
     }
 }

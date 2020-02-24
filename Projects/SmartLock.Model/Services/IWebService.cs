@@ -16,6 +16,7 @@ namespace SmartLock.Model.Services
         Task UpdateMe(MePutDto mePutDto);
         Task<Keybox> GetKeybox(int? keyboxId = null, string uuid = null);
         Task<List<Keybox>> GetMyKeybox();
+        Task<List<Keybox>> GetKeyboxIUnlocked();
         Task<DefaultCreatedPostResponseDto> CreateKeyboxProperty(int keyboxId, KeyboxPropertyPostPutDto keyboxPropertyPostDto);
         Task<Property> GetKeyboxProperty(int keyboxId, int propertyId);
         Task UpdateKeyboxProperty(int keyboxId, int propertyId, KeyboxPropertyPostPutDto keyboxPropertyPutDto);

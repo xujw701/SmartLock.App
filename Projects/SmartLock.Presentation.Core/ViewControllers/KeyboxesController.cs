@@ -54,6 +54,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
                     }
                 }
             };
+            View.TabClicked += (mine) =>
+            {
+                if (mine) DoSafeAsync(LoadMineData);
+                else DoSafeAsync(LoadOthersData);
+            };
         }
 
         protected override void OnViewWillShow()
@@ -62,12 +67,19 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.UpdatePlaceLockButton(CanPlaceLock);
 
-            DoSafeAsync(LoadData);
+            DoSafeAsync(LoadMineData);
         }
 
-        private async Task LoadData()
+        private async Task LoadMineData()
         {
             _keyboxes = await _keyboxService.GetMyListingKeyboxes();
+
+            View.Show(_keyboxes, CanPlaceLock);
+        }
+
+        private async Task LoadOthersData()
+        {
+            _keyboxes = await _keyboxService.GetKeyboxesIUnlocked();
 
             View.Show(_keyboxes, CanPlaceLock);
         }

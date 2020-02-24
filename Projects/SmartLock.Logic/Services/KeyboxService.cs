@@ -119,6 +119,18 @@ namespace SmartLock.Logic.Services
             return new List<Keybox>();
         }
 
+        public async Task<List<Keybox>> GetKeyboxesIUnlocked()
+        {
+            var keyboxes = await _webService.GetKeyboxIUnlocked();
+
+            if (keyboxes != null)
+            {
+                return keyboxes.Where(k => k.PropertyId.HasValue && k.UserId.HasValue && k.UserId.Value != _userSession.UserId).ToList();
+            }
+
+            return new List<Keybox>();
+        }
+
         public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId)
         {
             var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);

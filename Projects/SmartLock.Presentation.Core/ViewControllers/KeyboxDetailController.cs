@@ -12,15 +12,20 @@ namespace SmartLock.Presentation.Core.ViewControllers
     public class KeyboxDetailController : ViewController<IKeyboxDetailView>
     {
         private readonly IMessageBoxService _messageBoxService;
+        private readonly IUserSession _userSession;
         private readonly IKeyboxService _keyboxService;
 
         private Property _property;
 
         public Keybox Keybox;
- 
-        public KeyboxDetailController(IViewService viewService, IMessageBoxService messageBoxService, IKeyboxService keyboxService) : base(viewService)
+
+        private bool Mine => Keybox.UserId.HasValue && Keybox.UserId.Value == _userSession.UserId;
+
+
+        public KeyboxDetailController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
             _messageBoxService = messageBoxService;
+            _userSession = userSession;
             _keyboxService = keyboxService;
         }
 
@@ -45,7 +50,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             _property = await _keyboxService.GetKeyboxProperty(Keybox.KeyboxId, Keybox.PropertyId.Value);
 
-            View.Show(Keybox, _property);
+            View.Show(Keybox, _property, Mine);
         }
     }
 }

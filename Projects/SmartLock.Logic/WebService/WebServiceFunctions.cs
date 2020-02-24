@@ -124,6 +124,31 @@ namespace SmartLock.Logic
             return null;
         }
 
+        public async Task<List<Keybox>> GetKeyboxIUnlocked()
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/iunlocked");
+
+            var keyboxListDto = await new WebServiceClient(_userSession).GetAsync<List<KeyboxGetResponseDto>>(uri);
+
+            if (keyboxListDto != null)
+            {
+                return keyboxListDto.Select(dto => new Keybox()
+                {
+                    KeyboxId = dto.KeyboxId,
+                    CompanyId = dto.CompanyId,
+                    BranchId = dto.BranchId,
+                    UserId = dto.UserId,
+                    Uuid = dto.Uuid,
+                    PropertyId = dto.PropertyId,
+                    PropertyAddress = dto.PropertyAddress,
+                    KeyboxName = dto.KeyboxName,
+                    BatteryLevel = dto.BatteryLevel,
+                }).ToList();
+            }
+
+            return null;
+        }
+
         public async Task<DefaultCreatedPostResponseDto> CreateKeyboxProperty(int keyboxId, KeyboxPropertyPostPutDto keyboxPropertyPostDto)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property");

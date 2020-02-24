@@ -29,6 +29,7 @@ namespace SmartLock.Model.Services
         Task<bool> StartUnlock();
 
         Task<List<Keybox>> GetMyListingKeyboxes();
+        Task<List<Keybox>> GetKeyboxesIUnlocked();
         Task<Property> GetKeyboxProperty(int keyboxId, int propertyId);
         Task<List<KeyboxHistory>> GetKeyboxHistories(int keyboxId, int propertyId);
         Task<bool> PlaceLock(Keybox keybox, Property property);

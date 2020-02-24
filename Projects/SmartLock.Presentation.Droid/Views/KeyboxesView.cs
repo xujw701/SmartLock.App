@@ -22,12 +22,18 @@ namespace SmartLock.Presentation.Droid.Views
 
         private Button _btnPlaceLock;
 
+        private View _btnMine;
+        private View _btnOthers;
+        private ImageView _ivMine;
+        private ImageView _ivOthers;
+
         private RecyclerView _rvKeyboxList;
 
         private KeyboxAdapter _adapter;
 
         public event Action<Keybox> KeyboxClicked;
         public event Action PlaceKeyboxClicked;
+        public event Action<bool> TabClicked;
 
         protected override int LayoutId => Resource.Layout.View_Keyboxes;
 
@@ -38,11 +44,29 @@ namespace SmartLock.Presentation.Droid.Views
             _context = ViewBase.CurrentActivity;
 
             _btnPlaceLock = _view.FindViewById<Button>(Resource.Id.btnPlaceLock);
+
+            _btnMine = _view.FindViewById<View>(Resource.Id.btnMine);
+            _btnOthers = _view.FindViewById<View>(Resource.Id.btnOthers);
+            _ivMine = _view.FindViewById<ImageView>(Resource.Id.ivMine);
+            _ivOthers = _view.FindViewById<ImageView>(Resource.Id.ivOthers);
+
             _rvKeyboxList = _view.FindViewById<RecyclerView>(Resource.Id.rvKeyboxList);
 
             _btnPlaceLock.Click += (s, e) =>
             {
                 PlaceKeyboxClicked?.Invoke();
+            };
+
+            _btnMine.Click += (s, e) =>
+            {
+                TabClicked?.Invoke(true);
+                UpdateUI(true);
+            };
+
+            _btnOthers.Click += (s, e) =>
+            {
+                TabClicked?.Invoke(false);
+                UpdateUI(false);
             };
 
             return _view;
@@ -52,22 +76,20 @@ namespace SmartLock.Presentation.Droid.Views
         {
             UpdatePlaceLockButton(placeLockButtonEnabled);
 
-            if (_adapter == null)
-            {
-                _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
-                _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
-                _rvKeyboxList.SetAdapter(_adapter);
-            }
-            else
-            {
-                _adapter.Keyboxes = keyboxes;
-                _adapter.NotifyDataSetChanged();
-            }
+            _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
+            _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
+            _rvKeyboxList.SetAdapter(_adapter);
         }
 
         public void UpdatePlaceLockButton(bool enabled)
         {
             _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
+        }
+
+        private void UpdateUI(bool mine)
+        {
+            _ivMine.Visibility = mine ? ViewStates.Visible : ViewStates.Invisible;
+            _ivOthers.Visibility = !mine ? ViewStates.Visible : ViewStates.Invisible;
         }
     }
 }
