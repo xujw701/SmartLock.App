@@ -258,7 +258,6 @@ namespace SmartLock.Logic.Services
 
             if (keybox != null)
             {
-                keybox.KeyboxName = bleDevice.Name;
                 keybox.BatteryLevel = bleDevice.BatteryLevel;
                 keybox.State = bleDevice.State;
 

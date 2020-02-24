@@ -159,7 +159,8 @@ namespace SmartLock.Presentation.Droid.Views
         {
             SetMode(StateLock);
 
-            _tvLockTitle.Text = keybox.KeyboxName;
+            _tvLockTitle.Text = keybox.PropertyAddress;
+            _tvLockSubTitle.Text = keybox.KeyboxName;
             _tvBatteryStatus.Text = keybox.BatteryLevelString;
         }
 

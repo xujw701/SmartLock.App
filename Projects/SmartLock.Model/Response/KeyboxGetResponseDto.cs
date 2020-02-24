@@ -9,6 +9,7 @@ namespace SmartLock.Model.Response
         public int? UserId { get; set; }
         public string Uuid { get; set; }
         public int? PropertyId { get; set; }
+        public string PropertyAddress { get; set; }
         public string KeyboxName { get; set; }
         public int BatteryLevel { get; set; }
     }

@@ -115,7 +115,8 @@ namespace SmartLock.Presentation.Droid.Adapters
 
             public void SetData(Keybox keybox)
             {
-                _tvTitle.Text = keybox.KeyboxName;
+                _tvTitle.Text = keybox.PropertyAddress;
+                _tvSubTitle.Text = keybox.KeyboxName;
                 _tvBatteryStatus.Text = keybox.BatteryLevelString;
 
                 UpdateUI(keybox.State == DeviceState.Connecting);

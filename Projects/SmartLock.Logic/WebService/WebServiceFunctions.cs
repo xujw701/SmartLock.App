@@ -90,6 +90,7 @@ namespace SmartLock.Logic
                     UserId = keyboxDto.UserId,
                     Uuid = keyboxDto.Uuid,
                     PropertyId = keyboxDto.PropertyId,
+                    PropertyAddress = keyboxDto.PropertyAddress,
                     KeyboxName = keyboxDto.KeyboxName,
                     BatteryLevel = keyboxDto.BatteryLevel,
                 };
@@ -114,6 +115,7 @@ namespace SmartLock.Logic
                     UserId = dto.UserId,
                     Uuid = dto.Uuid,
                     PropertyId = dto.PropertyId,
+                    PropertyAddress = dto.PropertyAddress,
                     KeyboxName = dto.KeyboxName,
                     BatteryLevel = dto.BatteryLevel,
                 }).ToList();

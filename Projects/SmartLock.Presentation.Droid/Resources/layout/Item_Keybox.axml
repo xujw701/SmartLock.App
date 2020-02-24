@@ -48,7 +48,7 @@
                     android:textColor="@color/text2_gray"/>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
                     android:src="@drawable/icon_battery"/>
                 <TextView
                     android:id="@+id/tvBattery"
-                    android:layout_width="30dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:gravity="end"

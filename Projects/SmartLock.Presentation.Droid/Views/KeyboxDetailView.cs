@@ -64,8 +64,8 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void Show(Keybox keybox, Property property)
         {
-            _tvName.Text = keybox.KeyboxName;
-            _tvAddress.Text = property.Address;
+            _tvName.Text = property.Address;
+            _tvAddress.Text = keybox.KeyboxName;
             _tvRoom.Text = property.Bedrooms.HasValue ? property.Bedrooms.Value.ToString() : "N/A";
             _tvToilet.Text = property.Bathrooms.HasValue ? property.Bathrooms.Value.ToString() : "N/A";
             _tvArea.Text = property.FloorAreaString;
