@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using SmartLock.Infrastructure;
 using SmartLock.Model.Server;
+using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 
@@ -192,17 +193,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    await messageBoxService.ShowMessageAsync("Error", exception.Message);
+                    await messageBoxService.ShowMessageAsync("Tips", "Your credentials could not be authenticated. Please log in again.");
+                    await IoC.Resolve<IUserService>().LogOut();
                     ViewService.PopToRoot();
                 }
                 else
                 {
                     await messageBoxService.ShowMessageAsync("Error", exception.Message);
                 }
-            }
-            else if (exception is Newtonsoft.Json.JsonException)
-            {
-                await messageBoxService.ShowMessageAsync("Error", "Error parsing JSON");
             }
             else
             {

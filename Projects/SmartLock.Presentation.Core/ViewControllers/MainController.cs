@@ -16,16 +16,16 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly NearbyController _nearbyController;
         private readonly SettingController _settingController;
 
-        public MainController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IPushNotificationService pushNotificationService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
+        public MainController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices, IPushNotificationService pushNotificationService) : base(viewService)
         {
             _userSession = userSession;
             _pushNotificationService = pushNotificationService;
 
-            _homeController = new HomeController(viewService, messageBoxService, userSession, keyboxService, platformServices);
+            _homeController = new HomeController(viewService, messageBoxService, userSession, userService, keyboxService, platformServices);
             _keyboxesController = new KeyboxesController(viewService, messageBoxService, userSession, keyboxService);
             _listingController = new ListingController(viewService);
             _nearbyController = new NearbyController(viewService);
-            _settingController = new SettingController(viewService, messageBoxService, userSession, pushNotificationService);
+            _settingController = new SettingController(viewService, messageBoxService, userSession, userService);
         }
 
         protected override void OnViewLoaded()

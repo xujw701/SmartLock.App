@@ -10,13 +10,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
     {
         private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
-        private readonly IPushNotificationService _pushNotificationService;
+        private readonly IUserService _userService;
 
-        public SettingController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IPushNotificationService pushNotificationService) : base(viewService)
+        public SettingController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService) : base(viewService)
         {
             _messageBoxService = messageBoxService;
             _userSession = userSession;
-            _pushNotificationService = pushNotificationService;
+            _userService = userService;
         }
 
         protected override void OnViewLoaded()
@@ -51,9 +51,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task LogOut()
         {
-            await _pushNotificationService.UnregisterAsync();
-
-            _userSession.LogOut();
+            await _userService.LogOut();
 
             PopToRoot();
         }

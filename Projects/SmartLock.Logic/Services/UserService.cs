@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.Request;
+﻿using SmartLock.Model.PushNotification;
+using SmartLock.Model.Request;
 using SmartLock.Model.Services;
 using System.Threading.Tasks;
 
@@ -8,11 +9,13 @@ namespace SmartLock.Logic.Services
     {
         private readonly IWebService _webService;
         private readonly IUserSession _userSession;
+        private readonly IPushNotificationService _pushNotificationService;
 
-        public UserService(IWebService webService, IUserSession userSession)
+        public UserService(IWebService webService, IUserSession userSession, IPushNotificationService pushNotificationService)
         {
             _webService = webService;
             _userSession = userSession;
+            _pushNotificationService = pushNotificationService;
         }
 
         public async Task Login(string username, string password)
@@ -88,8 +91,10 @@ namespace SmartLock.Logic.Services
             });
         }
 
-        public void Logout()
+        public async Task LogOut()
         {
+            await _pushNotificationService.UnregisterAsync();
+
             _userSession.LogOut();
         }
     }

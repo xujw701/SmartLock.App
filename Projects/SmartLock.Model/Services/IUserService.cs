@@ -11,6 +11,6 @@ namespace SmartLock.Model.Services
         Task UpdateMe(string firstName, string lastName, string email, string phone);
         Task<bool> UpdatePassword(string oldPassword, string password);
         Task CreateFeedback(string feedback);
-        void Logout();
+        Task LogOut();
     }
 }

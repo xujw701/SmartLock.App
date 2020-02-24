@@ -276,7 +276,7 @@ namespace SmartLock.Logic
         public async Task RemoveRegistration(string registrationId)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"notification/{registrationId}");
-            await new WebServiceClient(_userSession).DeleteAsync(uri);
+            await new WebServiceClient().DeleteAsync(uri);
         }
     }
 }

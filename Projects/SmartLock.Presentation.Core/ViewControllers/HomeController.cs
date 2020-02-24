@@ -1,9 +1,11 @@
 ﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
+using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -12,15 +14,17 @@ namespace SmartLock.Presentation.Core.ViewControllers
     {
         private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
+        private readonly IUserService _userService;
         private readonly IKeyboxService _keyboxService;
         private readonly IPlatformServices _platformServices;
 
         private Keybox _lastKeybox;
 
-        public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
+        public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
             _messageBoxService = messageBoxService;
             _userSession = userSession;
+            _userService = userService;
             _keyboxService = keyboxService;
             _platformServices = platformServices;
         }
@@ -135,26 +139,40 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         protected override async Task ShowErrorAsync(Exception exception)
         {
-            if (exception is Newtonsoft.Json.JsonException)
-            {
-                await _messageBoxService.ShowMessageAsync("Error", "Error parsing JSON");
-            }
-            else
-            {
-                if (exception.Message.Contains("133"))
-                {
-                    _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
+            var webServiceClientException = exception as WebServiceClientException;
 
-                    if (_lastKeybox != null)
-                    {
-                        await _keyboxService.DisconnectKeyboxAsync(_lastKeybox);
-                    }
+            if (webServiceClientException != null)
+            {
+                if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await _messageBoxService.ShowMessageAsync("Tips", "Your credentials could not be authenticated. Please log in again.");
+                    await LogOut();
                 }
                 else
                 {
-                    //await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+                    await _messageBoxService.ShowMessageAsync("Error", exception.Message);
                 }
             }
+            else if (exception.Message.Contains("133"))
+            {
+                _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
+
+                if (_lastKeybox != null)
+                {
+                    await _keyboxService.DisconnectKeyboxAsync(_lastKeybox);
+                }
+            }
+            else
+            {
+                //await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+            }
+        }
+
+        private async Task LogOut()
+        {
+            await _userService.LogOut();
+
+            PopToRoot();
         }
     }
 }
