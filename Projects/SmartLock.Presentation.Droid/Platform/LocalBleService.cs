@@ -182,28 +182,34 @@ namespace SmartLock.Presentation.Droid.Platform
 
         private async void Adapter_OnDeviceConnected(object sender, DeviceEventArgs args)
         {
-            _connectedDevice = args.Device;
-
-            var bleDevice = new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State);
-
-            _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
-            _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
-            _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
-
-            await Auth();
-
-            if (_notifyCharacteristic != null)
+            try
             {
-                _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
-                await _notifyCharacteristic.StartUpdatesAsync();
+                _connectedDevice = args.Device;
+
+                var bleDevice = new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State);
+
+                _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
+                _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
+                _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
+
+                await Auth();
+
+                if (_notifyCharacteristic != null)
+                {
+                    _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
+                    await _notifyCharacteristic.StartUpdatesAsync();
+                }
+
+                bleDevice.BatteryLevel = await GetBatteryLevel();
+
+                ViewBase.CurrentActivity.RunOnUiThread(() =>
+                {
+                    OnDeviceConnected?.Invoke(bleDevice);
+                });
             }
-
-            bleDevice.BatteryLevel = await GetBatteryLevel();
-
-            Context.RunOnUiThread(() =>
+            catch (Exception e)
             {
-                OnDeviceConnected?.Invoke(bleDevice);
-            });
+            }
         }
 
         private void Adapter_DeviceDisconnected(object sender, DeviceEventArgs e)

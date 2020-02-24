@@ -68,7 +68,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            _context = _view.Context;
+            _context = ViewBase.CurrentActivity;
 
             _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);

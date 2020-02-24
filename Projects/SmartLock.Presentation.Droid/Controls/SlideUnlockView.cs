@@ -68,7 +68,7 @@ namespace SmartLock.Presentation.Droid.Controls
                                            //    Shader.TileMode tile: 渲染器平铺模式
 
         private int[] mGradientColors;
-        private int mGradientIndex;
+        private static int mGradientIndex;
         private IInterpolator mInterpolator;
         private float mDensity;
         private Matrix mMatrix;
@@ -382,31 +382,38 @@ namespace SmartLock.Presentation.Droid.Controls
 
         private void Redraw()
         {
-            if (mMatrix == null)
+            try
             {
-                mMatrix = new Matrix();
+                if (mMatrix == null)
+                {
+                    mMatrix = new Matrix();
 
-            }
-            mMatrix.SetTranslate(mGradientIndex, 0);
+                }
 
-            if (mGradient == null)
-            {
-                mGradientColors = new int[]{Color.Argb(255, 120, 120, 120),
+                mMatrix.SetTranslate(mGradientIndex, 0);
+
+                if (mGradient == null)
+                {
+                    mGradientColors = new int[]{Color.Argb(255, 120, 120, 120),
                                     Color.Argb(255, 120, 120, 120), Color.Argb(255, 255, 255, 255)};
 
-                mGradient = new LinearGradient(0, 0, width / 2, 0, mGradientColors,
-                        new float[] { 0, 0.7f, 1 }, Shader.TileMode.Mirror);
-            }
+                    mGradient = new LinearGradient(0, 0, width / 2, 0, mGradientColors,
+                            new float[] { 0, 0.7f, 1 }, Shader.TileMode.Mirror);
+                }
 
-            mGradient.SetLocalMatrix(mMatrix);
-            Invalidate();
-            mGradientIndex += STEP_LENGTH;
-            if (mGradientIndex >= 100000)
+                mGradient.SetLocalMatrix(mMatrix);
+                Invalidate();
+                mGradientIndex += STEP_LENGTH;
+                if (mGradientIndex >= 100000)
+                {
+                    mGradientIndex = 0;
+                }
+
+                mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+            }
+            catch (Exception e)
             {
-                mGradientIndex = 0;
             }
-
-            mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
         }
     }
 }
