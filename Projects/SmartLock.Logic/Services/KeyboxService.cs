@@ -97,7 +97,7 @@ namespace SmartLock.Logic.Services
             {
                 await _localBleService.StartSetLock(false);
 
-                await Task.Delay(5000);
+                await Task.Delay(10000);
 
                 await _localBleService.StartSetLock(true);
 

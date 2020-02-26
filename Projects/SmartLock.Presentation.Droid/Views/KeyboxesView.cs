@@ -34,6 +34,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action<Keybox> KeyboxClicked;
         public event Action PlaceKeyboxClicked;
         public event Action<bool> TabClicked;
+        public event Action Refresh;
 
         protected override int LayoutId => Resource.Layout.View_Keyboxes;
 
@@ -70,6 +71,13 @@ namespace SmartLock.Presentation.Droid.Views
             };
 
             return _view;
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+
+            Refresh?.Invoke();
         }
 
         public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)

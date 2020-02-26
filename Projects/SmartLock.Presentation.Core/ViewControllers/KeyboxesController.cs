@@ -59,6 +59,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 if (mine) DoSafeAsync(LoadMineData);
                 else DoSafeAsync(LoadOthersData);
             };
+            View.Refresh += () => View.UpdatePlaceLockButton(CanPlaceLock);
         }
 
         protected override void OnViewWillShow()

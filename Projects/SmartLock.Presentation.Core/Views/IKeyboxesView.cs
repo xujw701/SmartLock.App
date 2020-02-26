@@ -9,6 +9,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action<Keybox> KeyboxClicked;
         event Action PlaceKeyboxClicked;
         event Action<bool> TabClicked;
+        event Action Refresh;
 
         void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled);
         void UpdatePlaceLockButton(bool enabled);
