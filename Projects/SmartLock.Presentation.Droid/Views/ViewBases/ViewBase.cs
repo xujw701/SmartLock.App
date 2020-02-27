@@ -12,6 +12,7 @@ using Android;
 using Android.Support.V4.Content;
 using Android.Content.PM;
 using SmartLock.Presentation.Droid.Support;
+using Android.Views.InputMethods;
 
 namespace SmartLock.Presentation.Droid.Views.ViewBases
 {
@@ -239,6 +240,47 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        public override bool DispatchTouchEvent(MotionEvent ev)
+        {
+            if (ShouldHideInput(CurrentFocus, ev))
+            {
+                HideSoftKeyboard();
+            }
+            return base.DispatchTouchEvent(ev);
+        }
+
+        private bool ShouldHideInput(View v, MotionEvent ev)
+        {
+            if (v != null && (v is EditText))
+            {
+                int[] location = { 0, 0 };
+                v.GetLocationInWindow(location);
+                var left = location[0];
+                var top = location[1];
+                var bottom = top + v.Height;
+                var right = left + v.Width;
+                if (ev.XPrecision > left && ev.XPrecision < right
+                    && ev.YPrecision > top && ev.YPrecision < bottom)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void HideSoftKeyboard()
+        {
+            var imm = (InputMethodManager)GetSystemService(InputMethodService);
+            if (CurrentFocus != null)
+            {
+                imm.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
+            }
         }
 
         #region Permissions
