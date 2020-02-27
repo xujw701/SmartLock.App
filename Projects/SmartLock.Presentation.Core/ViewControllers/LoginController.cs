@@ -25,16 +25,25 @@ namespace SmartLock.Presentation.Core.ViewControllers
         protected override void OnViewLoaded()
         {
             base.OnViewLoaded();
-#if DEBUG
-            if (_userSession.IsLoggedIn)
-            {
-                Push<MainController>();
-            }
-#endif
 
             View.LoginClicked += View_LoginClicked;
+            View.RememberMeClicked += View_RememberMeClicked;
+
+            if (_userSession.RememberMe)
+            {
+                if (_userSession.IsLoggedIn)
+                {
+                    Push<MainController>();
+                }
+            }
+            else
+            {
+                _userSession.LogOut();
+            }
 
             _pushNotificationService.BindDeviceTokenListener();
+
+            View.Show(_userSession.RememberMe);
         }
 
         private void View_LoginClicked(string username, string password)
@@ -45,6 +54,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 {
                     Push<MainController>();
                 });
+        }
+
+        private void View_RememberMeClicked(bool rememberMe)
+        {
+            _userSession.SaveRememberMe(rememberMe);
         }
 
         protected override async Task ShowErrorAsync(Exception exception)

@@ -17,6 +17,7 @@ namespace SmartLock.Model.Services
         string Email { get; }
         int ResPortraitId { get; }
         string PushRegId { get; }
+        bool RememberMe { get; }
 
         bool KeyboxStatus { get; }
 
@@ -25,6 +26,7 @@ namespace SmartLock.Model.Services
         void Update(string firstName, string lastName, string email, string phone);
         void LogOut();
         void SavePushRegId(string pushRegId);
+        void SaveRememberMe(bool rememberMe);
         void SaveKeyboxStatus(bool status);
     }
 }

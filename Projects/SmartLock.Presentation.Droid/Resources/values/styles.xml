@@ -105,4 +105,8 @@
     <item name="android:textSize">12sp</item>
   </style>
 
+  <style name="RememberMeCheckBox" parent="Theme.AppCompat.Light">
+    <item name="colorControlActivated">@color/harcourts_blue</item>
+  </style>
+
 </resources>

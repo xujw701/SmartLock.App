@@ -6,11 +6,13 @@ namespace SmartLock.Logic.Services
 {
     public class UserSession : IUserSession
     {
-        private const string ObjectIdentifier = nameof(UserSession);
+        private const string UserSettingIdentifier = "UserSettings";
+        private const string GeneralSettingIdentifier = "GeneralSettings";
 
         private readonly ISettingsService _settings;
 
         private SettingsModel _settingsModel;
+        private GeneralModel _generalModel;
 
         public bool IsLoggedIn => _settingsModel != null && _settingsModel.UserId > 0;
         public int UserId => _settingsModel?.UserId ?? throw new Exception("Login process must be started to retrieve user id");
@@ -24,11 +26,14 @@ namespace SmartLock.Logic.Services
         public string PushRegId => _settingsModel?.PushRegId;
         public bool KeyboxStatus => _settingsModel != null &&  _settingsModel.KeyboxStatus;
 
+        public bool RememberMe => _generalModel?.RememberMe ?? false;
+
         public UserSession(ISettingsService settings)
         {
             _settings = settings;
 
-            LoadObject();
+            LoadGeneralSettings();
+            LoadUserSettings();
         }
 
         public void Start(TokenPostResponseDto dto)
@@ -39,7 +44,7 @@ namespace SmartLock.Logic.Services
                 Token = dto.Token
             };
 
-            SaveObject();
+            SaveUserSettings();
         }
 
         public void Start(MePostResponseDto dto)
@@ -53,7 +58,7 @@ namespace SmartLock.Logic.Services
             _settingsModel.Email = dto.Email;
             _settingsModel.ResPortraitId = dto.ResPortraitId;
 
-            SaveObject();
+            SaveUserSettings();
         }
 
         public void Update(string firstName, string lastName, string email, string phone)
@@ -63,13 +68,16 @@ namespace SmartLock.Logic.Services
             _settingsModel.Phone = email;
             _settingsModel.Email = phone;
 
-            SaveObject();
+            SaveUserSettings();
         }
 
         public void LogOut()
         {
+            _generalModel = null;
             _settingsModel = null;
-            DeleteObject();
+
+            DeleteGeneralSettings();
+            DeleteUserSettings();
         }
 
         public void SavePushRegId(string pushRegId)
@@ -79,7 +87,18 @@ namespace SmartLock.Logic.Services
                 throw new Exception("The account must have started login");
             }
             _settingsModel.PushRegId = pushRegId;
-            SaveObject();
+            SaveUserSettings();
+        }
+
+        public void SaveRememberMe(bool rememberMe)
+        {
+            if (_generalModel == null)
+            {
+                _generalModel = new GeneralModel();
+            }
+            _generalModel.RememberMe = rememberMe;
+
+            SaveGeneralSettings();
         }
 
         public void SaveKeyboxStatus(bool status)
@@ -89,22 +108,37 @@ namespace SmartLock.Logic.Services
                 throw new Exception("The account must have started login");
             }
             _settingsModel.KeyboxStatus = status;
-            SaveObject();
+            SaveUserSettings();
         }
 
-        private void LoadObject()
+        private void LoadUserSettings()
         {
-            _settingsModel = _settings.LoadObject<SettingsModel>(ObjectIdentifier);
+            _settingsModel = _settings.LoadObject<SettingsModel>(UserSettingIdentifier);
         }
 
-        private void SaveObject()
+        private void SaveUserSettings()
         {
-            _settings.SaveObject(ObjectIdentifier, _settingsModel);
+            _settings.SaveObject(UserSettingIdentifier, _settingsModel);
         }
 
-        private void DeleteObject()
+        private void DeleteUserSettings()
         {
-            _settings.DeleteObject(ObjectIdentifier);
+            _settings.DeleteObject(UserSettingIdentifier);
+        }
+
+        private void LoadGeneralSettings()
+        {
+            _generalModel = _settings.LoadObject<GeneralModel>(GeneralSettingIdentifier);
+        }
+
+        private void SaveGeneralSettings()
+        {
+            _settings.SaveObject(GeneralSettingIdentifier, _generalModel);
+        }
+
+        private void DeleteGeneralSettings()
+        {
+            _settings.DeleteObject(GeneralSettingIdentifier);
         }
 
         public class SettingsModel
@@ -122,6 +156,11 @@ namespace SmartLock.Logic.Services
             public string PushRegId { get; set; }
 
             public bool KeyboxStatus { get; set; }
+        }
+
+        public class GeneralModel
+        {
+            public bool RememberMe { get; set; }
         }
     }
 }
