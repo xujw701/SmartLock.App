@@ -106,8 +106,6 @@ namespace SmartLock.Presentation.Droid.Views
 
             _ivLockDisconnect.Click += (s, e) =>
             {
-                SetMode(StateIdle);
-
                 DisconnectCurrent?.Invoke();
             };
 
@@ -119,6 +117,11 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBtStatus.Click += (s, e) =>
             {
                 BtClicked?.Invoke();
+            };
+
+            DisconnectCurrent += () =>
+            {
+                SetMode(StateIdle);
             };
 
             return _view;
@@ -143,7 +146,7 @@ namespace SmartLock.Presentation.Droid.Views
 
                 if (_adapter == null)
                 {
-                    _adapter = new BleDeviceAdapter(keyboxes, Connect, Disconnect);
+                    _adapter = new BleDeviceAdapter(keyboxes, Connect, Disconnect, DisconnectCurrent);
                     _rvBleList.SetLayoutManager(new LinearLayoutManager(_context));
                     _rvBleList.SetAdapter(_adapter);
                 }

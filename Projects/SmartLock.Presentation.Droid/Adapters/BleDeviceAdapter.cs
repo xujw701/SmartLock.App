@@ -16,17 +16,22 @@ namespace SmartLock.Presentation.Droid.Adapters
 
         private Action<Keybox> _connect;
         private Action<Keybox> _disconnect;
+        private Action _cancel;
 
         public List<Keybox> Keyboxes;
         public Keybox ConnectedKeybox;
 
-        public BleDeviceAdapter(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect)
+        public BleDeviceAdapter(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
         {
             Keyboxes = keyboxes;
             _connect = connect;
             _disconnect = disconnect;
+            _cancel = cancel;
 
-            _connect += (d) => ConnectedKeybox = d;
+            _connect += (keybox) =>
+            {
+                ConnectedKeybox = keybox;
+            };
         }
 
         public override int ItemCount => Keyboxes.Count + 1;
@@ -48,7 +53,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             else
             {
                 var itemView = inflater.Inflate(Resource.Layout.Item_BleDevice, parent, false);
-                return new BleDeviceHolder(Keyboxes, _connect, _disconnect, itemView);
+                return new BleDeviceHolder(Keyboxes, _connect, _disconnect, _cancel, itemView);
             }
         }
 
@@ -89,8 +94,9 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly TextView _tvBatteryStatus;
             private readonly Button _btnConnect;
             private readonly Button _btnCancel;
+            private readonly ImageView _ivClose;
 
-            public BleDeviceHolder(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, View itemView) : base(itemView)
+            public BleDeviceHolder(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel, View itemView) : base(itemView)
             {
                 _keyboxes = keyboxes;
 
@@ -99,6 +105,7 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _tvBatteryStatus = itemView.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
                 _btnConnect = itemView.FindViewById<Button>(Resource.Id.btnConnect);
                 _btnCancel = itemView.FindViewById<Button>(Resource.Id.btnCancel);
+                _ivClose = itemView.FindViewById<ImageView>(Resource.Id.ivClose);
 
                 _btnConnect.Click += (s, e) =>
                 {
@@ -110,6 +117,11 @@ namespace SmartLock.Presentation.Droid.Adapters
                 {
                     UpdateUI(false);
                     disconnect?.Invoke(_keyboxes[AdapterPosition - 1]);
+                };
+
+                _ivClose.Click += (s, e) =>
+                {
+                    cancel?.Invoke();
                 };
             }
 
