@@ -42,7 +42,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            _context = ViewBase.CurrentActivity;
+            _context = ViewBase.CurrentActivity ?? container.Context;
 
             _btnPlaceLock = _view.FindViewById<Button>(Resource.Id.btnPlaceLock);
 
