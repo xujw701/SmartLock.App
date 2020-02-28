@@ -20,5 +20,6 @@ namespace SmartLock.Presentation.Core.Views
         void Show(Keybox keybox);
         void Unlocked();
         void SetBleIndicator(bool isOn);
+        void UpdateTimeout(int second);
     }
 }

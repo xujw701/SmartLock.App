@@ -262,10 +262,17 @@ namespace SmartLock.Presentation.Droid.Controls
             _unlocked = false;
 
             mMoveX = 0;
-            mPaint.Alpha = 255;
 
-            mHandler.RemoveCallbacks(Redraw);
-            mHandler.PostDelayed(Redraw, 200);
+            if (mPaint != null)
+            {
+                mPaint.Alpha = 255;
+            }
+
+            if (mHandler != null)
+            {
+                mHandler.RemoveCallbacks(Redraw);
+                mHandler.PostDelayed(Redraw, 200);
+            }
         }
 
         public override bool OnTouchEvent(MotionEvent motionEvent)

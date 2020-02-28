@@ -10,7 +10,6 @@ using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
-using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Droid.Adapters;
@@ -46,6 +45,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvLockTitle;
         private TextView _tvLockSubTitle;
         private TextView _tvBatteryStatus;
+        private TextView _tvTimeOut;
         private SlideUnlockView _slideUnlockView;
 
         private bool isScanning;
@@ -88,6 +88,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvLockTitle = _view.FindViewById<TextView>(Resource.Id.tvLockTitle);
             _tvLockSubTitle = _view.FindViewById<TextView>(Resource.Id.tvLockSubTitle);
             _tvBatteryStatus = _view.FindViewById<TextView>(Resource.Id.tvBatteryStatus);
+            _tvTimeOut = _view.FindViewById<TextView>(Resource.Id.tvTimeOut);
             _slideUnlockView = _view.FindViewById<SlideUnlockView>(Resource.Id.SlideUnlockView);
 
             ConfigureScanButtonSize();
@@ -129,13 +130,16 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void Show(string greeting, string name, bool setMode = true)
         {
-            if (setMode)
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
-                SetMode(StateIdle);
-            }
+                if (setMode)
+                {
+                    SetMode(StateIdle);
+                }
 
-            _tvGreeting.Text = greeting;
-            _tvName.Text = name;
+                _tvGreeting.Text = greeting;
+                _tvName.Text = name;
+            });
         }
 
         public void Show(List<Keybox> keyboxes)
@@ -180,6 +184,14 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBtStatus.SetTextColor(new Color(_context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
         }
 
+        public void UpdateTimeout(int second)
+        {
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                _tvTimeOut.Text = $"Timeout: {second}s";
+            });
+        }
+
         private void SetMode(int state)
         {
             _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
@@ -188,6 +200,7 @@ namespace SmartLock.Presentation.Droid.Views
             _lockContainer.Visibility = state == StateLock ? ViewStates.Visible : ViewStates.Gone;
 
             if (state != StateIdle) ToggleScanStatus(true);
+            if (state == StateLock) SetLockUI(true);
         }
 
         private void ToggleScanStatus(bool forceStop = false)

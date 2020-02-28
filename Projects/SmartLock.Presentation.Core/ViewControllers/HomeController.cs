@@ -18,6 +18,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IKeyboxService _keyboxService;
         private readonly IPlatformServices _platformServices;
 
+        private static int Timeout = 0;
+
         private Keybox _lastKeybox;
 
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
@@ -36,6 +38,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.OnBleStateChanged += OnBleStateChanged;
             _keyboxService.OnKeyboxDiscovered += OnKeyboxDiscovered;
             _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
+            _keyboxService.OnKeyboxDisconnected += OnKeyboxDisconnected;
 
             View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
             View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
@@ -79,6 +82,15 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private void OnKeyboxConnected(Keybox keybox)
         {
             View.Show(keybox);
+
+            StartStopTimeout(true);
+        }
+
+        private void OnKeyboxDisconnected()
+        {
+            View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
+
+            StartStopTimeout(false);
         }
 
         private async Task View_StartStop(bool isScanning)
@@ -122,6 +134,34 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 await _messageBoxService.ShowMessageAsync("Unlock Failed", "The keybox isn't listed or you don't have permission to unlock it.");
             }
+        }
+
+        private void StartStopTimeout(bool start)
+        {
+            if (start) Timeout = 60;
+            else Timeout = 0;
+
+            View.UpdateTimeout(Timeout);
+
+            Task.Run(async () =>
+            {
+                while (Timeout > 0)
+                {
+                    await Task.Delay(1000);
+
+                    Timeout--;
+
+                    View.UpdateTimeout(Timeout);
+                }
+
+                if (Timeout == 0)
+                {
+                    if (_keyboxService.ConnectedKeybox != null)
+                    {
+                        await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
+                    }
+                }
+            });
         }
 
         private string GenerateGreeting()
