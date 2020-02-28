@@ -14,6 +14,8 @@ namespace SmartLock.Model.Services
         Task<TokenPostResponseDto> Token(TokenPostDto tokenPostDto);
         Task<MePostResponseDto> GetMe();
         Task UpdateMe(MePutDto mePutDto);
+        Task UpdatePortrait(byte[] data);
+        Task<byte[]> GetPortrait(int portraitId);
         Task<Keybox> GetKeybox(int? keyboxId = null, string uuid = null);
         Task<List<Keybox>> GetMyKeybox();
         Task<List<Keybox>> GetKeyboxIUnlocked();

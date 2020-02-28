@@ -2,12 +2,14 @@
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
+using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
 {
     public class MainController : ViewController<IMainView>
     {
         private readonly IUserSession _userSession;
+        private readonly IUserService _userService;
         private readonly IPushNotificationService _pushNotificationService;
 
         private readonly HomeController _homeController;
@@ -19,6 +21,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         public MainController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices, IPushNotificationService pushNotificationService) : base(viewService)
         {
             _userSession = userSession;
+            _userService = userService;
             _pushNotificationService = pushNotificationService;
 
             _homeController = new HomeController(viewService, messageBoxService, userSession, userService, keyboxService, platformServices);
@@ -38,6 +41,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 // Register for push notifications
                 _pushNotificationService.Register();
+
+                // Update my portrait
+                Task.Run(async () =>
+                {
+                    await _userService.GetCachedMyPortrait();
+                });
             }
         }
     }

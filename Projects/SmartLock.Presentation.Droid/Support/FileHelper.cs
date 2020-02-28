@@ -5,6 +5,8 @@ using SmartLock.Presentation.Core;
 using Java.IO;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
+using Android.OS;
+using Android.Support.V4.Content;
 
 namespace SmartLock.Presentation.Droid.Support
 {
@@ -175,6 +177,24 @@ namespace SmartLock.Presentation.Droid.Support
             }
 
             return hrSize;
+        }
+
+        public static Uri GetUriForFile(Context context, File file)
+        {
+            if (context == null || file == null)
+            {
+                return null;
+            }
+            Uri uri;
+            if (Build.VERSION.SdkInt >=  BuildVersionCodes.N)
+            {
+                uri = FileProvider.GetUriForFile(context, context.ApplicationContext.PackageName + ".provider", file);
+            }
+            else
+            {
+                uri = Uri.FromFile(file);
+            }
+            return uri;
         }
     }
 }

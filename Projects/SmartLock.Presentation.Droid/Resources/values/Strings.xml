@@ -9,4 +9,6 @@
   <string name="navi_nearby">Nearby</string>
   <string name="navi_setting">Settings</string>
 
+  <string name="general_camera">Take a photo</string>
+  <string name="general_choose_from_album">Add existing photo</string>
 </resources>

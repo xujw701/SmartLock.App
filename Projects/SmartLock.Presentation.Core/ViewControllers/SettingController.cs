@@ -1,5 +1,4 @@
-﻿using SmartLock.Model.PushNotification;
-using SmartLock.Model.Services;
+﻿using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System.Threading.Tasks;
@@ -23,6 +22,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
+            View.PortraitChanged += (data) => DoSafeAsync(async () => await UpdatePortrait(data));
             View.ProfileClick += () => { Push<MyProfileController>(); };
             View.PasswordClick += () => { Push<PasswordController>(); };
             View.FeedbackClick += () => { Push<FeedbackController>(); };
@@ -36,17 +36,30 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
             };
 
-            View.Refresh += async () =>
-            {
-                View.Show($"{_userSession.FirstName} {_userSession.LastName}");
-            };
+            View.Refresh += () => DoSafeAsync(async () => await LoadData());
         }
 
         protected override void OnViewWillShow()
         {
             base.OnViewWillShow();
 
-            View.Show($"{_userSession.FirstName} {_userSession.LastName}");
+            DoSafeAsync(async () => await LoadData(true));
+        }
+
+        private async Task LoadData(bool force = false)
+        {
+            var portrait = await _userService.GetCachedMyPortrait(force);
+
+            View.Show($"{_userSession.FirstName} {_userSession.LastName}", portrait);
+        }
+
+        private async Task UpdatePortrait(byte[] data)
+        {
+            await _userService.UpdatePortrait(data);
+
+            await _userService.GetCachedMyPortrait(true);
+
+            await LoadData();
         }
 
         private async Task LogOut()

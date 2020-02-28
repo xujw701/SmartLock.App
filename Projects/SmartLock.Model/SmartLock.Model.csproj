@@ -47,11 +47,12 @@
     <Compile Include="Models\PropertyFeedback.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\Keybox.cs" />
-    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\Cache.cs" />
     <Compile Include="PushNotification\DeviceRegistration.cs" />
     <Compile Include="PushNotification\IDevicePushNotifications.cs" />
     <Compile Include="PushNotification\IPushNotificationService.cs" />
     <Compile Include="PushNotification\NotificationHandle.cs" />
+    <Compile Include="Services\ICacheManager.cs" />
     <Compile Include="Services\IKeyboxService.cs" />
     <Compile Include="Services\IPlatformServices.cs" />
     <Compile Include="Server\WebServiceClientException.cs" />

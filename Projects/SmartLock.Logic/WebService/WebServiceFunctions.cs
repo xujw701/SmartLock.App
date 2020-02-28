@@ -63,6 +63,22 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).PutAsync(uri, mePutDto);
         }
 
+        public async Task UpdatePortrait(byte[] data)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, "users/portrait");
+
+            await new WebServiceClient(_userSession).PostRawAsync(uri, data);
+        }
+
+        public async Task<byte[]> GetPortrait(int portraitId)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"users/portrait/{portraitId}");
+
+            var result = await new WebServiceClient(_userSession).GetAsync<byte[]>(uri);
+
+            return result;
+        }
+
         public async Task<Keybox> GetKeybox(int? keyboxId = null, string uuid = null)
         {
             var parameters = string.Empty;

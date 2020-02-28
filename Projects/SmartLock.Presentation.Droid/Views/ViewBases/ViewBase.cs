@@ -286,8 +286,6 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
         #region Permissions
         private const int REQUEST_PERMISSIONS = 1;
 
-        private Action _requestPermissionSuccessAction;
-
         protected bool RequestPermissions()
         {
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted

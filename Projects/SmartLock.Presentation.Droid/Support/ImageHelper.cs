@@ -1,40 +1,36 @@
-﻿using System.IO;
-using Android.Content;
-using Android.Database;
+﻿using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.Media;
-using Android.Provider;
 using Android.Support.V4.Graphics.Drawable;
 using Android.Views;
 using Android.Widget;
+using SmartLock.Model.Models;
 using File = Java.IO.File;
-using Uri = Android.Net.Uri;
 
 namespace SmartLock.Presentation.Droid.Support
 {
     public static class ImageHelper
     {
-        //public static void SetImageView(ImageView imageView, Cache cache, int px = 512)
-        //{
-        //    SetImageBitmap(imageView, cache, px);
-        //}
+        public static void SetImageView(ImageView imageView, Cache cache, int px = 512)
+        {
+            SetImageBitmap(imageView, cache, px);
+        }
 
-        //public static void SetThumbnail(ImageView imageView, Cache cache, int px = 256)
-        //{
-        //    SetImageBitmap(imageView, cache, px);
-        //}
+        public static void SetThumbnail(ImageView imageView, Cache cache, int px = 256)
+        {
+            SetImageBitmap(imageView, cache, px);
+        }
 
-        //private static void SetImageBitmap(ImageView imageView, Cache cache, int px)
-        //{
-        //    if (cache == null) return;
-        //    var imageFile = new File(cache.NativePath);
+        private static void SetImageBitmap(ImageView imageView, Cache cache, int px)
+        {
+            if (cache == null) return;
+            var imageFile = new File(cache.NativePath);
 
-        //    using (var bitmap = BitmapHelper.DecodeSampledBitmapFromFile(imageFile.AbsolutePath, px, px))
-        //    {
-        //        imageView.SetImageBitmap(bitmap);
-        //    }
-        //}
+            using (var bitmap = BitmapHelper.DecodeSampledBitmapFromFile(imageFile.AbsolutePath, px, px))
+            {
+                imageView.SetImageBitmap(bitmap);
+            }
+        }
 
         public static void SetDrawableBackgroundColor(View view, Color color)
         {

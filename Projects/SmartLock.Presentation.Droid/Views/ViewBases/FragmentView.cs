@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Android;
+using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.App;
+using Android.Support.V4.Content;
 using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
@@ -121,6 +125,42 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             }
 
             _controller = controller;
+        }
+
+        private const int REQUEST_PERMISSIONS = 1;
+
+        protected bool RequestPermissions(Context context)
+        {
+            if (ContextCompat.CheckSelfPermission(context, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted
+                || ContextCompat.CheckSelfPermission(context, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted
+                || ContextCompat.CheckSelfPermission(context, Manifest.Permission.Camera) != (int)Permission.Granted)
+            {
+                RequestPermissions(new string[]
+                                    {
+                                        Manifest.Permission.ReadExternalStorage,
+                                        Manifest.Permission.WriteExternalStorage,
+                                        Manifest.Permission.Camera
+                                    },
+                        1);
+
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        protected void OnRequestPermissionsResult(int requestCode, string[] permissions, int[] grantResults)
+        {
+            if (requestCode == REQUEST_PERMISSIONS)
+            {
+                if (grantResults.Length != 1 || grantResults[0] != (int)Permission.Granted)
+                {
+                }
+            }
+
+            return;
         }
     }
 }

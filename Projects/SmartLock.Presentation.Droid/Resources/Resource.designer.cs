@@ -5078,61 +5078,67 @@ namespace SmartLock.Presentation.Droid
 			public const int gcm_defaultSenderId = 2131558467;
 			
 			// aapt resource value: 0x7F0D0044
-			public const int google_api_key = 2131558468;
+			public const int general_camera = 2131558468;
 			
 			// aapt resource value: 0x7F0D0045
-			public const int google_app_id = 2131558469;
+			public const int general_choose_from_album = 2131558469;
 			
 			// aapt resource value: 0x7F0D0046
-			public const int google_crash_reporting_api_key = 2131558470;
+			public const int google_api_key = 2131558470;
 			
 			// aapt resource value: 0x7F0D0047
-			public const int google_storage_bucket = 2131558471;
+			public const int google_app_id = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public const int hide_bottom_view_on_scroll_behavior = 2131558472;
+			public const int google_crash_reporting_api_key = 2131558472;
 			
 			// aapt resource value: 0x7F0D0049
-			public const int mtrl_chip_close_icon_content_description = 2131558473;
+			public const int google_storage_bucket = 2131558473;
 			
 			// aapt resource value: 0x7F0D004A
-			public const int navi_home = 2131558474;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558474;
 			
 			// aapt resource value: 0x7F0D004B
-			public const int navi_listing = 2131558475;
+			public const int mtrl_chip_close_icon_content_description = 2131558475;
 			
 			// aapt resource value: 0x7F0D004C
-			public const int navi_lockbox = 2131558476;
+			public const int navi_home = 2131558476;
 			
 			// aapt resource value: 0x7F0D004D
-			public const int navi_nearby = 2131558477;
+			public const int navi_listing = 2131558477;
 			
 			// aapt resource value: 0x7F0D004E
-			public const int navi_setting = 2131558478;
+			public const int navi_lockbox = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public const int password_toggle_content_description = 2131558479;
+			public const int navi_nearby = 2131558479;
 			
 			// aapt resource value: 0x7F0D0050
-			public const int path_password_eye = 2131558480;
+			public const int navi_setting = 2131558480;
 			
 			// aapt resource value: 0x7F0D0051
-			public const int path_password_eye_mask_strike_through = 2131558481;
+			public const int password_toggle_content_description = 2131558481;
 			
 			// aapt resource value: 0x7F0D0052
-			public const int path_password_eye_mask_visible = 2131558482;
+			public const int path_password_eye = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public const int path_password_strike_through = 2131558483;
+			public const int path_password_eye_mask_strike_through = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public const int project_id = 2131558484;
+			public const int path_password_eye_mask_visible = 2131558484;
 			
 			// aapt resource value: 0x7F0D0055
-			public const int search_menu_title = 2131558485;
+			public const int path_password_strike_through = 2131558485;
 			
 			// aapt resource value: 0x7F0D0056
-			public const int status_bar_notification_info_overflow = 2131558486;
+			public const int project_id = 2131558486;
+			
+			// aapt resource value: 0x7F0D0057
+			public const int search_menu_title = 2131558487;
+			
+			// aapt resource value: 0x7F0D0058
+			public const int status_bar_notification_info_overflow = 2131558488;
 			
 			static String()
 			{
@@ -9675,6 +9681,22 @@ namespace SmartLock.Presentation.Droid
 			}
 			
 			private Styleable()
+			{
+			}
+		}
+		
+		public partial class Xml
+		{
+			
+			// aapt resource value: 0x7F100000
+			public const int provider_paths = 2131755008;
+			
+			static Xml()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Xml()
 			{
 			}
 		}

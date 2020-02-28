@@ -26,6 +26,9 @@ namespace SmartLock.Presentation.Droid
                    typeof(Analytics), typeof(Crashes));
 
             Current = new AndroidAppCore();
+
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.SetVmPolicy(builder.Build());
         }
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)

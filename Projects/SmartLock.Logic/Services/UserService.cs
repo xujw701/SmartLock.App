@@ -1,4 +1,5 @@
-﻿using SmartLock.Model.PushNotification;
+﻿using SmartLock.Model.Models;
+using SmartLock.Model.PushNotification;
 using SmartLock.Model.Request;
 using SmartLock.Model.Services;
 using System.Threading.Tasks;
@@ -9,12 +10,14 @@ namespace SmartLock.Logic.Services
     {
         private readonly IWebService _webService;
         private readonly IUserSession _userSession;
+        private readonly ICacheManager _cacheManager;
         private readonly IPushNotificationService _pushNotificationService;
 
-        public UserService(IWebService webService, IUserSession userSession, IPushNotificationService pushNotificationService)
+        public UserService(IWebService webService, IUserSession userSession, ICacheManager cacheManager, IPushNotificationService pushNotificationService)
         {
             _webService = webService;
             _userSession = userSession;
+            _cacheManager = cacheManager;
             _pushNotificationService = pushNotificationService;
         }
 
@@ -96,6 +99,37 @@ namespace SmartLock.Logic.Services
             await _pushNotificationService.UnregisterAsync();
 
             _userSession.LogOut();
+        }
+
+        public async Task<Cache> GetCachedPortrait(int portraitId, bool force = false)
+        {
+            _cacheManager.Init(CacheManager.PortraitStorageKey);
+
+            Cache cache = null;
+
+            // Read from disk then
+            var key = portraitId.ToString();
+            cache = _cacheManager.Get(key);
+
+            if (cache == null || force)
+            {
+                // Read from web api last
+                var data = await _webService.GetPortrait(portraitId);
+                cache = _cacheManager.Save(data, key);
+            }
+
+            return cache;
+        }
+
+        public async Task<Cache> GetCachedMyPortrait(bool force = false)
+        {
+            if (_userSession.ResPortraitId == 0) return null;
+            return await GetCachedPortrait(_userSession.ResPortraitId, force);
+        }
+
+        public async Task UpdatePortrait(byte[] data)
+        {
+            await _webService.UpdatePortrait(data);
         }
     }
 }

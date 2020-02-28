@@ -28,6 +28,7 @@ namespace SmartLock.Presentation.Core
 		{
 			IoC.Register<IWebService, WebServiceFunctions>();
             IoC.Register<IUserService, UserService>();
+            IoC.Register<ICacheManager, CacheManager>();
 
             IoC.RegisterSingleton<IEnvironmentManager, EnvironmentManager>();
             IoC.RegisterSingleton<IUserSession, UserSession>();
