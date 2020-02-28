@@ -155,12 +155,15 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
             else if (exception.Message.Contains("133"))
             {
-                _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
-
                 if (_lastKeybox != null)
                 {
                     await _keyboxService.DisconnectKeyboxAsync(_lastKeybox);
+                    await _keyboxService.ConnectToKeyboxAsync(_lastKeybox);
+
+                    return;
                 }
+
+                _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
             }
             else
             {
