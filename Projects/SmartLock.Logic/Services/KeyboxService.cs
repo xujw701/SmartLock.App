@@ -14,6 +14,7 @@ namespace SmartLock.Logic.Services
     {
         private readonly IWebService _webService;
         private readonly IUserSession _userSession;
+        private readonly IUserService _userService;
         private readonly ILocalBleService _localBleService;
 
         private Keybox _connectedKeybox;
@@ -33,10 +34,11 @@ namespace SmartLock.Logic.Services
         public Keybox ConnectedKeybox => _connectedKeybox;
         public bool DeviceConnected => _localBleService.DeviceConnected;
 
-        public KeyboxService(IWebService webService, IUserSession userSession, ILocalBleService localBleService)
+        public KeyboxService(IWebService webService, IUserSession userSession, IUserService userService, ILocalBleService localBleService)
         {
             _webService = webService;
             _userSession = userSession;
+            _userService = userService;
             _localBleService = localBleService;
 
             Init();
@@ -142,6 +144,16 @@ namespace SmartLock.Logic.Services
         {
             var keyboxHistories = await _webService.GetHistories(keyboxId, propertyId);
 
+            foreach (var history in keyboxHistories)
+            {
+                if (history.ResPortraitId.HasValue)
+                {
+                    var portrait = await _userService.GetCachedPortrait(history.ResPortraitId.Value);
+
+                    history.Portrait = portrait;
+                }
+            }
+
             return keyboxHistories.OrderByDescending(h => h.InOn).ToList();
         }
 
@@ -217,6 +229,13 @@ namespace SmartLock.Logic.Services
 
                     foreach (var f in feedback)
                     {
+                        if (f.ResPortraitId.HasValue)
+                        {
+                            var portrait = await _userService.GetCachedPortrait(f.ResPortraitId.Value);
+
+                            f.Portrait = portrait;
+                        }
+
                         f.KeyboxName = keybox.KeyboxName;
                     }
 
@@ -233,6 +252,13 @@ namespace SmartLock.Logic.Services
 
             foreach (var feedback in feedbacks)
             {
+                if (feedback.ResPortraitId.HasValue)
+                {
+                    var portrait = await _userService.GetCachedPortrait(feedback.ResPortraitId.Value);
+
+                    feedback.Portrait = portrait;
+                }
+
                 feedback.KeyboxName = keybox.KeyboxName;
             }
 

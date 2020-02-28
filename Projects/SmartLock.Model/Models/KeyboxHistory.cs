@@ -11,6 +11,7 @@ namespace SmartLock.Model.Models
         public int PropertyId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int? ResPortraitId { get; set; }
         public DateTimeOffset InOn { get; set; }
         public DateTimeOffset? OutOn { get; set; }
 
@@ -32,5 +33,7 @@ namespace SmartLock.Model.Models
                 }
             }
         }
+
+        public Cache Portrait { get; set; }
     }
 }

@@ -129,7 +129,9 @@ namespace SmartLock.Logic.Services
 
         public async Task UpdatePortrait(byte[] data)
         {
-            await _webService.UpdatePortrait(data);
+            var resPortraitId = await _webService.UpdatePortrait(data);
+
+            _userSession.Update(resPortraitId);
         }
     }
 }

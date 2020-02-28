@@ -5,6 +5,7 @@ using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Model.Models;
+using SmartLock.Presentation.Droid.Support;
 
 namespace SmartLock.Presentation.Droid.Adapters
 {
@@ -72,12 +73,19 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _tvIn.Text = keyboxHistory.InOnString;
                 _tvOut.Text = keyboxHistory.OutOnString;
 
-                ConfigureDemoPortait(keyboxHistory);
+                ConfigurePortait(keyboxHistory);
             }
 
-            private void ConfigureDemoPortait(KeyboxHistory keyboxHistory)
+            private void ConfigurePortait(KeyboxHistory keyboxHistory)
             {
-                _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait4));
+                if (keyboxHistory.ResPortraitId.HasValue)
+                {
+                    ImageHelper.SetImageView(_ivPortrait, keyboxHistory.Portrait);
+                }
+                else
+                {
+                    _ivPortrait.SetImageDrawable(_context.GetDrawable(Resource.Drawable.portait4));
+                }
             }
         }
     }

@@ -71,6 +71,13 @@ namespace SmartLock.Logic.Services
             SaveUserSettings();
         }
 
+        public void Update(int resPortraitId)
+        {
+            _settingsModel.ResPortraitId = resPortraitId;
+
+            SaveUserSettings();
+        }
+
         public void LogOut()
         {
             _generalModel = null;

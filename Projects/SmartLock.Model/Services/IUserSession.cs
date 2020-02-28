@@ -24,6 +24,7 @@ namespace SmartLock.Model.Services
         void Start(TokenPostResponseDto dto);
         void Start(MePostResponseDto dto);
         void Update(string firstName, string lastName, string email, string phone);
+        void Update(int resPortraitId);
         void LogOut();
         void SavePushRegId(string pushRegId);
         void SaveRememberMe(bool rememberMe);

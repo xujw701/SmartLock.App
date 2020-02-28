@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Infrastructure;
 using SmartLock.Model.Models;
 using SmartLock.Model.Services;
+using SmartLock.Presentation.Droid.Support;
 
 namespace SmartLock.Presentation.Droid.Adapters
 {
@@ -23,7 +25,7 @@ namespace SmartLock.Presentation.Droid.Adapters
         {
             var inflater = LayoutInflater.From(parent.Context);
             var itemView = inflater.Inflate(Resource.Layout.Item_PropertyFeedback, parent, false);
-            var holder = new PropertyFeedbackHolder(PropertyFeedbacks, itemView);
+            var holder = new PropertyFeedbackHolder(parent.Context, PropertyFeedbacks, itemView);
             return holder;
         }
 
@@ -38,7 +40,11 @@ namespace SmartLock.Presentation.Droid.Adapters
         // Holders definition
         public class PropertyFeedbackHolder : RecyclerView.ViewHolder
         {
+            private readonly Context _context;
+
             private readonly List<PropertyFeedback> _propertyFeedbacks;
+
+            private readonly ImageView _ivPortrait;
 
             private readonly TextView _tvKeyboxName;
             private readonly TextView _tvName;
@@ -48,9 +54,13 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly Button _btnPhone;
             private readonly Button _btnSms;
 
-            public PropertyFeedbackHolder(List<PropertyFeedback> propertyFeedbacks, View itemView) : base(itemView)
+            public PropertyFeedbackHolder(Context context, List<PropertyFeedback> propertyFeedbacks, View itemView) : base(itemView)
             {
+                _context = context;
+
                 _propertyFeedbacks = propertyFeedbacks;
+
+                _ivPortrait = itemView.FindViewById<ImageView>(Resource.Id.ivPortrait);
 
                 _tvKeyboxName = itemView.FindViewById<TextView>(Resource.Id.tvKeyboxName);
                 _tvName = itemView.FindViewById<TextView>(Resource.Id.tvName);
@@ -77,6 +87,16 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _tvName.Text = propertyFeedback.Name;
                 _tvDateTime.Text = propertyFeedback.CreatedOnString;
                 _tvNotes.Text = propertyFeedback.Content;
+
+                ConfigurePortait(propertyFeedback);
+            }
+
+            private void ConfigurePortait(PropertyFeedback propertyFeedback)
+            {
+                if (propertyFeedback.ResPortraitId.HasValue)
+                {
+                    ImageHelper.SetImageView(_ivPortrait, propertyFeedback.Portrait);
+                }
             }
         }
     }

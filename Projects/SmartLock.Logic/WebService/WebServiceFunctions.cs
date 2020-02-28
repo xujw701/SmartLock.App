@@ -63,11 +63,17 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).PutAsync(uri, mePutDto);
         }
 
-        public async Task UpdatePortrait(byte[] data)
+        public async Task<int> UpdatePortrait(byte[] data)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, "users/portrait");
 
-            await new WebServiceClient(_userSession).PostRawAsync(uri, data);
+            var result = await new WebServiceClient(_userSession).PostRawAsync<DefaultCreatedPostResponseDto>(uri, data);
+
+            if (result != null)
+            {
+                return result.Id;
+            }
+            return 0;
         }
 
         public async Task<byte[]> GetPortrait(int portraitId)
@@ -255,6 +261,7 @@ namespace SmartLock.Logic
                     PropertyId = dto.PropertyId,
                     FirstName = dto.FirstName,
                     LastName = dto.LastName,
+                    ResPortraitId = dto.ResPortraitId,
                     InOn = dto.InOn,
                     OutOn = dto.OutOn
                 }).ToList();
