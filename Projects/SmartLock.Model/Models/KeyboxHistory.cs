@@ -11,13 +11,12 @@ namespace SmartLock.Model.Models
         public int PropertyId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime InOn { get; set; }
-        public DateTime? OutOn { get; set; }
+        public DateTimeOffset InOn { get; set; }
+        public DateTimeOffset? OutOn { get; set; }
 
         public string Name => $"{FirstName} {LastName}";
-        public string InOnString => InOn.ToString("dd/MM/yy HH:mm");
-        public string OutOnString => OutOn == null ? "Still unlocked" : OutOn.Value.ToString("dd/MM/yy HH:mm");
-
+        public string InOnString => InOn.LocalDateTime.ToString("dd/MM/yy HH:mm");
+        public string OutOnString => OutOn == null ? "Still unlocked" : OutOn.Value.LocalDateTime.ToString("dd/MM/yy HH:mm");
         public string Duration
         {
             get

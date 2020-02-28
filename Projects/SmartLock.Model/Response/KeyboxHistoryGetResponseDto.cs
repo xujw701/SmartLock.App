@@ -11,7 +11,7 @@ namespace SmartLock.Model.Response
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int? ResPortraitId { get; set; }
-        public DateTime InOn { get; set; }
-        public DateTime? OutOn { get; set; }
+        public DateTimeOffset InOn { get; set; }
+        public DateTimeOffset? OutOn { get; set; }
     }
 }

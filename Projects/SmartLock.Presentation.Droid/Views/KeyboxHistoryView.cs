@@ -79,11 +79,11 @@ namespace SmartLock.Presentation.Droid.Views
         {
             if (_filter == 0)
             {
-                return _keyboxHistories.Where(k => (DateTime.Now - k.InOn).TotalDays <= 7).ToList();
+                return _keyboxHistories.Where(k => (DateTimeOffset.Now - k.InOn.LocalDateTime).TotalDays <= 7).ToList();
             }
             else if (_filter == 1)
             {
-                return _keyboxHistories.Where(k => (DateTime.Now - k.InOn).TotalDays <= 30).ToList();
+                return _keyboxHistories.Where(k => (DateTimeOffset.Now - k.InOn.LocalDateTime).TotalDays <= 30).ToList();
             }
 
             return _keyboxHistories;

@@ -3,6 +3,6 @@ namespace SmartLock.Model.Request
 {
     public class KeyboxHistoryPostDto
     {
-        public DateTime DateTime { get; set; }
+        public DateTimeOffset DateTime { get; set; }
     }
 }

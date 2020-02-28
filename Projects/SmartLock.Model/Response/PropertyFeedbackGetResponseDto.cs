@@ -11,6 +11,6 @@ namespace SmartLock.Model.Response
         public string Phone { get; set; }
         public int? ResPortraitId { get; set; }
         public string Content { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
     }
 }

@@ -90,7 +90,7 @@ namespace SmartLock.Logic.Services
         {
             var allow = await _webService.Unlock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
             {
-                DateTime = DateTime.Now
+                DateTime = DateTimeOffset.Now
             });
 
             if (allow)
@@ -297,7 +297,7 @@ namespace SmartLock.Logic.Services
                 {
                     var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
                     {
-                        DateTime = DateTime.Now
+                        DateTime = DateTimeOffset.Now
                     });
                 });
             }

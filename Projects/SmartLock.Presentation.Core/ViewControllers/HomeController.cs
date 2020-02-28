@@ -126,7 +126,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private string GenerateGreeting()
         {
-            var hourNow = int.Parse(DateTime.Now.ToString("HH"));
+            var hourNow = int.Parse(DateTimeOffset.Now.ToString("HH"));
             if (hourNow >= 6 && hourNow < 12)
                 return "Good morning,";
             else if (hourNow >= 12 && hourNow < 18)

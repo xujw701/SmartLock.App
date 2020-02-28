@@ -12,7 +12,7 @@ namespace SmartLock.Model.Models
         public string Phone { get; set; }
         public int? ResPortraitId { get; set; }
         public string Content { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTimeOffset CreatedOn { get; set; }
 
         public string Name => $"{FirstName} {LastName}";
         public string CreatedOnString => CreatedOn.ToString("dd/MM/yy HH:mm");
