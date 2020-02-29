@@ -56,6 +56,17 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private void View_AttachmentAdded(byte[] data)
         {
+            var photos = _property.PropertyResource.Where(pr => !pr.ToDelete).Select(pr => pr.Image).Union(_property.ToUploadResource);
+
+            if (photos.Count() > 3)
+            {
+                View.Show(Keybox, _property);
+
+                _messageBoxService.ShowMessage("Tips", "You can only upload 4 photos.");
+
+                return;
+            }
+
             // Save to local
             var attachment = _keyboxService.SavePropertyResourceLocal(data);
             _property.ToUploadResource.Add(attachment);

@@ -168,8 +168,13 @@ namespace SmartLock.Presentation.Droid.Views
                 {
                     var itemString = _spinBedroomOption.SelectedItem.ToString();
                     itemString = itemString.Replace(" Bedroom", "");
+                    itemString = itemString.Replace("Bedroom", "");
                     itemString = itemString.Replace("s", "");
-                    _property.Bedrooms = double.Parse(itemString);
+
+                    if (!string.IsNullOrEmpty(itemString) && double.TryParse(itemString, out double itemCount))
+                    {
+                        _property.Bedrooms = itemCount;
+                    }
                 }
             };
 
@@ -192,8 +197,13 @@ namespace SmartLock.Presentation.Droid.Views
                 {
                     var itemString = _spinBathroomOption.SelectedItem.ToString();
                     itemString = itemString.Replace(" Bathroom", "");
+                    itemString = itemString.Replace("Bathroom", "");
                     itemString = itemString.Replace("s", "");
-                    _property.Bathrooms = double.Parse(itemString);
+
+                    if (!string.IsNullOrEmpty(itemString) && double.TryParse(itemString, out double itemCount))
+                    {
+                        _property.Bathrooms = itemCount;
+                    }
                 }
             };
 

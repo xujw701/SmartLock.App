@@ -142,7 +142,7 @@
                             android:background="@drawable/rounded_rectangle_white"
                             android:inputType="numberDecimal"
                             android:padding="15dp"
-                            android:hint="Area (m2)"
+                            android:hint="Floor area (m2)"
                             android:textColorHint="@color/hint_color"
                             android:textSize="15sp"/>
                     </android.support.design.widget.TextInputLayout>
