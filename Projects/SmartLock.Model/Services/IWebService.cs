@@ -29,6 +29,10 @@ namespace SmartLock.Model.Services
         Task CreatePropertyFeedback(int keyboxId, int propertyId, FeedbackPostDto feedbackPostDto);
         Task<List<PropertyFeedback>> GetPropertyFeedback(int keyboxId, int propertyId);
         Task CreateFeedback(FeedbackPostDto feedbackPostDto);
+        Task<List<ResProperty>> GetPropertyResources(int keyboxId, int propertyId);
+        Task AddPropertyResource(int keyboxId, int propertyId, byte[] data);
+        Task DeletePropertyResource(int keyboxId, int propertyId, int resPropertyId);
+        Task<byte[]> GetPropertyResourceData(int resPropertyId);
         Task<string> RequestNotificationRegistrationId(NotificationHandle notificationHandle);
         Task UpsertRegistration(string registrationId, DeviceRegistration deviceRegistration);
         Task RemoveRegistration(string registrationId);

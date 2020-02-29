@@ -134,8 +134,8 @@ namespace SmartLock.Presentation.Droid.Controls
             FocusableInTouchMode = true;
 
             mSlidableLength = 200;
-            mTextSize = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 21);//文字大小
-            mTextLeft = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 84);//文字距离左边
+            mTextSize = (int)DisplayMetricsHelper.Dp2Px(_context, 21);//文字大小
+            mTextLeft = (int)DisplayMetricsHelper.Dp2Px(_context, 84);//文字距离左边
             mMoveX = 0;
             mGradientIndex = 0;
             mSliPaint = new Paint();
@@ -155,7 +155,7 @@ namespace SmartLock.Presentation.Droid.Controls
             bitmap = BitmapFactory.DecodeResource(_context.Resources, Resource.Drawable.icon_unlock_key);
 
             // Hard code it
-            var currentHeight = DisplayMetricsHelper.ConvertDpToPixel(_context, 75);
+            var currentHeight = DisplayMetricsHelper.Dp2Px(_context, 75);
             bitmap = BitmapHelper.ResizeBitmap(bitmap, (int)currentHeight, true);
 
             mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
@@ -180,8 +180,8 @@ namespace SmartLock.Presentation.Droid.Controls
                 _init = true;
             }
 
-            margin = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 15);
-            marginTop = (int)DisplayMetricsHelper.ConvertDpToPixel(_context, 10);
+            margin = (int)DisplayMetricsHelper.Dp2Px(_context, 15);
+            marginTop = (int)DisplayMetricsHelper.Dp2Px(_context, 10);
             mR = (int)(bitmap.Height / 2);
 
             mSlidableLength = (int)(specWidthSize - mR * 2/* - margin * 2*/);

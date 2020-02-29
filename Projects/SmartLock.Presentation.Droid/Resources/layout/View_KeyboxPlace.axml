@@ -269,12 +269,25 @@
                             android:textSize="15sp"/>
                     </android.support.design.widget.TextInputLayout>
                 </android.support.v7.widget.CardView>
+                <SmartLock.Presentation.Droid.Controls.ImageGridView
+                    android:id="@+id/gvImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NotesLayout"
+                    android:layout_marginTop="32dp"
+                    android:isScrollContainer="false"
+                    android:numColumns="auto_fit"
+                    android:columnWidth="100dp"
+                    android:verticalSpacing="10dp"
+                    android:horizontalSpacing="10dp"
+                    android:stretchMode="columnWidth"
+                    android:gravity="center"/>
                 <Button
                     android:id="@+id/btnPlace"
                     android:layout_width="match_parent"
                     android:layout_height="46dp"
                     android:layout_marginTop="100dp"
-                    android:layout_below="@+id/NotesLayout"
+                    android:layout_below="@+id/gvImageView"
                     android:textAllCaps="false"
                     android:text="Place Keybox"
                     android:textColor="@android:color/white"

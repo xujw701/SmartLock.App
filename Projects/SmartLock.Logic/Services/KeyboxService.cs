@@ -15,6 +15,7 @@ namespace SmartLock.Logic.Services
         private readonly IWebService _webService;
         private readonly IUserSession _userSession;
         private readonly IUserService _userService;
+        private readonly ICacheManager _cacheManager;
         private readonly ILocalBleService _localBleService;
 
         private Keybox _connectedKeybox;
@@ -34,11 +35,12 @@ namespace SmartLock.Logic.Services
         public Keybox ConnectedKeybox => _connectedKeybox;
         public bool DeviceConnected => _localBleService.DeviceConnected;
 
-        public KeyboxService(IWebService webService, IUserSession userSession, IUserService userService, ILocalBleService localBleService)
+        public KeyboxService(IWebService webService, IUserSession userSession, IUserService userService, ICacheManager cacheManager, ILocalBleService localBleService)
         {
             _webService = webService;
             _userSession = userSession;
             _userService = userService;
+            _cacheManager = cacheManager;
             _localBleService = localBleService;
 
             Init();
@@ -133,11 +135,71 @@ namespace SmartLock.Logic.Services
             return new List<Keybox>();
         }
 
-        public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId)
+        public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId, bool force = false)
         {
             var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);
 
+            if (property != null)
+            {
+                property.PropertyResource = await _webService.GetPropertyResources(keyboxId, propertyId);
+
+                foreach (var resource in property.PropertyResource)
+                {
+                    resource.Image = await GetCachedPropertyResource(resource.ResPropertyId, force);
+                }
+            }
+
             return property;
+        }
+
+        public async Task UpdatePropertyResource(Property property)
+        {
+            if (property.ToUploadResource.Count > 0)
+            {
+                foreach (var resource in property.ToUploadResource)
+                {
+                    var data = _cacheManager.GetRawData(resource.NativePath);
+                    await _webService.AddPropertyResource(0, property.PropertyId, data);
+                }
+            }
+
+            if (property.PropertyResource.Count > 0)
+            {
+                foreach (var resource in property.PropertyResource)
+                {
+                    if (resource.ToDelete)
+                    {
+                        await _webService.DeletePropertyResource(0, property.PropertyId, resource.ResPropertyId);
+                    }
+                }
+            }
+        }
+
+        public Cache SavePropertyResourceLocal(byte[] data)
+        {
+            _cacheManager.Init(CacheManager.PropertyLocalStorage);
+
+            return _cacheManager.Save(data);
+        }
+
+        private async Task<Cache> GetCachedPropertyResource(int resPropertyId, bool force = false)
+        {
+            _cacheManager.Init(CacheManager.PropertyStorageKey);
+
+            Cache cache = null;
+
+            // Read from disk then
+            var key = resPropertyId.ToString();
+            cache = _cacheManager.Get(key);
+
+            if (cache == null || force)
+            {
+                // Read from web api last
+                var data = await _webService.GetPropertyResourceData(resPropertyId);
+                cache = _cacheManager.Save(data, key);
+            }
+
+            return cache;
         }
 
         public async Task<List<KeyboxHistory>> GetKeyboxHistories(int keyboxId, int propertyId)
@@ -174,6 +236,10 @@ namespace SmartLock.Logic.Services
                 LandArea = property.LandArea
             });
 
+            property.PropertyId = result.Id;
+
+            await UpdatePropertyResource(property);
+
             if (result != null)
             {
                 return result.Id > 0;
@@ -198,6 +264,8 @@ namespace SmartLock.Logic.Services
                 FloorArea = property.FloorArea,
                 LandArea = property.LandArea
             });
+
+            await UpdatePropertyResource(property);
 
             return true;
         }

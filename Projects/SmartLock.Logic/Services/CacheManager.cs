@@ -8,6 +8,8 @@ namespace SmartLock.Logic.Services
     public class CacheManager : ICacheManager
     {
         public const string PortraitStorageKey = "PortraitStorage";
+        public const string PropertyStorageKey = "PropertyStorage";
+        public const string PropertyLocalStorage = "PropertyLocalStorage";
 
         private readonly IContainedStorage _containedStorage;
         private readonly IUserSession _userSession;

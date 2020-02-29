@@ -7,6 +7,9 @@ namespace SmartLock.Presentation.Core.Views
     public interface IKeyboxPlaceView : IView
     {
         event Action BackClick;
+        event Action<byte[]> AttachmentAdded;
+        event Action<Cache> AttachmentClicked;
+        event Action<Cache> AttachmentDeleted;
         event Action<Property> SubmitClick;
 
         void Show(Keybox keybox, Property property);

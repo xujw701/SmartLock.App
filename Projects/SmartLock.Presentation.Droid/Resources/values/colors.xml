@@ -28,6 +28,8 @@
     <color name="hint_color_floating">#8f8f8f</color>
     <color name="hint_color">#838fa0</color>
 
+    <color name="attachment_add">#6095ff</color>
+
     <color name="accent">#1677ff</color>
     <!--<color name="accent">#418AFD</color>-->
   

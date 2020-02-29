@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SmartLock.Model.Models
 {
@@ -26,5 +27,8 @@ namespace SmartLock.Model.Models
 
             return Price;
         }
+
+        public List<ResProperty> PropertyResource { get; set; } = new List<ResProperty>();
+        public List<Cache> ToUploadResource { get; set; } = new List<Cache>();
     }
 }

@@ -309,6 +309,36 @@ namespace SmartLock.Logic
             await new WebServiceClient(_userSession).PostAsync(uri, feedbackPostDto);
         }
 
+        public async Task<List<ResProperty>> GetPropertyResources(int keyboxId, int propertyId)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}/resources");
+
+            return await new WebServiceClient(_userSession).GetAsync<List<ResProperty>>(uri);
+        }
+
+        public async Task AddPropertyResource(int keyboxId, int propertyId, byte[] data)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}/resources");
+
+            await new WebServiceClient(_userSession).PostRawAsync(uri, data);
+        }
+
+        public async Task DeletePropertyResource(int keyboxId, int propertyId, int resPropertyId)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property/{propertyId}/resources/{resPropertyId}");
+
+            await new WebServiceClient(_userSession).DeleteAsync(uri);
+        }
+
+        public async Task<byte[]> GetPropertyResourceData(int resPropertyId)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/property/resources/{resPropertyId}");
+
+            var result = await new WebServiceClient(_userSession).GetAsync<byte[]>(uri);
+
+            return result;
+        }
+
         public async Task<string> RequestNotificationRegistrationId(NotificationHandle notificationHandle)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"notification");

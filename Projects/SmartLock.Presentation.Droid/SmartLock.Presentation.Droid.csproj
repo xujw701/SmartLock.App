@@ -258,13 +258,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\ImageAdapter.cs" />
+    <Compile Include="Adapters\ImagePickerAdapter.cs" />
     <Compile Include="Adapters\PropertyFeedbackAdapter.cs" />
     <Compile Include="Adapters\KeyboxAdapter.cs" />
     <Compile Include="Adapters\KeyboxHistoryAdapter.cs" />
     <Compile Include="Adapters\BleDeviceAdapter.cs" />
+    <Compile Include="Adapters\ImagePagerAdapter.cs" />
     <Compile Include="AndroidAppCore.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Controls\CustomArrayAdapter.cs" />
+    <Compile Include="Controls\GalleryPageTransformer.cs" />
+    <Compile Include="Controls\ImageGridView.cs" />
     <Compile Include="Controls\SlideUnlockView.cs" />
     <Compile Include="Platform\LocalBleService.cs" />
     <Compile Include="Platform\ContainedStorage.cs" />
@@ -801,6 +806,24 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\provider_paths.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Item_GridView_Image.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Item_ViewPager_Image.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

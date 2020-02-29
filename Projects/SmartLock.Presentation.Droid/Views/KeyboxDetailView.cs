@@ -1,12 +1,16 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Support.V4.View;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
+using SmartLock.Presentation.Droid.Adapters;
+using SmartLock.Presentation.Droid.Controls;
 using SmartLock.Presentation.Droid.Views.ViewBases;
 using System;
+using System.Linq;
 
 namespace SmartLock.Presentation.Droid.Views
 {
@@ -26,6 +30,11 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvToilet;
         private TextView _tvArea;
         private TextView _tvPrice;
+
+        private ViewPager _vpMainPager;
+        private ImageView _ivPlaceholder;
+
+        private ImagePagerAdapter _imagePagerAdapter;
 
         public event Action BackClick;
         public event Action LockHistoryClick;
@@ -55,6 +64,9 @@ namespace SmartLock.Presentation.Droid.Views
             _tvArea = FindViewById<TextView>(Resource.Id.tvArea);
             _tvPrice = FindViewById<TextView>(Resource.Id.tvPrice);
 
+            _vpMainPager = FindViewById<ViewPager>(Resource.Id.vp_main_pager);
+            _ivPlaceholder = FindViewById<ImageView>(Resource.Id.ivPlaceholder);
+
             _btnBack.Click += (s, e) => BackClick?.Invoke();
             _btnLockHistory.Click += (s, e) => LockHistoryClick?.Invoke();
             _btnLockEdit.Click += (s, e) => LockEditClick?.Invoke();
@@ -81,6 +93,39 @@ namespace SmartLock.Presentation.Droid.Views
 
             _btnLockHistory.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
             _btnLockEdit.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
+
+            SetupViewPager(property);
+        }
+
+        private void SetupViewPager(Property property)
+        {
+            _vpMainPager.OffscreenPageLimit = 3;
+            _vpMainPager.PageMargin = 30;
+
+            if (property.PropertyResource != null && property.PropertyResource.Count > 0)
+            {
+                _vpMainPager.Visibility = ViewStates.Visible;
+                _ivPlaceholder.Visibility = ViewStates.Gone;
+            }
+            else
+            {
+                _vpMainPager.Visibility = ViewStates.Gone;
+                _ivPlaceholder.Visibility = ViewStates.Visible;
+                return;
+            }
+
+            if (_imagePagerAdapter == null)
+            {
+                _imagePagerAdapter = new ImagePagerAdapter(this, property.PropertyResource.Select(p => p.Image).ToList(), (c) => { });
+
+                _vpMainPager.Adapter = _imagePagerAdapter;
+                _vpMainPager.SetPageTransformer(false, new GalleryPageTransformer());
+            }
+            else
+            {
+                _imagePagerAdapter.Items = property.PropertyResource.Select(p => p.Image).ToList();
+                _imagePagerAdapter.NotifyDataSetChanged();
+            }
         }
     }
 }

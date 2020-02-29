@@ -82,11 +82,14 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)
         {
-            UpdatePlaceLockButton(placeLockButtonEnabled);
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                UpdatePlaceLockButton(placeLockButtonEnabled);
 
-            _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
-            _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
-            _rvKeyboxList.SetAdapter(_adapter);
+                _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
+                _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
+                _rvKeyboxList.SetAdapter(_adapter);
+            });
         }
 
         public void UpdatePlaceLockButton(bool enabled)

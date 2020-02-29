@@ -48,7 +48,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             if (!Keybox.PropertyId.HasValue) throw new Exception("Keybox isn't listed.");
 
-            _property = await _keyboxService.GetKeyboxProperty(Keybox.KeyboxId, Keybox.PropertyId.Value);
+            _property = await _keyboxService.GetKeyboxProperty(Keybox.KeyboxId, Keybox.PropertyId.Value, true);
 
             View.Show(Keybox, _property, Mine);
         }

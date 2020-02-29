@@ -1,19 +1,24 @@
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Provider;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.Views;
+using SmartLock.Presentation.Droid.Adapters;
 using SmartLock.Presentation.Droid.Controls;
+using SmartLock.Presentation.Droid.Support;
 using SmartLock.Presentation.Droid.Views.ViewBases;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartLock.Presentation.Droid.Views
 {
     [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
-    public class KeyboxPlaceView : ViewBase<IKeyboxPlaceView>, IKeyboxPlaceView
+    public class KeyboxPlaceView : ViewBase<IKeyboxPlaceView>, IKeyboxPlaceView, IDialogInterfaceOnClickListener
     {
         private ImageView _btnBack;
 
@@ -35,7 +40,13 @@ namespace SmartLock.Presentation.Droid.Views
 
         private Model.Models.Property _property;
 
+        private ImageGridView _gvImageView;
+        private ImagePickerAdapter _imageAdapter;
+
         public event Action BackClick;
+        public event Action<byte[]> AttachmentAdded;
+        public event Action<Cache> AttachmentClicked;
+        public event Action<Cache> AttachmentDeleted;
         public event Action<Model.Models.Property> SubmitClick;
 
         protected override int LayoutId => Resource.Layout.View_KeyboxPlace;
@@ -60,6 +71,8 @@ namespace SmartLock.Presentation.Droid.Views
             _spinPriceOption = FindViewById<Spinner>(Resource.Id.spinPriceOption);
 
             _priceLayout = FindViewById<View>(Resource.Id.priceLayout);
+
+            _gvImageView = FindViewById<ImageGridView>(Resource.Id.gvImageView);
 
             _btnPlace = FindViewById<Button>(Resource.Id.btnPlace);
 
@@ -99,8 +112,14 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _property = property;
 
-            _tvName.Text = keybox.KeyboxName;
-            _tvBatteryStatus.Text = keybox.BatteryLevelString;
+            if (keybox != null)
+            {
+                _tvName.Text = keybox.KeyboxName;
+                _tvBatteryStatus.Text = keybox.BatteryLevelString;
+            }
+
+            _imageAdapter = new ImagePickerAdapter(this, _property.PropertyResource.Where(pr => !pr.ToDelete).Select(pr => pr.Image).Union(_property.ToUploadResource).ToList(), ChooseCaptureMethod, AttachmentClicked, AttachmentDeleted);
+            _gvImageView.Adapter = _imageAdapter;
         }
 
         private void ConfigueSpinner()
@@ -189,5 +208,93 @@ namespace SmartLock.Presentation.Droid.Views
             spinner.Adapter = adapter;
             spinner.SetSelection(items.Count - 1, true);
         }
+
+        #region Attachments
+
+        private const int CameraRequest = 1;
+        private const int ChooseFromAlbumRequest = 2;
+
+        private string _tmpFilePath;
+
+        public void ChooseCaptureMethod()
+        {
+            var granted = RequestPermissions();
+
+            if (granted)
+            {
+                var builder = new AlertDialog.Builder(this);
+                builder.SetItems(new string[] { GetString(Resource.String.general_camera), GetString(Resource.String.general_choose_from_album) }, this);
+                builder.Show();
+            }
+        }
+
+        public void OnClick(IDialogInterface dialog, int which)
+        {
+            dialog.Dismiss();
+
+            switch (which)
+            {
+                case 0:
+                    Camera(true);
+                    break;
+                case 1:
+                    ChooseFromAlbum();
+                    break;
+            }
+        }
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if (resultCode == Result.Ok)
+            {
+                if (requestCode == CameraRequest || requestCode == ChooseFromAlbumRequest)
+                {
+                    try
+                    {
+                        var path = requestCode == ChooseFromAlbumRequest ? SelectedFilePathHelper.GetPath(this, data.Data) : _tmpFilePath;
+                        var dataByte = ImageHelper.CompressAndRotate(this, path, 1200);
+
+                        AttachmentAdded?.Invoke(dataByte);
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    if (requestCode == CameraRequest)
+                    {
+                        //Clear tmp photo
+                        FileHelper.DeleteFile(_tmpFilePath);
+
+                        _tmpFilePath = null;
+                    }
+                }
+            }
+        }
+
+        private void Camera(bool takeImage)
+        {
+            var intent = new Intent(takeImage ? MediaStore.ActionImageCapture : MediaStore.ActionVideoCapture);
+            if (intent.ResolveActivity(PackageManager) != null)
+            {
+                // Export origin photo
+                var tmpFile = FileHelper.GetTmpFile(takeImage);
+                _tmpFilePath = tmpFile.AbsolutePath;
+                intent.AddFlags(ActivityFlags.GrantReadUriPermission);
+                intent.PutExtra(MediaStore.ExtraOutput, Android.Net.Uri.FromFile(tmpFile));
+                StartActivityForResult(intent, CameraRequest);
+            }
+        }
+
+        private void ChooseFromAlbum()
+        {
+            var intent = new Intent(Intent.ActionGetContent, MediaStore.Images.Media.ExternalContentUri);
+            string[] mimetypes = { "image/*" };
+            intent.PutExtra(Intent.ExtraMimeTypes, mimetypes);
+
+            if (intent.ResolveActivity(PackageManager) != null)
+            {
+                StartActivityForResult(intent, ChooseFromAlbumRequest);
+            }
+        }
+
+        #endregion
     }
 }

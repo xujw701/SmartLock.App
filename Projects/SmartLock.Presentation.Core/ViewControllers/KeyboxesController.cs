@@ -17,7 +17,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox;
 
-        private bool CanPlaceLock => ConnectedKeybox != null
+        private bool CanPlaceLock =>  ConnectedKeybox != null
                 && ConnectedKeybox.UserId.HasValue
                 && ConnectedKeybox.UserId.Value == _userSession.UserId;
 
@@ -40,7 +40,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 if (CanPlaceLock)
                 {
-                    Push<KeyboxPlaceController>();
+                    Push<KeyboxPlaceController>(vc => vc.Keybox = ConnectedKeybox);
                 }
                 else
                 {

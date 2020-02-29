@@ -15,18 +15,14 @@ namespace SmartLock.Presentation.Droid.Support
 {
     public static class DisplayMetricsHelper
     {
-        public static double ConvertPixelsToDp(Context context, double px)
+        public static int PxtDp(Context context, float px)
         {
-            DisplayMetrics metrics = context.Resources.DisplayMetrics;
-            double dp = px / ((double)metrics.DensityDpi / 160f);
-            return Math.Round(dp);
+            return (int)TypedValue.ApplyDimension(ComplexUnitType.Px, px, context.Resources.DisplayMetrics);
         }
 
-        public static double ConvertDpToPixel(Context context, double dp)
+        public static int Dp2Px(Context context, float dp)
         {
-            DisplayMetrics metrics = context.Resources.DisplayMetrics;
-            var px = dp * ((double)metrics.DensityDpi / 160.0);
-            return Math.Round(px);
+            return (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, dp, context.Resources.DisplayMetrics);
         }
     }
 }
