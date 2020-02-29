@@ -17,5 +17,4 @@
         app:elevation="16dp"
         app:menu="@menu/menu_bottom_navigation"
         app:labelVisibilityMode="labeled"/>
-    <include layout="@layout/include_progressoverlay"/>
 </RelativeLayout>

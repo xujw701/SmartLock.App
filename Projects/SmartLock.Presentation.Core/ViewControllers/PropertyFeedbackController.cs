@@ -76,6 +76,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             if (string.IsNullOrEmpty(feedback))
             {
                 _messageBoxService.ShowMessage("Failed", "Cannot send an empty feedback.");
+
+                return;
             }
 
             DoSafeAsync(async () => await SubmitData(feedback));

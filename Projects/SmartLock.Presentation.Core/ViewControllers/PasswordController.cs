@@ -32,10 +32,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
             if (string.IsNullOrEmpty(old) || string.IsNullOrEmpty(new1) || string.IsNullOrEmpty(new2))
             {
                 _messageBoxService.ShowMessage("Failed", "Please input all the fields.");
+
+                return;
             }
             if (!new1.Equals(new2))
             {
                 _messageBoxService.ShowMessage("Failed", "New password doesn't match, please check it again.");
+
+                return;
             }
 
             try

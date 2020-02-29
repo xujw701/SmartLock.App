@@ -39,6 +39,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
             {
                 _messageBoxService.ShowMessage("Failed", "Please input all the fields.");
+
+                return;
             }
 
             try

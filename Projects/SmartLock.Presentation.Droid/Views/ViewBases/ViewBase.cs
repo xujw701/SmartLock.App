@@ -53,6 +53,7 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             set
             {
                 _isBusy = value;
+
                 var progressOverlay = FindViewById<FrameLayout>(Resource.Id.progressOverlay);
                 if (progressOverlay != null)
                 {

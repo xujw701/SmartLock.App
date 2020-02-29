@@ -103,16 +103,16 @@ namespace SmartLock.Presentation.Droid.Views.ViewBases
             // Inflate view and let the controller know that the view is ready once setup
             _view = inflater.Inflate(LayoutId, null);
 
-            _controller.SetView(this as TViewImplementation);
+            _controller?.SetView(this as TViewImplementation);
 
             return _view;
         }
 
-        public override void OnViewStateRestored(Bundle savedInstanceState)
+        public override void OnStart()
         {
-            base.OnViewStateRestored(savedInstanceState);
+            base.OnStart();
 
-            _controller.NotifyViewWillShow(this as TViewImplementation);
+            _controller?.NotifyViewWillShow(this as TViewImplementation);
         }
 
         public void SetController(ViewController<TViewImplementation> controller)

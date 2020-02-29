@@ -802,9 +802,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\View_Home.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\xml\provider_paths.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
