@@ -1,7 +1,6 @@
 ﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
 using SmartLock.Model.Request;
-using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using System;
 using System.Collections.Generic;
@@ -104,8 +103,6 @@ namespace SmartLock.Logic.Services
                 await Task.Delay(10000);
 
                 await _localBleService.StartSetLock(true);
-
-                _userSession.SaveKeyboxStatus(true);
             }
 
             return allow;
@@ -216,7 +213,9 @@ namespace SmartLock.Logic.Services
                 }
             }
 
-            return keyboxHistories.OrderByDescending(h => h.InOn).ToList();
+            var result = FilterHistories(keyboxHistories.OrderBy(h => h.InOn).ToList());
+
+            return result.OrderByDescending(h => h.InOn).ToList();
         }
 
         public async Task<bool> PlaceLock(Keybox keybox, Property property)
@@ -333,6 +332,36 @@ namespace SmartLock.Logic.Services
             return feedbacks;
         }
 
+        private List<KeyboxHistory> FilterHistories(List<KeyboxHistory> keyboxHistories)
+        {
+            double timeFrame = 7200; //seconds
+
+            var result = new List<KeyboxHistory>();
+
+            if (keyboxHistories != null && keyboxHistories.Count > 0)
+            {
+                foreach (var history in keyboxHistories)
+                {
+                    var allSame = result.LastOrDefault(h => h.KeyboxId == history.KeyboxId
+                                                        && h.UserId == history.UserId
+                                                        && h.PropertyId == history.PropertyId);
+
+                    if (allSame != null && Math.Abs((allSame.InOn - history.InOn).TotalSeconds) < timeFrame)
+                    {
+                        var index = result.IndexOf(allSame);
+
+                        result[index].OutOn = history.OutOn ?? history.InOn;
+                    }
+                    else
+                    {
+                        result.Add(history);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         private void LocalBleService_OnBleStateChanged(bool isOn)
         {
             OnBleStateChanged?.Invoke(isOn);
@@ -380,22 +409,19 @@ namespace SmartLock.Logic.Services
 
         private void LocalBleService_OnLocked()
         {
+            Task.Run(async () =>
+            {
+                var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
+                {
+                    DateTime = DateTimeOffset.Now
+                });
+            });
+
             OnLocked?.Invoke();
         }
 
         private void LocalBleService_OnUnlocked()
         {
-            if (_userSession.KeyboxStatus)
-            {
-                Task.Run(async () =>
-                {
-                    var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
-                    {
-                        DateTime = DateTimeOffset.Now
-                    });
-                });
-            }
-
             OnUnlocked?.Invoke();
         }
 
