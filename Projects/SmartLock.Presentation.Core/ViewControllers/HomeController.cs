@@ -141,17 +141,15 @@ namespace SmartLock.Presentation.Core.ViewControllers
             if (start) Timeout = 60;
             else Timeout = 0;
 
-            View.UpdateTimeout(Timeout);
-
             Task.Run(async () =>
             {
                 while (Timeout > 0)
                 {
+                    View.UpdateTimeout(Timeout);
+
                     await Task.Delay(1000);
 
                     Timeout--;
-
-                    View.UpdateTimeout(Timeout);
                 }
 
                 if (Timeout == 0)
