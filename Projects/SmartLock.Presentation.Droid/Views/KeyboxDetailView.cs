@@ -30,6 +30,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvToilet;
         private TextView _tvArea;
         private TextView _tvPrice;
+        private TextView _tvFeedback;
 
         private ViewPager _vpMainPager;
         private ImageView _ivPlaceholder;
@@ -63,6 +64,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvToilet = FindViewById<TextView>(Resource.Id.tvToilet);
             _tvArea = FindViewById<TextView>(Resource.Id.tvArea);
             _tvPrice = FindViewById<TextView>(Resource.Id.tvPrice);
+            _tvFeedback = FindViewById<TextView>(Resource.Id.tvFeedback);
 
             _vpMainPager = FindViewById<ViewPager>(Resource.Id.vp_main_pager);
             _ivPlaceholder = FindViewById<ImageView>(Resource.Id.ivPlaceholder);
@@ -90,6 +92,8 @@ namespace SmartLock.Presentation.Droid.Views
             _tvToilet.Text = property.Bathrooms.HasValue ? property.Bathrooms.Value.ToString() : "N/A";
             _tvArea.Text = property.FloorAreaString;
             _tvPrice.Text = property.PriceString;
+
+            _tvFeedback.Text = mine ? "Feedback history" : "Leave a feedback";
 
             _btnLockHistory.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
             _btnLockEdit.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;

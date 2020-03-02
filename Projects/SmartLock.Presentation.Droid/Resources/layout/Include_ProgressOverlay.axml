@@ -11,5 +11,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminate="true"
-        style="?android:attr/progressBarStyleLarge"/>
+        style="?android:attr/progressBarStyle"/>
 </FrameLayout>

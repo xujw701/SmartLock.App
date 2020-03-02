@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
                 android:gravity="center"
-                android:text="Keybox Feedback"
+                android:text="My Keybox Feedback"
                 android:textSize="16sp"/>
         </RelativeLayout>
         <RelativeLayout
