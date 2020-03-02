@@ -171,11 +171,18 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBatteryStatus.Text = keybox.BatteryLevelString;
         }
 
-        public void Unlocked()
+        public void SetLockUI(bool locked)
         {
-            SetLockUI(false);
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                _ivLock.Visibility = locked ? ViewStates.Visible : ViewStates.Gone;
+                _ivUnlock.Visibility = !locked ? ViewStates.Visible : ViewStates.Gone;
 
-            _handler.PostDelayed(() => SetLockUI(true), 4000);
+                if (locked)
+                {
+                    _slideUnlockView.Reset();
+                }
+            });
         }
 
         public void SetBleIndicator(bool isOn)
@@ -224,17 +231,6 @@ namespace SmartLock.Presentation.Droid.Views
             else
             {
                 _ivScanButton.ClearAnimation();
-            }
-        }
-
-        private void SetLockUI(bool locked)
-        {
-            _ivLock.Visibility = locked ? ViewStates.Visible : ViewStates.Gone;
-            _ivUnlock.Visibility = !locked ? ViewStates.Visible : ViewStates.Gone;
-
-            if (locked)
-            {
-                _slideUnlockView.Reset();
             }
         }
 

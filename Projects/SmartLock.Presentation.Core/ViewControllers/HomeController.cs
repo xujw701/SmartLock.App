@@ -40,6 +40,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
             _keyboxService.OnKeyboxDisconnected += OnKeyboxDisconnected;
 
+            _keyboxService.OnUnlocked += () => { View.SetLockUI(false); };
+            _keyboxService.OnLocked += () => { View.SetLockUI(true); };
+
             View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
             View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
             View.Connect += (keybox) => DoSafeAsync(async () => await View_Connect(keybox));
@@ -126,11 +129,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             var unlocked = await _keyboxService.StartUnlock();
 
-            if (unlocked)
-            {
-                View.Unlocked();
-            }
-            else
+            if (!unlocked)
             {
                 await _messageBoxService.ShowMessageAsync("Unlock Failed", "The keybox isn't listed or you don't have permission to unlock it.");
             }
