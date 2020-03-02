@@ -15,6 +15,10 @@ namespace SmartLock.Model.Models
         public string KeyboxName { get; set; }
         public int BatteryLevel { get; set; }
 
+        // Extra
+        public int AcessUserId { get; set; }
+        public DateTime InOn { get; set; }
+
         // Local var
         public DeviceState State { get; set; }
 

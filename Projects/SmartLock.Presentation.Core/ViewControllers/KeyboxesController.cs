@@ -3,6 +3,7 @@ using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -14,6 +15,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IKeyboxService _keyboxService;
 
         private List<Keybox> _keyboxes;
+
+        private bool _mine = true;
 
         private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox;
 
@@ -56,8 +59,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
             };
             View.TabClicked += (mine) =>
             {
-                if (mine) DoSafeAsync(LoadMineData);
-                else DoSafeAsync(LoadOthersData);
+                _mine = mine;
+
+                LoadData();
             };
             View.Refresh += () => View.UpdatePlaceLockButton(CanPlaceLock);
         }
@@ -68,7 +72,19 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.UpdatePlaceLockButton(CanPlaceLock);
 
-            DoSafeAsync(LoadMineData);
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            if (_mine)
+            {
+                DoSafeAsync(LoadMineData);
+            }
+            else
+            {
+                DoSafeAsync(LoadOthersData);
+            }
         }
 
         private async Task LoadMineData()

@@ -15,7 +15,7 @@ namespace SmartLock.Model.Models
         public DateTimeOffset CreatedOn { get; set; }
 
         public string Name => $"{FirstName} {LastName}";
-        public string CreatedOnString => CreatedOn.ToString("dd/MM/yy HH:mm");
+        public string CreatedOnString => CreatedOn.LocalDateTime.ToString("dd/MM/yy HH:mm");
 
         public string KeyboxName { get; set; }
 

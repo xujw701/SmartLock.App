@@ -12,5 +12,9 @@ namespace SmartLock.Model.Response
         public string PropertyAddress { get; set; }
         public string KeyboxName { get; set; }
         public int BatteryLevel { get; set; }
+
+        // Extra
+        public int AcessUserId { get; set; }
+        public DateTime InOn { get; set; }
     }
 }

@@ -165,6 +165,8 @@ namespace SmartLock.Logic
                     PropertyAddress = dto.PropertyAddress,
                     KeyboxName = dto.KeyboxName,
                     BatteryLevel = dto.BatteryLevel,
+                    AcessUserId = dto.AcessUserId,
+                    InOn = dto.InOn
                 }).ToList();
             }
 
