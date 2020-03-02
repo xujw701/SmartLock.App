@@ -137,7 +137,7 @@ namespace SmartLock.Presentation.Droid.Platform
             //});
         }
 
-        private void Clear()
+        public void Clear()
         {
             // Clear the previous results
             _discoveredDevices = new List<IDevice>();

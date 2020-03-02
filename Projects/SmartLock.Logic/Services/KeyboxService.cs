@@ -332,6 +332,16 @@ namespace SmartLock.Logic.Services
             return feedbacks;
         }
 
+        public void Clear()
+        {
+            // Clear the previous results
+            _discoveredKeyboxes = new List<Keybox>();
+
+            _connectedKeybox = null;
+
+            _localBleService.Clear();
+        }
+
         private List<KeyboxHistory> FilterHistories(List<KeyboxHistory> keyboxHistories)
         {
             double timeFrame = 7200; //seconds
@@ -423,14 +433,6 @@ namespace SmartLock.Logic.Services
         private void LocalBleService_OnUnlocked()
         {
             OnUnlocked?.Invoke();
-        }
-
-        private void Clear()
-        {
-            // Clear the previous results
-            _discoveredKeyboxes = new List<Keybox>();
-
-            _connectedKeybox = null;
         }
     }
 }

@@ -10,12 +10,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
         private readonly IUserService _userService;
+        private readonly IKeyboxService _keyboxService;
 
-        public SettingController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService) : base(viewService)
+        public SettingController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService) : base(viewService)
         {
             _messageBoxService = messageBoxService;
             _userSession = userSession;
             _userService = userService;
+            _keyboxService = keyboxService;
         }
 
         protected override void OnViewLoaded()
@@ -64,6 +66,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task LogOut()
         {
+            if (_keyboxService.ConnectedKeybox != null)
+            {
+                await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
+            }
+
+            _keyboxService.Clear();
+
             await _userService.LogOut();
 
             PopToRoot();

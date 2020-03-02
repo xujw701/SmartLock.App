@@ -40,5 +40,6 @@ namespace SmartLock.Model.Services
         Task CreatePropertyFeedback(int keyboxId, int propertyId, string content);
         Task<List<PropertyFeedback>> GetPropertyFeedback(Keybox keybox, int propertyId);
         Task<List<PropertyFeedback>> GetAllPropertyFeedback();
+        void Clear();
     }
 }

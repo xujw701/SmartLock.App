@@ -25,5 +25,6 @@ namespace SmartLock.Model.Services
         Task DisconnectDeviceAsync(string uuid);
         Task StartSetLock(bool isLock);
         Task<int> GetBatteryLevel();
+        void Clear();
     }
 }
