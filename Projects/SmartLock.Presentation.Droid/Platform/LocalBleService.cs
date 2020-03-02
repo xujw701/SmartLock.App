@@ -74,6 +74,9 @@ namespace SmartLock.Presentation.Droid.Platform
             // Stop it first anyway
             await _adapter.StopScanningForDevicesAsync();
 
+            // Set the scan mode fast only
+            _adapter.ScanMode = ScanMode.LowLatency;
+
             await _adapter.StartScanningForDevicesAsync();
         }
 
