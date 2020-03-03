@@ -39,7 +39,8 @@
                     android:layout_below="@+id/btnBack"
                     android:text="Lock-ABC123"
                     android:textSize="20sp"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@color/text_blue"
+                    android:textStyle="bold"/>
                 <ImageView
                     android:id="@+id/ivBattery"
                     android:layout_width="20dp"

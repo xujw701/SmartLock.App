@@ -60,13 +60,14 @@
                 android:layout_marginTop="16dp"
                 android:text=""
                 android:textSize="20sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
             <TextView
                 android:id="@+id/tvAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@color/text2_gray"/>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -74,8 +75,8 @@
                 android:layout_marginTop="7dp">
                 <ImageView
                     android:id="@+id/ivRoom"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:src="@drawable/icon_bed"/>
                 <TextView
                     android:id="@+id/tvRoom"
@@ -84,12 +85,12 @@
                     android:layout_toEndOf="@+id/ivRoom"
                     android:layout_marginStart="8dp"
                     android:text="0"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="@color/text2_gray"/>
                 <ImageView
                     android:id="@+id/ivToilet"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_toEndOf="@+id/tvRoom"
                     android:layout_marginStart="24dp"
                     android:src="@drawable/icon_bathroom"/>
@@ -100,12 +101,12 @@
                     android:layout_toEndOf="@+id/ivToilet"
                     android:layout_marginStart="8dp"
                     android:text="0"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="@color/text2_gray"/>
                 <ImageView
                     android:id="@+id/ivArea"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:layout_toEndOf="@+id/tvToilet"
                     android:layout_marginStart="24dp"
                     android:src="@drawable/icon_square"/>
@@ -116,7 +117,7 @@
                     android:layout_toEndOf="@+id/ivArea"
                     android:layout_marginStart="8dp"
                     android:text="N/A"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textColor="@color/text2_gray"/>
             </RelativeLayout>
             <TextView
@@ -125,8 +126,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text=""
-                android:textSize="18sp"
-                android:textColor="@android:color/black"/>
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
             <LinearLayout
                 android:id="@+id/btnLockHistory"
                 android:layout_width="match_parent"

@@ -270,6 +270,7 @@
     <Compile Include="Controls\CustomArrayAdapter.cs" />
     <Compile Include="Controls\GalleryPageTransformer.cs" />
     <Compile Include="Controls\ImageGridView.cs" />
+    <Compile Include="Controls\NiceImageView.cs" />
     <Compile Include="Controls\SlideUnlockView.cs" />
     <Compile Include="Platform\LocalBleService.cs" />
     <Compile Include="Platform\ContainedStorage.cs" />
@@ -820,6 +821,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Item_ViewPager_Image.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\image_border.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
