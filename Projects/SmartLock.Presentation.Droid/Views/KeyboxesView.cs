@@ -94,7 +94,10 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void UpdatePlaceLockButton(bool enabled)
         {
-            _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
+            });
         }
 
         private void UpdateUI(bool mine)
