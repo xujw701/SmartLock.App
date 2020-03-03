@@ -23,7 +23,7 @@
             android:layout_height="24dp"
             android:gravity="center"
             android:text="Share your Feedback"
-            android:textSize="16sp"/>
+            android:textSize="17sp"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"

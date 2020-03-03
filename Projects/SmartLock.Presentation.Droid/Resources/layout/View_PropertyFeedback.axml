@@ -26,7 +26,7 @@
                 android:layout_height="24dp"
                 android:gravity="center"
                 android:text="My Keybox Feedback"
-                android:textSize="16sp"/>
+                android:textSize="17sp"/>
         </RelativeLayout>
         <RelativeLayout
             android:id="@+id/writeFeedbackContainer"

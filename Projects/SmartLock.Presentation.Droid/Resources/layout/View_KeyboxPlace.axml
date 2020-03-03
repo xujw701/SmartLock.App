@@ -30,7 +30,7 @@
                     android:layout_height="24dp"
                     android:gravity="center"
                     android:text="Add Keybox"
-                    android:textSize="16sp"/>
+                    android:textSize="17sp"/>
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="wrap_content"
