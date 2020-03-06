@@ -1,4 +1,7 @@
 ﻿using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS
@@ -35,6 +38,9 @@ namespace SmartLock.Presentation.iOS
             Application.Current.Start();
 
             Window.MakeKeyAndVisible();
+
+            AppCenter.Start("32b3bdca-9328-4f0d-bebf-39baec3ac0b7",
+                   typeof(Analytics), typeof(Crashes));
 
             return shouldPerformAdditionalDelegateHandling;
         }

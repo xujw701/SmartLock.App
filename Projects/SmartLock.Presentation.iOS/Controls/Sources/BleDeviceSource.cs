@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Foundation;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.iOS.Controls.Cells;
 using UIKit;
 
@@ -9,26 +9,31 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 {
     public class BleDeviceSource : UITableViewSource
     {
-        private Action<BleDevice> _connect;
-        private Action<BleDevice> _disconnect;
+        private Action<Keybox> _connect;
+        private Action<Keybox> _disconnect;
+        private Action _cancel;
 
-        public List<BleDevice> BleDevices;
-        public BleDevice ConnectedDevice;
+        public List<Keybox> Keyboxes;
+        public Keybox ConnectedKeybox;
 
-        public BleDeviceSource(List<BleDevice> bleDevices, Action<BleDevice> connect, Action<BleDevice> disconnect)
+        public BleDeviceSource(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
         {
-            BleDevices = bleDevices;
+            Keyboxes = keyboxes;
             _connect = connect;
             _disconnect = disconnect;
+            _cancel = cancel;
 
-            _connect += (d) => ConnectedDevice = d;
+            _connect += (keybox) =>
+            {
+                ConnectedKeybox = keybox;
+            };
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var result = (BleDeviceCell)tableView.DequeueReusableCell(BleDeviceCell.Key) ?? BleDeviceCell.Create();
 
-            result.SetData(BleDevices[indexPath.Row], _connect, _disconnect);
+            result.SetData(Keyboxes[indexPath.Row], _connect, _disconnect, _cancel);
 
             return result;
         }
@@ -40,7 +45,7 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return BleDevices.Count;
+            return Keyboxes.Count;
         }
     }
 }

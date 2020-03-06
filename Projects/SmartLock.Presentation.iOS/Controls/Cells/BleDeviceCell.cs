@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.iOS.Support;
 using UIKit;
 
@@ -33,24 +34,25 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             ShadowHelper.AddShadow(ContentContainer);
         }
 
-        public void SetData(BleDevice bleDevice, Action<BleDevice> connect, Action<BleDevice> disconnect)
+        public void SetData(Keybox keybox, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
         {
-            LblText1.Text = bleDevice.Name;
-            LblBattery.Text = bleDevice.BatteryLevelString;
+            LblText1.Text = keybox.PropertyAddress;
+            LblText2.Text = keybox.KeyboxName;
+            LblBattery.Text = keybox.BatteryLevelString;
 
             BtnConnect.TouchUpInside += (s, e) =>
             {
                 UpdateUI(true);
-                connect?.Invoke(bleDevice);
+                connect?.Invoke(keybox);
             };
 
             BtnCancel.TouchUpInside += (s, e) =>
             {
                 UpdateUI(false);
-                connect?.Invoke(bleDevice);
+                connect?.Invoke(keybox);
             };
 
-            UpdateUI(bleDevice.State == DeviceState.Connecting);
+            UpdateUI(keybox.State == DeviceState.Connecting);
         }
 
         private void UpdateUI(bool connecting)

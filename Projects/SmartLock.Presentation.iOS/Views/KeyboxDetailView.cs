@@ -1,5 +1,6 @@
 ﻿using System;
 using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Views.ViewBases;
@@ -11,7 +12,11 @@ namespace SmartLock.Presentation.iOS.Views
     {
         public event Action BackClick;
         public event Action LockHistoryClick;
+        public event Action LockEditClick;
         public event Action LockDashboardClick;
+        public event Action LockDataClick;
+        public event Action FeedbackClick;
+        public event Action Refresh;
 
         public KeyboxDetailView(KeyboxDetailController controller) : base(controller, "KeyboxDetailView")
         {
@@ -39,7 +44,7 @@ namespace SmartLock.Presentation.iOS.Views
             }));
         }
 
-        public void Show(Keybox keybox)
+        public void Show(Keybox keybox, Property property, bool mine)
         {
         }
     }

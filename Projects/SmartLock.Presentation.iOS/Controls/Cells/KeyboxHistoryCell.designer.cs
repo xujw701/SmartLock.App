@@ -35,7 +35,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel LblOpener { get; set; }
+        UIKit.UILabel LblName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -68,9 +68,9 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                 LblIn = null;
             }
 
-            if (LblOpener != null) {
-                LblOpener.Dispose ();
-                LblOpener = null;
+            if (LblName != null) {
+                LblName.Dispose ();
+                LblName = null;
             }
 
             if (LblOut != null) {

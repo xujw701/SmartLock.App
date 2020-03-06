@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;
@@ -14,6 +14,9 @@ namespace SmartLock.Presentation.iOS.Views
         private KeyboxSource _keyboxSource;
 
         public event Action<Keybox> KeyboxClicked;
+        public event Action PlaceKeyboxClicked;
+        public event Action<bool> TabClicked;
+        public event Action Refresh;
 
         public KeyboxesView(KeyboxesController controller) : base(controller, "KeyboxesView")
         {
@@ -24,8 +27,10 @@ namespace SmartLock.Presentation.iOS.Views
             base.ViewDidLoad();
         }
 
-        public void Show(List<Keybox> keyboxes)
+        public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)
         {
+            UpdatePlaceLockButton(placeLockButtonEnabled);
+
             if (_keyboxSource == null)
             {
                 _keyboxSource = new KeyboxSource(keyboxes, KeyboxClicked);
@@ -40,6 +45,11 @@ namespace SmartLock.Presentation.iOS.Views
             }
 
             KeyboxesTableView.ReloadData();
+        }
+
+        public void UpdatePlaceLockButton(bool enabled)
+        {
+            //TODO
         }
     }
 }

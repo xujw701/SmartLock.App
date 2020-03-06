@@ -1,6 +1,6 @@
 ﻿using System;
 using Foundation;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.iOS.Support;
 using UIKit;
 
@@ -35,8 +35,8 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         public void SetData(Keybox keybox)
         {
-            LblText1.Text = keybox.Name;
-            LblText2.Text = keybox.Address;
+            LblText1.Text = keybox.PropertyAddress;
+            LblText2.Text = keybox.KeyboxName;
             LblBattery.Text = keybox.BatteryLevelString;
 
             SetBatteryColor(keybox);

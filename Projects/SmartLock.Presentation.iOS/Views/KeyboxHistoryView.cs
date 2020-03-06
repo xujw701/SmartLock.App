@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;
@@ -12,8 +12,8 @@ namespace SmartLock.Presentation.iOS.Views
     public partial class KeyboxHistoryView : View<IKeyboxHistoryView>, IKeyboxHistoryView
     {
         private KeyboxHistorySource _keyboxHistorySource;
+
         public event Action BackClick;
-        public event Action<KeyboxHistory> KeyboxSetOut;
 
         public KeyboxHistoryView(KeyboxHistoryController controller) : base(controller, "KeyboxHistoryView")
         {

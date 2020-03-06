@@ -25,19 +25,21 @@ namespace SmartLock.Presentation.iOS.Platform
         private const string ResponseLockActionUnlcoked = "0F";
 
         private IBluetoothLE _ble;
-        private Plugin.BLE.Abstractions.Contracts.IAdapter _adapter;
+        private IAdapter _adapter;
         private IDevice _connectedDevice;
 
         // Raw devices
-        private List<IDevice> _discoveredDevices = new List<IDevice>();
-        private List<BleDevice> _discoveredBleDevices = new List<BleDevice>();
+        private List<IDevice> _discoveredDevices;
+        private List<BleDevice> _discoveredBleDevices;
 
         private ICharacteristic _mainCharacteristic;
         private ICharacteristic _notifyCharacteristic;
         private ICharacteristic _batteryCharacteristic;
 
+        public event Action<bool> OnBleStateChanged;
         public event Action<BleDevice> OnDeviceDiscovered;
         public event Action<BleDevice> OnDeviceConnected;
+        public event Action OnDeviceDisconnected;
         public event Action OnLocked;
         public event Action OnUnlocked;
 
@@ -51,8 +53,14 @@ namespace SmartLock.Presentation.iOS.Platform
             _ble = CrossBluetoothLE.Current;
             _adapter = CrossBluetoothLE.Current.Adapter;
 
+            _discoveredDevices = new List<IDevice>();
+            _discoveredBleDevices = new List<BleDevice>();
+
+            _ble.StateChanged += Ble_StateChanged;
+
             _adapter.DeviceDiscovered += Adapter_OnDeviceDiscovered;
             _adapter.DeviceConnected += Adapter_OnDeviceConnected;
+            _adapter.DeviceDisconnected += Adapter_DeviceDisconnected;
         }
 
         public async Task StartScanningForDevicesAsync()
@@ -62,6 +70,9 @@ namespace SmartLock.Presentation.iOS.Platform
             // Stop it first anyway
             await _adapter.StopScanningForDevicesAsync();
 
+            // Set the scan mode fast only
+            _adapter.ScanMode = ScanMode.LowLatency;
+
             await _adapter.StartScanningForDevicesAsync();
         }
 
@@ -70,20 +81,20 @@ namespace SmartLock.Presentation.iOS.Platform
             await _adapter.StopScanningForDevicesAsync();
         }
 
-        public async Task ConnectToDeviceAsync(BleDevice bleDevice)
+        public async Task ConnectToDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.ConnectToDeviceAsync(device);
         }
 
-        public async Task DisconnectDeviceAsync(BleDevice bleDevice)
+        public async Task DisconnectDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id == bleDevice.Id);
+            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
 
-            if (device == null) throw new Exception("Invalid device");
+            if (device == null) return; //throw new Exception("Invalid device");
 
             await _adapter.DisconnectDeviceAsync(device);
 
@@ -124,13 +135,18 @@ namespace SmartLock.Presentation.iOS.Platform
             //});
         }
 
-        private void Clear()
+        public void Clear()
         {
             // Clear the previous results
             _discoveredDevices = new List<IDevice>();
             _discoveredBleDevices = new List<BleDevice>();
 
             _connectedDevice = null;
+        }
+
+        private void Ble_StateChanged(object sender, BluetoothStateChangedArgs e)
+        {
+            OnBleStateChanged?.Invoke(e.NewState == BluetoothState.On);
         }
 
         private void Adapter_OnDeviceDiscovered(object sender, DeviceEventArgs args)
@@ -164,23 +180,36 @@ namespace SmartLock.Presentation.iOS.Platform
 
         private async void Adapter_OnDeviceConnected(object sender, DeviceEventArgs args)
         {
-            _connectedDevice = args.Device;
-
-            var bleDevice = new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State);
-
-            _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
-            _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
-            _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
-
-            Auth();
-
-            if (_notifyCharacteristic != null)
+            try
             {
-                _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
-                await _notifyCharacteristic.StartUpdatesAsync();
-            }
+                _connectedDevice = args.Device;
 
-            OnDeviceConnected?.Invoke(bleDevice);
+                var bleDevice = new BleDevice(_connectedDevice.Id, _connectedDevice.Name, _connectedDevice.Rssi, _connectedDevice.NativeDevice, (DeviceState)_connectedDevice.State);
+
+                _mainCharacteristic = await FindCharacteristic(MainServiceId, MainCharacteristicId);
+                _notifyCharacteristic = await FindCharacteristic(NotifyServiceId, NotifyCharacteristicId);
+                _batteryCharacteristic = await FindCharacteristic(BatteryServiceId, BatteryCharacteristicId);
+
+                await Auth();
+
+                if (_notifyCharacteristic != null)
+                {
+                    _notifyCharacteristic.ValueUpdated += NotifyCharValueUpdated;
+                    await _notifyCharacteristic.StartUpdatesAsync();
+                }
+
+                bleDevice.BatteryLevel = await GetBatteryLevel();
+
+                OnDeviceConnected?.Invoke(bleDevice);
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        private void Adapter_DeviceDisconnected(object sender, DeviceEventArgs e)
+        {
+            OnDeviceDisconnected?.Invoke();
         }
 
         private void NotifyCharValueUpdated(object sender, CharacteristicUpdatedEventArgs args)

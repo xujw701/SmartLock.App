@@ -116,7 +116,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>SmartLock iOS Dev</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -155,6 +155,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Xamarin.Azure.NotificationHubs.iOS">
+      <HintPath>..\..\packages\Xamarin.Azure.NotificationHubs.iOS.2.0.4\lib\xamarinios10\Xamarin.Azure.NotificationHubs.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SmartLock.Infrastructure\SmartLock.Infrastructure.csproj">
@@ -746,6 +749,10 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Checked.png" />
+    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Unchecked.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -819,6 +826,10 @@
     </Compile>
     <Compile Include="Controls\Sources\KeyboxHistorySource.cs" />
     <Compile Include="Controls\CustomField\UnlockSlider.cs" />
+    <Compile Include="Support\SystemHelper.cs" />
+    <Compile Include="Support\ImageHelper.cs" />
+    <Compile Include="PushNotification\Constants.cs" />
+    <Compile Include="PushNotification\DevicePushNotifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -828,6 +839,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\icon_checked.imageset\" />
+    <Folder Include="Assets.xcassets\icon_unchecked.imageset\" />
+    <Folder Include="PushNotification\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

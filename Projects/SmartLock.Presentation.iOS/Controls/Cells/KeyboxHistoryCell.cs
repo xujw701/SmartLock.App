@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
+using SmartLock.Presentation.iOS.Support;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Controls.Cells
@@ -27,31 +28,19 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         public void SetData(KeyboxHistory keyboxHistory)
         {
-            LblOpener.Text = keyboxHistory.Opener;
+            LblName.Text = keyboxHistory.Name;
             LblDuration.Text = keyboxHistory.Duration;
-            LblIn.Text = keyboxHistory.InTimeString;
-            LblOut.Text = keyboxHistory.OutTimeString;
+            LblIn.Text = keyboxHistory.InOnString;
+            LblOut.Text = keyboxHistory.OutOnString;
 
-            ConfigureDemoPortait(keyboxHistory);
+            ConfigurePortait(keyboxHistory);
         }
 
-        private void ConfigureDemoPortait(KeyboxHistory keyboxHistory)
+        private void ConfigurePortait(KeyboxHistory keyboxHistory)
         {
-            if (keyboxHistory.Opener.StartsWith("Della"))
+            if (keyboxHistory.ResPortraitId.HasValue)
             {
-                IvPortrait.Image = UIImage.FromBundle("portait1");
-            }
-            else if (keyboxHistory.Opener.StartsWith("Mol"))
-            {
-                IvPortrait.Image = UIImage.FromBundle("portait3");
-            }
-            else if (keyboxHistory.Opener.StartsWith("Win"))
-            {
-                IvPortrait.Image = UIImage.FromBundle("portait5");
-            }
-            else if (keyboxHistory.Opener.StartsWith("Har"))
-            {
-                IvPortrait.Image = UIImage.FromBundle("portait2");
+                ImageHelper.SetImageView(IvPortrait, keyboxHistory.Portrait);
             }
             else
             {

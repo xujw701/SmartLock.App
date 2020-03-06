@@ -3,6 +3,7 @@ using SmartLock.Model.Services;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
+using SmartLock.Presentation.iOS.Support;
 
 namespace SmartLock.Presentation.iOS.Platform
 {
@@ -24,6 +25,11 @@ namespace SmartLock.Presentation.iOS.Platform
         {
             var emailUrl = NSUrl.FromString("mailto:" + emailAddress);
             UIApplication.SharedApplication.OpenUrl(emailUrl);
+        }
+
+        public void Bt()
+        {
+            SystemHelper.OpenUrl(new NSUrl(UIApplication.OpenSettingsUrlString));
         }
 
         public void Exit()

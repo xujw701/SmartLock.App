@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Foundation;
-using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.iOS.Controls.Cells;
 using UIKit;
 

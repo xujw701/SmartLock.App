@@ -86,7 +86,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="IvPortrait" destination="657" id="name-outlet-657"/>
-                <outlet property="LblOpener" destination="676" id="name-outlet-676"/>
+                <outlet property="LblName" destination="676" id="name-outlet-676"/>
                 <outlet property="LblDuration" destination="680" id="name-outlet-680"/>
                 <outlet property="IvIn" destination="685" id="name-outlet-685"/>
                 <outlet property="LblIn" destination="690" id="name-outlet-690"/>

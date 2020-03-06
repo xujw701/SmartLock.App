@@ -5,6 +5,7 @@ using CoreAnimation;
 using CoreGraphics;
 using Foundation;
 using SmartLock.Model.Ble;
+using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.iOS.Controls.Sources;
@@ -25,11 +26,13 @@ namespace SmartLock.Presentation.iOS.Views
         private BleDeviceSource _bleDeviceSource;
         private bool isScanning;
 
+        public event Action MessageClick;
         public event Action<bool> StartStop;
-        public event Action<BleDevice> Connect;
-        public event Action<BleDevice> Disconnect;
+        public event Action<Keybox> Connect;
+        public event Action<Keybox> Disconnect;
         public event Action DisconnectCurrent;
         public event Action UnlockClicked;
+        public event Action BtClicked;
 
         public HomeView(HomeController controller) : base(controller, "HomeView")
         {
@@ -75,7 +78,7 @@ namespace SmartLock.Presentation.iOS.Views
             };
         }
 
-        public void Show(string greeting, bool btStatus, bool setMode = true)
+        public void Show(string greeting, string name, bool setMode = true)
         {
             if (setMode)
             {
@@ -83,16 +86,16 @@ namespace SmartLock.Presentation.iOS.Views
             }
 
             LblGreeting.Text = greeting;
-            LblBtStatus.Text = "ON";//btStatus ? "ON" : "OFF";
+            LblName.Text = name;
         }
 
-        public void Show(List<BleDevice> bleDevices)
+        public void Show(List<Keybox> keyboxes)
         {
             SetMode(StateLockList);
 
             if (_bleDeviceSource == null)
             {
-                _bleDeviceSource = new BleDeviceSource(bleDevices, Connect, Disconnect);
+                _bleDeviceSource = new BleDeviceSource(keyboxes, Connect, Disconnect, DisconnectCurrent);
 
                 BleDeviceTableView.EstimatedRowHeight = 190f;
                 BleDeviceTableView.RowHeight = UITableView.AutomaticDimension;
@@ -100,22 +103,34 @@ namespace SmartLock.Presentation.iOS.Views
             }
             else
             {
-                _bleDeviceSource.BleDevices = bleDevices;
+                _bleDeviceSource.Keyboxes = keyboxes;
             }
 
             BleDeviceTableView.ReloadData();
         }
 
-        public void Show(BleDevice bleDevice)
+        public void Show(Keybox keybox)
         {
             SetMode(StateLock);
 
-            LblText1.Text = bleDevice.Name;
-            LblBattery.Text = bleDevice.BatteryLevelString;
+            LblText1.Text = keybox.PropertyAddress;
+            LblText2.Text = keybox.KeyboxName;
+            LblBattery.Text = keybox.BatteryLevelString;
 
             ShadowHelper.AddShadow(LockContainer);
+        }
 
-            SetLockUI(true);
+        public void SetBleIndicator(bool isOn)
+        {
+            // TODO: Tweak the color
+            LblBtStatus.Text = isOn ? "ON" : "OFF";
+            //_tvBtStatus.SetTextColor(new Color(_context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
+        }
+
+        public void UpdateTimeout(int second)
+        {
+            // TODO: Implement UI
+            //_tvTimeOut.Text = $"Timeout: {second}s";
         }
 
         private void SetMode(int state)
@@ -131,6 +146,7 @@ namespace SmartLock.Presentation.iOS.Views
             LockContainer.Hidden = state != StateLock;
 
             if (state != StateIdle) ToggleScanStatus(true);
+            if (state == StateLock) SetLockUI(true);
         }
 
         private void ToggleScanStatus(bool forceStop = false)
@@ -159,7 +175,7 @@ namespace SmartLock.Presentation.iOS.Views
             }
         }
 
-        private void SetLockUI(bool locked)
+        public void SetLockUI(bool locked)
         {
             UnlockSlider.Reset();
 
