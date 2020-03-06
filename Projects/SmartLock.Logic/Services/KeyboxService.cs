@@ -381,10 +381,10 @@ namespace SmartLock.Logic.Services
         {
             Task.Run(async () =>
             {
-                var existedKebox = _discoveredKeyboxes.FirstOrDefault(k => k.KeyboxId.Equals(bleDevice.Id.ToString()));
+                var existedKebox = _discoveredKeyboxes.FirstOrDefault(k => k.Uuid.Equals(bleDevice.RealId));
                 if (existedKebox != null) return;
 
-                var keybox = await _webService.GetKeybox(uuid: bleDevice.Id.ToString());
+                var keybox = await _webService.GetKeybox(uuid: bleDevice.RealId);
 
                 if (keybox != null && !_discoveredKeyboxes.Exists(d => d.Uuid.ToString().Equals(keybox.Uuid)))
                 {
@@ -399,7 +399,7 @@ namespace SmartLock.Logic.Services
 
         private void LocalBleService_OnDeviceConnected(BleDevice bleDevice)
         {
-            var keybox = _discoveredKeyboxes.FirstOrDefault(k => k.Uuid.Equals(bleDevice.Id.ToString()));
+            var keybox = _discoveredKeyboxes.FirstOrDefault(k => k.Uuid.Equals(bleDevice.RealId));
 
             if (keybox != null)
             {

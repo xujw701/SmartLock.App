@@ -49,8 +49,13 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             BtnCancel.TouchUpInside += (s, e) =>
             {
                 UpdateUI(false);
-                connect?.Invoke(keybox);
+                disconnect?.Invoke(keybox);
             };
+
+            IvClose.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                cancel?.Invoke();
+            }));
 
             UpdateUI(keybox.State == DeviceState.Connecting);
         }

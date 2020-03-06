@@ -35,6 +35,10 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvClose { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblBattery { get; set; }
 
         [Outlet]
@@ -70,6 +74,11 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             if (IvBt != null) {
                 IvBt.Dispose ();
                 IvBt = null;
+            }
+
+            if (IvClose != null) {
+                IvClose.Dispose ();
+                IvClose = null;
             }
 
             if (LblBattery != null) {

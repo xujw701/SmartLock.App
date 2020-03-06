@@ -80,6 +80,10 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblTimeout { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView LockContainer { get; set; }
 
         [Outlet]
@@ -170,6 +174,11 @@ namespace SmartLock.Presentation.iOS.Views
             if (LblText2 != null) {
                 LblText2.Dispose ();
                 LblText2 = null;
+            }
+
+            if (LblTimeout != null) {
+                LblTimeout.Dispose ();
+                LblTimeout = null;
             }
 
             if (LockContainer != null) {

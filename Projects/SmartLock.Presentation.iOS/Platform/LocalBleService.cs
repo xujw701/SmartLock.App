@@ -83,7 +83,7 @@ namespace SmartLock.Presentation.iOS.Platform
 
         public async Task ConnectToDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
+            var device = _discoveredDevices.FirstOrDefault(d => BleDevice.GetRealId(d.Name).Equals(uuid));
 
             if (device == null) return; //throw new Exception("Invalid device");
 
@@ -92,7 +92,7 @@ namespace SmartLock.Presentation.iOS.Platform
 
         public async Task DisconnectDeviceAsync(string uuid)
         {
-            var device = _discoveredDevices.FirstOrDefault(d => d.Id.ToString().Equals(uuid));
+            var device = _discoveredDevices.FirstOrDefault(d => BleDevice.GetRealId(d.Name).Equals(uuid));
 
             if (device == null) return; //throw new Exception("Invalid device");
 
@@ -158,12 +158,12 @@ namespace SmartLock.Presentation.iOS.Platform
 
             var bleDevice = new BleDevice(device.Id, device.Name, device.Rssi, device.NativeDevice, (DeviceState)device.State);
 
-            if (!_discoveredDevices.Contains(device))
+            if (!_discoveredDevices.Exists(d => d.Id.ToString().Equals(device.Id.ToString())))
             {
                 _discoveredDevices.Add(device);
             }
 
-            if (!_discoveredBleDevices.Contains(bleDevice))
+            if (!_discoveredBleDevices.Exists(d => d.Id.Equals(device.Id.ToString())))
             {
                 _discoveredBleDevices.Add(bleDevice);
             }

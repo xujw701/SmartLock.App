@@ -27,6 +27,7 @@
                 <outlet property="UnlockSlider" destination="26390" id="name-outlet-26390"/>
                 <outlet property="SliderContainer" destination="27126" id="name-outlet-27126"/>
                 <outlet property="LblSliderText" destination="28861" id="name-outlet-28861"/>
+                <outlet property="LblTimeout" destination="30872" id="name-outlet-30872"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -57,38 +58,38 @@
                         <constraint id="226" firstAttribute="width" constant="58"/>
                     </constraints>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="227" translatesAutoresizingMaskIntoConstraints="NO" image="icon_message">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="227" translatesAutoresizingMaskIntoConstraints="NO" image="icon_message">
                     <rect key="frame" x="366" y="71" width="24" height="24"/>
                     <constraints>
                         <constraint id="230" firstAttribute="width" constant="24"/>
                         <constraint id="231" firstAttribute="height" constant="24"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="232" translatesAutoresizingMaskIntoConstraints="NO" image="search_lock" hidden="YES">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="232" translatesAutoresizingMaskIntoConstraints="NO" image="search_lock">
                     <rect key="frame" x="60" y="238" width="294" height="294"/>
                     <constraints>
                         <constraint id="239" firstAttribute="width" secondItem="232" secondAttribute="height" multiplier="1:1"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Lock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="240" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
+                <label opaque="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Lock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="240" translatesAutoresizingMaskIntoConstraints="NO">
                     <rect key="frame" x="80" y="258" width="254" height="254"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                     <color key="textColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="251" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="251" translatesAutoresizingMaskIntoConstraints="NO">
                     <rect key="frame" x="175" y="550" width="64.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="medium"/>
                     <color key="textColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="0" alpha="1"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="254" translatesAutoresizingMaskIntoConstraints="NO" text="ON" hidden="YES">
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="254" translatesAutoresizingMaskIntoConstraints="NO" text="ON">
                     <rect key="frame" x="243.5" y="550" width="22.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14" weight="black"/>
                     <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.2163481414" green="0.833995223" blue="0.4178132415" alpha="1"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="257" translatesAutoresizingMaskIntoConstraints="NO" image="icon_buletooth_small" hidden="YES">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="257" translatesAutoresizingMaskIntoConstraints="NO" image="icon_buletooth_small">
                     <rect key="frame" x="147" y="546" width="24" height="24"/>
                     <constraints>
                         <constraint id="260" firstAttribute="height" constant="24"/>
@@ -99,7 +100,7 @@
                     <rect key="frame" x="90" y="573" width="240" height="128"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
-                <view contentMode="scaleToFill" id="24142" translatesAutoresizingMaskIntoConstraints="NO">
+                <view contentMode="scaleToFill" id="24142" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
                     <rect key="frame" x="24" y="193" width="366" height="524.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <subviews>
@@ -141,8 +142,8 @@
                                 <constraint id="24208" firstAttribute="width" constant="16"/>
                             </constraints>
                         </imageView>
-                        <view contentMode="scaleToFill" id="27126" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="32" y="380" width="302" height="104"/>
+                        <view contentMode="scaleToFill" id="27126" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="32" y="379.5" width="302" height="61"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <subviews>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.0" minValue="0.0" maxValue="100" id="26390" translatesAutoresizingMaskIntoConstraints="NO" customClass="UnlockSlider">
@@ -168,6 +169,12 @@
                                 <constraint id="30067" firstItem="26390" firstAttribute="trailing" secondItem="28861" secondAttribute="trailing"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="30872" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <rect key="frame" x="141.5" y="460.5" width="83.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <constraints>
                         <constraint id="24148" firstItem="24147" firstAttribute="top" secondItem="24142" secondAttribute="top" constant="16"/>
@@ -187,6 +194,8 @@
                         <constraint id="27858" firstItem="27126" firstAttribute="leading" secondItem="24142" secondAttribute="leading" constant="32"/>
                         <constraint id="27859" firstAttribute="trailing" secondItem="27126" secondAttribute="trailing" constant="32"/>
                         <constraint id="28168" firstAttribute="bottom" secondItem="27126" secondAttribute="bottom" constant="84"/>
+                        <constraint id="30873" firstItem="30872" firstAttribute="top" secondItem="27126" secondAttribute="bottom" constant="20"/>
+                        <constraint id="30874" firstItem="30872" firstAttribute="centerX" secondItem="24142" secondAttribute="centerX"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">

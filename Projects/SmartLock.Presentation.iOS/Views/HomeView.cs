@@ -4,7 +4,6 @@ using System.Timers;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
-using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
@@ -21,8 +20,6 @@ namespace SmartLock.Presentation.iOS.Views
         private const int StateLockList = 1;
         private const int StateLock = 2;
 
-        private Timer _lockUiTimer;
-
         private BleDeviceSource _bleDeviceSource;
         private bool isScanning;
 
@@ -36,23 +33,17 @@ namespace SmartLock.Presentation.iOS.Views
 
         public HomeView(HomeController controller) : base(controller, "HomeView")
         {
-            _lockUiTimer = new Timer();
-            _lockUiTimer.Interval = 4000;
-            _lockUiTimer.Enabled = true;
-            _lockUiTimer.Elapsed += (s, e) =>
-            {
-                InvokeOnMainThread(() =>
-                {
-                    _lockUiTimer.Stop();
-
-                    SetLockUI(true);
-                });
-            };
+            FullscreenIsBusy = false;
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            IvMessage.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                MessageClick?.Invoke();
+            }));
 
             LblScanButton.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
@@ -63,50 +54,65 @@ namespace SmartLock.Presentation.iOS.Views
 
             IvClose.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
-                SetMode(StateIdle);
-
                 DisconnectCurrent?.Invoke();
             }));
 
             UnlockSlider.Unlocked += () =>
             {
                 UnlockClicked?.Invoke();
+            };
 
-                SetLockUI(false);
+            LblBt.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                BtClicked?.Invoke();
+            }));
 
-                _lockUiTimer.Start();
+            LblBtStatus.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                BtClicked?.Invoke();
+            }));
+
+            DisconnectCurrent += () =>
+            {
+                SetMode(StateIdle);
             };
         }
 
         public void Show(string greeting, string name, bool setMode = true)
         {
-            if (setMode)
+            InvokeOnMainThread(() =>
             {
-                SetMode(StateIdle);
-            }
+                if (setMode)
+                {
+                    SetMode(StateIdle);
+                }
 
-            LblGreeting.Text = greeting;
-            LblName.Text = name;
+                LblGreeting.Text = greeting;
+                LblName.Text = name;
+            });
         }
 
         public void Show(List<Keybox> keyboxes)
         {
-            SetMode(StateLockList);
-
-            if (_bleDeviceSource == null)
+            InvokeOnMainThread(() =>
             {
-                _bleDeviceSource = new BleDeviceSource(keyboxes, Connect, Disconnect, DisconnectCurrent);
+                SetMode(StateLockList);
 
-                BleDeviceTableView.EstimatedRowHeight = 190f;
-                BleDeviceTableView.RowHeight = UITableView.AutomaticDimension;
-                BleDeviceTableView.Source = _bleDeviceSource;
-            }
-            else
-            {
-                _bleDeviceSource.Keyboxes = keyboxes;
-            }
+                if (_bleDeviceSource == null)
+                {
+                    _bleDeviceSource = new BleDeviceSource(keyboxes, Connect, Disconnect, DisconnectCurrent);
 
-            BleDeviceTableView.ReloadData();
+                    BleDeviceTableView.EstimatedRowHeight = 190f;
+                    BleDeviceTableView.RowHeight = UITableView.AutomaticDimension;
+                    BleDeviceTableView.Source = _bleDeviceSource;
+                }
+                else
+                {
+                    _bleDeviceSource.Keyboxes = keyboxes;
+                }
+
+                BleDeviceTableView.ReloadData();
+            });
         }
 
         public void Show(Keybox keybox)
@@ -120,17 +126,33 @@ namespace SmartLock.Presentation.iOS.Views
             ShadowHelper.AddShadow(LockContainer);
         }
 
+        public void SetLockUI(bool locked)
+        {
+            InvokeOnMainThread(() =>
+            {
+                LblSliderText.Text = locked ? "         Slide to unlock" : "Unlocked";
+
+                IvLockIcon.Image = locked ? UIImage.FromBundle("icon_lock_big") : UIImage.FromBundle("icon_unlock");
+
+                if (locked)
+                {
+                    UnlockSlider.Reset();
+                }
+            });
+        }
+
         public void SetBleIndicator(bool isOn)
         {
-            // TODO: Tweak the color
             LblBtStatus.Text = isOn ? "ON" : "OFF";
-            //_tvBtStatus.SetTextColor(new Color(_context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
+            LblBtStatus.TextColor = isOn ? UIColor.FromRGB(0, 194, 63) : UIColor.FromRGB(255, 28, 28);
         }
 
         public void UpdateTimeout(int second)
         {
-            // TODO: Implement UI
-            //_tvTimeOut.Text = $"Timeout: {second}s";
+            InvokeOnMainThread(() =>
+            {
+                LblTimeout.Text = $"Timeout: {second}s";
+            });
         }
 
         private void SetMode(int state)
@@ -173,15 +195,6 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 IvScanButton.Layer.RemoveAllAnimations();
             }
-        }
-
-        public void SetLockUI(bool locked)
-        {
-            UnlockSlider.Reset();
-
-            LblSliderText.Text = locked ? "         Slide to unlock" : "Unlocked";
-
-            IvLockIcon.Image = locked ? UIImage.FromBundle("icon_lock_big") : UIImage.FromBundle("icon_unlock");
         }
     }
 }

@@ -90,6 +90,13 @@
                                     <constraint id="12296" firstAttribute="width" constant="140"/>
                                 </constraints>
                             </button>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="14302" translatesAutoresizingMaskIntoConstraints="NO" image="icon_close" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="272" y="31" width="24" height="24"/>
+                                <constraints>
+                                    <constraint id="14303" firstAttribute="height" constant="24"/>
+                                    <constraint id="14304" firstAttribute="width" constant="24"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint id="13428" firstItem="142" firstAttribute="top" secondItem="13002" secondAttribute="top" constant="32"/>
@@ -112,6 +119,8 @@
                             <constraint id="13507" firstAttribute="trailing" secondItem="11031" secondAttribute="trailing" constant="24"/>
                             <constraint id="13536" firstAttribute="bottom" secondItem="9622" secondAttribute="bottom" constant="24"/>
                             <constraint id="13537" firstAttribute="bottom" secondItem="11031" secondAttribute="bottom" constant="24"/>
+                            <constraint id="14305" firstItem="14302" firstAttribute="centerY" secondItem="143" secondAttribute="centerY"/>
+                            <constraint id="14306" firstAttribute="trailing" secondItem="14302" secondAttribute="trailing" constant="8"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -132,6 +141,7 @@
                 <outlet property="BtnConnect" destination="9622" id="name-outlet-9622"/>
                 <outlet property="BtnCancel" destination="11031" id="name-outlet-11031"/>
                 <outlet property="ContentContainer" destination="13002" id="name-outlet-13002"/>
+                <outlet property="IvClose" destination="14302" id="name-outlet-14302"/>
             </connections>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
@@ -144,5 +154,6 @@
         <image name="icon_buletooth_small" width="42.66667" height="42.66667"/>
         <image name="icon_lock_medium" width="106.6667" height="106.6667"/>
         <image name="icon_battery" width="42.66667" height="42.66667"/>
+        <image name="icon_close" width="64" height="64"/>
     </resources>
 </document>

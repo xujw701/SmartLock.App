@@ -56,7 +56,7 @@ namespace SmartLock.Presentation.iOS.Views.ViewBases
         /// Detmermines if a full screen busy indicator when <see cref="IsBusy"/> is set on the view.
         /// Otherwise the view must handle is busy on its own.
         /// </summary>
-        protected bool FullscreenIsBusy { get; set; }
+        protected bool FullscreenIsBusy { get; set; } = true;
 
         protected virtual void OnIsBusyChanged()
         {
