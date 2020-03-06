@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboxDetailView">
@@ -10,7 +9,6 @@
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
                 <outlet property="IvBack" destination="343" id="name-outlet-343"/>
                 <outlet property="IvShare" destination="348" id="name-outlet-348"/>
-                <outlet property="IvImage" destination="342" id="name-outlet-342"/>
                 <outlet property="LblText1" destination="357" id="name-outlet-357"/>
                 <outlet property="LblText2" destination="399" id="name-outlet-399"/>
                 <outlet property="IvBed" destination="403" id="name-outlet-403"/>
@@ -22,19 +20,26 @@
                 <outlet property="LblPrice" destination="626" id="name-outlet-626"/>
                 <outlet property="BtnHistory" destination="685" id="name-outlet-685"/>
                 <outlet property="BtnEdit" destination="2168" id="name-outlet-2168"/>
-                <outlet property="BtnData" destination="2220" id="name-outlet-2220"/>
                 <outlet property="BtnDashboard" destination="2191" id="name-outlet-2191"/>
+                <outlet property="BtnData" destination="2220" id="name-outlet-2220"/>
                 <outlet property="BtnFeedback" destination="2233" id="name-outlet-2233"/>
                 <outlet property="BtnMore" destination="2246" id="name-outlet-2246"/>
+                <outlet property="SlideShow" destination="4260" id="name-outlet-4260"/>
+                <outlet property="LblFeedback" destination="687" id="name-outlet-687"/>
+                <outlet property="SlideShowStackView" destination="5640" id="name-outlet-5640"/>
+                <outlet property="IVImage1" destination="6348" id="name-outlet-6348"/>
+                <outlet property="IVImage2" destination="6351" id="name-outlet-6351"/>
+                <outlet property="IVImage3" destination="6349" id="name-outlet-6349"/>
+                <outlet property="IVImage4" destination="6350" id="name-outlet-6350"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1187" translatesAutoresizingMaskIntoConstraints="NO" showsHorizontalScrollIndicator="NO">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                     <subviews>
                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="343" translatesAutoresizingMaskIntoConstraints="NO" image="icon_back">
                             <rect key="frame" x="20" y="32" width="24" height="24"/>
@@ -43,17 +48,11 @@
                                 <constraint id="347" firstAttribute="width" constant="24"/>
                             </constraints>
                         </imageView>
-                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="348" translatesAutoresizingMaskIntoConstraints="NO" image="icon_share" misplaced="YES">
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="348" translatesAutoresizingMaskIntoConstraints="NO" image="icon_share" misplaced="YES" hidden="YES">
                             <rect key="frame" x="365" y="32" width="24" height="24"/>
                             <constraints>
                                 <constraint id="351" firstAttribute="height" constant="24"/>
                                 <constraint id="352" firstAttribute="width" constant="24"/>
-                            </constraints>
-                        </imageView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="342" translatesAutoresizingMaskIntoConstraints="NO" image="Image" misplaced="YES">
-                            <rect key="frame" x="20" y="100" width="369" height="136"/>
-                            <constraints>
-                                <constraint id="1595" firstAttribute="width" secondItem="342" secondAttribute="height" multiplier="320:188"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28e Oak View Terrace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="357" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
@@ -119,190 +118,227 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" id="685" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="420" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="3570" translatesAutoresizingMaskIntoConstraints="NO" alignment="leading" distribution="equalSpacing" spacing="30">
+                            <rect key="frame" x="20" y="417" width="500" height="304"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="686" translatesAutoresizingMaskIntoConstraints="NO" image="icon_history">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <view contentMode="scaleToFill" id="685" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="686" translatesAutoresizingMaskIntoConstraints="NO" image="icon_history">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="691" firstAttribute="height" constant="24"/>
+                                                <constraint id="692" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lock History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="687" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="101" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <constraints>
-                                        <constraint id="691" firstAttribute="height" constant="24"/>
-                                        <constraint id="692" firstAttribute="width" constant="24"/>
+                                        <constraint id="688" firstItem="686" firstAttribute="top" secondItem="685" secondAttribute="top"/>
+                                        <constraint id="689" firstItem="686" firstAttribute="leading" secondItem="685" secondAttribute="leading"/>
+                                        <constraint id="690" firstAttribute="bottom" secondItem="686" secondAttribute="bottom"/>
+                                        <constraint id="693" firstItem="687" firstAttribute="leading" secondItem="686" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="694" firstItem="687" firstAttribute="top" secondItem="685" secondAttribute="top"/>
+                                        <constraint id="696" firstAttribute="bottom" secondItem="687" secondAttribute="bottom"/>
+                                        <constraint id="698" firstAttribute="height" constant="24"/>
+                                        <constraint id="8099" firstAttribute="width" constant="500"/>
                                     </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lock History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="687" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </view>
+                                <view contentMode="scaleToFill" id="2168" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="0.0" y="56" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2169" translatesAutoresizingMaskIntoConstraints="NO" image="icon_edit">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="2170" firstAttribute="height" constant="24"/>
+                                                <constraint id="2171" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2172" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="31.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="2173" firstItem="2169" firstAttribute="top" secondItem="2168" secondAttribute="top"/>
+                                        <constraint id="2174" firstItem="2169" firstAttribute="leading" secondItem="2168" secondAttribute="leading"/>
+                                        <constraint id="2175" firstAttribute="bottom" secondItem="2169" secondAttribute="bottom"/>
+                                        <constraint id="2176" firstItem="2172" firstAttribute="leading" secondItem="2169" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="2177" firstItem="2172" firstAttribute="top" secondItem="2168" secondAttribute="top"/>
+                                        <constraint id="2178" firstAttribute="bottom" secondItem="2172" secondAttribute="bottom"/>
+                                        <constraint id="2180" firstAttribute="height" constant="24"/>
+                                        <constraint id="8526" firstAttribute="width" constant="500"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" id="2191" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
+                                    <rect key="frame" x="0.0" y="112" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2192" translatesAutoresizingMaskIntoConstraints="NO" image="icon_dashboard">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="2193" firstAttribute="height" constant="24"/>
+                                                <constraint id="2194" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2195" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="89" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="2196" firstItem="2192" firstAttribute="top" secondItem="2191" secondAttribute="top"/>
+                                        <constraint id="2197" firstItem="2192" firstAttribute="leading" secondItem="2191" secondAttribute="leading"/>
+                                        <constraint id="2198" firstAttribute="bottom" secondItem="2192" secondAttribute="bottom"/>
+                                        <constraint id="2199" firstItem="2195" firstAttribute="leading" secondItem="2192" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="2200" firstItem="2195" firstAttribute="top" secondItem="2191" secondAttribute="top"/>
+                                        <constraint id="2201" firstAttribute="bottom" secondItem="2195" secondAttribute="bottom"/>
+                                        <constraint id="2203" firstAttribute="height" constant="24"/>
+                                        <constraint id="8527" firstAttribute="width" constant="500"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" id="2220" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="0.0" y="168" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2221" translatesAutoresizingMaskIntoConstraints="NO" image="icon_data">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="2222" firstAttribute="height" constant="24"/>
+                                                <constraint id="2223" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2224" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="38" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="2225" firstItem="2221" firstAttribute="top" secondItem="2220" secondAttribute="top"/>
+                                        <constraint id="2226" firstItem="2221" firstAttribute="leading" secondItem="2220" secondAttribute="leading"/>
+                                        <constraint id="2227" firstAttribute="bottom" secondItem="2221" secondAttribute="bottom"/>
+                                        <constraint id="2228" firstItem="2224" firstAttribute="leading" secondItem="2221" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="2229" firstItem="2224" firstAttribute="top" secondItem="2220" secondAttribute="top"/>
+                                        <constraint id="2230" firstAttribute="bottom" secondItem="2224" secondAttribute="bottom"/>
+                                        <constraint id="2232" firstAttribute="height" constant="24"/>
+                                        <constraint id="8528" firstAttribute="width" constant="500"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" id="2233" translatesAutoresizingMaskIntoConstraints="NO">
+                                    <rect key="frame" x="0.0" y="224" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2234" translatesAutoresizingMaskIntoConstraints="NO" image="icon_feedback">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="2235" firstAttribute="height" constant="24"/>
+                                                <constraint id="2236" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2237" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="79.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="2238" firstItem="2234" firstAttribute="top" secondItem="2233" secondAttribute="top"/>
+                                        <constraint id="2239" firstItem="2234" firstAttribute="leading" secondItem="2233" secondAttribute="leading"/>
+                                        <constraint id="2240" firstAttribute="bottom" secondItem="2234" secondAttribute="bottom"/>
+                                        <constraint id="2241" firstItem="2237" firstAttribute="leading" secondItem="2234" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="2242" firstItem="2237" firstAttribute="top" secondItem="2233" secondAttribute="top"/>
+                                        <constraint id="2243" firstAttribute="bottom" secondItem="2237" secondAttribute="bottom"/>
+                                        <constraint id="2245" firstAttribute="height" constant="24"/>
+                                        <constraint id="8529" firstAttribute="width" constant="500"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" id="2246" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
+                                    <rect key="frame" x="0.0" y="280" width="500" height="24"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2247" translatesAutoresizingMaskIntoConstraints="NO" image="icon_more">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <constraints>
+                                                <constraint id="2248" firstAttribute="height" constant="24"/>
+                                                <constraint id="2249" firstAttribute="width" constant="24"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2250" translatesAutoresizingMaskIntoConstraints="NO">
+                                            <rect key="frame" x="44" y="0.0" width="42" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint id="2251" firstItem="2247" firstAttribute="top" secondItem="2246" secondAttribute="top"/>
+                                        <constraint id="2252" firstItem="2247" firstAttribute="leading" secondItem="2246" secondAttribute="leading"/>
+                                        <constraint id="2253" firstAttribute="bottom" secondItem="2247" secondAttribute="bottom"/>
+                                        <constraint id="2254" firstItem="2250" firstAttribute="leading" secondItem="2247" secondAttribute="trailing" constant="20"/>
+                                        <constraint id="2255" firstItem="2250" firstAttribute="top" secondItem="2246" secondAttribute="top"/>
+                                        <constraint id="2256" firstAttribute="bottom" secondItem="2250" secondAttribute="bottom"/>
+                                        <constraint id="2258" firstAttribute="height" constant="24"/>
+                                        <constraint id="8530" firstAttribute="width" constant="500"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <constraints>
-                                <constraint id="688" firstItem="686" firstAttribute="top" secondItem="685" secondAttribute="top"/>
-                                <constraint id="689" firstItem="686" firstAttribute="leading" secondItem="685" secondAttribute="leading"/>
-                                <constraint id="690" firstAttribute="bottom" secondItem="686" secondAttribute="bottom"/>
-                                <constraint id="693" firstItem="687" firstAttribute="leading" secondItem="686" secondAttribute="trailing" constant="20"/>
-                                <constraint id="694" firstItem="687" firstAttribute="top" secondItem="685" secondAttribute="top"/>
-                                <constraint id="696" firstAttribute="bottom" secondItem="687" secondAttribute="bottom"/>
-                                <constraint id="697" firstAttribute="trailing" secondItem="687" secondAttribute="trailing"/>
-                                <constraint id="698" firstAttribute="height" constant="24"/>
+                                <constraint id="2204" firstItem="2168" firstAttribute="top" secondItem="685" secondAttribute="bottom" constant="32"/>
+                                <constraint id="2207" firstItem="2191" firstAttribute="top" secondItem="2168" secondAttribute="bottom" constant="32"/>
+                                <constraint id="2259" firstItem="2220" firstAttribute="top" secondItem="2191" secondAttribute="bottom" constant="32"/>
+                                <constraint id="2262" firstItem="2233" firstAttribute="top" secondItem="2220" secondAttribute="bottom" constant="32"/>
+                                <constraint id="2265" firstItem="2246" firstAttribute="top" secondItem="2233" secondAttribute="bottom" constant="32"/>
                             </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" id="2168" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="464" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </stackView>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4260" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" misplaced="YES">
+                            <rect key="frame" x="20" y="73" width="369" height="150"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2169" translatesAutoresizingMaskIntoConstraints="NO" image="icon_edit">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <constraints>
-                                        <constraint id="2170" firstAttribute="height" constant="24"/>
-                                        <constraint id="2171" firstAttribute="width" constant="24"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2172" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <stackView opaque="NO" contentMode="scaleToFill" id="5640" translatesAutoresizingMaskIntoConstraints="NO" distribution="fillEqually" spacing="8" misplaced="YES" ambiguous="YES">
+                                    <rect key="frame" x="8" y="9" width="343" height="110"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6348" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6351" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" hidden="YES">
+                                            <rect key="frame" x="88" y="0.0" width="79.5" height="110"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6349" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" hidden="YES">
+                                            <rect key="frame" x="175.5" y="0.0" width="80" height="110"/>
+                                        </imageView>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6350" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" hidden="YES">
+                                            <rect key="frame" x="263.5" y="0.0" width="79.5" height="110"/>
+                                        </imageView>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint id="2173" firstItem="2169" firstAttribute="top" secondItem="2168" secondAttribute="top"/>
-                                <constraint id="2174" firstItem="2169" firstAttribute="leading" secondItem="2168" secondAttribute="leading"/>
-                                <constraint id="2175" firstAttribute="bottom" secondItem="2169" secondAttribute="bottom"/>
-                                <constraint id="2176" firstItem="2172" firstAttribute="leading" secondItem="2169" secondAttribute="trailing" constant="20"/>
-                                <constraint id="2177" firstItem="2172" firstAttribute="top" secondItem="2168" secondAttribute="top"/>
-                                <constraint id="2178" firstAttribute="bottom" secondItem="2172" secondAttribute="bottom"/>
-                                <constraint id="2179" firstAttribute="trailing" secondItem="2172" secondAttribute="trailing"/>
-                                <constraint id="2180" firstAttribute="height" constant="24"/>
+                                <constraint id="4265" firstAttribute="height" constant="180"/>
+                                <constraint id="5641" firstItem="5640" firstAttribute="top" secondItem="4260" secondAttribute="top"/>
+                                <constraint id="5642" firstItem="5640" firstAttribute="leading" secondItem="4260" secondAttribute="leading"/>
+                                <constraint id="5643" firstAttribute="trailing" secondItem="5640" secondAttribute="trailing"/>
+                                <constraint id="5644" firstAttribute="bottom" secondItem="5640" secondAttribute="bottom"/>
                             </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" id="2191" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="508" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2192" translatesAutoresizingMaskIntoConstraints="NO" image="icon_dashboard">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <constraints>
-                                        <constraint id="2193" firstAttribute="height" constant="24"/>
-                                        <constraint id="2194" firstAttribute="width" constant="24"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dashboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2195" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint id="2196" firstItem="2192" firstAttribute="top" secondItem="2191" secondAttribute="top"/>
-                                <constraint id="2197" firstItem="2192" firstAttribute="leading" secondItem="2191" secondAttribute="leading"/>
-                                <constraint id="2198" firstAttribute="bottom" secondItem="2192" secondAttribute="bottom"/>
-                                <constraint id="2199" firstItem="2195" firstAttribute="leading" secondItem="2192" secondAttribute="trailing" constant="20"/>
-                                <constraint id="2200" firstItem="2195" firstAttribute="top" secondItem="2191" secondAttribute="top"/>
-                                <constraint id="2201" firstAttribute="bottom" secondItem="2195" secondAttribute="bottom"/>
-                                <constraint id="2202" firstAttribute="trailing" secondItem="2195" secondAttribute="trailing"/>
-                                <constraint id="2203" firstAttribute="height" constant="24"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" id="2220" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="552" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2221" translatesAutoresizingMaskIntoConstraints="NO" image="icon_data">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <constraints>
-                                        <constraint id="2222" firstAttribute="height" constant="24"/>
-                                        <constraint id="2223" firstAttribute="width" constant="24"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2224" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint id="2225" firstItem="2221" firstAttribute="top" secondItem="2220" secondAttribute="top"/>
-                                <constraint id="2226" firstItem="2221" firstAttribute="leading" secondItem="2220" secondAttribute="leading"/>
-                                <constraint id="2227" firstAttribute="bottom" secondItem="2221" secondAttribute="bottom"/>
-                                <constraint id="2228" firstItem="2224" firstAttribute="leading" secondItem="2221" secondAttribute="trailing" constant="20"/>
-                                <constraint id="2229" firstItem="2224" firstAttribute="top" secondItem="2220" secondAttribute="top"/>
-                                <constraint id="2230" firstAttribute="bottom" secondItem="2224" secondAttribute="bottom"/>
-                                <constraint id="2231" firstAttribute="trailing" secondItem="2224" secondAttribute="trailing"/>
-                                <constraint id="2232" firstAttribute="height" constant="24"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" id="2233" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="596" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2234" translatesAutoresizingMaskIntoConstraints="NO" image="icon_feedback">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <constraints>
-                                        <constraint id="2235" firstAttribute="height" constant="24"/>
-                                        <constraint id="2236" firstAttribute="width" constant="24"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2237" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint id="2238" firstItem="2234" firstAttribute="top" secondItem="2233" secondAttribute="top"/>
-                                <constraint id="2239" firstItem="2234" firstAttribute="leading" secondItem="2233" secondAttribute="leading"/>
-                                <constraint id="2240" firstAttribute="bottom" secondItem="2234" secondAttribute="bottom"/>
-                                <constraint id="2241" firstItem="2237" firstAttribute="leading" secondItem="2234" secondAttribute="trailing" constant="20"/>
-                                <constraint id="2242" firstItem="2237" firstAttribute="top" secondItem="2233" secondAttribute="top"/>
-                                <constraint id="2243" firstAttribute="bottom" secondItem="2237" secondAttribute="bottom"/>
-                                <constraint id="2244" firstAttribute="trailing" secondItem="2237" secondAttribute="trailing"/>
-                                <constraint id="2245" firstAttribute="height" constant="24"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" id="2246" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                            <rect key="frame" x="15" y="640" width="374" height="24"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="2247" translatesAutoresizingMaskIntoConstraints="NO" image="icon_more">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <constraints>
-                                        <constraint id="2248" firstAttribute="height" constant="24"/>
-                                        <constraint id="2249" firstAttribute="width" constant="24"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2250" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                    <rect key="frame" x="44" y="0.0" width="330" height="24"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.1176293567" green="0.1176572666" blue="0.1176275685" alpha="1"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint id="2251" firstItem="2247" firstAttribute="top" secondItem="2246" secondAttribute="top"/>
-                                <constraint id="2252" firstItem="2247" firstAttribute="leading" secondItem="2246" secondAttribute="leading"/>
-                                <constraint id="2253" firstAttribute="bottom" secondItem="2247" secondAttribute="bottom"/>
-                                <constraint id="2254" firstItem="2250" firstAttribute="leading" secondItem="2247" secondAttribute="trailing" constant="20"/>
-                                <constraint id="2255" firstItem="2250" firstAttribute="top" secondItem="2246" secondAttribute="top"/>
-                                <constraint id="2256" firstAttribute="bottom" secondItem="2250" secondAttribute="bottom"/>
-                                <constraint id="2257" firstAttribute="trailing" secondItem="2250" secondAttribute="trailing"/>
-                                <constraint id="2258" firstAttribute="height" constant="24"/>
-                            </constraints>
-                        </view>
+                        </scrollView>
                     </subviews>
                     <constraints>
                         <constraint id="1222" firstItem="343" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="32"/>
                         <constraint id="1223" firstItem="343" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
                         <constraint id="1228" firstItem="348" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="32"/>
                         <constraint id="1229" firstAttribute="trailing" secondItem="348" secondAttribute="trailing" constant="20"/>
-                        <constraint id="1245" firstItem="342" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="1590" firstAttribute="trailing" secondItem="342" secondAttribute="trailing" constant="20"/>
-                        <constraint id="1591" firstItem="342" firstAttribute="top" secondItem="343" secondAttribute="bottom" constant="24"/>
-                        <constraint id="1834" firstItem="357" firstAttribute="top" secondItem="342" secondAttribute="bottom" constant="16"/>
                         <constraint id="1835" firstItem="357" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
                         <constraint id="1836" firstAttribute="trailing" secondItem="357" secondAttribute="trailing" constant="20"/>
                         <constraint id="1837" firstItem="399" firstAttribute="top" secondItem="357" secondAttribute="bottom" constant="4"/>
@@ -324,25 +360,14 @@
                         <constraint id="1854" firstItem="626" firstAttribute="top" secondItem="403" secondAttribute="bottom" constant="16"/>
                         <constraint id="1855" firstItem="626" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
                         <constraint id="1856" firstAttribute="trailing" secondItem="626" secondAttribute="trailing" constant="20"/>
-                        <constraint id="1867" firstItem="685" firstAttribute="top" secondItem="626" secondAttribute="bottom" constant="40"/>
-                        <constraint id="1868" firstItem="685" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="1869" firstAttribute="trailing" secondItem="685" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2204" firstItem="2168" firstAttribute="top" secondItem="685" secondAttribute="bottom" constant="32"/>
-                        <constraint id="2205" firstItem="2168" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="2206" firstAttribute="trailing" secondItem="2168" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2207" firstItem="2191" firstAttribute="top" secondItem="2168" secondAttribute="bottom" constant="32"/>
-                        <constraint id="2208" firstItem="2191" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="2209" firstAttribute="trailing" secondItem="2191" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2259" firstItem="2220" firstAttribute="top" secondItem="2191" secondAttribute="bottom" constant="32"/>
-                        <constraint id="2260" firstItem="2220" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="2261" firstAttribute="trailing" secondItem="2220" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2262" firstItem="2233" firstAttribute="top" secondItem="2220" secondAttribute="bottom" constant="32"/>
-                        <constraint id="2263" firstItem="2233" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="2264" firstAttribute="trailing" secondItem="2233" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2265" firstItem="2246" firstAttribute="top" secondItem="2233" secondAttribute="bottom" constant="32"/>
-                        <constraint id="2266" firstItem="2246" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
-                        <constraint id="2267" firstAttribute="trailing" secondItem="2246" secondAttribute="trailing" constant="20"/>
-                        <constraint id="2697" firstAttribute="bottom" secondItem="2246" secondAttribute="bottom" constant="32"/>
+                        <constraint id="3571" firstItem="3570" firstAttribute="top" secondItem="626" secondAttribute="bottom" constant="41"/>
+                        <constraint id="3572" firstItem="3570" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
+                        <constraint id="3573" firstAttribute="trailing" secondItem="3570" secondAttribute="trailing" constant="20"/>
+                        <constraint id="3574" firstAttribute="bottom" secondItem="3570" secondAttribute="bottom" constant="12"/>
+                        <constraint id="4261" firstItem="4260" firstAttribute="top" secondItem="343" secondAttribute="bottom" constant="17"/>
+                        <constraint id="4262" firstItem="4260" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
+                        <constraint id="4263" firstAttribute="trailing" secondItem="4260" secondAttribute="trailing" constant="20"/>
+                        <constraint id="4264" firstItem="357" firstAttribute="top" secondItem="4260" secondAttribute="bottom" constant="20"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -356,7 +381,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Image" width="640" height="376"/>
         <image name="icon_back" width="64" height="64"/>
         <image name="icon_bathroom" width="42.66667" height="42.66667"/>
         <image name="icon_bed" width="42.66667" height="42.66667"/>

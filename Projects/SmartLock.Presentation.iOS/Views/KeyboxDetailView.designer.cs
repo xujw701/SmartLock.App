@@ -56,7 +56,19 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView IvImage { get; set; }
+        UIKit.UIImageView IVImage1 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IVImage2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IVImage3 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IVImage4 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -76,6 +88,10 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblFeedback { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblPrice { get; set; }
 
         [Outlet]
@@ -85,6 +101,14 @@ namespace SmartLock.Presentation.iOS.Views
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView SlideShow { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStackView SlideShowStackView { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -138,9 +162,24 @@ namespace SmartLock.Presentation.iOS.Views
                 IvBed = null;
             }
 
-            if (IvImage != null) {
-                IvImage.Dispose ();
-                IvImage = null;
+            if (IVImage1 != null) {
+                IVImage1.Dispose ();
+                IVImage1 = null;
+            }
+
+            if (IVImage2 != null) {
+                IVImage2.Dispose ();
+                IVImage2 = null;
+            }
+
+            if (IVImage3 != null) {
+                IVImage3.Dispose ();
+                IVImage3 = null;
+            }
+
+            if (IVImage4 != null) {
+                IVImage4.Dispose ();
+                IVImage4 = null;
             }
 
             if (IvShare != null) {
@@ -163,6 +202,11 @@ namespace SmartLock.Presentation.iOS.Views
                 LblBed = null;
             }
 
+            if (LblFeedback != null) {
+                LblFeedback.Dispose ();
+                LblFeedback = null;
+            }
+
             if (LblPrice != null) {
                 LblPrice.Dispose ();
                 LblPrice = null;
@@ -176,6 +220,16 @@ namespace SmartLock.Presentation.iOS.Views
             if (LblText2 != null) {
                 LblText2.Dispose ();
                 LblText2 = null;
+            }
+
+            if (SlideShow != null) {
+                SlideShow.Dispose ();
+                SlideShow = null;
+            }
+
+            if (SlideShowStackView != null) {
+                SlideShowStackView.Dispose ();
+                SlideShowStackView = null;
             }
         }
     }
