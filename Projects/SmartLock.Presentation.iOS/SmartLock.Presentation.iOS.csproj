@@ -620,12 +620,6 @@
     <ImageAsset Include="Assets.xcassets\nearby.imageset\nearby.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\setting.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\setting.imageset\setting.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon_dot.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -753,6 +747,10 @@
     <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Checked.png" />
     <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Unchecked.png" />
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -843,6 +841,7 @@
     <Folder Include="Assets.xcassets\icon_checked.imageset\" />
     <Folder Include="Assets.xcassets\icon_unchecked.imageset\" />
     <Folder Include="PushNotification\" />
+    <Folder Include="Assets.xcassets\icon_chevron.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

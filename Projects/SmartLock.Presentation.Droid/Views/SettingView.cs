@@ -82,7 +82,7 @@ namespace SmartLock.Presentation.Droid.Views
             });
         }
 
-        #region Attachments
+        #region Caches
 
         private const int CameraRequest = 1;
         private const int ChooseFromAlbumRequest = 2;
