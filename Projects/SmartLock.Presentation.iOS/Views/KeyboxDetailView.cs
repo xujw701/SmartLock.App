@@ -121,6 +121,11 @@ namespace SmartLock.Presentation.iOS.Views
                 imageViewList[i].Image = UIImage.FromFile(propertyImages[i].NativePath);
                 imageViewList[i].Hidden = false;
             }
+
+            if (propertyImages.Count == 0)
+            {
+                imageViewList[0].Image = UIImage.FromBundle("Image");
+            }
         }
     }
 }
