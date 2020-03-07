@@ -35,6 +35,8 @@ namespace SmartLock.Presentation.iOS.Platform
             _viewDictionary.Add(typeof(KeyboxDetailController), vc => new KeyboxDetailView(vc as KeyboxDetailController));
             _viewDictionary.Add(typeof(KeyboxDashboardController), vc => new KeyboxDashboardView(vc as KeyboxDashboardController));
             _viewDictionary.Add(typeof(KeyboxHistoryController), vc => new KeyboxHistoryView(vc as KeyboxHistoryController));
+            _viewDictionary.Add(typeof(KeyboxPlaceController), vc => new KeyboxPlaceView(vc as KeyboxPlaceController));
+            _viewDictionary.Add(typeof(KeyboxPlaceUpdateController), vc => new KeyboxPlaceUpdateView(vc as KeyboxPlaceUpdateController));
         }
 
         public override void Pop()

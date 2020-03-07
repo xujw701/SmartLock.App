@@ -195,6 +195,8 @@
     <InterfaceDefinition Include="Views\KeyboxDashboardView.xib" />
     <InterfaceDefinition Include="Views\KeyboxHistoryView.xib" />
     <InterfaceDefinition Include="Controls\Cells\KeyboxHistoryCell.xib" />
+    <InterfaceDefinition Include="Views\KeyboxPlaceUpdateView.xib" />
+    <InterfaceDefinition Include="Views\KeyboxPlaceView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -751,6 +753,10 @@
     <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_1x.png" />
     <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_2x.png" />
     <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -828,6 +834,19 @@
     <Compile Include="Support\ImageHelper.cs" />
     <Compile Include="PushNotification\Constants.cs" />
     <Compile Include="PushNotification\DevicePushNotifications.cs" />
+    <Compile Include="Views\KeyboxPlaceUpdateView.cs" />
+    <Compile Include="Views\KeyboxPlaceUpdateView.designer.cs">
+      <DependentUpon>KeyboxPlaceUpdateView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KeyboxPlaceView.cs" />
+    <Compile Include="Views\KeyboxPlaceView.designer.cs">
+      <DependentUpon>KeyboxPlaceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomField\DropdownViewModel.cs" />
+    <Compile Include="Support\UIHelper.cs" />
+    <Compile Include="Controls\Cells\ImageCollectionViewCell.cs" />
+    <Compile Include="Controls\Cells\ImagePickerCell.cs" />
+    <Compile Include="Controls\Sources\ImagePickerSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -842,6 +861,7 @@
     <Folder Include="Assets.xcassets\icon_unchecked.imageset\" />
     <Folder Include="PushNotification\" />
     <Folder Include="Assets.xcassets\icon_chevron.imageset\" />
+    <Folder Include="Assets.xcassets\icon_add_photo.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
