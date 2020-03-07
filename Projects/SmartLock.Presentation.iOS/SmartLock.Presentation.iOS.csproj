@@ -197,6 +197,9 @@
     <InterfaceDefinition Include="Controls\Cells\KeyboxHistoryCell.xib" />
     <InterfaceDefinition Include="Views\KeyboxPlaceUpdateView.xib" />
     <InterfaceDefinition Include="Views\KeyboxPlaceView.xib" />
+    <InterfaceDefinition Include="Views\FeedbackView.xib" />
+    <InterfaceDefinition Include="Views\MyProfileView.xib" />
+    <InterfaceDefinition Include="Views\PasswordView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -847,6 +850,18 @@
     <Compile Include="Controls\Cells\ImageCollectionViewCell.cs" />
     <Compile Include="Controls\Cells\ImagePickerCell.cs" />
     <Compile Include="Controls\Sources\ImagePickerSource.cs" />
+    <Compile Include="Views\FeedbackView.cs" />
+    <Compile Include="Views\FeedbackView.designer.cs">
+      <DependentUpon>FeedbackView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyProfileView.cs" />
+    <Compile Include="Views\MyProfileView.designer.cs">
+      <DependentUpon>MyProfileView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PasswordView.cs" />
+    <Compile Include="Views\PasswordView.designer.cs">
+      <DependentUpon>PasswordView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

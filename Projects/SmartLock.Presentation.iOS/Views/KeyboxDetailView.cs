@@ -75,7 +75,7 @@ namespace SmartLock.Presentation.iOS.Views
             LblArea.Text = property.FloorAreaString;
             LblPrice.Text = property.PriceString;
 
-            LblFeedback.Text = mine ? "Feedback history" : "Leave a feedback";
+            LblFeedback.Text = mine ? "Keybox History" : "Leave a feedback";
 
             BtnHistory.Hidden = !mine;
             BtnEdit.Hidden = !mine;
