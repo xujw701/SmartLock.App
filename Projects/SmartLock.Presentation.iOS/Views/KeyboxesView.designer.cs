@@ -20,7 +20,23 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView BtnMine { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView BtnOthers { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvAdd { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvMine { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvOther { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -37,9 +53,29 @@ namespace SmartLock.Presentation.iOS.Views
                 BtnAddLock = null;
             }
 
+            if (BtnMine != null) {
+                BtnMine.Dispose ();
+                BtnMine = null;
+            }
+
+            if (BtnOthers != null) {
+                BtnOthers.Dispose ();
+                BtnOthers = null;
+            }
+
             if (IvAdd != null) {
                 IvAdd.Dispose ();
                 IvAdd = null;
+            }
+
+            if (IvMine != null) {
+                IvMine.Dispose ();
+                IvMine = null;
+            }
+
+            if (IvOther != null) {
+                IvOther.Dispose ();
+                IvOther = null;
             }
 
             if (KeyboxesTableView != null) {

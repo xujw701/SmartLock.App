@@ -121,6 +121,8 @@
                             <constraint id="13537" firstAttribute="bottom" secondItem="11031" secondAttribute="bottom" constant="24"/>
                             <constraint id="14305" firstItem="14302" firstAttribute="centerY" secondItem="143" secondAttribute="centerY"/>
                             <constraint id="14306" firstAttribute="trailing" secondItem="14302" secondAttribute="trailing" constant="8"/>
+                            <constraint id="15266" firstItem="14302" firstAttribute="leading" secondItem="143" secondAttribute="trailing" constant="10"/>
+                            <constraint id="15455" firstItem="14302" firstAttribute="leading" secondItem="3110" secondAttribute="trailing" constant="10"/>
                         </constraints>
                     </view>
                 </subviews>

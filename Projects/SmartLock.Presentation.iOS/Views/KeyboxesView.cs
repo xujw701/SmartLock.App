@@ -25,6 +25,30 @@ namespace SmartLock.Presentation.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            BtnAddLock.TouchUpInside += (s, e) =>
+            {
+                PlaceKeyboxClicked?.Invoke();
+            };
+
+            BtnMine.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                TabClicked?.Invoke(true);
+                UpdateUI(true);
+            }));
+
+            BtnOthers.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                TabClicked?.Invoke(false);
+                UpdateUI(false);
+            }));
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            Refresh?.Invoke();
         }
 
         public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)
@@ -49,7 +73,13 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void UpdatePlaceLockButton(bool enabled)
         {
-            //TODO
+            BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
+        }
+
+        private void UpdateUI(bool mine)
+        {
+            IvMine.Hidden = !mine;
+            IvOther.Hidden = mine;
         }
     }
 }
