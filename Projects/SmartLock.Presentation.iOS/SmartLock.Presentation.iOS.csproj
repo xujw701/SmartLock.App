@@ -116,7 +116,7 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
+    <CodesignProvision>Smart ELock PRD new</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -681,73 +681,13 @@
     <ImageAsset Include="Assets.xcassets\icon_in.imageset\icon_in%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\logo.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\logo.imageset\180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\logo.imageset\120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\logo.imageset\60.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon_unlock_key.imageset\icon_unlock_key %284%29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Contents.json">
@@ -816,6 +756,18 @@
     <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
+    <ImageAsset Include="Assets.xcassets\logo.imageset\180.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />

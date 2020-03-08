@@ -24,15 +24,15 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="739" translatesAutoresizingMaskIntoConstraints="NO" image="background">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="177" translatesAutoresizingMaskIntoConstraints="NO" image="logo_harcourts">
-                    <rect key="frame" x="122" y="125" width="170" height="42"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="177" translatesAutoresizingMaskIntoConstraints="NO" image="logo">
+                    <rect key="frame" x="167" y="125" width="80" height="80"/>
                     <constraints>
-                        <constraint id="180" firstAttribute="width" constant="170"/>
-                        <constraint id="181" firstAttribute="height" constant="42"/>
+                        <constraint id="180" firstAttribute="width" constant="80"/>
+                        <constraint id="181" firstAttribute="height" constant="80"/>
                     </constraints>
                 </imageView>
                 <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="184" translatesAutoresizingMaskIntoConstraints="NO" placeholder="User name" clearButtonMode="whileEditing" opaque="NO" customClass="CustomTextField">
-                    <rect key="frame" x="40" y="265" width="334" height="48"/>
+                    <rect key="frame" x="40" y="303" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                     <constraints>
@@ -47,7 +47,7 @@
                     <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="513" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password" clearButtonMode="whileEditing" customClass="CustomTextField">
-                    <rect key="frame" x="40" y="321" width="334" height="48"/>
+                    <rect key="frame" x="40" y="359" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                     <constraints>
@@ -61,7 +61,7 @@
                     <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="519" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="40" y="385" width="334" height="48"/>
+                    <rect key="frame" x="40" y="423" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.001829699147" green="0.1701394916" blue="0.2864385843" alpha="1"/>
                     <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
@@ -96,7 +96,7 @@
                     </constraints>
                 </button>
                 <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1505" translatesAutoresizingMaskIntoConstraints="NO" image="icon_unchecked">
-                    <rect key="frame" x="40" y="463" width="24" height="24"/>
+                    <rect key="frame" x="40" y="501" width="24" height="24"/>
                     <constraints>
                         <constraint id="1511" firstAttribute="height" constant="24"/>
                         <constraint id="1512" firstAttribute="width" constant="24"/>
@@ -142,7 +142,7 @@
     </objects>
     <resources>
         <image name="background" width="164.6667" height="335.3333"/>
-        <image name="logo_harcourts" width="340" height="84"/>
         <image name="icon_unchecked" width="33.33333" height="33.33333"/>
+        <image name="logo" width="60" height="60"/>
     </resources>
 </document>
