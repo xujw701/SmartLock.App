@@ -750,28 +750,72 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\167.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Checked.png" />
-    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Unchecked.png" />
-    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_3x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms.png" />
-    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms-1.png" />
-    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone.png" />
-    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone-1.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_1x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_2x.png" />
-    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_checked.imageset\Checked.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_unchecked.imageset\Unchecked.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_chevron.imageset\baseline_chevron_right_black_24pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
