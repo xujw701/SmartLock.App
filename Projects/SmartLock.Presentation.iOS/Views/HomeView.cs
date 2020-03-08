@@ -23,6 +23,8 @@ namespace SmartLock.Presentation.iOS.Views
         private BleDeviceSource _bleDeviceSource;
         private bool isScanning;
 
+        private static int _timeout = 0;
+
         public event Action MessageClick;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
@@ -30,6 +32,7 @@ namespace SmartLock.Presentation.iOS.Views
         public event Action DisconnectCurrent;
         public event Action UnlockClicked;
         public event Action BtClicked;
+        public event Action Timeout;
 
         public HomeView(HomeController controller) : base(controller, "HomeView")
         {
@@ -147,12 +150,27 @@ namespace SmartLock.Presentation.iOS.Views
             LblBtStatus.TextColor = isOn ? UIColor.FromRGB(0, 194, 63) : UIColor.FromRGB(255, 28, 28);
         }
 
-        public void UpdateTimeout(int second)
+        public void StartCountDown(int timeout)
         {
-            InvokeOnMainThread(() =>
+            _timeout = timeout;
+
+            var timer = NSTimer.CreateScheduledTimer(1, this, new ObjCRuntime.Selector("ShowCountDown:"), null, true);
+            timer.Fire();
+        }
+
+        [Export("ShowCountDown:")]
+        private void ShowCountDown(NSTimer timer)
+        {
+            if (_timeout > 0)
             {
-                LblTimeout.Text = $"Timeout: {second}s";
-            });
+                LblTimeout.Text = $"Reconnect remaining: {_timeout}s";
+                --_timeout;
+            }
+            else
+            {
+                Timeout?.Invoke();
+                timer.Invalidate();
+            }
         }
 
         private void SetMode(int state)

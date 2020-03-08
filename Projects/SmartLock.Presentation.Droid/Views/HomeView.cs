@@ -63,6 +63,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action DisconnectCurrent;
         public event Action UnlockClicked;
         public event Action BtClicked;
+        public event Action Timeout;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -191,12 +192,10 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBtStatus.SetTextColor(new Color(_context.GetColor(isOn ? Resource.Color.bt_status_green : Resource.Color.bt_status_red)));
         }
 
-        public void UpdateTimeout(int second)
+        public void StartCountDown(int timeout)
         {
-            ViewBase.CurrentActivity.RunOnUiThread(() =>
-            {
-                _tvTimeOut.Text = $"Timeout: {second}s";
-            });
+            var timer = new Timer(_view, Timeout, timeout * 1000, 1000);
+            timer.Start();
         }
 
         private void SetMode(int state)
@@ -248,6 +247,31 @@ namespace SmartLock.Presentation.Droid.Views
             _tvScanButton.LayoutParameters.Width = (int)ivWidth;
             _tvScanButton.LayoutParameters.Height = (int)ivWidth;
             _tvScanButton.RequestLayout();
+        }
+
+        internal class Timer : CountDownTimer
+        {
+            private View _view;
+            private TextView _tvTimeOut;
+            private Action _timeout;
+
+            public Timer(View view, Action timeout, long millisInFuture, long countDownInterval) : base(millisInFuture, countDownInterval)
+            {
+                _view = view;
+                _timeout = timeout;
+                _tvTimeOut = _view.FindViewById<TextView>(Resource.Id.tvTimeOut);
+            }
+
+            public override void OnFinish()
+            {
+                _timeout?.Invoke();
+            }
+
+            public override void OnTick(long millisUntilFinished)
+            {
+                var second = (millisUntilFinished / 1000) + 1;
+                _tvTimeOut.Text = $"Reconnect remaining: {second}s";
+            }
         }
     }
 }

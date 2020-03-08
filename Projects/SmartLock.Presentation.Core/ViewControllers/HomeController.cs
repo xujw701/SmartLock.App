@@ -50,6 +50,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_keyboxService.ConnectedKeybox));
             View.UnlockClicked += () => DoSafeAsync(View_UnlockClicked);
             View.BtClicked += () => _platformServices.Bt();
+            View.Timeout += () => DoSafeAsync(Disconnect);
         }
 
         protected override void OnViewWillShow()
@@ -86,14 +87,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             View.Show(keybox);
 
-            StartStopTimeout(true);
+            View.StartCountDown(30);
         }
 
         private void OnKeyboxDisconnected()
         {
             View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
-
-            StartStopTimeout(false);
         }
 
         private async Task View_StartStop(bool isScanning)
@@ -135,30 +134,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
         }
 
-        private void StartStopTimeout(bool start)
+        private async Task Disconnect()
         {
-            if (start) Timeout = 60;
-            else Timeout = 0;
-
-            Task.Run(async () =>
+            if (_keyboxService.ConnectedKeybox != null)
             {
-                while (Timeout > 0)
-                {
-                    View.UpdateTimeout(Timeout);
-
-                    await Task.Delay(1000);
-
-                    Timeout--;
-                }
-
-                if (Timeout == 0)
-                {
-                    if (_keyboxService.ConnectedKeybox != null)
-                    {
-                        await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
-                    }
-                }
-            });
+                await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
+            }
         }
 
         private string GenerateGreeting()

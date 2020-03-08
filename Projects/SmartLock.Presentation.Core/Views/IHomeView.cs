@@ -14,12 +14,13 @@ namespace SmartLock.Presentation.Core.Views
         event Action DisconnectCurrent;
         event Action UnlockClicked;
         event Action BtClicked;
+        event Action Timeout;
 
         void Show(string greeting, string name, bool setMode = true);
         void Show(List<Keybox> keyboxes);
         void Show(Keybox keybox);
         void SetLockUI(bool locked);
         void SetBleIndicator(bool isOn);
-        void UpdateTimeout(int second);
+        void StartCountDown(int timeout);
     }
 }
