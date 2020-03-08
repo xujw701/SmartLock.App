@@ -83,7 +83,7 @@ namespace SmartLock.Presentation.Droid.Adapters
 
             public void SetData(PropertyFeedback propertyFeedback)
             {
-                _tvKeyboxName.Text = propertyFeedback.KeyboxName;
+                _tvKeyboxName.Text = propertyFeedback.Address;
                 _tvName.Text = propertyFeedback.Name;
                 _tvDateTime.Text = propertyFeedback.CreatedOnString;
                 _tvNotes.Text = propertyFeedback.Content;

@@ -7,13 +7,13 @@ namespace SmartLock.Presentation.iOS.Controls.CustomField
     public class DropdownViewModel : UIPickerViewModel
     {
         private readonly string[] _items;
-        private readonly CustomTextField _textView;
+        private readonly DropdownField _dropdownField;
         private readonly Action _callback;
         private readonly Action<string> _callback2;
 
-        public DropdownViewModel(CustomTextField textView, string[] items, Action<string> selectedIndexChangeCallback)
+        public DropdownViewModel(DropdownField dropdownField, string[] items, Action<string> selectedIndexChangeCallback)
         {
-            _textView = textView;
+            _dropdownField = dropdownField;
 
             var displayItems = new List<string>(items);
             _items = displayItems.ToArray();
@@ -21,9 +21,9 @@ namespace SmartLock.Presentation.iOS.Controls.CustomField
             _callback2 = selectedIndexChangeCallback;
         }
 
-        public DropdownViewModel(CustomTextField textView, string[] items, Action selectedIndexChangeCallback)
+        public DropdownViewModel(DropdownField dropdownField, string[] items, Action selectedIndexChangeCallback)
         {
-            _textView = textView;
+            _dropdownField = dropdownField;
 
             var displayItems = new List<string>(items);
             displayItems.Insert(0, "");
@@ -55,7 +55,7 @@ namespace SmartLock.Presentation.iOS.Controls.CustomField
 
         public override void Selected(UIPickerView picker, nint row, nint component)
         {
-            _textView.Text = _items[picker.SelectedRowInComponent(0)];
+            _dropdownField.Text = _items[picker.SelectedRowInComponent(0)];
             _callback?.Invoke();
             _callback2?.Invoke(_items[picker.SelectedRowInComponent(0)]);
         }

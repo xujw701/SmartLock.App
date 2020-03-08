@@ -37,7 +37,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         public void SetData(PropertyFeedback propertyFeedback)
         {
-            LblKeyboxName.Text = propertyFeedback.KeyboxName;
+            LblKeyboxName.Text = propertyFeedback.Address;
             LblName.Text = propertyFeedback.Name;
             LblDateTime.Text = propertyFeedback.CreatedOnString;
             LblNotes.Text = propertyFeedback.Content;

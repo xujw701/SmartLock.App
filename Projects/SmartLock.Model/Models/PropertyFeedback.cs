@@ -18,6 +18,7 @@ namespace SmartLock.Model.Models
         public string CreatedOnString => CreatedOn.LocalDateTime.ToString("dd/MM/yy HH:mm");
 
         public string KeyboxName { get; set; }
+        public string Address { get; set; }
 
         public Cache Portrait { get; set; }
     }

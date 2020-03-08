@@ -768,6 +768,10 @@
     <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms-1.png" />
     <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone.png" />
     <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone-1.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -879,6 +883,7 @@
       <DependentUpon>PropertyFeedbackCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Sources\PropertyFeedbackSource.cs" />
+    <Compile Include="Controls\CustomField\DropdownField.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -896,6 +901,7 @@
     <Folder Include="Assets.xcassets\icon_add_photo.imageset\" />
     <Folder Include="Assets.xcassets\icon_phone.imageset\" />
     <Folder Include="Assets.xcassets\icon_sms.imageset\" />
+    <Folder Include="Assets.xcassets\icon_dropdown.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

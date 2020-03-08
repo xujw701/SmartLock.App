@@ -28,11 +28,11 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SmartLock.Presentation.iOS.Controls.CustomField.CustomTextField EtBathroom { get; set; }
+        SmartLock.Presentation.iOS.Controls.CustomField.DropdownField EtBathroom { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SmartLock.Presentation.iOS.Controls.CustomField.CustomTextField EtBedroom { get; set; }
+        SmartLock.Presentation.iOS.Controls.CustomField.DropdownField EtBedroom { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,7 +48,7 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SmartLock.Presentation.iOS.Controls.CustomField.CustomTextField EtPriceOption { get; set; }
+        SmartLock.Presentation.iOS.Controls.CustomField.DropdownField EtPriceOption { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

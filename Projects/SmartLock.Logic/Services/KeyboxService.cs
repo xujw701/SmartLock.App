@@ -304,6 +304,7 @@ namespace SmartLock.Logic.Services
                         }
 
                         f.KeyboxName = keybox.KeyboxName;
+                        f.Address = keybox.PropertyAddress;
                     }
 
                     feedbacks.AddRange(feedback);
@@ -327,6 +328,7 @@ namespace SmartLock.Logic.Services
                 }
 
                 feedback.KeyboxName = keybox.KeyboxName;
+                feedback.Address = keybox.PropertyAddress;
             }
 
             return feedbacks;
