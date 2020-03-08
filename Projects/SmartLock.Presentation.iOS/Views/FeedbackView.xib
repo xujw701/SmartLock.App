@@ -27,7 +27,7 @@
                                 <constraint firstAttribute="width" constant="24" id="924"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share your feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="925">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share Your Feedback" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="925" misplaced="YES">
                             <rect key="frame" x="126" y="34" width="162" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                             <color key="textColor" red="0.33267959952354431" green="0.38329923152923584" blue="0.4745948314666748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -200,6 +200,8 @@
     <InterfaceDefinition Include="Views\FeedbackView.xib" />
     <InterfaceDefinition Include="Views\MyProfileView.xib" />
     <InterfaceDefinition Include="Views\PasswordView.xib" />
+    <InterfaceDefinition Include="Views\PropertyFeedbackView.xib" />
+    <InterfaceDefinition Include="Controls\Cells\PropertyFeedbackCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -760,6 +762,12 @@
     <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_1x.png" />
     <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_2x.png" />
     <ImageAsset Include="Assets.xcassets\icon_add_photo.imageset\baseline_add_photo_alternate_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms.png" />
+    <ImageAsset Include="Assets.xcassets\icon_sms.imageset\icon_sms-1.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone.png" />
+    <ImageAsset Include="Assets.xcassets\icon_phone.imageset\icon_phone-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -862,6 +870,15 @@
     <Compile Include="Views\PasswordView.designer.cs">
       <DependentUpon>PasswordView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\PropertyFeedbackView.cs" />
+    <Compile Include="Views\PropertyFeedbackView.designer.cs">
+      <DependentUpon>PropertyFeedbackView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Cells\PropertyFeedbackCell.cs" />
+    <Compile Include="Controls\Cells\PropertyFeedbackCell.designer.cs">
+      <DependentUpon>PropertyFeedbackCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Sources\PropertyFeedbackSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -877,6 +894,8 @@
     <Folder Include="PushNotification\" />
     <Folder Include="Assets.xcassets\icon_chevron.imageset\" />
     <Folder Include="Assets.xcassets\icon_add_photo.imageset\" />
+    <Folder Include="Assets.xcassets\icon_phone.imageset\" />
+    <Folder Include="Assets.xcassets\icon_sms.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
