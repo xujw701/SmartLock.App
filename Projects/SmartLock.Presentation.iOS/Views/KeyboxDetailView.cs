@@ -97,10 +97,10 @@ namespace SmartLock.Presentation.iOS.Views
             IVImage3.WidthAnchor.ConstraintEqualTo(slideShowWidth).Active = true;
             IVImage4.WidthAnchor.ConstraintEqualTo(slideShowWidth).Active = true;
 
-            IVImage1.HeightAnchor.ConstraintEqualTo(150).Active = true;
-            IVImage2.HeightAnchor.ConstraintEqualTo(150).Active = true;
-            IVImage3.HeightAnchor.ConstraintEqualTo(150).Active = true;
-            IVImage4.HeightAnchor.ConstraintEqualTo(150).Active = true;
+            IVImage1.HeightAnchor.ConstraintEqualTo(230).Active = true;
+            IVImage2.HeightAnchor.ConstraintEqualTo(230).Active = true;
+            IVImage3.HeightAnchor.ConstraintEqualTo(230).Active = true;
+            IVImage4.HeightAnchor.ConstraintEqualTo(230).Active = true;
 
             var imageViewList = new List<UIImageView>();
             imageViewList.Add(IVImage1);

@@ -308,7 +308,7 @@
                             <rect key="frame" x="20" y="73" width="369" height="150"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" id="5640" translatesAutoresizingMaskIntoConstraints="NO" distribution="fillEqually" spacing="8" misplaced="YES" ambiguous="YES">
-                                    <rect key="frame" x="8" y="9" width="343" height="110"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="110"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="6348" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
@@ -326,7 +326,7 @@
                                 </stackView>
                             </subviews>
                             <constraints>
-                                <constraint id="4265" firstAttribute="height" constant="180"/>
+                                <constraint id="4265" firstAttribute="height" constant="230"/>
                                 <constraint id="5641" firstItem="5640" firstAttribute="top" secondItem="4260" secondAttribute="top"/>
                                 <constraint id="5642" firstItem="5640" firstAttribute="leading" secondItem="4260" secondAttribute="leading"/>
                                 <constraint id="5643" firstAttribute="trailing" secondItem="5640" secondAttribute="trailing"/>
