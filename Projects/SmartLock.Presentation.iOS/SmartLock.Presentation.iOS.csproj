@@ -70,6 +70,7 @@
     <CodesignKey>iPhone Distribution: Yang Zhou (AHD9D55V5T)</CodesignKey>
     <BuildIpa>True</BuildIpa>
     <IpaIncludeArtwork>False</IpaIncludeArtwork>
+    <CodesignProvision>Smart ELock PRD</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -113,10 +114,9 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>Smart ELock PRD new</CodesignProvision>
+    <CodesignProvision>Smart ELock Dev Provisioning Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -766,8 +766,8 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png" />
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58-1.png" />
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\180.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />

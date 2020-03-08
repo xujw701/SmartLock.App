@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>SmartLock</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -44,11 +44,6 @@
 	<string>AppIcons.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleName</key>
 	<string>Smart E-Lock</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>bluetooth-central</string>
-		<string>bluetooth-peripheral</string>
-	</array>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Smart E-Lock uses Bluetooth to connect to the locks.</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
@@ -58,6 +53,6 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>5</string>
 </dict>
 </plist>

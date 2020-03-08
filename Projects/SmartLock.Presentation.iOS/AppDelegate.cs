@@ -33,27 +33,8 @@ namespace SmartLock.Presentation.iOS
         {
             var shouldPerformAdditionalDelegateHandling = true;
 
-            _app = app;
-
-            Window = new UIWindow(UIScreen.MainScreen.Bounds);
-            Window.BackgroundColor = UIColor.White;
-            Window.RootViewController = NavigationController = new UINavigationController();
-
-            Application.Current.Start();
-
-            Window.MakeKeyAndVisible();
-
             AppCenter.Start("32b3bdca-9328-4f0d-bebf-39baec3ac0b7",
                    typeof(Analytics), typeof(Crashes));
-
-            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
-            {
-                // Request notification permissions from the user
-                UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound, (approved, err) => {
-                    // Handle approval
-                });
-
-            }
 
             if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
             {
@@ -61,7 +42,9 @@ namespace SmartLock.Presentation.iOS
                                                                         (granted, error) =>
                 {
                     if (granted)
+                    {
                         InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                    }
                 });
             }
             else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
@@ -83,6 +66,16 @@ namespace SmartLock.Presentation.iOS
             {
                 ProcessNotification((NSDictionary)options[UIApplication.LaunchOptionsRemoteNotificationKey], false);
             }
+
+            _app = app;
+
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            Window.BackgroundColor = UIColor.White;
+            Window.RootViewController = NavigationController = new UINavigationController();
+
+            Application.Current.Start();
+
+            Window.MakeKeyAndVisible();
 
             return shouldPerformAdditionalDelegateHandling;
         }

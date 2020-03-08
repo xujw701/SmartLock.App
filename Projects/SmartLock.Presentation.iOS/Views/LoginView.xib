@@ -63,7 +63,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="519" translatesAutoresizingMaskIntoConstraints="NO">
                     <rect key="frame" x="40" y="423" width="334" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.001829699147" green="0.1701394916" blue="0.2864385843" alpha="1"/>
+                    <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0.0118112145" green="0.4500743151" blue="0.9993960261" alpha="1"/>
                     <color key="tintColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                     <state key="normal" title="Log in"/>
                     <userDefinedRuntimeAttributes>
