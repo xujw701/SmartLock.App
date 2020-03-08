@@ -11,19 +11,25 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 {
     public class ImagePickerCell : TableSupportCell, IProvidesHeight
     {
-        public nfloat Height => _attachments.Count == 0 ? 140 : (nfloat)Math.Ceiling((_attachments.Count + 1) / 3f) * 140;
+        public nfloat Height => _attachments.Count == 0 ? 140 + ButtonTotalHeight : (nfloat)Math.Ceiling((_attachments.Count + 1) / 3f) * (140 + ButtonTotalHeight);
+
+        public const int ButtonMarginTop = 8;
+        public const int ButtonHeight = 20;
+        public const int ButtonTotalHeight = ButtonMarginTop + ButtonHeight;
 
         private readonly List<Cache> _attachments;
         private readonly Action _addClicked;
         private readonly Action<Cache> _itemSelected;
+        private readonly Action<Cache> _itemDeleted;
 
         protected override string CellReuseIdentifier => "ImagePickerCell";
 
-        public ImagePickerCell(List<Cache> attachments, Action addClicked, Action<Cache> itemSelected)
+        public ImagePickerCell(List<Cache> attachments, Action addClicked, Action<Cache> itemSelected, Action<Cache> itemDeleted)
         {
             _attachments = attachments;
             _addClicked = addClicked;
             _itemSelected = itemSelected;
+            _itemDeleted = itemDeleted;
         }
 
         protected override UITableViewCell CreateCell()
@@ -35,7 +41,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         {
             if (cell is ImagePickerTableViewCell imagePickerTableViewCell)
             {
-                imagePickerTableViewCell.Configure(Height, _attachments, _addClicked, _itemSelected);
+                imagePickerTableViewCell.Configure(Height, _attachments, _addClicked, _itemSelected, _itemDeleted);
             }
         }
 
@@ -56,7 +62,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                 ContentView.AutosizesSubviews = true;
             }
 
-            public void Configure(nfloat height, List<Cache> attachments, Action addClicked, Action<Cache> itemSelected)
+            public void Configure(nfloat height, List<Cache> attachments, Action addClicked, Action<Cache> itemSelected, Action<Cache> itemDeleted)
             {
                 if (_collectionView == null)
                 {
@@ -65,7 +71,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                     ContentView.AddSubview(_collectionView);
                 }
 
-                _collectionView.Source = new ImagePickerSource(attachments, addClicked, itemSelected);
+                _collectionView.Source = new ImagePickerSource(attachments, addClicked, itemSelected, itemDeleted);
                 _collectionView.ReloadData();
             }
 
@@ -74,7 +80,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                 var layout = new UICollectionViewFlowLayout();
                 var spacing = layout.MinimumInteritemSpacing;
                 var itemSize = UIScreen.MainScreen.Bounds.Width / 3 - spacing * 2;
-                layout.ItemSize = new CGSize(itemSize, itemSize);
+                layout.ItemSize = new CGSize(itemSize, itemSize + ButtonTotalHeight);
 
                 var result = new UICollectionView(new CGRect(spacing, spacing, UIScreen.MainScreen.Bounds.Width - spacing * 2, height - spacing * 2), layout);
                 result.ContentInset = result.ScrollIndicatorInsets =

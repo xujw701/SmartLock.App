@@ -168,7 +168,7 @@ namespace SmartLock.Presentation.iOS.Views
 
             source.AppendTableSupportCellGroup(new TableSupportCellGroup(new TableSupportCell[]
             {
-                new ImagePickerCell(_property.PropertyResource.Where(pr => !pr.ToDelete).Select(pr => pr.Image).Union(_property.ToUploadResource).ToList(), ChooseCaptureMethod, AttachmentClicked)
+                new ImagePickerCell(_property.PropertyResource.Where(pr => !pr.ToDelete).Select(pr => pr.Image).Union(_property.ToUploadResource).ToList(), ChooseCaptureMethod, AttachmentClicked, AttachmentDeleted)
             }));
 
             ImagePickerTableView.Source = source;

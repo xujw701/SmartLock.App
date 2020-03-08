@@ -11,9 +11,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         public static readonly NSString Key = new NSString("ImageCollectionViewCell");
 
         private readonly UIImageView _imageView;
-
-        private nfloat _width;
-        private nfloat _height;
+        private readonly UILabel _button;
 
         [Export("initWithFrame:")]
         public ImageCollectionViewCell(CGRect frame) : base(frame)
@@ -28,20 +26,35 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             _imageView = new UIImageView
             {
                 ClipsToBounds = true,
-                Frame = new CGRect(0, 0, frame.Width, frame.Height),
+                Frame = new CGRect(0, 0, frame.Width, frame.Width),
                 ContentMode = UIViewContentMode.ScaleAspectFit
             };
 
-            _width = frame.Width;
-            _height = frame.Height;
+            _button = new UILabel
+            {
+                ClipsToBounds = true,
+                Frame = new CGRect(0, frame.Width + ImagePickerCell.ButtonMarginTop, frame.Width, ImagePickerCell.ButtonHeight),
+                TextAlignment = UITextAlignment.Center,
+                UserInteractionEnabled = true
+            };
+            _button.Font = _button.Font.WithSize(14);
 
             ContentView.AddSubview(_imageView);
+            ContentView.AddSubview(_button);
         }
 
-        public void ConfigureImage(Cache attachment)
+        public void ConfigureImage(Cache attachment, Action<Cache> itemDeleted)
         {
             var imagePath = attachment.NativePath;
             _imageView.Image = UIImage.FromFile(imagePath) ?? null;
+
+            _button.Text = "Delete";
+            _button.TextColor = UIColor.Red;
+
+            _button.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                itemDeleted?.Invoke(attachment);
+            }));
         }
 
         public void ConfigureAddButton()
@@ -49,6 +62,10 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             _imageView.Image = UIImage.FromBundle("icon_add_photo");
             _imageView.ContentMode = UIViewContentMode.Center;
             _imageView.TintColor = UIColor.FromRGB(96, 149, 255);
+
+            _button.Text = "Add Photos";
+            _button.TextColor = UIColor.Black;
+
         }
     }
 }

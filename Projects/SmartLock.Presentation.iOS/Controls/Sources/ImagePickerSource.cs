@@ -12,13 +12,15 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
         private readonly List<Cache> _attachments;
         private readonly Action _addClicked;
         private readonly Action<Cache> _itemSelected;
+        private readonly Action<Cache> _itemDeleted;
 
-        public ImagePickerSource(List<Cache> attachments, Action addClicked, Action<Cache> itemSelected)
+        public ImagePickerSource(List<Cache> attachments, Action addClicked, Action<Cache> itemSelected, Action<Cache> itemDeleted)
         {
             _attachments = attachments;
 
             _addClicked = addClicked;
             _itemSelected = itemSelected;
+            _itemDeleted = itemDeleted;
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)
@@ -36,7 +38,7 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
             }
             else
             {
-                cell.ConfigureImage(_attachments[indexPath.Row]);
+                cell.ConfigureImage(_attachments[indexPath.Row], _itemDeleted);
             }
 
             return cell;
