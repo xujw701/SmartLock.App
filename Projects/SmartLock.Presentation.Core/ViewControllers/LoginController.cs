@@ -26,6 +26,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
+            _pushNotificationService.BindDeviceTokenListener();
+
             View.LoginClicked += View_LoginClicked;
             View.RememberMeClicked += View_RememberMeClicked;
 
@@ -40,8 +42,6 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 _userSession.LogOut();
             }
-
-            _pushNotificationService.BindDeviceTokenListener();
 
             View.Show(_userSession.RememberMe);
         }
