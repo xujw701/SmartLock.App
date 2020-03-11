@@ -102,7 +102,7 @@ namespace SmartLock.Presentation.Droid.Platform
 
             await _adapter.DisconnectDeviceAsync(device);
 
-            Clear();
+            _connectedDevice = null;
         }
 
         public async Task StartSetLock(bool isLock)

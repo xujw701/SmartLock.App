@@ -1,10 +1,10 @@
-﻿using SmartLock.Model.Ble;
-using SmartLock.Model.Models;
+﻿using SmartLock.Model.Models;
 using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 using System;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -44,28 +44,36 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.OnLocked += () => { View.SetLockUI(true); };
 
             View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
-            View.StartStop += (isScanning) => DoSafeAsync(async () => await View_StartStop(isScanning));
-            View.Connect += (keybox) => DoSafeAsync(async () => await View_Connect(keybox));
-            View.Disconnect += (keybox) => DoSafeAsync(async () => await View_Disconnect(keybox));
-            View.DisconnectCurrent += () => DoSafeAsync(async () => await View_Disconnect(_keyboxService.ConnectedKeybox));
-            View.UnlockClicked += () => DoSafeAsync(View_UnlockClicked);
+
+            View.StartStop += (isScanning) => DoSafeAsync(async () => await StartStopKeybox(isScanning)); ;
+            View.Connect += (keybox) => DoSafeAsync(async () => await Connect(keybox));
+            View.Cancel += (keybox) => DoSafeAsync(async () => await Cancel(keybox));
+            View.Dismiss += (keybox) => Dismiss(keybox);
+            View.Close += () => DoSafeAsync(Close);
+            View.UnlockClicked += () => DoSafeAsync(Unlock);
+
             View.BtClicked += () => _platformServices.Bt();
-            View.Timeout += () => DoSafeAsync(Disconnect);
+            View.Timeout += () => DoSafeAsync(Close);
         }
 
         protected override void OnViewWillShow()
         {
             base.OnViewWillShow();
 
+            UpdateUI();
+        }
+
+        private void UpdateUI()
+        {
             if (_keyboxService.ConnectedKeybox != null)
             {
                 View.Show(GenerateGreeting(), _userSession.FirstName, false);
                 View.Show(_keyboxService.ConnectedKeybox);
             }
-            else if (_keyboxService.DiscoveredKeyboxes != null && _keyboxService.DiscoveredKeyboxes.Count > 0)
+            else if (_keyboxService.DiscoveredKeyboxes != null && _keyboxService.DiscoveredKeyboxes.Where(k => !k.Dismissed).Count() > 0)
             {
                 View.Show(GenerateGreeting(), _userSession.FirstName, false);
-                View.Show(_keyboxService.DiscoveredKeyboxes);
+                View.Show(_keyboxService.DiscoveredKeyboxes.Where(k => !k.Dismissed).ToList());
             }
             else
             {
@@ -80,22 +88,22 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private void OnKeyboxDiscovered(Keybox keybox)
         {
-            View.Show(_keyboxService.DiscoveredKeyboxes);
+            UpdateUI();
         }
 
         private void OnKeyboxConnected(Keybox keybox)
         {
-            View.Show(keybox);
+            UpdateUI();
 
             View.StartCountDown(30);
         }
 
         private void OnKeyboxDisconnected()
         {
-            View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
+            UpdateUI();
         }
 
-        private async Task View_StartStop(bool isScanning)
+        private async Task StartStopKeybox(bool isScanning)
         {
             if (isScanning)
             {
@@ -107,7 +115,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
         }
 
-        private async Task View_Connect(Keybox keybox)
+        private async Task Connect(Keybox keybox)
         {
             _lastKeybox = keybox;
 
@@ -116,7 +124,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             await _keyboxService.ConnectToKeyboxAsync(keybox);
         }
 
-        private async Task View_Disconnect(Keybox keybox)
+        private async Task Cancel(Keybox keybox)
         {
             if (keybox != null)
             {
@@ -124,21 +132,36 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
         }
 
-        private async Task View_UnlockClicked()
+        private void Dismiss(Keybox keybox)
+        {
+            if (keybox != null)
+            {
+                _keyboxService.DismssKeybox(keybox);
+
+                UpdateUI();
+            }
+        }
+
+        private async Task Close()
+        {
+            if (_keyboxService.ConnectedKeybox != null)
+            {
+                _lastKeybox = null;
+                await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
+            }
+
+            _keyboxService.Clear();
+
+            UpdateUI();
+        }
+
+        private async Task Unlock()
         {
             var unlocked = await _keyboxService.StartUnlock();
 
             if (!unlocked)
             {
                 await _messageBoxService.ShowMessageAsync("Unlock Failed", "The keybox isn't listed or you don't have permission to unlock it.");
-            }
-        }
-
-        private async Task Disconnect()
-        {
-            if (_keyboxService.ConnectedKeybox != null)
-            {
-                await _keyboxService.DisconnectKeyboxAsync(_keyboxService.ConnectedKeybox);
             }
         }
 

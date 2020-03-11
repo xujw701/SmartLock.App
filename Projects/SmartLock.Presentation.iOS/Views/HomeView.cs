@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Timers;
+using System.Linq;
 using CoreAnimation;
-using CoreGraphics;
 using Foundation;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
@@ -28,8 +27,9 @@ namespace SmartLock.Presentation.iOS.Views
         public event Action MessageClick;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
-        public event Action<Keybox> Disconnect;
-        public event Action DisconnectCurrent;
+        public event Action<Keybox> Cancel;
+        public event Action<Keybox> Dismiss;
+        public event Action Close;
         public event Action UnlockClicked;
         public event Action BtClicked;
         public event Action Timeout;
@@ -57,7 +57,7 @@ namespace SmartLock.Presentation.iOS.Views
 
             IvClose.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
-                DisconnectCurrent?.Invoke();
+                Close?.Invoke();
             }));
 
             UnlockSlider.Unlocked += () =>
@@ -74,11 +74,6 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 BtClicked?.Invoke();
             }));
-
-            DisconnectCurrent += () =>
-            {
-                SetMode(StateIdle);
-            };
         }
 
         public void Show(string greeting, string name, bool setMode = true)
@@ -101,32 +96,27 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 SetMode(StateLockList);
 
-                if (_bleDeviceSource == null)
-                {
-                    _bleDeviceSource = new BleDeviceSource(keyboxes, Connect, Disconnect, DisconnectCurrent);
+                _bleDeviceSource = new BleDeviceSource(keyboxes, Connect, Cancel, Dismiss);
 
-                    BleDeviceTableView.EstimatedRowHeight = 190f;
-                    BleDeviceTableView.RowHeight = UITableView.AutomaticDimension;
-                    BleDeviceTableView.Source = _bleDeviceSource;
-                }
-                else
-                {
-                    _bleDeviceSource.Keyboxes = keyboxes;
-                }
-
+                BleDeviceTableView.EstimatedRowHeight = 190f;
+                BleDeviceTableView.RowHeight = UITableView.AutomaticDimension;
+                BleDeviceTableView.Source = _bleDeviceSource;
                 BleDeviceTableView.ReloadData();
             });
         }
 
         public void Show(Keybox keybox)
         {
-            SetMode(StateLock);
+            InvokeOnMainThread(() =>
+            {
+                SetMode(StateLock);
 
-            LblText1.Text = keybox.PropertyAddress;
-            LblText2.Text = keybox.KeyboxName;
-            LblBattery.Text = keybox.BatteryLevelString;
+                LblText1.Text = keybox.PropertyAddress;
+                LblText2.Text = keybox.KeyboxName;
+                LblBattery.Text = keybox.BatteryLevelString;
 
-            ShadowHelper.AddShadow(LockContainer);
+                ShadowHelper.AddShadow(LockContainer);
+            });
         }
 
         public void SetLockUI(bool locked)
@@ -152,10 +142,13 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void StartCountDown(int timeout)
         {
-            _timeout = timeout;
+            InvokeOnMainThread(() =>
+            {
+                _timeout = timeout;
 
-            var timer = NSTimer.CreateScheduledTimer(1, this, new ObjCRuntime.Selector("ShowCountDown:"), null, true);
-            timer.Fire();
+                var timer = NSTimer.CreateScheduledTimer(1, this, new ObjCRuntime.Selector("ShowCountDown:"), null, true);
+                timer.Fire();
+            });
         }
 
         [Export("ShowCountDown:")]

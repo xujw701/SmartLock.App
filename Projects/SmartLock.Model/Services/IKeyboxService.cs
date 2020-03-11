@@ -25,6 +25,7 @@ namespace SmartLock.Model.Services
         Task StopScanningForKeyboxesAsync();
         Task ConnectToKeyboxAsync(Keybox keybox);
         Task DisconnectKeyboxAsync(Keybox keybox);
+        void DismssKeybox(Keybox keybox);
         Task StartLock();
         Task<bool> StartUnlock();
 

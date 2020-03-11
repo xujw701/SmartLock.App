@@ -10,18 +10,19 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
     public class BleDeviceSource : UITableViewSource
     {
         private Action<Keybox> _connect;
-        private Action<Keybox> _disconnect;
-        private Action _cancel;
+        private Action<Keybox> _cancel;
+        private Action<Keybox> _dismiss;
 
         public List<Keybox> Keyboxes;
         public Keybox ConnectedKeybox;
 
-        public BleDeviceSource(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
+        public BleDeviceSource(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> cancel, Action<Keybox> dismiss)
         {
             Keyboxes = keyboxes;
+
             _connect = connect;
-            _disconnect = disconnect;
             _cancel = cancel;
+            _dismiss = dismiss;
 
             _connect += (keybox) =>
             {
@@ -33,7 +34,7 @@ namespace SmartLock.Presentation.iOS.Controls.Sources
         {
             var result = (BleDeviceCell)tableView.DequeueReusableCell(BleDeviceCell.Key) ?? BleDeviceCell.Create();
 
-            result.SetData(Keyboxes[indexPath.Row], _connect, _disconnect, _cancel);
+            result.SetData(Keyboxes[indexPath.Row], _connect, _cancel, _dismiss);
 
             return result;
         }

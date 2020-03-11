@@ -121,10 +121,10 @@
                 android:paddingBottom="48dp">
                 <ImageView
                     android:id="@+id/ivLockDisconnect"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="16dp"
+                    android:padding="16dp"
                     android:src="@drawable/icon_close"/>
                 <LinearLayout
                     android:id="@+id/lockImageContainer"

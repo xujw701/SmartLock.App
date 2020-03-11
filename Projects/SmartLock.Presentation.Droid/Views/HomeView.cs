@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -59,8 +60,9 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action MessageClick;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
-        public event Action<Keybox> Disconnect;
-        public event Action DisconnectCurrent;
+        public event Action<Keybox> Cancel;
+        public event Action<Keybox> Dismiss;
+        public event Action Close;
         public event Action UnlockClicked;
         public event Action BtClicked;
         public event Action Timeout;
@@ -108,7 +110,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             _ivLockDisconnect.Click += (s, e) =>
             {
-                DisconnectCurrent?.Invoke();
+                Close?.Invoke();
             };
 
             _slideUnlockView.Unlocked += () =>
@@ -119,11 +121,6 @@ namespace SmartLock.Presentation.Droid.Views
             _tvBtStatus.Click += (s, e) =>
             {
                 BtClicked?.Invoke();
-            };
-
-            DisconnectCurrent += () =>
-            {
-                SetMode(StateIdle);
             };
 
             return _view;
@@ -149,27 +146,23 @@ namespace SmartLock.Presentation.Droid.Views
             {
                 SetMode(StateLockList);
 
-                if (_adapter == null)
-                {
-                    _adapter = new BleDeviceAdapter(keyboxes, Connect, Disconnect, DisconnectCurrent);
-                    _rvBleList.SetLayoutManager(new LinearLayoutManager(_context));
-                    _rvBleList.SetAdapter(_adapter);
-                }
-                else
-                {
-                    _adapter.Keyboxes = keyboxes;
-                    _adapter.NotifyDataSetChanged();
-                }
+                _adapter = new BleDeviceAdapter(keyboxes, Connect, Cancel, Dismiss);
+                _rvBleList.SetLayoutManager(new LinearLayoutManager(_context));
+                _rvBleList.SetAdapter(_adapter);
+                _adapter.NotifyDataSetChanged();
             });
         }
 
         public void Show(Keybox keybox)
         {
-            SetMode(StateLock);
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                SetMode(StateLock);
 
-            _tvLockTitle.Text = keybox.PropertyAddress;
-            _tvLockSubTitle.Text = keybox.KeyboxName;
-            _tvBatteryStatus.Text = keybox.BatteryLevelString;
+                _tvLockTitle.Text = keybox.PropertyAddress;
+                _tvLockSubTitle.Text = keybox.KeyboxName;
+                _tvBatteryStatus.Text = keybox.BatteryLevelString;
+            });
         }
 
         public void SetLockUI(bool locked)
@@ -194,8 +187,11 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void StartCountDown(int timeout)
         {
-            var timer = new Timer(_view, Timeout, timeout * 1000, 1000);
-            timer.Start();
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                var timer = new Timer(_view, Timeout, timeout * 1000, 1000);
+                timer.Start();
+            });
         }
 
         private void SetMode(int state)

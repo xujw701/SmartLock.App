@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
@@ -15,18 +14,19 @@ namespace SmartLock.Presentation.Droid.Adapters
         private const int ItemBleDevice = 1;
 
         private Action<Keybox> _connect;
-        private Action<Keybox> _disconnect;
-        private Action _cancel;
+        private Action<Keybox> _cancel;
+        private Action<Keybox> _dismiss;
 
         public List<Keybox> Keyboxes;
         public Keybox ConnectedKeybox;
 
-        public BleDeviceAdapter(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
+        public BleDeviceAdapter(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> cancel, Action<Keybox> dismiss)
         {
             Keyboxes = keyboxes;
+
             _connect = connect;
-            _disconnect = disconnect;
             _cancel = cancel;
+            _dismiss = dismiss;
 
             _connect += (keybox) =>
             {
@@ -53,7 +53,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             else
             {
                 var itemView = inflater.Inflate(Resource.Layout.Item_BleDevice, parent, false);
-                return new BleDeviceHolder(Keyboxes, _connect, _disconnect, _cancel, itemView);
+                return new BleDeviceHolder(Keyboxes, _connect, _cancel, _dismiss, itemView);
             }
         }
 
@@ -96,7 +96,7 @@ namespace SmartLock.Presentation.Droid.Adapters
             private readonly Button _btnCancel;
             private readonly ImageView _ivClose;
 
-            public BleDeviceHolder(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel, View itemView) : base(itemView)
+            public BleDeviceHolder(List<Keybox> keyboxes, Action<Keybox> connect, Action<Keybox> cancel, Action<Keybox> dismiss, View itemView) : base(itemView)
             {
                 _keyboxes = keyboxes;
 
@@ -116,12 +116,12 @@ namespace SmartLock.Presentation.Droid.Adapters
                 _btnCancel.Click += (s, e) =>
                 {
                     UpdateUI(false);
-                    disconnect?.Invoke(_keyboxes[AdapterPosition - 1]);
+                    cancel?.Invoke(_keyboxes[AdapterPosition - 1]);
                 };
 
                 _ivClose.Click += (s, e) =>
                 {
-                    cancel?.Invoke();
+                    dismiss?.Invoke(_keyboxes[AdapterPosition - 1]);
                 };
             }
 

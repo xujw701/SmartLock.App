@@ -10,8 +10,9 @@ namespace SmartLock.Presentation.Core.Views
         event Action MessageClick;
         event Action<bool> StartStop;
         event Action<Keybox> Connect;
-        event Action<Keybox> Disconnect;
-        event Action DisconnectCurrent;
+        event Action<Keybox> Cancel;
+        event Action<Keybox> Dismiss;
+        event Action Close;
         event Action UnlockClicked;
         event Action BtClicked;
         event Action Timeout;

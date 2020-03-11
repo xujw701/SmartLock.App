@@ -34,7 +34,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             ShadowHelper.AddShadow(ContentContainer);
         }
 
-        public void SetData(Keybox keybox, Action<Keybox> connect, Action<Keybox> disconnect, Action cancel)
+        public void SetData(Keybox keybox, Action<Keybox> connect, Action<Keybox> cancel, Action<Keybox> dismiss)
         {
             LblText1.Text = keybox.PropertyAddress;
             LblText2.Text = keybox.KeyboxName;
@@ -49,12 +49,12 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             BtnCancel.TouchUpInside += (s, e) =>
             {
                 UpdateUI(false);
-                disconnect?.Invoke(keybox);
+                cancel?.Invoke(keybox);
             };
 
             IvClose.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
-                cancel?.Invoke();
+                dismiss?.Invoke(keybox);
             }));
 
             UpdateUI(keybox.State == DeviceState.Connecting);

@@ -21,6 +21,7 @@ namespace SmartLock.Model.Models
 
         // Local var
         public DeviceState State { get; set; }
+        public bool Dismissed { get; set; }
 
         public string BatteryLevelString => $"{BatteryLevel}%";
     }

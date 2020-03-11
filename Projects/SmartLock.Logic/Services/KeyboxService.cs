@@ -80,8 +80,12 @@ namespace SmartLock.Logic.Services
         {
             await _localBleService.DisconnectDeviceAsync(keybox.Uuid);
             keybox.State = DeviceState.Disconnected;
+        }
 
-            Clear();
+        public void DismssKeybox(Keybox keybox)
+        {
+            keybox.Dismissed = true;
+            keybox.State = DeviceState.Disconnected;
         }
 
         public async Task StartLock()
