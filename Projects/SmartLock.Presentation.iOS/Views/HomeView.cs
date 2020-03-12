@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using CoreAnimation;
 using Foundation;
 using SmartLock.Model.Models;
@@ -22,7 +21,8 @@ namespace SmartLock.Presentation.iOS.Views
         private BleDeviceSource _bleDeviceSource;
         private bool isScanning;
 
-        private static int _timeout = 0;
+        private int _timeout = 0;
+        private NSTimer _timer;
 
         public event Action MessageClick;
         public event Action<bool> StartStop;
@@ -146,8 +146,13 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 _timeout = timeout;
 
-                var timer = NSTimer.CreateScheduledTimer(1, this, new ObjCRuntime.Selector("ShowCountDown:"), null, true);
-                timer.Fire();
+                if (_timer != null)
+                {
+                    _timer.Invalidate();
+                }
+
+                _timer = NSTimer.CreateScheduledTimer(1, this, new ObjCRuntime.Selector("ShowCountDown:"), null, true);
+                _timer.Fire();
             });
         }
 

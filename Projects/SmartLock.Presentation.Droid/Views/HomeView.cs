@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -53,7 +52,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         private BleDeviceAdapter _adapter;
 
-        private Handler _handler = new Handler();
+        private Timer _timer;
 
         protected override int LayoutId => Resource.Layout.View_Home;
 
@@ -189,8 +188,14 @@ namespace SmartLock.Presentation.Droid.Views
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
-                var timer = new Timer(_view, Timeout, timeout * 1000, 1000);
-                timer.Start();
+                if (_timer != null)
+                {
+                    _timer.Cancel();
+                }
+
+                _timer = new Timer(_view, Timeout, timeout * 1000, 1000);
+
+                _timer.Start();
             });
         }
 
