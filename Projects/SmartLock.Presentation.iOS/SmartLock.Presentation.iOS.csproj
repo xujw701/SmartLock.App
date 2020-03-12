@@ -116,7 +116,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>Apple Development: Yang Zhou (4B2YB2TL7D)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>Smart ELock New Dev</CodesignProvision>
+    <CodesignProvision>Smart ELock Dev</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />

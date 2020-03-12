@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Foundation;
 using SmartLock.Model.PushNotification;
 using WindowsAzure.Messaging;
@@ -40,8 +41,12 @@ namespace SmartLock.Presentation.iOS.PushNotification
 
             if (!string.IsNullOrWhiteSpace(deviceTokenString))
             {
-                deviceTokenString = deviceTokenString.Trim('<').Trim('>').Replace(" ", "");
-                NSUserDefaults.StandardUserDefaults.SetString(deviceTokenString, PushDeviceTokenKey);
+                var result = new byte[deviceToken.Length];
+                Marshal.Copy(deviceToken.Bytes, result, 0, (int)deviceToken.Length);
+                deviceTokenString = BitConverter.ToString(result).Replace("-", "");
+
+                //deviceTokenString = deviceTokenString.Trim('<').Trim('>').Replace(" ", "");
+                //NSUserDefaults.StandardUserDefaults.SetString(deviceTokenString, PushDeviceTokenKey);
 
                 _deviceTokenObtained?.Invoke(deviceTokenString);
             }
