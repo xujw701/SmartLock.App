@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using SmartLock.Presentation.Core;
 using Android.App;
 using SmartLock.Presentation.Droid.Views.ViewBases;
+using SmartLock.Model.Services;
 
 namespace SmartLock.Presentation.Droid.Platform
 {

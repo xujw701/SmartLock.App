@@ -5,6 +5,7 @@ using SmartLock.Presentation.Core;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.ViewService;
 using UIKit;
+using SmartLock.Model.Services;
 
 namespace SmartLock.Presentation.iOS.Platform
 {

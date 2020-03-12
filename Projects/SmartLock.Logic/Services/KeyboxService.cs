@@ -1,17 +1,22 @@
-﻿using SmartLock.Model.Ble;
+﻿using SmartLock.Infrastructure;
+using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
 using SmartLock.Model.Request;
+using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SmartLock.Logic.Services
 {
     public class KeyboxService : IKeyboxService
     {
+        private readonly IViewService _viewService;
         private readonly IWebService _webService;
+        private readonly IMessageBoxService _messageBoxService;
         private readonly IUserSession _userSession;
         private readonly IUserService _userService;
         private readonly ICacheManager _cacheManager;
@@ -34,9 +39,11 @@ namespace SmartLock.Logic.Services
         public Keybox ConnectedKeybox => _connectedKeybox;
         public bool DeviceConnected => _localBleService.DeviceConnected;
 
-        public KeyboxService(IWebService webService, IUserSession userSession, IUserService userService, ICacheManager cacheManager, ILocalBleService localBleService)
+        public KeyboxService(IViewService viewService, IWebService webService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, ICacheManager cacheManager, ILocalBleService localBleService)
         {
+            _viewService = viewService;
             _webService = webService;
+            _messageBoxService = messageBoxService;
             _userSession = userSession;
             _userService = userService;
             _cacheManager = cacheManager;
@@ -385,7 +392,7 @@ namespace SmartLock.Logic.Services
 
         private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
-            Task.Run(async () =>
+            var run = Task.Run(async () =>
             {
                 var existedKebox = _discoveredKeyboxes.FirstOrDefault(k => k.Uuid.Equals(bleDevice.RealId));
                 if (existedKebox != null) return;
@@ -400,7 +407,17 @@ namespace SmartLock.Logic.Services
 
                     OnKeyboxDiscovered?.Invoke(keybox);
                 }
+
             });
+
+            try
+            {
+                run.Wait();
+            }
+            catch (Exception e)
+            {
+                HandleException(e);
+            }
         }
 
         private void LocalBleService_OnDeviceConnected(BleDevice bleDevice)
@@ -425,7 +442,7 @@ namespace SmartLock.Logic.Services
 
         private void LocalBleService_OnLocked()
         {
-            Task.Run(async () =>
+            var run = Task.Run(async () =>
             {
                 var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
                 {
@@ -433,12 +450,50 @@ namespace SmartLock.Logic.Services
                 });
             });
 
+            try
+            {
+                run.Wait();
+            }
+            catch (Exception e)
+            {
+                HandleException(e);
+            }
+
             OnLocked?.Invoke();
         }
 
         private void LocalBleService_OnUnlocked()
         {
             OnUnlocked?.Invoke();
+        }
+
+        private async void HandleException(Exception exception)
+        {
+            var webServiceClientException = exception as WebServiceClientException;
+
+            if (webServiceClientException == null && exception.InnerException != null)
+            {
+                webServiceClientException = exception.InnerException as WebServiceClientException;
+            }
+
+            if (webServiceClientException != null)
+            {
+                if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await _messageBoxService.ShowMessageAsync("Tips", "Your credentials could not be authenticated. Please log in again.");
+                    await LogOut();
+                }
+                else
+                {
+                    await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+                }
+            }
+        }
+
+        private async Task LogOut()
+        {
+            await _userService.LogOut();
+            _viewService.PopToRoot();
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using SmartLock.Infrastructure;
+using SmartLock.Model.Services;
+using SmartLock.Model.Views;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
 

@@ -2,9 +2,9 @@
 using System.Linq;
 using SmartLock.Presentation.iOS.Controls;
 using SmartLock.Presentation.Core.ViewControllers;
-using SmartLock.Presentation.Core.Views;
 using CoreGraphics;
 using UIKit;
+using SmartLock.Model.Views;
 
 namespace SmartLock.Presentation.iOS.Views.ViewBases
 {

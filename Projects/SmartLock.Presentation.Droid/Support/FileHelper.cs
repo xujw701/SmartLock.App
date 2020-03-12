@@ -7,6 +7,7 @@ using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using Android.OS;
 using Android.Support.V4.Content;
+using SmartLock.Model.Services;
 
 namespace SmartLock.Presentation.Droid.Support
 {

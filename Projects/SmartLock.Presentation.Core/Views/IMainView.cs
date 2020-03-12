@@ -1,4 +1,5 @@
-﻿using SmartLock.Presentation.Core.ViewControllers;
+﻿using SmartLock.Model.Views;
+using SmartLock.Presentation.Core.ViewControllers;
 using System;
 
 namespace SmartLock.Presentation.Core.Views

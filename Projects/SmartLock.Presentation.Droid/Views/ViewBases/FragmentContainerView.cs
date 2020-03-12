@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Android.Support.Design.Internal;
-using Android.Support.Design.Widget;
 using Android.Support.V4.App;
 using SmartLock.Infrastructure;
+using SmartLock.Model.Services;
+using SmartLock.Model.Views;
 using SmartLock.Presentation.Core.ViewControllers;
-using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.Core.ViewService;
 
 namespace SmartLock.Presentation.Droid.Views.ViewBases
 {

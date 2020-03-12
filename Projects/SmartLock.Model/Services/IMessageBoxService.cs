@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SmartLock.Presentation.Core
+namespace SmartLock.Model.Services
 {
     /// <summary>
     /// Various popup functionalities. 

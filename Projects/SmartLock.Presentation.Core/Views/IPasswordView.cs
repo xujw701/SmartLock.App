@@ -1,5 +1,6 @@
 ﻿using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
+using SmartLock.Model.Views;
 using System;
 using System.Collections.Generic;
 

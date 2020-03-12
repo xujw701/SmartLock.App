@@ -1,14 +1,13 @@
-﻿using SmartLock.Presentation.Core.ViewControllers;
-using SmartLock.Presentation.Core.Views;
-using System;
+﻿using System;
+using SmartLock.Model.Views;
 
-namespace SmartLock.Presentation.Core.ViewService
+namespace SmartLock.Model.Services
 {
     /// <summary>
     /// Platform specific, fundamental app view service which handles the view stack and creation of views.
     /// </summary>
-	public interface IViewService
-	{
+    public interface IViewService
+    {
         /// <summary>
         /// Creates a view controller and associated view (platform implemented), pushing the view on to the view stack.
         /// </summary>
@@ -25,7 +24,7 @@ namespace SmartLock.Presentation.Core.ViewService
         /// <summary>
         /// Pops back to the root view controller.
         /// </summary>
-	    void PopToRoot();
+        void PopToRoot();
 
         Type ResolveViewImplementation<TView>() where TView : class, IView;
 

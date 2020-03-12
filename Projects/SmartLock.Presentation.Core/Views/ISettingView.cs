@@ -1,4 +1,5 @@
 ﻿using SmartLock.Model.Models;
+using SmartLock.Model.Views;
 using System;
 
 namespace SmartLock.Presentation.Core.Views

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using SmartLock.Infrastructure;
 using SmartLock.Model.Server;
 using SmartLock.Model.Services;
+using SmartLock.Model.Views;
 using SmartLock.Presentation.Core.Views;
 using SmartLock.Presentation.Core.ViewService;
 

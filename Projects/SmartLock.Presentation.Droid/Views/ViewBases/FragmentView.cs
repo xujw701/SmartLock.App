@@ -7,13 +7,12 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using Android.Support.V4.Widget;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Infrastructure;
+using SmartLock.Model.Services;
+using SmartLock.Model.Views;
 using SmartLock.Presentation.Core.ViewControllers;
-using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.Core.ViewService;
 
 namespace SmartLock.Presentation.Droid.Views.ViewBases
 {

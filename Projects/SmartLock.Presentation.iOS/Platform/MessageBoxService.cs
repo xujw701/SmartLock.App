@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using SmartLock.Presentation.Core;
+using SmartLock.Model.Services;
 using UIKit;
 
 namespace SmartLock.Presentation.iOS.Platform

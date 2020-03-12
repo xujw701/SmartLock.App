@@ -13,6 +13,7 @@ using Android.Support.V4.Content;
 using Android.Content.PM;
 using SmartLock.Presentation.Droid.Support;
 using Android.Views.InputMethods;
+using SmartLock.Model.Views;
 
 namespace SmartLock.Presentation.Droid.Views.ViewBases
 {
