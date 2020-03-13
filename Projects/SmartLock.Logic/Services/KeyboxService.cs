@@ -79,6 +79,9 @@ namespace SmartLock.Logic.Services
 
         public async Task ConnectToKeyboxAsync(Keybox keybox)
         {
+            // Try to disconnect it first
+            await _localBleService.DisconnectDeviceAsync(keybox.Uuid);
+
             keybox.State = DeviceState.Connecting;
             await _localBleService.ConnectToDeviceAsync(keybox.Uuid);
         }
