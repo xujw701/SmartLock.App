@@ -199,6 +199,17 @@ namespace SmartLock.Presentation.Droid.Views
             });
         }
 
+        public void StopCountDown()
+        {
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                if (_timer != null)
+                {
+                    _timer.Cancel();
+                }
+            });
+        }
+
         private void SetMode(int state)
         {
             _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;

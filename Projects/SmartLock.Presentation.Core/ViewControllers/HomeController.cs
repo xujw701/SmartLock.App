@@ -142,6 +142,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task Close()
         {
+            View.StopCountDown();
+
             if (_keyboxService.ConnectedKeybox != null)
             {
                 _lastKeybox = null;

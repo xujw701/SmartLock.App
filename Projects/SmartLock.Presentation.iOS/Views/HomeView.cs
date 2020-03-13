@@ -156,6 +156,17 @@ namespace SmartLock.Presentation.iOS.Views
             });
         }
 
+        public void StopCountDown()
+        {
+            InvokeOnMainThread(() =>
+            {
+                if (_timer != null)
+                {
+                    _timer.Invalidate();
+                }
+            });
+        }
+
         [Export("ShowCountDown:")]
         private void ShowCountDown(NSTimer timer)
         {

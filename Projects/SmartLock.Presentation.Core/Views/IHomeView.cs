@@ -24,5 +24,6 @@ namespace SmartLock.Presentation.Core.Views
         void SetLockUI(bool locked);
         void SetBleIndicator(bool isOn);
         void StartCountDown(int timeout);
+        void StopCountDown();
     }
 }

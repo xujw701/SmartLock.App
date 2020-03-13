@@ -158,7 +158,12 @@ namespace SmartLock.Presentation.Droid.Controls
             var currentHeight = DisplayMetricsHelper.Dp2Px(_context, 75);
             bitmap = BitmapHelper.ResizeBitmap(bitmap, (int)currentHeight, true);
 
-            mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+            if (mHandler != null)
+            {
+                mHandler.RemoveCallbacks(Redraw);
+                mHandler = new Handler();
+                mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+            }
         }
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
@@ -219,8 +224,11 @@ namespace SmartLock.Presentation.Droid.Controls
 
             mSliPaint.SetShader(sliGradient);
 
-            mHandler.RemoveCallbacks(Redraw);
-            mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+            if (mHandler != null)
+            {
+                mHandler.RemoveCallbacks(Redraw);
+                mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+            }
         }
 
         protected override void OnDraw(Canvas canvas)
@@ -271,6 +279,7 @@ namespace SmartLock.Presentation.Droid.Controls
             if (mHandler != null)
             {
                 mHandler.RemoveCallbacks(Redraw);
+                mHandler = new Handler();
                 mHandler.PostDelayed(Redraw, 200);
             }
         }
@@ -284,7 +293,7 @@ namespace SmartLock.Presentation.Droid.Controls
                 if (motionEvent.Action == MotionEventActions.Up
                         || motionEvent.Action == MotionEventActions.Cancel)
                 {
-                    mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+                    //mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
                 }
                 return base.OnTouchEvent(motionEvent);
             }
@@ -333,7 +342,7 @@ namespace SmartLock.Presentation.Droid.Controls
                     } else {
                         startAnimator(mLastX - mStartX, 0, velocityX, false);
 
-                        mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
+                        //mHandler.PostDelayed(Redraw, DRAW_INTERVAL);
                     }
                     releaseVelocityTracker();
                     break;
