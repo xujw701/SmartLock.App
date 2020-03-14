@@ -94,10 +94,13 @@ namespace SmartLock.Presentation.iOS.Views.ViewBases
 
             DisplayTitle = false;
 
-            View.AddGestureRecognizer(new UISwipeGestureRecognizer(() => { if (CanSwipeBack) IoC.Resolve<IViewService>().Pop(); })
+            if (CanSwipeBack)
             {
-                Direction = UISwipeGestureRecognizerDirection.Right
-            });
+                View.AddGestureRecognizer(new UISwipeGestureRecognizer(() => { IoC.Resolve<IViewService>().Pop(); })
+                {
+                    Direction = UISwipeGestureRecognizerDirection.Right
+                });
+            }
         }
         
         public override void ViewWillDisappear(bool animated)
