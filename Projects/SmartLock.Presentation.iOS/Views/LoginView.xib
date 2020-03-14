@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginView">
             <connections>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
-                <outlet property="ivLogo" destination="177" id="name-outlet-177"/>
+                <outlet property="IvLogo" destination="177" id="name-outlet-177"/>
                 <outlet property="EtUsername" destination="184" id="name-outlet-184"/>
                 <outlet property="EtPassword" destination="513" id="name-outlet-513"/>
                 <outlet property="BtnLogin" destination="519" id="name-outlet-519"/>
@@ -30,6 +30,11 @@
                         <constraint id="180" firstAttribute="width" constant="80"/>
                         <constraint id="181" firstAttribute="height" constant="80"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="184" translatesAutoresizingMaskIntoConstraints="NO" placeholder="User name" clearButtonMode="whileEditing" opaque="NO" customClass="CustomTextField">
                     <rect key="frame" x="40" y="303" width="334" height="48"/>

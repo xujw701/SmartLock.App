@@ -40,7 +40,7 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView ivLogo { get; set; }
+        UIKit.UIImageView IvLogo { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -74,9 +74,9 @@ namespace SmartLock.Presentation.iOS.Views
                 IvCheckbox = null;
             }
 
-            if (ivLogo != null) {
-                ivLogo.Dispose ();
-                ivLogo = null;
+            if (IvLogo != null) {
+                IvLogo.Dispose ();
+                IvLogo = null;
             }
         }
     }

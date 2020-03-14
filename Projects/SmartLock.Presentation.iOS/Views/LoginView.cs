@@ -1,6 +1,7 @@
 ﻿using System;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
+using SmartLock.Presentation.iOS.Support;
 using SmartLock.Presentation.iOS.Views.ViewBases;
 using UIKit;
 
@@ -20,6 +21,11 @@ namespace SmartLock.Presentation.iOS.Views
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            IvLogo.Layer.CornerRadius = 12;
+            IvLogo.Layer.MasksToBounds = true;
+            
+            ShadowHelper.AddShadow(IvLogo);
 
             BtnLogin.TouchUpInside += (s, e) => LoginClicked?.Invoke(EtUsername.Text, EtPassword.Text);
             IvCheckbox.AddGestureRecognizer(new UITapGestureRecognizer(() =>
