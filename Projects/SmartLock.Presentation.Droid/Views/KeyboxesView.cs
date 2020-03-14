@@ -24,8 +24,8 @@ namespace SmartLock.Presentation.Droid.Views
 
         private View _btnMine;
         private View _btnOthers;
-        private ImageView _ivMine;
-        private ImageView _ivOthers;
+        private View _ivMine;
+        private View _ivOthers;
 
         private RecyclerView _rvKeyboxList;
 
@@ -48,8 +48,8 @@ namespace SmartLock.Presentation.Droid.Views
 
             _btnMine = _view.FindViewById<View>(Resource.Id.btnMine);
             _btnOthers = _view.FindViewById<View>(Resource.Id.btnOthers);
-            _ivMine = _view.FindViewById<ImageView>(Resource.Id.ivMine);
-            _ivOthers = _view.FindViewById<ImageView>(Resource.Id.ivOthers);
+            _ivMine = _view.FindViewById<View>(Resource.Id.ivMine);
+            _ivOthers = _view.FindViewById<View>(Resource.Id.ivOthers);
 
             _rvKeyboxList = _view.FindViewById<RecyclerView>(Resource.Id.rvKeyboxList);
 

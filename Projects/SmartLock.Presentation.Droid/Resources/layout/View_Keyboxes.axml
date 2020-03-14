@@ -45,9 +45,8 @@
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/btnMine"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -57,19 +56,19 @@
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
-            <ImageView
+            <View
                 android:id="@+id/ivMine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="50dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/oval_blue"/>
+                android:background="@color/harcourts_blue_light"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btnOthers"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="28dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
@@ -77,14 +76,15 @@
                 android:gravity="center_horizontal"
                 android:text="Others"
                 android:textStyle="bold"
-                android:textSize="18sp"/>
-            <ImageView
+                android:textSize="18sp"
+                android:textColor="@android:color/black"/>
+            <View
                 android:id="@+id/ivOthers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_width="50dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/oval_blue"
+                android:background="@color/harcourts_blue_light"
                 android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
