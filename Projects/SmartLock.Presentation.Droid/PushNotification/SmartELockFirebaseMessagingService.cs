@@ -17,6 +17,8 @@ namespace SmartLock.Presentation.Droid.PushNotification
     {
         private const string CHANNEL_ID = "smartelock_notification_channel";
 
+        public const string ParamFromNotification = "FromNotification";
+
         public override void OnMessageReceived(RemoteMessage message)
         {
             var titleKey = "title";
@@ -44,10 +46,11 @@ namespace SmartLock.Presentation.Droid.PushNotification
 
             Intent notificationIntent = null;
 
-            notificationIntent = new Intent(context, typeof(KeyboxesView));
+            notificationIntent = new Intent(context, typeof(LoginView));
+            notificationIntent.PutExtra(ParamFromNotification, true);
 
             var stackBuilder = Android.Support.V4.App.TaskStackBuilder.Create(context);
-            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(MainView)));
+            stackBuilder.AddParentStack(Java.Lang.Class.FromType(typeof(LoginView)));
             stackBuilder.AddNextIntent(notificationIntent);
 
             var pendingIntent = PendingIntent.GetActivity(context, 1, notificationIntent, PendingIntentFlags.UpdateCurrent);
