@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>SmartLock</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.8</string>
+	<string>1.0.9</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -52,12 +52,12 @@
 	<string>com.millionocean.smartlock.ios</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleVersion</key>
-	<string>5</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>6</string>
 </dict>
 </plist>
