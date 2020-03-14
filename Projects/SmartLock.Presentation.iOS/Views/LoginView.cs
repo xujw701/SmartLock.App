@@ -22,6 +22,18 @@ namespace SmartLock.Presentation.iOS.Views
         {
             base.ViewDidLoad();
 
+            IvBackground.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+            {
+                EtUsername.ResignFirstResponder();
+                EtPassword.ResignFirstResponder();
+            }));
+
+            IvBackground.AddGestureRecognizer(new UISwipeGestureRecognizer(() =>
+            {
+                EtUsername.ResignFirstResponder();
+                EtPassword.ResignFirstResponder();
+            }));
+
             IvLogo.Layer.CornerRadius = 12;
             IvLogo.Layer.MasksToBounds = true;
             
