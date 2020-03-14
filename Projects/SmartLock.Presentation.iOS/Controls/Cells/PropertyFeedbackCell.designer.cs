@@ -27,15 +27,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView IvPhone { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvPortrait { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView IvSms { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -70,19 +62,9 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                 FeedbackContainer = null;
             }
 
-            if (IvPhone != null) {
-                IvPhone.Dispose ();
-                IvPhone = null;
-            }
-
             if (IvPortrait != null) {
                 IvPortrait.Dispose ();
                 IvPortrait = null;
-            }
-
-            if (IvSms != null) {
-                IvSms.Dispose ();
-                IvSms = null;
             }
 
             if (LblDateTime != null) {

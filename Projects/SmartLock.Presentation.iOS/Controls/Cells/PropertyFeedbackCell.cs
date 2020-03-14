@@ -32,6 +32,9 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         {
             base.LayoutSubviews();
 
+            FeedbackContainer.ClipsToBounds = true;
+            FeedbackContainer.LayoutIfNeeded();
+
             ShadowHelper.AddShadow(FeedbackContainer);
         }
 
