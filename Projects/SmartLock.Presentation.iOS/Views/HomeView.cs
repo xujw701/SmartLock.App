@@ -24,6 +24,8 @@ namespace SmartLock.Presentation.iOS.Views
         private int _timeout = 0;
         private NSTimer _timer;
 
+        protected override bool CanSwipeBack => false;
+
         public event Action MessageClick;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;

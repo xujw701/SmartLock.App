@@ -13,6 +13,8 @@ namespace SmartLock.Presentation.iOS.Views
     {
         private KeyboxSource _keyboxSource;
 
+        protected override bool CanSwipeBack => false;
+
         public event Action<Keybox> KeyboxClicked;
         public event Action PlaceKeyboxClicked;
         public event Action<bool> TabClicked;

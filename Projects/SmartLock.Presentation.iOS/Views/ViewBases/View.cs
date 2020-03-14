@@ -5,6 +5,8 @@ using SmartLock.Presentation.iOS.Controls;
 using CoreGraphics;
 using UIKit;
 using SmartLock.Model.Views;
+using SmartLock.Infrastructure;
+using SmartLock.Model.Services;
 
 namespace SmartLock.Presentation.iOS.Views.ViewBases
 {
@@ -17,6 +19,8 @@ namespace SmartLock.Presentation.iOS.Views.ViewBases
 
         private bool _isBusy;
         private LoadingOverlay _loadingOverlay;
+
+        protected virtual bool CanSwipeBack => true;
 
         protected View(ViewController<TView> controller, string nibName) : base(nibName, null)
         {
@@ -89,6 +93,11 @@ namespace SmartLock.Presentation.iOS.Views.ViewBases
             _controller.SetView(this as TView);
 
             DisplayTitle = false;
+
+            View.AddGestureRecognizer(new UISwipeGestureRecognizer(() => { if (CanSwipeBack) IoC.Resolve<IViewService>().Pop(); })
+            {
+                Direction = UISwipeGestureRecognizerDirection.Right
+            });
         }
         
         public override void ViewWillDisappear(bool animated)

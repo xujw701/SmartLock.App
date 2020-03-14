@@ -11,6 +11,8 @@ namespace SmartLock.Presentation.iOS.Views
 {
     public partial class SettingView : View<ISettingView>, ISettingView
     {
+        protected override bool CanSwipeBack => false;
+
         public event Action<byte[]> PortraitChanged;
         public event Action ProfileClick;
         public event Action PasswordClick;
