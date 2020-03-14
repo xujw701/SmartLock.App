@@ -14,11 +14,6 @@ namespace SmartLock.Presentation.iOS.PushNotification
 
         private event Action<string> _deviceTokenObtained;
 
-        public DevicePushNotifications()
-        {
-            _hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
-        }
-
         public DeviceRegistration GetDeviceRegistration()
         {
             var deviceRegistration = new DeviceRegistration()
@@ -51,20 +46,11 @@ namespace SmartLock.Presentation.iOS.PushNotification
                 _deviceTokenObtained?.Invoke(deviceTokenString);
             }
 
-            _hub.UnregisterAllAsync(deviceToken);
-            //_hub.UnregisterAllAsync(deviceToken, (error) => {
-            //    if (error != null)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
-            //        return;
-            //    }
-
-            //    NSSet tags = null; // create tags if you want
-            //    Hub.RegisterNativeAsync(deviceToken, tags, (errorCallback) => {
-            //        if (errorCallback != null)
-            //            System.Diagnostics.Debug.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
-            //    });
-            //});
+//#if DEBUG
+//            _hub = new SBNotificationHub(Constants.ListenConnectionString, Constants.NotificationHubName);
+//            //_hub.UnregisterAllAsync(deviceToken);
+//            _hub.RegisterNativeAsync(deviceToken, null);
+//#endif
         }
     }
 }

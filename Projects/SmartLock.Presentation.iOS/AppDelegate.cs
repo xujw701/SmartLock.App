@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
@@ -43,7 +44,10 @@ namespace SmartLock.Presentation.iOS
                 {
                     if (granted)
                     {
-                        InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                        InvokeOnMainThread(() =>
+                        {
+                            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+                        });
                     }
                 });
             }
@@ -166,24 +170,23 @@ namespace SmartLock.Presentation.iOS
                 }
                 if (!fromFinishedLaunching)
                 {
-                    //if (UIApplication.SharedApplication.ApplicationState.Equals(UIApplicationState.Active))
-                    //{
-                    //    var avAlert = new UIAlertView
-                    //    {
-                    //        Title = alertTitle,
-                    //        Message = alertBody
-                    //    };
-                    //    avAlert.AddButton("Read detail");
-                    //    avAlert.AddButton("Dismiss");
-                    //    avAlert.Show();
+                    if (UIApplication.SharedApplication.ApplicationState.Equals(UIApplicationState.Active))
+                    {
+                        var avAlert = new UIAlertView
+                        {
+                            Title = alertTitle,
+                            Message = alertBody
+                        };
+                        avAlert.AddButton("OK");
+                        avAlert.Show();
 
-                    //    avAlert.Clicked += (s, args) =>
-                    //    {
-                    //    };
-                    //}
-                    //else
-                    //{
-                    //}
+                        avAlert.Clicked += (s, args) =>
+                        {
+                        };
+                    }
+                    else
+                    {
+                    }
                 }
             }
         }
