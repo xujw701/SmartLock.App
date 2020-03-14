@@ -393,9 +393,9 @@ namespace SmartLock.Logic.Services
             OnBleStateChanged?.Invoke(isOn);
         }
 
-        private void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
+        private async void LocalBleService_OnDeviceDiscovered(BleDevice bleDevice)
         {
-            var run = Task.Run(async () =>
+            try
             {
                 var existedKebox = _discoveredKeyboxes.FirstOrDefault(k => k.Uuid.Equals(bleDevice.RealId));
                 if (existedKebox != null) return;
@@ -410,13 +410,7 @@ namespace SmartLock.Logic.Services
 
                     OnKeyboxDiscovered?.Invoke(keybox);
                 }
-
-            });
-
-            try
-            {
-                run.Wait();
-            }
+                }
             catch (Exception e)
             {
                 HandleException(e);
@@ -443,19 +437,14 @@ namespace SmartLock.Logic.Services
             OnKeyboxDisconnected?.Invoke();
         }
 
-        private void LocalBleService_OnLocked()
+        private async void LocalBleService_OnLocked()
         {
-            var run = Task.Run(async () =>
+            try
             {
                 var allow = await _webService.Lock(_connectedKeybox.KeyboxId, new KeyboxHistoryPostDto()
                 {
                     DateTime = DateTimeOffset.Now
                 });
-            });
-
-            try
-            {
-                run.Wait();
             }
             catch (Exception e)
             {
