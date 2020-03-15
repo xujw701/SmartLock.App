@@ -10,6 +10,7 @@ namespace SmartLock.Presentation.iOS.Controls.CustomField
     public class UnlockSlider : UISlider
     {
         private Timer _timer;
+        private DateTime lastInvokedTime;
 
         public event Action Unlocked;
 
@@ -79,8 +80,14 @@ namespace SmartLock.Presentation.iOS.Controls.CustomField
         {
             if ((int)Value == 100)
             {
-                Unlocked?.Invoke();
-                SetTrackBackground(false);
+                var diff = (DateTime.Now - lastInvokedTime).TotalMilliseconds;
+
+                if (diff > 500)
+                {
+                    lastInvokedTime = DateTime.Now;
+                    Unlocked?.Invoke();
+                    SetTrackBackground(false);
+                }
             }
         }
 
