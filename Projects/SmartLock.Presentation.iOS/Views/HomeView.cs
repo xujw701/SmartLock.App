@@ -76,6 +76,8 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 BtClicked?.Invoke();
             }));
+
+            LblTimeout.Hidden = true;
         }
 
         public void Show(string greeting, string name, bool setMode = true)
@@ -146,6 +148,8 @@ namespace SmartLock.Presentation.iOS.Views
         {
             InvokeOnMainThread(() =>
             {
+                LblTimeout.Hidden = false;
+
                 _timeout = timeout;
 
                 if (_timer != null)
@@ -162,6 +166,8 @@ namespace SmartLock.Presentation.iOS.Views
         {
             InvokeOnMainThread(() =>
             {
+                LblTimeout.Hidden = true;
+
                 if (_timer != null)
                 {
                     _timer.Invalidate();

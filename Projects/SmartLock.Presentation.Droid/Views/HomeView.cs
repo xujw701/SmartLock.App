@@ -122,6 +122,8 @@ namespace SmartLock.Presentation.Droid.Views
                 BtClicked?.Invoke();
             };
 
+            _tvTimeOut.Visibility = ViewStates.Invisible;
+
             return _view;
         }
 
@@ -188,6 +190,8 @@ namespace SmartLock.Presentation.Droid.Views
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
+                _tvTimeOut.Visibility = ViewStates.Visible;
+
                 if (_timer != null)
                 {
                     _timer.Cancel();
@@ -203,6 +207,8 @@ namespace SmartLock.Presentation.Droid.Views
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
+                _tvTimeOut.Visibility = ViewStates.Invisible;
+
                 if (_timer != null)
                 {
                     _timer.Cancel();

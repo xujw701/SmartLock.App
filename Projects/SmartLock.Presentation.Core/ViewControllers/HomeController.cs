@@ -19,6 +19,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private readonly IPlatformServices _platformServices;
 
         private Keybox _lastKeybox;
+        private Property _property;
 
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
@@ -35,7 +36,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             _keyboxService.OnBleStateChanged += OnBleStateChanged;
             _keyboxService.OnKeyboxDiscovered += OnKeyboxDiscovered;
-            _keyboxService.OnKeyboxConnected += OnKeyboxConnected;
+            _keyboxService.OnKeyboxConnected += (keybox) => DoSafeAsync(async () =>  await OnKeyboxConnected(keybox));
             _keyboxService.OnKeyboxDisconnected += OnKeyboxDisconnected;
 
             _keyboxService.OnUnlocked += () => { View.SetLockUI(false); };
@@ -43,7 +44,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
 
-            View.StartStop += (isScanning) => DoSafeAsync(async () => await StartStopKeybox(isScanning)); ;
+            View.StartStop += (isScanning) => DoSafeAsync(async () => await StartStopKeybox(isScanning));
             View.Connect += (keybox) => DoSafeAsync(async () => await Connect(keybox));
             View.Cancel += (keybox) => DoSafeAsync(async () => await Cancel(keybox));
             View.Dismiss += (keybox) => Dismiss(keybox);
@@ -89,9 +90,16 @@ namespace SmartLock.Presentation.Core.ViewControllers
             UpdateUI();
         }
 
-        private void OnKeyboxConnected(Keybox keybox)
+        private async Task OnKeyboxConnected(Keybox keybox)
         {
             UpdateUI();
+
+            if (keybox.KeyboxId > 0 && keybox.PropertyId.HasValue)
+            {
+                _property = await _keyboxService.GetBriefKeyboxProperty(keybox.KeyboxId, keybox.PropertyId.Value);
+
+                await _messageBoxService.ShowMessageAsync("Data at door", _property.Notes);
+            }
 
             View.StartCountDown(30);
         }

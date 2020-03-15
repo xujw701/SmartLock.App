@@ -146,6 +146,13 @@ namespace SmartLock.Logic.Services
             return new List<Keybox>();
         }
 
+        public async Task<Property> GetBriefKeyboxProperty(int keyboxId, int propertyId)
+        {
+            var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);
+
+            return property;
+        }
+
         public async Task<Property> GetKeyboxProperty(int keyboxId, int propertyId, bool force = false)
         {
             var property = await _webService.GetKeyboxProperty(keyboxId, propertyId);
@@ -360,7 +367,7 @@ namespace SmartLock.Logic.Services
 
         private List<KeyboxHistory> FilterHistories(List<KeyboxHistory> keyboxHistories)
         {
-            double timeFrame = 7200; //seconds
+            double timeFrame = 1800; //seconds
 
             var result = new List<KeyboxHistory>();
 
