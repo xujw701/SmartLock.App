@@ -111,7 +111,7 @@ namespace SmartLock.Presentation.iOS.Views
             foreach (var imageView in imageViewList)
             {
                 imageView.Hidden = true;
-                imageView.ContentMode = UIViewContentMode.ScaleAspectFit;
+                imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
             }
 
             var propertyImages = property.PropertyResource.Select(p => p.Image).ToList();
