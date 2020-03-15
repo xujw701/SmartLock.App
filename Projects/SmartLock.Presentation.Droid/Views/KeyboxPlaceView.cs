@@ -261,7 +261,7 @@ namespace SmartLock.Presentation.Droid.Views
                     try
                     {
                         var path = requestCode == ChooseFromAlbumRequest ? SelectedFilePathHelper.GetPath(this, data.Data) : _tmpFilePath;
-                        var dataByte = ImageHelper.CompressAndRotate(this, path, 1200);
+                        var dataByte = ImageHelper.CompressAndRotate(this, path, 1280);
 
                         AttachmentAdded?.Invoke(dataByte);
                     }

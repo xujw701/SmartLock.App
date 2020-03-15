@@ -179,7 +179,7 @@ namespace SmartLock.Presentation.Droid.Support
         {
             using (var stream = new MemoryStream())
             {
-                bitmap.Compress(Bitmap.CompressFormat.Png, 0, stream);
+                bitmap.Compress(Bitmap.CompressFormat.Jpeg, 80, stream);
                 return stream.ToArray();
             }
         }

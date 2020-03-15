@@ -219,7 +219,8 @@ namespace SmartLock.Presentation.iOS.Views
                 var originalImage = info[UIImagePickerController.OriginalImage] as UIImage;
                 if (originalImage != null)
                 {
-                    using (NSData imageData = originalImage.AsJPEG(0.8f)) // TODO: Quality settings? 
+                    var resizedImage = ImageHelper.MaxResizeImage(originalImage, 1920, 1080);
+                    using (NSData imageData = resizedImage.AsJPEG(0.7f)) // TODO: Quality settings?
                     {
                         var myByteArray = new byte[imageData.Length];
 
