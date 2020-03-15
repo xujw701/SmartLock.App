@@ -770,6 +770,8 @@
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png" />
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
     <ImageAsset Include="Assets.xcassets\logo.imageset\180-1.png" />
+    <ImageAsset Include="Assets.xcassets\clearbg.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\clearbg.imageset\clearbackground.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -900,6 +902,7 @@
     <Folder Include="Assets.xcassets\icon_phone.imageset\" />
     <Folder Include="Assets.xcassets\icon_sms.imageset\" />
     <Folder Include="Assets.xcassets\icon_dropdown.imageset\" />
+    <Folder Include="Assets.xcassets\clearbg.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

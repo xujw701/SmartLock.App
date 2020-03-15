@@ -68,10 +68,10 @@
                                     <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.002535683103" green="0.1058199927" blue="0.2512828708" alpha="1"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1369" translatesAutoresizingMaskIntoConstraints="NO" clearsContextBeforeDrawing="NO" image="icon_dot">
-                                    <rect key="frame" x="5" y="26.5" width="55" height="3"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1369" translatesAutoresizingMaskIntoConstraints="NO" clearsContextBeforeDrawing="NO" image="clearbg">
+                                    <rect key="frame" x="5" y="26.5" width="55" height="4"/>
                                     <constraints>
-                                        <constraint id="1370" firstAttribute="height" constant="3"/>
+                                        <constraint id="1370" firstAttribute="height" constant="4"/>
                                         <constraint id="1371" firstAttribute="width" constant="55"/>
                                     </constraints>
                                     <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0" green="0.4163498282" blue="0.9997336268" alpha="1"/>
@@ -95,10 +95,10 @@
                                     <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.002535683103" green="0.1058199927" blue="0.2512828708" alpha="1"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1380" translatesAutoresizingMaskIntoConstraints="NO" clearsContextBeforeDrawing="NO" image="icon_dot" hidden="YES">
-                                    <rect key="frame" x="5" y="26.5" width="55" height="3"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1380" translatesAutoresizingMaskIntoConstraints="NO" clearsContextBeforeDrawing="NO" image="clearbg" hidden="YES">
+                                    <rect key="frame" x="5" y="26.5" width="55" height="4"/>
                                     <constraints>
-                                        <constraint id="1381" firstAttribute="height" constant="3"/>
+                                        <constraint id="1381" firstAttribute="height" constant="4"/>
                                         <constraint id="1382" firstAttribute="width" constant="55"/>
                                     </constraints>
                                     <color key="backgroundColor" colorSpace="custom" customColorSpace="sRGB" red="0" green="0.4163498282" blue="0.9997336268" alpha="1"/>
@@ -137,6 +137,6 @@
     </objects>
     <resources>
         <image name="icon_add" width="32" height="32"/>
-        <image name="icon_dot" width="66.66666" height="66.66666"/>
+        <image name="clearbg" width="0.3333333" height="0.3333333"/>
     </resources>
 </document>
