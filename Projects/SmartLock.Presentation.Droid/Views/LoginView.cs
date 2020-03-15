@@ -8,7 +8,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
     public class LoginView : ViewBase<ILoginView>, ILoginView
     {
         protected override int LayoutId => Resource.Layout.View_Login;
