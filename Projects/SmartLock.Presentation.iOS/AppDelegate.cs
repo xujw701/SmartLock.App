@@ -172,17 +172,17 @@ namespace SmartLock.Presentation.iOS
                 {
                     if (UIApplication.SharedApplication.ApplicationState.Equals(UIApplicationState.Active))
                     {
-                        var avAlert = new UIAlertView
-                        {
-                            Title = alertTitle,
-                            Message = alertBody
-                        };
-                        avAlert.AddButton("OK");
-                        avAlert.Show();
+                        //var avAlert = new UIAlertView
+                        //{
+                        //    Title = alertTitle,
+                        //    Message = alertBody
+                        //};
+                        //avAlert.AddButton("OK");
+                        //avAlert.Show();
 
-                        avAlert.Clicked += (s, args) =>
-                        {
-                        };
+                        //avAlert.Clicked += (s, args) =>
+                        //{
+                        //};
                     }
                     else
                     {
