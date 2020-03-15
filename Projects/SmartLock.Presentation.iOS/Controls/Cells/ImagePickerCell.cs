@@ -14,7 +14,7 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
         public nfloat Height => _attachments.Count == 0 ? 140 + ButtonTotalHeight : (nfloat)Math.Ceiling((_attachments.Count + 1) / 3f) * (140 + ButtonTotalHeight);
 
         public const int ButtonMarginTop = 8;
-        public const int ButtonHeight = 20;
+        public const int ButtonHeight = 26;
         public const int ButtonTotalHeight = ButtonMarginTop + ButtonHeight;
 
         private readonly List<Cache> _attachments;
