@@ -101,7 +101,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 await _messageBoxService.ShowMessageAsync("Data at door", _property.Notes);
             }
 
-            View.StartCountDown(30);
+            View.StartCountDown(15);
         }
 
         private void OnKeyboxDisconnected()
