@@ -8,8 +8,11 @@ namespace SmartLock.Logic.Environment
 {
     public class EnvironmentManager : IEnvironmentManager
     {
+#if DEBUG
         private readonly string DefaultEnvironment = "DEV";
-
+#else
+        private readonly string DefaultEnvironment = "PRD";
+#endif
         private readonly ISettingsService _settings;
         private readonly List<WebApiEnvironment> _environments;
 
