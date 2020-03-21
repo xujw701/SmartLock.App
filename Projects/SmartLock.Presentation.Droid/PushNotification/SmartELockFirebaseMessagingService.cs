@@ -36,7 +36,7 @@ namespace SmartLock.Presentation.Droid.PushNotification
             else
             {
                 // Only used for debugging payloads sent from the Azure portal
-                SendNotification("Open Sez Me", message.Data.Values.First() ?? "Test Content");
+                SendNotification("Open Says Me", message.Data.Values.First() ?? "Test Content");
             }
         }
 
