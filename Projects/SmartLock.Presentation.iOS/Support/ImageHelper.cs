@@ -8,6 +8,7 @@ namespace SmartLock.Presentation.iOS.Support
     {
         public static void SetImageView(UIImageView imageView, Cache cache)
         {
+            if (cache == null) return;
             imageView.Image = UIImage.FromFile(cache.NativePath);
         }
 
