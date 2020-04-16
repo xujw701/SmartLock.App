@@ -45,7 +45,7 @@
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/btnMine"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
@@ -58,7 +58,7 @@
                 android:textColor="@android:color/black"/>
             <View
                 android:id="@+id/ivMine"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"
@@ -66,7 +66,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btnOthers"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
             android:orientation="vertical">
@@ -80,7 +80,7 @@
                 android:textColor="@android:color/black"/>
             <View
                 android:id="@+id/ivOthers"
-                android:layout_width="50dp"
+                android:layout_width="60dp"
                 android:layout_height="4dp"
                 android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal"
