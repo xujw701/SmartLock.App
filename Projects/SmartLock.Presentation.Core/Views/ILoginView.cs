@@ -7,6 +7,7 @@ namespace SmartLock.Presentation.Core.Views
     {
         event Action<string, string> LoginClicked;
         event Action<bool> RememberMeClicked;
+        event Action EnvironmentSettingClicked;
 
         void Show(bool rememberMe);
     }

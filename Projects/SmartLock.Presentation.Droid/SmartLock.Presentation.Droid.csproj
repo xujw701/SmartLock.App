@@ -42,7 +42,7 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
-    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidKeyStore></AndroidKeyStore>
     <AndroidSigningKeyStore>C:\William\private\work\AprilTechnologies\Code\SmartLock.App\Projects\SmartLock.Presentation.Droid\Store\SmartLockStore.keystore</AndroidSigningKeyStore>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -309,6 +309,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\EnvironmentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -322,6 +323,10 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\Include_ProgressOverlay.axml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\View_Environment.axml">
+      <SubType></SubType>
+      <Generator></Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>

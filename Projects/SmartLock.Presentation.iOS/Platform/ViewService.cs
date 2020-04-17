@@ -43,6 +43,7 @@ namespace SmartLock.Presentation.iOS.Platform
             _viewDictionary.Add(typeof(FeedbackController), vc => new FeedbackView(vc as FeedbackController));
             _viewDictionary.Add(typeof(MyProfileController), vc => new MyProfileView(vc as MyProfileController));
             _viewDictionary.Add(typeof(PasswordController), vc => new PasswordView(vc as PasswordController));
+            _viewDictionary.Add(typeof(EnvironmentController), vc => new EnvironmentView(vc as EnvironmentController));
         }
 
         public override void Pop()

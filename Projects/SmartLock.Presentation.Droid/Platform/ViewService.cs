@@ -59,6 +59,7 @@ namespace SmartLock.Presentation.Droid.Platform
             _viewcontrollerMappings.Add(typeof(MyProfileController), typeof(MyProfileView));
             _viewcontrollerMappings.Add(typeof(PasswordController), typeof(PasswordView));
             _viewcontrollerMappings.Add(typeof(FeedbackController), typeof(FeedbackView));
+            _viewcontrollerMappings.Add(typeof(EnvironmentController), typeof(EnvironmentView));
         }
 
         public override void Pop()

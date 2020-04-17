@@ -75,6 +75,8 @@
     <Compile Include="Views\IHomeView.cs" />
     <Compile Include="Views\IMainView.cs" />
     <Compile Include="Views\ITabView.cs" />
+    <Compile Include="ViewControllers\EnvironmentController.cs" />
+    <Compile Include="Views\IEnvironmentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

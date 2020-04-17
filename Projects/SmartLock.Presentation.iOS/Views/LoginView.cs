@@ -11,6 +11,7 @@ namespace SmartLock.Presentation.iOS.Views
     {
         public event Action<string, string> LoginClicked;
         public event Action<bool> RememberMeClicked;
+        public event Action EnvironmentSettingClicked;
 
         private bool _rememberMe;
 
@@ -24,16 +25,24 @@ namespace SmartLock.Presentation.iOS.Views
 
             IvBackground.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
+
                 EtUsername.ResignFirstResponder();
                 EtPassword.ResignFirstResponder();
             }));
 
-            IvBackground.AddGestureRecognizer(new UISwipeGestureRecognizer(() =>
+            var clickCnt = 0;
+            IvLogo.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
-                EtUsername.ResignFirstResponder();
-                EtPassword.ResignFirstResponder();
+                if (clickCnt == 10)
+                {
+                    clickCnt = 0;
+                    EnvironmentSettingClicked?.Invoke();
+                }
+                else
+                {
+                    clickCnt++;
+                }
             }));
-
             IvLogo.Layer.CornerRadius = 12;
             IvLogo.Layer.MasksToBounds = true;
             

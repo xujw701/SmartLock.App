@@ -30,6 +30,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             View.LoginClicked += View_LoginClicked;
             View.RememberMeClicked += View_RememberMeClicked;
+            View.EnvironmentSettingClicked += () => Push<EnvironmentController>();
 
             if (_userSession.RememberMe)
             {

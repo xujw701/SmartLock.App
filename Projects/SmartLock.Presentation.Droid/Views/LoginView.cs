@@ -15,6 +15,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         public event Action<string, string> LoginClicked;
         public event Action<bool> RememberMeClicked;
+        public event Action EnvironmentSettingClicked;
 
         private CheckBox _cbRememberMe;
 
@@ -22,10 +23,25 @@ namespace SmartLock.Presentation.Droid.Views
         {
             base.OnCreate(savedInstanceState);
 
+            var logo = FindViewById<ImageView>(Resource.Id.logo);
             var btnLogin = FindViewById<Button>(Resource.Id.btnLogin);
             var etUsername = FindViewById<EditText>(Resource.Id.etUsername);
             var etPassword = FindViewById<EditText>(Resource.Id.etPassword);
             _cbRememberMe = FindViewById<CheckBox>(Resource.Id.cbRememberMe);
+
+            var clickCnt = 0;
+            logo.Click += (s, e) =>
+            {
+                if (clickCnt == 10)
+                {
+                    clickCnt = 0;
+                    EnvironmentSettingClicked?.Invoke();
+                }
+                else
+                {
+                    clickCnt++;
+                }
+            };
 
             btnLogin.Click += (s, e) =>
             {

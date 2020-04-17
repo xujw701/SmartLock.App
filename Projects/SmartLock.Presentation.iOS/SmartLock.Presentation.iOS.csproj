@@ -202,6 +202,7 @@
     <InterfaceDefinition Include="Views\PasswordView.xib" />
     <InterfaceDefinition Include="Views\PropertyFeedbackView.xib" />
     <InterfaceDefinition Include="Controls\Cells\PropertyFeedbackCell.xib" />
+    <InterfaceDefinition Include="Views\EnvironmentView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -884,6 +885,10 @@
     </Compile>
     <Compile Include="Controls\Sources\PropertyFeedbackSource.cs" />
     <Compile Include="Controls\CustomField\DropdownField.cs" />
+    <Compile Include="Views\EnvironmentView.cs" />
+    <Compile Include="Views\EnvironmentView.designer.cs">
+      <DependentUpon>EnvironmentView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
