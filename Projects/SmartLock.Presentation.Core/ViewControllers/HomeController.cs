@@ -188,9 +188,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         protected override async Task ShowErrorAsync(Exception exception)
         {
-            var webServiceClientException = exception as WebServiceClientException;
-
-            if (webServiceClientException != null)
+            if (exception is WebServiceClientException webServiceClientException)
             {
                 if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
                 {
@@ -210,6 +208,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
 
                 _messageBoxService.ShowMessage("Tips", "The lock is already connected to another user now, please try it later.");
+            }
+            else if (exception is TaskCanceledException)
+            {
+                // Do nothing
             }
             else
             {

@@ -187,10 +187,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         protected virtual async Task ShowErrorAsync(Exception exception)
         {
-            var webServiceClientException = exception as WebServiceClientException;
             var messageBoxService = IoC.Resolve<IMessageBoxService>();
 
-            if (webServiceClientException != null)
+            if (exception is WebServiceClientException webServiceClientException)
             {
                 if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
                 {
@@ -203,9 +202,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
                     await messageBoxService.ShowMessageAsync("Error", exception.Message);
                 }
             }
+            else if (exception is TaskCanceledException)
+            {
+                // Do nothing
+            }
             else
             {
-                await messageBoxService.ShowMessageAsync("Error", exception.Message);
+                //await messageBoxService.ShowMessageAsync("Error", exception.Message);
             }
         }
     }
