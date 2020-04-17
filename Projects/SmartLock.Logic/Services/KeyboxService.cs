@@ -409,6 +409,9 @@ namespace SmartLock.Logic.Services
 
                 var keybox = await _webService.GetKeybox(uuid: bleDevice.RealId);
 
+                // A unlisted keybox doesn't show to other user
+                if (!keybox.PropertyId.HasValue && keybox.UserId != _userSession.UserId) return;
+
                 if (keybox != null && !_discoveredKeyboxes.Exists(d => d.Uuid.ToString().Equals(keybox.Uuid)))
                 {
                     keybox.State = bleDevice.State;
