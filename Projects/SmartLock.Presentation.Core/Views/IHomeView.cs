@@ -9,6 +9,7 @@ namespace SmartLock.Presentation.Core.Views
     public interface IHomeView : IView
     {
         event Action MessageClick;
+        event Action PlaceKeyboxClicked;
         event Action<bool> StartStop;
         event Action<Keybox> Connect;
         event Action<Keybox> Cancel;
@@ -20,7 +21,7 @@ namespace SmartLock.Presentation.Core.Views
 
         void Show(string greeting, string name, bool setMode = true);
         void Show(List<Keybox> keyboxes);
-        void Show(Keybox keybox);
+        void Show(Keybox keybox, bool showPlaceLock);
         void SetLockUI(bool locked);
         void SetBleIndicator(bool isOn);
         void StartCountDown(int timeout);

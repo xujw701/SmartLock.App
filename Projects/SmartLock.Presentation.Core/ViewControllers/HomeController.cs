@@ -2,7 +2,6 @@
 using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.Core.ViewService;
 using System;
 using System.Linq;
 using System.Net;
@@ -22,6 +21,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private Property _property;
 
         private bool _startConnecting = false;
+
+        private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox;
+
+        private bool CanPlaceLock => ConnectedKeybox != null
+                && ConnectedKeybox.UserId.HasValue
+                && ConnectedKeybox.UserId.Value == _userSession.UserId;
 
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
@@ -45,6 +50,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.OnLocked += () => { View.SetLockUI(true); };
 
             View.MessageClick += () => Push<PropertyFeedbackController>(vc => { vc.Mine = true; });
+            View.PlaceKeyboxClicked += () =>
+            {
+                if (CanPlaceLock)
+                {
+                    Push<KeyboxPlaceController>(vc => vc.Keybox = ConnectedKeybox);
+                }
+            };
 
             View.StartStop += (isScanning) => DoSafeAsync(async () => await StartStopKeybox(isScanning));
             View.Connect += (keybox) => DoSafeAsync(async () => await Connect(keybox));
@@ -69,7 +81,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             if (_keyboxService.ConnectedKeybox != null)
             {
                 View.Show(GenerateGreeting(), _userSession.FirstName, false);
-                View.Show(_keyboxService.ConnectedKeybox);
+                View.Show(_keyboxService.ConnectedKeybox, CanPlaceLock);
             }
             else if (_keyboxService.DiscoveredKeyboxes != null && _keyboxService.DiscoveredKeyboxes.Where(k => !k.Dismissed).Count() > 0)
             {

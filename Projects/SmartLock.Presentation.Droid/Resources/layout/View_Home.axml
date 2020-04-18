@@ -26,6 +26,20 @@
             android:layout_height="24dp"
             android:scaleType="centerCrop"
             android:src="@drawable/icon_message"/>
+        <Button
+            android:id="@+id/btnPlaceLock"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="start|center_vertical"
+            android:text="Place lock"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:paddingStart="12dp"
+            android:paddingEnd="16dp"
+            android:drawablePadding="6dp"
+            android:drawableStart="@drawable/embedded_add_icon"
+            android:background="@drawable/rounded_rectangle_add_lock"/>
     </LinearLayout>
     <TextView
         android:id="@+id/tvName"

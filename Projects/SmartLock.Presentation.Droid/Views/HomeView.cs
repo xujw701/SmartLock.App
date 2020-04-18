@@ -30,6 +30,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvGreeting;
         private TextView _tvName;
         private ImageView _ivMessage;
+        private Button _btnPlaceLock;
 
         private View _searchingBtnContainer;
         private ImageView _ivScanButton;
@@ -57,6 +58,7 @@ namespace SmartLock.Presentation.Droid.Views
         protected override int LayoutId => Resource.Layout.View_Home;
 
         public event Action MessageClick;
+        public event Action PlaceKeyboxClicked;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
         public event Action<Keybox> Cancel;
@@ -75,6 +77,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
             _ivMessage = _view.FindViewById<ImageView>(Resource.Id.ivMessage);
+            _btnPlaceLock = _view.FindViewById<Button>(Resource.Id.btnPlaceLock);
 
             _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
             _ivScanButton = _view.FindViewById<ImageView>(Resource.Id.ivScanButton);
@@ -98,6 +101,11 @@ namespace SmartLock.Presentation.Droid.Views
             _ivMessage.Click += (s, e) =>
             {
                 MessageClick?.Invoke();
+            };
+
+            _btnPlaceLock.Click += (s, e) =>
+            {
+                PlaceKeyboxClicked?.Invoke();
             };
 
             _ivScanButton.Click += (s, e) =>
@@ -154,11 +162,11 @@ namespace SmartLock.Presentation.Droid.Views
             });
         }
 
-        public void Show(Keybox keybox)
+        public void Show(Keybox keybox, bool showPlaceLock)
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
-                SetMode(StateLock);
+                SetMode(StateLock, showPlaceLock);
 
                 _tvLockTitle.Text = keybox.PropertyAddress;
                 _tvLockSubTitle.Text = keybox.KeyboxName;
@@ -216,9 +224,10 @@ namespace SmartLock.Presentation.Droid.Views
             });
         }
 
-        private void SetMode(int state)
+        private void SetMode(int state, bool showPlaceLock = false)
         {
             _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
+            _btnPlaceLock.Visibility = state == StateLock && showPlaceLock ? ViewStates.Visible : ViewStates.Gone;
             _searchingBtnContainer.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
             _rvBleList.Visibility = state == StateLockList ? ViewStates.Visible : ViewStates.Gone;
             _lockContainer.Visibility = state == StateLock ? ViewStates.Visible : ViewStates.Gone;

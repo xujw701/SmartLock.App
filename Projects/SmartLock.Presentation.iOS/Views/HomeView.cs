@@ -27,6 +27,7 @@ namespace SmartLock.Presentation.iOS.Views
         protected override bool CanSwipeBack => false;
 
         public event Action MessageClick;
+        public event Action PlaceKeyboxClicked;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
         public event Action<Keybox> Cancel;
@@ -49,6 +50,11 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 MessageClick?.Invoke();
             }));
+
+            BtnAddLock.TouchUpInside += (s, e) =>
+            {
+                PlaceKeyboxClicked?.Invoke();
+            };
 
             LblScanButton.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
@@ -78,6 +84,8 @@ namespace SmartLock.Presentation.iOS.Views
             }));
 
             LblTimeout.Hidden = true;
+
+            UpdatePlaceLockButton(true);
         }
 
         public void Show(string greeting, string name, bool setMode = true)
@@ -109,7 +117,7 @@ namespace SmartLock.Presentation.iOS.Views
             });
         }
 
-        public void Show(Keybox keybox)
+        public void Show(Keybox keybox, bool showPlaceLock)
         {
             InvokeOnMainThread(() =>
             {
@@ -190,8 +198,11 @@ namespace SmartLock.Presentation.iOS.Views
             }
         }
 
-        private void SetMode(int state)
+        private void SetMode(int state, bool showPlaceLock = false)
         {
+            BtnAddLock.Hidden = state != StateLock && !showPlaceLock;
+            IvAddLock.Hidden = state != StateLock && !showPlaceLock;
+            IvMessage.Hidden = state != StateIdle;
             IvScanButton.Hidden = state != StateIdle;
             LblScanButton.Hidden = state != StateIdle;
             IvBt.Hidden = state != StateIdle;
@@ -230,6 +241,11 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 IvScanButton.Layer.RemoveAllAnimations();
             }
+        }
+
+        private void UpdatePlaceLockButton(bool enabled)
+        {
+            BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
         }
     }
 }
