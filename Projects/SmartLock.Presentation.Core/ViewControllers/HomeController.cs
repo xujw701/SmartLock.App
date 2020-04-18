@@ -21,6 +21,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private Keybox _lastKeybox;
         private Property _property;
 
+        private bool _startConnecting = false;
+
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
             _messageBoxService = messageBoxService;
@@ -94,6 +96,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             UpdateUI();
 
+            if (!_startConnecting) return;
+
+            _startConnecting = false;
+
             if (keybox.KeyboxId > 0 && keybox.PropertyId.HasValue)
             {
                 _property = await _keyboxService.GetBriefKeyboxProperty(keybox.KeyboxId, keybox.PropertyId.Value);
@@ -101,6 +107,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 await _messageBoxService.ShowMessageAsync("Data at door", _property.Notes);
             }
 
+            View.StopCountDown();
             View.StartCountDown(15);
         }
 
@@ -123,6 +130,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task Connect(Keybox keybox)
         {
+            _startConnecting = true;
+
             _lastKeybox = keybox;
 
             await _keyboxService.StopScanningForKeyboxesAsync();
@@ -132,6 +141,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task Cancel(Keybox keybox)
         {
+            _startConnecting = false;
+
             if (keybox != null)
             {
                 await _keyboxService.DisconnectKeyboxAsync(keybox);
@@ -140,6 +151,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private void Dismiss(Keybox keybox)
         {
+            _startConnecting = false;
+
             if (keybox != null)
             {
                 _keyboxService.DismssKeybox(keybox);
@@ -150,6 +163,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
         private async Task Close()
         {
+            _startConnecting = false;
+
             View.StopCountDown();
 
             if (_keyboxService.ConnectedKeybox != null)
