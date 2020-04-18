@@ -32,7 +32,12 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void Show(List<string> environemnts, string selectedEnvironment)
         {
-            LblAppVersion.Text = "App Version: " + NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString();
+#if DEBUG
+            var buildType = " (DEV)";
+#else
+            var buildType = " (PRD)";
+#endif
+            LblAppVersion.Text = "App Version: " + NSBundle.MainBundle.ObjectForInfoDictionary("CFBundleShortVersionString").ToString() + buildType;
 
             UIHelper.SetupPicker(DropdownEnvironment, environemnts.ToArray(), EnvironemntChanged);
 

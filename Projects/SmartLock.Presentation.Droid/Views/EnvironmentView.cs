@@ -40,7 +40,12 @@ namespace SmartLock.Presentation.Droid.Views
 
         public void Show(List<string> environemnts, string selectedEnvironment)
         {
-            _tvAppVersion.Text = "App Version: " + Application.Context.ApplicationContext.PackageManager.GetPackageInfo(Application.Context.ApplicationContext.PackageName, 0).VersionName;
+#if DEBUG
+            var buildType = " (DEV)";
+#else
+            var buildType = " (PRD)";
+#endif
+            _tvAppVersion.Text = "App Version: " + Application.Context.ApplicationContext.PackageManager.GetPackageInfo(Application.Context.ApplicationContext.PackageName, 0).VersionName + buildType;
 
             ConfigueSpinner(_spinEnvironment, environemnts, selectedEnvironment);
         }
