@@ -757,22 +757,54 @@
     <ImageAsset Include="Assets.xcassets\icon_dropdown.imageset\baseline_expand_more_black_24pt_3x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png" />
-    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png" />
-    <ImageAsset Include="Assets.xcassets\logo.imageset\180-1.png" />
-    <ImageAsset Include="Assets.xcassets\clearbg.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\clearbg.imageset\clearbackground.png" />
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\logo.imageset\180-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\clearbg.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\clearbg.imageset\clearbackground.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
