@@ -199,7 +199,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
                 else
                 {
-                    await messageBoxService.ShowMessageAsync("Error", exception.Message);
+#if DEBUG
+                await messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
                 }
             }
             else if (exception is TaskCanceledException)
@@ -208,7 +210,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
             else
             {
-                //await messageBoxService.ShowMessageAsync("Error", exception.Message);
+#if DEBUG
+                await messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
             }
         }
     }

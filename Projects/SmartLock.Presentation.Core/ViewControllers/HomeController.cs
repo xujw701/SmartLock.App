@@ -224,7 +224,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
                 else
                 {
-                    await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#if DEBUG
+                await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
                 }
             }
             else if (exception.Message.Contains("133"))
@@ -242,7 +244,9 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
             else
             {
-                //await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#if DEBUG
+                await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
             }
         }
 

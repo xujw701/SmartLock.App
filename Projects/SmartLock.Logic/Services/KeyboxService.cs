@@ -471,14 +471,7 @@ namespace SmartLock.Logic.Services
 
         private async void HandleException(Exception exception)
         {
-            var webServiceClientException = exception as WebServiceClientException;
-
-            if (webServiceClientException == null && exception.InnerException != null)
-            {
-                webServiceClientException = exception.InnerException as WebServiceClientException;
-            }
-
-            if (webServiceClientException != null)
+            if (exception is WebServiceClientException webServiceClientException)
             {
                 if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
                 {
@@ -487,8 +480,20 @@ namespace SmartLock.Logic.Services
                 }
                 else
                 {
-                    await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#if DEBUG
+                await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
                 }
+            }
+            else if (exception is TaskCanceledException)
+            {
+                // Do nothing
+            }
+            else
+            {
+#if DEBUG
+                await _messageBoxService.ShowMessageAsync("Error", exception.Message);
+#endif
             }
         }
 
