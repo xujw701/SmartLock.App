@@ -90,7 +90,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
             else
             {
-                View.Show(GenerateGreeting(), _userSession.FirstName, _keyboxService.IsOn);
+                View.Show(GenerateGreeting(), _userSession.FirstName);
             }
         }
 
