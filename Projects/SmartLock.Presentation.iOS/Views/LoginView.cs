@@ -48,6 +48,11 @@ namespace SmartLock.Presentation.iOS.Views
             
             ShadowHelper.AddShadow(IvLogo);
 
+#if DEBUG
+            EtUsername.Text = "william";
+            EtPassword.Text = "123";
+#endif
+
             BtnLogin.TouchUpInside += (s, e) => LoginClicked?.Invoke(EtUsername.Text, EtPassword.Text);
             IvCheckbox.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {

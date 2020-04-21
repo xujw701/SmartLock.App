@@ -43,6 +43,11 @@ namespace SmartLock.Presentation.Droid.Views
                 }
             };
 
+#if DEBUG
+            etUsername.Text = "william";
+            etPassword.Text = "123";
+#endif
+
             btnLogin.Click += (s, e) =>
             {
                 LoginClicked?.Invoke(etUsername.Text, etPassword.Text);

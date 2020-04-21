@@ -9,7 +9,7 @@ namespace SmartLock.Logic.Environment
     public class EnvironmentManager : IEnvironmentManager
     {
 #if DEBUG
-        private readonly string DefaultEnvironment = "DEV";
+        private readonly string DefaultEnvironment = "PRD";
 #else
         private readonly string DefaultEnvironment = "PRD";
 #endif
