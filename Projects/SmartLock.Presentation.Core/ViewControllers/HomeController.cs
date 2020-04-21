@@ -92,6 +92,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 View.Show(GenerateGreeting(), _userSession.FirstName);
             }
+
+            View.SetBleIndicator(_keyboxService.IsOn);
         }
 
         private void OnBleStateChanged(bool isOn)
