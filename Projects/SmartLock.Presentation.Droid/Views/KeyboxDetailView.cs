@@ -93,7 +93,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvArea.Text = property.FloorAreaString;
             _tvPrice.Text = property.PriceString;
 
-            _tvFeedback.Text = mine ? "Feedback history" : "Leave a feedback";
+            _tvFeedback.Text = mine ? "Feedback history" : "Feedback";
 
             _btnLockHistory.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
             _btnLockEdit.Visibility = mine ? ViewStates.Visible : ViewStates.Gone;
