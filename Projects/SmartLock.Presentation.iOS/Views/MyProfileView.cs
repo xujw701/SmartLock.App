@@ -27,14 +27,22 @@ namespace SmartLock.Presentation.iOS.Views
                 BackClick?.Invoke();
             }));
 
+            BtnSubmit.Hidden = true;
             BtnSubmit.TouchUpInside += (s, e) => SubmitClick?.Invoke(EtFirstName.Text, EtLastName.Text, EtEmail.Text, EtPhone.Text);
         }
 
         public void Show(string firstName, string lastName, string email, string phone)
         {
+            EtFirstName.SetTitle("First name");
             EtFirstName.Text = firstName;
+
+            EtLastName.SetTitle("Last name");
             EtLastName.Text = lastName;
+
+            EtEmail.SetTitle("Email");
             EtEmail.Text = email;
+
+            EtPhone.SetTitle("Phone");
             EtPhone.Text = phone;
         }
 
