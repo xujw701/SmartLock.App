@@ -1,7 +1,6 @@
 ﻿using SmartLock.Model.Models;
 using SmartLock.Model.Views;
 using System;
-using System.Collections.Generic;
 
 namespace SmartLock.Presentation.Core.Views
 {
@@ -14,6 +13,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action LockDataClick;
         event Action FeedbackClick;
         event Action Refresh;
+        event Action<Cache> ImageClick;
 
         void Show(Keybox keybox, Property property, bool mine);
     }

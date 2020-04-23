@@ -316,6 +316,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\EnvironmentView.cs" />
+    <Compile Include="Views\AttachmentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -335,6 +336,11 @@
       </SubType>
       <Generator>
       </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\View_Attachment.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png">
+      <SubType></SubType>
+      <Generator></Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
@@ -487,9 +493,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_settings_sel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\ic_launcher.png" />

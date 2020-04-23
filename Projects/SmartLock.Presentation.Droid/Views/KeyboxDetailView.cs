@@ -44,6 +44,7 @@ namespace SmartLock.Presentation.Droid.Views
         public event Action LockDataClick;
         public event Action FeedbackClick;
         public event Action Refresh;
+        public event Action<Cache> ImageClick;
 
         protected override int LayoutId => Resource.Layout.View_KeyboxDetail;
 
@@ -120,7 +121,7 @@ namespace SmartLock.Presentation.Droid.Views
 
             if (_imagePagerAdapter == null)
             {
-                _imagePagerAdapter = new ImagePagerAdapter(this, property.PropertyResource.Select(p => p.Image).ToList(), (c) => { });
+                _imagePagerAdapter = new ImagePagerAdapter(this, property.PropertyResource.Select(p => p.Image).ToList(), (c) => { ImageClick?.Invoke(c); });
 
                 _vpMainPager.Adapter = _imagePagerAdapter;
                 _vpMainPager.SetPageTransformer(false, new GalleryPageTransformer());

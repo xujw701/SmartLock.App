@@ -1,10 +1,7 @@
-﻿using SmartLock.Model.Ble;
-using SmartLock.Model.Models;
+﻿using SmartLock.Model.Models;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.Core.ViewService;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -42,6 +39,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             View.LockDataClick += () => _messageBoxService.ShowMessage("Data at door", _property.Notes);
             View.FeedbackClick += () => Push<PropertyFeedbackController>(vc => { vc.Keybox = Keybox; vc.Property = _property; });
             View.Refresh += () => DoSafeAsync(LoadData);
+            View.ImageClick += (cache) => Push<AttachmentController>(vc => vc.Cache = cache);
         }
 
         private async Task LoadData()

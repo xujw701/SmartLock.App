@@ -203,6 +203,7 @@
     <InterfaceDefinition Include="Views\PropertyFeedbackView.xib" />
     <InterfaceDefinition Include="Controls\Cells\PropertyFeedbackCell.xib" />
     <InterfaceDefinition Include="Views\EnvironmentView.xib" />
+    <InterfaceDefinition Include="Views\AttachmentView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -920,6 +921,10 @@
     <Compile Include="Views\EnvironmentView.cs" />
     <Compile Include="Views\EnvironmentView.designer.cs">
       <DependentUpon>EnvironmentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AttachmentView.cs" />
+    <Compile Include="Views\AttachmentView.designer.cs">
+      <DependentUpon>AttachmentView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

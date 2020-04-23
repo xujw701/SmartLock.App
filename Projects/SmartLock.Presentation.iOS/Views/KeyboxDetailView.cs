@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SmartLock.Model.Ble;
 using SmartLock.Model.Models;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Presentation.Core.Views;
@@ -19,6 +18,7 @@ namespace SmartLock.Presentation.iOS.Views
         public event Action LockDataClick;
         public event Action FeedbackClick;
         public event Action Refresh;
+        public event Action<Cache> ImageClick;
 
         public KeyboxDetailView(KeyboxDetailController controller) : base(controller, "KeyboxDetailView")
         {
@@ -108,18 +108,25 @@ namespace SmartLock.Presentation.iOS.Views
             imageViewList.Add(IVImage3);
             imageViewList.Add(IVImage4);
 
+            var propertyImages = property.PropertyResource.Select(p => p.Image).ToList();
+
             foreach (var imageView in imageViewList)
             {
                 imageView.Hidden = true;
                 imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
-            }
+                imageView.UserInteractionEnabled = true;
 
-            var propertyImages = property.PropertyResource.Select(p => p.Image).ToList();
+                imageView.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+                {
+                    ImageClick?.Invoke(propertyImages[(int)imageView.Tag]);
+                }));
+            }
 
             for (var i = 0; i < propertyImages.Count(); i++)
             {
                 imageViewList[i].Image = UIImage.FromFile(propertyImages[i].NativePath);
                 imageViewList[i].Hidden = false;
+                imageViewList[i].Tag = i;
             }
 
             if (propertyImages.Count == 0)

@@ -77,6 +77,8 @@
     <Compile Include="Views\ITabView.cs" />
     <Compile Include="ViewControllers\EnvironmentController.cs" />
     <Compile Include="Views\IEnvironmentView.cs" />
+    <Compile Include="ViewControllers\AttachmentController.cs" />
+    <Compile Include="Views\IAttachmentView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
