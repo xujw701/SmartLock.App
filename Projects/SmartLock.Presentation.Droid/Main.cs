@@ -1,6 +1,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.Support.V7.App;
+using SmartLock.Presentation.Droid.Views;
 using SmartLock.Presentation.Droid.Views.ViewBases;
 using System.Threading.Tasks;
 
@@ -16,11 +17,18 @@ namespace SmartLock.Presentation.Droid
 		{
 			base.OnResume();
 
-            ViewBase.CurrentActivity = this;
+            if (ViewBase.CurrentActivity == null)
+            {
+                ViewBase.CurrentActivity = this;
 
-            await Task.Delay(500);
+                await Task.Delay(500);
 
-            App.Current.Start();
+                App.Current.Start();
+            }
+            else
+            {
+                App.Current.Resume();
+            }
 		}
     }
 }

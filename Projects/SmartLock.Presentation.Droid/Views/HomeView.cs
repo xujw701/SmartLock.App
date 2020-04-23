@@ -18,7 +18,7 @@ using SmartLock.Presentation.Droid.Views.ViewBases;
 
 namespace SmartLock.Presentation.Droid.Views
 {
-    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Theme = "@style/SmartLockTheme.NoActionBar", ScreenOrientation = ScreenOrientation.Portrait)]
     public class HomeView : FragmentView<IHomeView>, IHomeView
     {
         private const int StateIdle = 0;

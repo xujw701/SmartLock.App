@@ -4,7 +4,6 @@ using SmartLock.Presentation.Core.ViewService;
 using SmartLock.Presentation.Droid.Views;
 using Android.Content;
 using SmartLock.Presentation.Core.ViewControllers;
-using SmartLock.Presentation.Core;
 using SmartLock.Presentation.Droid.Views.ViewBases;
 using SmartLock.Model.Services;
 
@@ -79,7 +78,12 @@ namespace SmartLock.Presentation.Droid.Platform
             intent.AddFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask);
             ViewBase.CurrentActivity.StartActivity(intent);
         }
-        
+
+        public override void Resume()
+        {
+            PushViewFor(CurrentViewController, true);
+        }
+
         protected override void PushViewFor<TViewController>(TViewController viewController, bool animated = true)
         {
             ControllerStack.Add(viewController);

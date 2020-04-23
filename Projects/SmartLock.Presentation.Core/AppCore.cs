@@ -1,9 +1,6 @@
-﻿using System;
-using SmartLock.Infrastructure;
+﻿using SmartLock.Infrastructure;
 using SmartLock.Logic;
-using SmartLock.Model;
 using SmartLock.Model.Services;
-using SmartLock.Presentation.Core.ViewService;
 using SmartLock.Presentation.Core.ViewControllers;
 using SmartLock.Logic.Services;
 using SmartLock.Logic.Environment;
@@ -12,7 +9,7 @@ using SmartLock.Logic.PushNotification;
 
 namespace SmartLock.Presentation.Core
 {
-	public abstract class AppCore
+    public abstract class AppCore
 	{
 	    private bool _started;
 
@@ -51,6 +48,11 @@ namespace SmartLock.Presentation.Core
             _started = true;
 
             IoC.Resolve<IViewService>().Push<LoginController>();
+        }
+
+        public void Resume()
+        {
+            IoC.Resolve<IViewService>().Push<MainController>();
         }
 
         /// <summary>

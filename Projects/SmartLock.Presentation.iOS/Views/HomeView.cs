@@ -119,7 +119,7 @@ namespace SmartLock.Presentation.iOS.Views
         {
             InvokeOnMainThread(() =>
             {
-                SetMode(StateLock);
+                SetMode(StateLock, showPlaceLock);
 
                 LblText1.Text = keybox.PropertyAddress;
                 LblText2.Text = keybox.KeyboxName;
@@ -204,8 +204,8 @@ namespace SmartLock.Presentation.iOS.Views
 
         private void SetMode(int state, bool showPlaceLock = false)
         {
-            BtnAddLock.Hidden = state != StateLock && !showPlaceLock;
-            IvAddLock.Hidden = state != StateLock && !showPlaceLock;
+            BtnAddLock.Hidden = !(state == StateLock && showPlaceLock);
+            IvAddLock.Hidden = !(state == StateLock && showPlaceLock);
             IvMessage.Hidden = state != StateIdle;
             IvScanButton.Hidden = state != StateIdle;
             LblScanButton.Hidden = state != StateIdle;

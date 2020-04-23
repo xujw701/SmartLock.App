@@ -74,6 +74,10 @@ namespace SmartLock.Presentation.iOS.Platform
             AppDelegate.NavigationController.PopToRootViewController(true);
         }
 
+        public override void Resume()
+        {
+        }
+
         protected override void PushViewFor<T>(T viewController, bool animated = true)
         {
             var viewType = typeof(T);

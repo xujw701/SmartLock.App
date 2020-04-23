@@ -21,7 +21,10 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private bool CanPlaceLock =>  ConnectedKeybox != null
                 && ConnectedKeybox.UserId.HasValue
                 && ConnectedKeybox.UserId.Value == _userSession.UserId;
-        private string PlaceLockTitle => ConnectedKeybox != null && ConnectedKeybox.PropertyId.HasValue ? "Replace Lock" : "Place Lock";
+
+        private string PlaceLockTitle => ConnectedKeybox != null
+                && ConnectedKeybox.PropertyId.HasValue
+                && CanPlaceLock ? "Replace Lock" : "Place Lock";
 
         public KeyboxesController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {

@@ -26,6 +26,8 @@ namespace SmartLock.Model.Services
         /// </summary>
         void PopToRoot();
 
+        void Resume();
+
         Type ResolveViewImplementation<TView>() where TView : class, IView;
 
         Type ResolveViewImplementation(Type viewType);

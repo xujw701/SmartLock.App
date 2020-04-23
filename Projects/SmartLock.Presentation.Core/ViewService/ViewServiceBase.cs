@@ -34,6 +34,8 @@ namespace SmartLock.Presentation.Core.ViewService
         /// </summary>
         public abstract void PopToRoot();
 
+        public abstract void Resume();
+
         /// <summary>
         /// Create and push the view assosciated with <see cref="TViewController"/>.
         /// </summary>
