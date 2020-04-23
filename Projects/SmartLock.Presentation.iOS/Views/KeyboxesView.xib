@@ -29,10 +29,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="316" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="282" y="69" width="100" height="32"/>
+                    <rect key="frame" x="272" y="69" width="110" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
                     <color key="backgroundColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
-                    <state key="normal" title="    Add Lock">
+                    <state key="normal" title="    Place Lock">
                         <color key="titleColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
                     </state>
                     <userDefinedRuntimeAttributes>
@@ -42,11 +42,11 @@
                     </userDefinedRuntimeAttributes>
                     <constraints>
                         <constraint id="319" firstAttribute="height" constant="32"/>
-                        <constraint id="320" firstAttribute="width" constant="100"/>
+                        <constraint id="320" firstAttribute="width" constant="110"/>
                     </constraints>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="322" translatesAutoresizingMaskIntoConstraints="NO" image="icon_add">
-                    <rect key="frame" x="290" y="77" width="16" height="16"/>
+                    <rect key="frame" x="280" y="77" width="16" height="16"/>
                     <constraints>
                         <constraint id="325" firstAttribute="height" constant="16"/>
                         <constraint id="326" firstAttribute="width" constant="16"/>

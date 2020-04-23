@@ -1,9 +1,7 @@
 ﻿using SmartLock.Model.Models;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
-using SmartLock.Presentation.Core.ViewService;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -23,6 +21,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private bool CanPlaceLock =>  ConnectedKeybox != null
                 && ConnectedKeybox.UserId.HasValue
                 && ConnectedKeybox.UserId.Value == _userSession.UserId;
+        private string PlaceLockTitle => ConnectedKeybox != null && ConnectedKeybox.PropertyId.HasValue ? "Replace Lock" : "Place Lock";
 
         public KeyboxesController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IKeyboxService keyboxService) : base(viewService)
         {
@@ -35,8 +34,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
-            _keyboxService.OnKeyboxConnected += (keybox) => { View.UpdatePlaceLockButton(CanPlaceLock); };
-            _keyboxService.OnKeyboxDisconnected += () => { View.UpdatePlaceLockButton(CanPlaceLock); };
+            _keyboxService.OnKeyboxConnected += (keybox) => UpdatePlaceLockButton();
+            _keyboxService.OnKeyboxDisconnected += () => UpdatePlaceLockButton();
 
             View.KeyboxClicked += (keybox) => Push<KeyboxDetailController>(vc => vc.Keybox = keybox);
             View.PlaceKeyboxClicked += () =>
@@ -63,14 +62,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
                 LoadData();
             };
-            View.Refresh += () => View.UpdatePlaceLockButton(CanPlaceLock);
+            View.Refresh += () => UpdatePlaceLockButton();
         }
 
         protected override void OnViewWillShow()
         {
             base.OnViewWillShow();
 
-            View.UpdatePlaceLockButton(CanPlaceLock);
+            UpdatePlaceLockButton();
 
             LoadData();
         }
@@ -91,14 +90,23 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             _keyboxes = await _keyboxService.GetMyListingKeyboxes();
 
-            View.Show(_keyboxes, CanPlaceLock);
+            View.Show(_keyboxes);
+
+            UpdatePlaceLockButton();
         }
 
         private async Task LoadOthersData()
         {
             _keyboxes = await _keyboxService.GetKeyboxesIUnlocked();
 
-            View.Show(_keyboxes, CanPlaceLock);
+            View.Show(_keyboxes);
+
+            UpdatePlaceLockButton();
+        }
+
+        private void UpdatePlaceLockButton()
+        {
+            View.UpdatePlaceLockButton(PlaceLockTitle, CanPlaceLock);
         }
     }
 }

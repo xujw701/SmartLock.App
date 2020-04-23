@@ -27,6 +27,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private bool CanPlaceLock => ConnectedKeybox != null
                 && ConnectedKeybox.UserId.HasValue
                 && ConnectedKeybox.UserId.Value == _userSession.UserId;
+        private string PlaceLockTitle => ConnectedKeybox != null && ConnectedKeybox.PropertyId.HasValue ? "Replace Lock" : "Place Lock";
 
         public HomeController(IViewService viewService, IMessageBoxService messageBoxService, IUserSession userSession, IUserService userService, IKeyboxService keyboxService, IPlatformServices platformServices) : base(viewService)
         {
@@ -94,6 +95,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
 
             View.SetBleIndicator(_keyboxService.IsOn);
+
+            UpdatePlaceLockButton();
         }
 
         private void OnBleStateChanged(bool isOn)
@@ -257,6 +260,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
             await _userService.LogOut();
 
             PopToRoot();
+        }
+
+        private void UpdatePlaceLockButton()
+        {
+            View.UpdatePlaceLockButton(PlaceLockTitle, CanPlaceLock);
         }
     }
 }

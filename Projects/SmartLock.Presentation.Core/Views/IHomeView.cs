@@ -26,5 +26,6 @@ namespace SmartLock.Presentation.Core.Views
         void SetBleIndicator(bool isOn);
         void StartCountDown(int timeout);
         void StopCountDown();
+        void UpdatePlaceLockButton(string buttonText, bool enabled);
     }
 }

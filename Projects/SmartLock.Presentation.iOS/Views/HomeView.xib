@@ -206,7 +206,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="32147" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
-                    <rect key="frame" x="282" y="69" width="100" height="32"/>
+                    <rect key="frame" x="280" y="116" width="110" height="32"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12" weight="medium"/>
                     <color key="backgroundColor" systemColor="systemBlueColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
                     <state key="normal" title="    Add Lock">
@@ -219,11 +219,11 @@
                     </userDefinedRuntimeAttributes>
                     <constraints>
                         <constraint id="32148" firstAttribute="height" constant="32"/>
-                        <constraint id="32149" firstAttribute="width" constant="100"/>
+                        <constraint id="32149" firstAttribute="width" constant="110"/>
                     </constraints>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="32150" translatesAutoresizingMaskIntoConstraints="NO" image="icon_add" hidden="YES">
-                    <rect key="frame" x="290" y="77" width="16" height="16"/>
+                    <rect key="frame" x="288" y="124" width="16" height="16"/>
                     <constraints>
                         <constraint id="32151" firstAttribute="height" constant="16"/>
                         <constraint id="32152" firstAttribute="width" constant="16"/>
@@ -259,8 +259,8 @@
                 <constraint id="24143" firstItem="24142" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="24"/>
                 <constraint id="24144" firstAttribute="trailing" secondItem="24142" secondAttribute="trailing" constant="24"/>
                 <constraint id="24145" firstItem="24142" firstAttribute="top" secondItem="222" secondAttribute="bottom" constant="24"/>
-                <constraint id="32195" firstItem="32147" firstAttribute="top" secondItem="2" secondAttribute="top" constant="69"/>
-                <constraint id="32280" firstAttribute="trailing" secondItem="32147" secondAttribute="trailing" constant="32"/>
+                <constraint id="32195" firstItem="32147" firstAttribute="top" secondItem="2" secondAttribute="top" constant="116"/>
+                <constraint id="32280" firstAttribute="trailing" secondItem="32147" secondAttribute="trailing" constant="24"/>
                 <constraint id="32365" firstItem="32150" firstAttribute="centerY" secondItem="32147" secondAttribute="centerY"/>
                 <constraint id="32408" firstItem="32150" firstAttribute="leading" secondItem="32147" secondAttribute="leading" constant="8"/>
             </constraints>

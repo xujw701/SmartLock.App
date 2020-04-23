@@ -84,8 +84,6 @@ namespace SmartLock.Presentation.iOS.Views
             }));
 
             LblTimeout.Hidden = true;
-
-            UpdatePlaceLockButton(true);
         }
 
         public void Show(string greeting, string name, bool setMode = true)
@@ -183,6 +181,12 @@ namespace SmartLock.Presentation.iOS.Views
             });
         }
 
+        public void UpdatePlaceLockButton(string buttonText, bool enabled)
+        {
+            BtnAddLock.SetTitle("    " + buttonText, UIControlState.Normal);
+            BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
+        }
+
         [Export("ShowCountDown:")]
         private void ShowCountDown(NSTimer timer)
         {
@@ -241,11 +245,6 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 IvScanButton.Layer.RemoveAllAnimations();
             }
-        }
-
-        private void UpdatePlaceLockButton(bool enabled)
-        {
-            BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
         }
     }
 }

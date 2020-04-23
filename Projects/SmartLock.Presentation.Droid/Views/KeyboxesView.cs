@@ -80,22 +80,21 @@ namespace SmartLock.Presentation.Droid.Views
             Refresh?.Invoke();
         }
 
-        public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)
+        public void Show(List<Keybox> keyboxes)
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
-                UpdatePlaceLockButton(placeLockButtonEnabled);
-
                 _adapter = new KeyboxAdapter(keyboxes, KeyboxClicked);
                 _rvKeyboxList.SetLayoutManager(new LinearLayoutManager(_context));
                 _rvKeyboxList.SetAdapter(_adapter);
             });
         }
 
-        public void UpdatePlaceLockButton(bool enabled)
+        public void UpdatePlaceLockButton(string buttonText, bool enabled)
         {
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
+                _btnPlaceLock.Text = buttonText;
                 _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
             });
         }

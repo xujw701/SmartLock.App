@@ -224,6 +224,15 @@ namespace SmartLock.Presentation.Droid.Views
             });
         }
 
+        public void UpdatePlaceLockButton(string buttonText, bool enabled)
+        {
+            ViewBase.CurrentActivity.RunOnUiThread(() =>
+            {
+                _btnPlaceLock.Text = buttonText;
+                _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
+            });
+        }
+
         private void SetMode(int state, bool showPlaceLock = false)
         {
             _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;

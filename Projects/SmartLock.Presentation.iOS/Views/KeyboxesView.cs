@@ -53,10 +53,8 @@ namespace SmartLock.Presentation.iOS.Views
             Refresh?.Invoke();
         }
 
-        public void Show(List<Keybox> keyboxes, bool placeLockButtonEnabled)
+        public void Show(List<Keybox> keyboxes)
         {
-            UpdatePlaceLockButton(placeLockButtonEnabled);
-
             if (_keyboxSource == null)
             {
                 _keyboxSource = new KeyboxSource(keyboxes, KeyboxClicked);
@@ -73,8 +71,9 @@ namespace SmartLock.Presentation.iOS.Views
             KeyboxesTableView.ReloadData();
         }
 
-        public void UpdatePlaceLockButton(bool enabled)
+        public void UpdatePlaceLockButton(string buttonText, bool enabled)
         {
+            BtnAddLock.SetTitle("    " + buttonText, UIControlState.Normal);
             BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
         }
 
@@ -85,4 +84,3 @@ namespace SmartLock.Presentation.iOS.Views
         }
     }
 }
-
