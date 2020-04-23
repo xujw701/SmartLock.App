@@ -70,6 +70,15 @@ namespace SmartLock.Logic.Services
             Clear();
 
             await _localBleService.StartScanningForDevicesAsync();
+
+            try
+            {
+                await _webService.GetMe();
+            }
+            catch (Exception e)
+            {
+                HandleException(e);
+            }
         }
 
         public async Task StopScanningForKeyboxesAsync()
