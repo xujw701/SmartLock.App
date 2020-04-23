@@ -33,6 +33,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvFeedback;
 
         private ViewPager _vpMainPager;
+        private LinearLayout _pageIndicator;
         private ImageView _ivPlaceholder;
 
         private ImagePagerAdapter _imagePagerAdapter;
@@ -68,6 +69,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvFeedback = FindViewById<TextView>(Resource.Id.tvFeedback);
 
             _vpMainPager = FindViewById<ViewPager>(Resource.Id.vp_main_pager);
+            _pageIndicator = FindViewById<LinearLayout>(Resource.Id.pageIndicator);
             _ivPlaceholder = FindViewById<ImageView>(Resource.Id.ivPlaceholder);
 
             _btnBack.Click += (s, e) => BackClick?.Invoke();
@@ -110,11 +112,18 @@ namespace SmartLock.Presentation.Droid.Views
             if (property.PropertyResource != null && property.PropertyResource.Count > 0)
             {
                 _vpMainPager.Visibility = ViewStates.Visible;
+                _pageIndicator.Visibility = ViewStates.Visible;
                 _ivPlaceholder.Visibility = ViewStates.Gone;
+
+                for (var pos = 0; pos < _pageIndicator.ChildCount; pos++)
+                {
+                    _pageIndicator.GetChildAt(pos).Visibility = pos < property.PropertyResource.Count ? ViewStates.Visible : ViewStates.Gone;
+                }
             }
             else
             {
                 _vpMainPager.Visibility = ViewStates.Gone;
+                _pageIndicator.Visibility = ViewStates.Gone;
                 _ivPlaceholder.Visibility = ViewStates.Visible;
                 return;
             }
@@ -131,6 +140,16 @@ namespace SmartLock.Presentation.Droid.Views
                 _imagePagerAdapter.Items = property.PropertyResource.Select(p => p.Image).ToList();
                 _imagePagerAdapter.NotifyDataSetChanged();
             }
+
+            _pageIndicator.GetChildAt(0).Enabled = true;
+
+            _vpMainPager.PageScrolled += (s, args) =>
+            {
+                for(var pos = 0; pos < _pageIndicator.ChildCount; pos++)
+                {
+                    _pageIndicator.GetChildAt(pos).Enabled = pos == _vpMainPager.CurrentItem;
+                }
+            };
         }
     }
 }

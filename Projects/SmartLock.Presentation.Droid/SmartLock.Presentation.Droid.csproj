@@ -342,6 +342,9 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\circle_disable.xml" />
+    <AndroidResource Include="Resources\drawable\circle_enable.xml" />
+    <AndroidResource Include="Resources\drawable\circle_main.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />
