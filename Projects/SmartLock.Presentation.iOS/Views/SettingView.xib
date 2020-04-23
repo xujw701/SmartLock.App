@@ -116,7 +116,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4094">
                             <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
-                            <state key="normal" title="Feedback">
+                            <state key="normal" title="App Feedback">
                                 <color key="titleColor" red="0.0060770213603973389" green="0.076477870345115662" blue="0.19192057847976685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>
