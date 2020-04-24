@@ -112,6 +112,12 @@ namespace SmartLock.Presentation.iOS.Views
 
             var dotList = new List<UIImageView>();
 
+            // Clear PageIndicatorContainer subviews
+            foreach (var view in PageIndicatorContainer.Subviews)
+            {
+                view.RemoveFromSuperview();
+            }
+
             foreach (var imageView in imageViewList)
             {
                 imageView.Hidden = true;
