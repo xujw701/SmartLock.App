@@ -104,6 +104,14 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStackView PageIndicatorContainer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView ScrollView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView SlideShow { get; set; }
 
         [Outlet]
@@ -220,6 +228,16 @@ namespace SmartLock.Presentation.iOS.Views
             if (LblText2 != null) {
                 LblText2.Dispose ();
                 LblText2 = null;
+            }
+
+            if (PageIndicatorContainer != null) {
+                PageIndicatorContainer.Dispose ();
+                PageIndicatorContainer = null;
+            }
+
+            if (ScrollView != null) {
+                ScrollView.Dispose ();
+                ScrollView = null;
             }
 
             if (SlideShow != null) {

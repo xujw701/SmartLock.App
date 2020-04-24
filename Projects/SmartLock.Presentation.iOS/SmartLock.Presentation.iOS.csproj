@@ -806,6 +806,10 @@
     <ImageAsset Include="Assets.xcassets\clearbg.imageset\clearbackground.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon_dot_enable.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_dot_disable.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_dot_enable.imageset\icon_dot_enable.png" />
+    <ImageAsset Include="Assets.xcassets\icon_dot_disable.imageset\icon_dot_disable.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\Sources\BleDeviceSource.cs" />
@@ -945,6 +949,8 @@
     <Folder Include="Assets.xcassets\icon_sms.imageset\" />
     <Folder Include="Assets.xcassets\icon_dropdown.imageset\" />
     <Folder Include="Assets.xcassets\clearbg.imageset\" />
+    <Folder Include="Assets.xcassets\icon_dot_enable.imageset\" />
+    <Folder Include="Assets.xcassets\icon_dot_disable.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

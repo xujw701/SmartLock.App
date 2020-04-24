@@ -110,6 +110,8 @@ namespace SmartLock.Presentation.iOS.Views
 
             var propertyImages = property.PropertyResource.Select(p => p.Image).ToList();
 
+            var dotList = new List<UIImageView>();
+
             foreach (var imageView in imageViewList)
             {
                 imageView.Hidden = true;
@@ -127,6 +129,8 @@ namespace SmartLock.Presentation.iOS.Views
                 imageViewList[i].Image = UIImage.FromFile(propertyImages[i].NativePath);
                 imageViewList[i].Hidden = false;
                 imageViewList[i].Tag = i;
+
+                dotList.Add(CreateDot(i == 0));
             }
 
             if (propertyImages.Count == 0)
@@ -134,7 +138,33 @@ namespace SmartLock.Presentation.iOS.Views
                 imageViewList[0].Image = UIImage.FromBundle("Image");
                 imageViewList[0].Hidden = false;
             }
+
+            SlideShow.Scrolled += (s, a) =>
+            {
+                var pageWidth = SlideShow.Frame.Size.Width;
+                var page = Math.Floor((SlideShow.ContentOffset.X - pageWidth / 2) / pageWidth) + 1;
+
+                for (var pos = 0; pos < dotList.Count; pos ++)
+                {
+                    dotList[pos].Image = DotImage(pos == page);
+                }
+            };
+        }
+
+        private UIImageView CreateDot(bool enable)
+        {
+            var dot = new UIImageView(DotImage(enable));
+            dot.HeightAnchor.ConstraintEqualTo(10).Active = true;
+            dot.WidthAnchor.ConstraintEqualTo(10).Active = true;
+
+            PageIndicatorContainer.AddArrangedSubview(dot);
+
+            return dot;
+        }
+
+        private UIImage DotImage(bool enable)
+        {
+            return UIImage.FromBundle(enable ? "icon_dot_enable" : "icon_dot_disable");
         }
     }
 }
-

@@ -31,6 +31,8 @@
                 <outlet property="IVImage2" destination="6351" id="name-outlet-6351"/>
                 <outlet property="IVImage3" destination="6349" id="name-outlet-6349"/>
                 <outlet property="IVImage4" destination="6350" id="name-outlet-6350"/>
+                <outlet property="ScrollView" destination="1187" id="name-outlet-1187"/>
+                <outlet property="PageIndicatorContainer" destination="11081" id="name-outlet-11081"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -333,6 +335,12 @@
                                 <constraint id="5644" firstAttribute="bottom" secondItem="5640" secondAttribute="bottom"/>
                             </constraints>
                         </scrollView>
+                        <stackView opaque="NO" contentMode="center" id="11081" translatesAutoresizingMaskIntoConstraints="NO" alignment="center" distribution="equalSpacing" spacing="10" userInteractionEnabled="NO" misplaced="YES" ambiguous="YES">
+                            <rect key="frame" x="160" y="283" width="58" height="10"/>
+                            <constraints>
+                                <constraint id="12540" firstAttribute="height" constant="10"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <constraints>
                         <constraint id="1222" firstItem="343" firstAttribute="top" secondItem="1187" secondAttribute="top" constant="32"/>
@@ -368,6 +376,8 @@
                         <constraint id="4262" firstItem="4260" firstAttribute="leading" secondItem="1187" secondAttribute="leading" constant="20"/>
                         <constraint id="4263" firstAttribute="trailing" secondItem="4260" secondAttribute="trailing" constant="20"/>
                         <constraint id="4264" firstItem="357" firstAttribute="top" secondItem="4260" secondAttribute="bottom" constant="20"/>
+                        <constraint id="13811" firstItem="11081" firstAttribute="top" secondItem="4260" secondAttribute="top" constant="210"/>
+                        <constraint id="13812" firstAttribute="centerX" secondItem="11081" secondAttribute="centerX"/>
                     </constraints>
                 </scrollView>
             </subviews>
