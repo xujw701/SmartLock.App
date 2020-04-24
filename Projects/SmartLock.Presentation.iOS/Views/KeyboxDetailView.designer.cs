@@ -72,6 +72,14 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvLeft { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView IvRight { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvShare { get; set; }
 
         [Outlet]
@@ -188,6 +196,16 @@ namespace SmartLock.Presentation.iOS.Views
             if (IVImage4 != null) {
                 IVImage4.Dispose ();
                 IVImage4 = null;
+            }
+
+            if (IvLeft != null) {
+                IvLeft.Dispose ();
+                IvLeft = null;
+            }
+
+            if (IvRight != null) {
+                IvRight.Dispose ();
+                IvRight = null;
             }
 
             if (IvShare != null) {

@@ -35,6 +35,8 @@ namespace SmartLock.Presentation.Droid.Views
         private ViewPager _vpMainPager;
         private LinearLayout _pageIndicator;
         private ImageView _ivPlaceholder;
+        private ImageView _ivLeft;
+        private ImageView _ivRight;
 
         private ImagePagerAdapter _imagePagerAdapter;
 
@@ -71,6 +73,8 @@ namespace SmartLock.Presentation.Droid.Views
             _vpMainPager = FindViewById<ViewPager>(Resource.Id.vp_main_pager);
             _pageIndicator = FindViewById<LinearLayout>(Resource.Id.pageIndicator);
             _ivPlaceholder = FindViewById<ImageView>(Resource.Id.ivPlaceholder);
+            _ivLeft = FindViewById<ImageView>(Resource.Id.ivLeft);
+            _ivRight = FindViewById<ImageView>(Resource.Id.ivRight);
 
             _btnBack.Click += (s, e) => BackClick?.Invoke();
             _btnLockHistory.Click += (s, e) => LockHistoryClick?.Invoke();
@@ -114,6 +118,8 @@ namespace SmartLock.Presentation.Droid.Views
                 _vpMainPager.Visibility = ViewStates.Visible;
                 _pageIndicator.Visibility = ViewStates.Visible;
                 _ivPlaceholder.Visibility = ViewStates.Gone;
+                _ivLeft.Visibility = ViewStates.Visible;
+                _ivRight.Visibility = ViewStates.Visible;
 
                 for (var pos = 0; pos < _pageIndicator.ChildCount; pos++)
                 {
@@ -125,6 +131,8 @@ namespace SmartLock.Presentation.Droid.Views
                 _vpMainPager.Visibility = ViewStates.Gone;
                 _pageIndicator.Visibility = ViewStates.Gone;
                 _ivPlaceholder.Visibility = ViewStates.Visible;
+                _ivLeft.Visibility = ViewStates.Gone;
+                _ivRight.Visibility = ViewStates.Gone;
                 return;
             }
 

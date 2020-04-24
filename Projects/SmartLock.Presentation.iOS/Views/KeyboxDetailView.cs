@@ -137,6 +137,14 @@ namespace SmartLock.Presentation.iOS.Views
             {
                 imageViewList[0].Image = UIImage.FromBundle("Image");
                 imageViewList[0].Hidden = false;
+
+                IvLeft.Hidden = true;
+                IvRight.Hidden = true;
+            }
+            else
+            {
+                IvLeft.Hidden = false;
+                IvRight.Hidden = false;
             }
 
             SlideShow.Scrolled += (s, a) =>
