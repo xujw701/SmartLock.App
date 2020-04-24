@@ -51,7 +51,12 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 {
                     if (ConnectedKeybox == null)
                     {
-                        _messageBoxService.ShowMessage("Cannot place keybox", "Please connect to a keybox first.");
+                        DoSafeAsync(async () =>
+                        {
+                            await _messageBoxService.ShowMessageAsync("Cannot place keybox", "Please connect to a keybox first.");
+                            Pop();
+                            Push<MainController>();
+                        }, setIsBusy: false);
                     }
                     else
                     {
