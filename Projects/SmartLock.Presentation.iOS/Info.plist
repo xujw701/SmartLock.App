@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Open Says Me</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.21</string>
+	<string>1.0.22</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -58,6 +58,6 @@
 	<key>CFBundleName</key>
 	<string>Open Says Me</string>
 	<key>CFBundleVersion</key>
-	<string>21</string>
+	<string>22</string>
 </dict>
 </plist>
