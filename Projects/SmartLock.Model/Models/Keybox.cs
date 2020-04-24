@@ -17,12 +17,15 @@ namespace SmartLock.Model.Models
 
         // Extra
         public int AcessUserId { get; set; }
-        public DateTime InOn { get; set; }
+        public DateTimeOffset InOn { get; set; }
 
         // Local var
         public DeviceState State { get; set; }
         public bool Dismissed { get; set; }
 
         public string BatteryLevelString => $"{BatteryLevel}%";
+
+        public string InOnDateString => InOn.LocalDateTime.ToString("dd/MM/yy");
+        public string InOnTimeString => InOn.LocalDateTime.ToString("HH:mm");
     }
 }

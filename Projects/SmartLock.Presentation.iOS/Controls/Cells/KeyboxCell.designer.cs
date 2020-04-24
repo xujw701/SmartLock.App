@@ -31,11 +31,19 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText1 { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblText2 { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LblTime { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
@@ -59,6 +67,11 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
                 LblBattery = null;
             }
 
+            if (LblDate != null) {
+                LblDate.Dispose ();
+                LblDate = null;
+            }
+
             if (LblText1 != null) {
                 LblText1.Dispose ();
                 LblText1 = null;
@@ -67,6 +80,11 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             if (LblText2 != null) {
                 LblText2.Dispose ();
                 LblText2 = null;
+            }
+
+            if (LblTime != null) {
+                LblTime.Dispose ();
+                LblTime = null;
             }
         }
     }

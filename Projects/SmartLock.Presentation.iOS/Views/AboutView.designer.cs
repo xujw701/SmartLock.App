@@ -26,10 +26,6 @@ namespace SmartLock.Presentation.iOS.Views
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LblAppVersion { get; set; }
 
-        [Action ("UIButton4582_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton4582_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (BtnFeedback != null) {

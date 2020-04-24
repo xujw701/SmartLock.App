@@ -49,6 +49,18 @@
                                     <constraint id="498" firstAttribute="width" constant="16"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3577" translatesAutoresizingMaskIntoConstraints="NO" text="10/12/20" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="242" y="16" width="56" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.3097664118" green="0.3098254502" blue="0.3097627163" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3580" translatesAutoresizingMaskIntoConstraints="NO" text="10:12" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="234" y="42" width="56" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" colorSpace="custom" customColorSpace="sRGB" red="0.3097664118" green="0.3098254502" blue="0.3097627163" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint id="1184" firstItem="157" firstAttribute="leading" secondItem="849" secondAttribute="leading" constant="15"/>
@@ -63,6 +75,10 @@
                             <constraint id="1199" firstAttribute="centerY" secondItem="494" secondAttribute="centerY" constant="2"/>
                             <constraint id="1200" firstAttribute="centerY" secondItem="493" secondAttribute="centerY" constant="1"/>
                             <constraint id="2372" firstItem="493" firstAttribute="leading" secondItem="158" secondAttribute="trailing" constant="6"/>
+                            <constraint id="3578" firstItem="3577" firstAttribute="centerY" secondItem="158" secondAttribute="centerY"/>
+                            <constraint id="3579" firstAttribute="trailing" secondItem="3577" secondAttribute="trailing" constant="6"/>
+                            <constraint id="3581" firstItem="3580" firstAttribute="centerY" secondItem="159" secondAttribute="centerY"/>
+                            <constraint id="3582" firstAttribute="trailing" secondItem="3580" secondAttribute="trailing" constant="6"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
@@ -85,6 +101,8 @@
                 <outlet property="LblText2" destination="159" id="name-outlet-159"/>
                 <outlet property="LblBattery" destination="494" id="name-outlet-494"/>
                 <outlet property="IvBattery" destination="493" id="name-outlet-493"/>
+                <outlet property="LblDate" destination="3577" id="name-outlet-3577"/>
+                <outlet property="LblTime" destination="3580" id="name-outlet-3580"/>
             </connections>
             <color key="backgroundColor" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace" white="1" alpha="1"/>
         </tableViewCell>

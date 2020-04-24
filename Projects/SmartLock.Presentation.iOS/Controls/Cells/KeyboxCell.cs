@@ -39,6 +39,26 @@ namespace SmartLock.Presentation.iOS.Controls.Cells
             LblText2.Text = keybox.KeyboxName;
             LblBattery.Text = keybox.BatteryLevelString;
 
+            if (keybox.InOn == null || keybox.InOn == DateTimeOffset.MinValue)
+            {
+                IvBattery.Hidden = false;
+                LblBattery.Hidden = false;
+
+                LblDate.Hidden = true;
+                LblTime.Hidden = true;
+            }
+            else
+            {
+                IvBattery.Hidden = true;
+                LblBattery.Hidden = true;
+
+                LblDate.Hidden = false;
+                LblTime.Hidden = false;
+
+                LblDate.Text = keybox.InOnDateString;
+                LblTime.Text = keybox.InOnTimeString;
+            }
+
             SetBatteryColor(keybox);
         }
 
