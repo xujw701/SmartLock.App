@@ -14,6 +14,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         {
             base.OnViewLoaded();
 
+            View.BackClick += () => Pop();
             View.FeedbackClick += () => { Push<FeedbackController>(); };
         }
     }

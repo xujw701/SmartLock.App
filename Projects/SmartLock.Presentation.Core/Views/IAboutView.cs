@@ -5,6 +5,7 @@ namespace SmartLock.Presentation.Core.Views
 {
     public interface IAboutView : IView
     {
+        event Action BackClick;
         event Action FeedbackClick;
     }
 }
