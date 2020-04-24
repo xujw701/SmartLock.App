@@ -12,7 +12,7 @@
                 <outlet property="BtnLogout" destination="4116" id="name-outlet-4116"/>
                 <outlet property="BtnProfile" destination="2559" id="name-outlet-2559"/>
                 <outlet property="BtnPassword" destination="3275" id="name-outlet-3275"/>
-                <outlet property="BtnFeedback" destination="4094" id="name-outlet-4094"/>
+                <outlet property="BtnAbout" destination="4094" id="name-outlet-4094"/>
                 <outlet property="LblName" destination="2556" id="name-outlet-2556"/>
                 <outlet property="IvPortrait" destination="2465" id="name-outlet-2465"/>
             </connections>
@@ -116,7 +116,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4094">
                             <rect key="frame" x="0.0" y="0.0" width="224" height="30"/>
-                            <state key="normal" title="App Feedback">
+                            <state key="normal" title="About Us">
                                 <color key="titleColor" red="0.0060770213603973389" green="0.076477870345115662" blue="0.19192057847976685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                         </button>

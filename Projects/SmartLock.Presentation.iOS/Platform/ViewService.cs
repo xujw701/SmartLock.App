@@ -46,6 +46,7 @@ namespace SmartLock.Presentation.iOS.Platform
             _viewDictionary.Add(typeof(EnvironmentController), vc => new EnvironmentView(vc as EnvironmentController));
 
             _viewDictionary.Add(typeof(AttachmentController), vc => new AttachmentView(vc as AttachmentController));
+            _viewDictionary.Add(typeof(AboutController), vc => new AboutView(vc as AboutController));
         }
 
         public override void Pop()

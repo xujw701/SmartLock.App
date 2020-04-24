@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutView">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="BtnFeedback" destination="2530" id="name-outlet-2530"/>
+                <outlet property="LblAppVersion" destination="1790" id="name-outlet-1790"/>
+                <outlet property="IvBack" destination="1138" id="name-outlet-1138"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_back" translatesAutoresizingMaskIntoConstraints="NO" id="1138">
+                    <rect key="frame" x="20" y="62" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="1139"/>
+                        <constraint firstAttribute="width" constant="24" id="1140"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1291" misplaced="YES">
+                    <rect key="frame" x="167.5" y="64" width="79" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" red="0.33267959952354431" green="0.38329923152923584" blue="0.4745948314666748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1523" translatesAutoresizingMaskIntoConstraints="NO" image="logo">
+                    <rect key="frame" x="167" y="125" width="80" height="80"/>
+                    <constraints>
+                        <constraint id="1524" firstAttribute="width" constant="80"/>
+                        <constraint id="1525" firstAttribute="height" constant="80"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App Version: 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1790" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="145.5" y="224.5" width="123" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0060770213603973389" green="0.076477870345115662" blue="0.19192057847976685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" id="2529" clipsSubviews="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="36" y="309" width="342" height="51"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2530">
+                            <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                            <state key="normal" title="Feedback">
+                                <color key="titleColor" red="0.0060770213603973389" green="0.076477870345115662" blue="0.19192057847976685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chevron" translatesAutoresizingMaskIntoConstraints="NO" id="2531">
+                            <rect key="frame" x="318" y="3" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="2532"/>
+                                <constraint firstAttribute="width" constant="24" id="2533"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2534">
+                            <rect key="frame" x="0.0" y="40" width="342" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="2535"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="2530" firstAttribute="top" secondItem="2529" secondAttribute="top" id="2536"/>
+                        <constraint firstItem="2530" firstAttribute="leading" secondItem="2529" secondAttribute="leading" id="2537"/>
+                        <constraint firstItem="2531" firstAttribute="centerY" secondItem="2530" secondAttribute="centerY" id="2538"/>
+                        <constraint firstAttribute="trailing" secondItem="2531" secondAttribute="trailing" id="2539"/>
+                        <constraint firstItem="2531" firstAttribute="leading" secondItem="2530" secondAttribute="trailing" id="2540"/>
+                        <constraint firstItem="2534" firstAttribute="leading" secondItem="2529" secondAttribute="leading" id="2541"/>
+                        <constraint firstAttribute="trailing" secondItem="2534" secondAttribute="trailing" id="2542"/>
+                        <constraint firstItem="2534" firstAttribute="top" secondItem="2530" secondAttribute="bottom" constant="10" id="2543"/>
+                        <constraint firstAttribute="bottom" secondItem="2534" secondAttribute="bottom" id="2544" constant="10"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="4581" clipsSubviews="YES" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="36" y="380" width="342" height="51"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4582">
+                            <rect key="frame" x="0.0" y="0.0" width="318" height="30"/>
+                            <state key="normal" title="Terms and Conditions">
+                                <color key="titleColor" red="0.0060770213603973389" green="0.076477870345115662" blue="0.19192057847976685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chevron" translatesAutoresizingMaskIntoConstraints="NO" id="4583">
+                            <rect key="frame" x="318" y="3" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="4584"/>
+                                <constraint firstAttribute="width" constant="24" id="4585"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4586">
+                            <rect key="frame" x="0.0" y="40" width="342" height="1"/>
+                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="4587"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="4582" firstAttribute="top" secondItem="4581" secondAttribute="top" id="4588"/>
+                        <constraint firstItem="4582" firstAttribute="leading" secondItem="4581" secondAttribute="leading" id="4589"/>
+                        <constraint firstItem="4583" firstAttribute="centerY" secondItem="4582" secondAttribute="centerY" id="4590"/>
+                        <constraint firstAttribute="trailing" secondItem="4583" secondAttribute="trailing" id="4591"/>
+                        <constraint firstItem="4583" firstAttribute="leading" secondItem="4582" secondAttribute="trailing" id="4592"/>
+                        <constraint firstItem="4586" firstAttribute="leading" secondItem="4581" secondAttribute="leading" id="4593"/>
+                        <constraint firstAttribute="trailing" secondItem="4586" secondAttribute="trailing" id="4594"/>
+                        <constraint firstItem="4586" firstAttribute="top" secondItem="4582" secondAttribute="bottom" constant="10" id="4595"/>
+                        <constraint firstAttribute="bottom" secondItem="4586" secondAttribute="bottom" id="4596" constant="10"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint id="1178" firstItem="1138" firstAttribute="top" secondItem="2" secondAttribute="top" constant="62"/>
+                <constraint id="1253" firstItem="1138" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20"/>
+                <constraint id="1329" firstItem="1291" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64"/>
+                <constraint id="1404" firstItem="1291" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="1606" firstItem="1523" firstAttribute="top" secondItem="1291" secondAttribute="bottom" constant="40"/>
+                <constraint id="1687" firstItem="1523" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="1933" firstItem="1790" firstAttribute="top" secondItem="1523" secondAttribute="bottom" constant="20"/>
+                <constraint id="2033" firstAttribute="centerX" secondItem="1790" secondAttribute="centerX"/>
+                <constraint id="2755" firstItem="2529" firstAttribute="top" secondItem="1790" secondAttribute="bottom" constant="64"/>
+                <constraint id="2954" firstItem="2529" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="36"/>
+                <constraint id="3153" firstAttribute="trailing" secondItem="2529" secondAttribute="trailing" constant="36"/>
+                <constraint id="4696" firstItem="4581" firstAttribute="top" secondItem="2529" secondAttribute="bottom" constant="20"/>
+                <constraint id="4796" firstItem="4581" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="36"/>
+                <constraint id="4896" firstAttribute="trailing" secondItem="4581" secondAttribute="trailing" constant="36"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back" width="64" height="64"/>
+        <image name="icon_chevron" width="24" height="24"/>
+        <image name="logo" width="60" height="60"/>
+    </resources>
+</document>

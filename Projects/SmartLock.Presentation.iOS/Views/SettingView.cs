@@ -16,7 +16,7 @@ namespace SmartLock.Presentation.iOS.Views
         public event Action<byte[]> PortraitChanged;
         public event Action ProfileClick;
         public event Action PasswordClick;
-        public event Action FeedbackClick;
+        public event Action AboutClick;
         public event Action LogoutClick;
         public event Action Refresh;
 
@@ -35,7 +35,7 @@ namespace SmartLock.Presentation.iOS.Views
 
             BtnProfile.TouchUpInside += (s, e) => ProfileClick?.Invoke();
             BtnPassword.TouchUpInside += (s, e) => PasswordClick?.Invoke();
-            BtnFeedback.TouchUpInside += (s, e) => FeedbackClick?.Invoke();
+            BtnAbout.TouchUpInside += (s, e) => AboutClick?.Invoke();
             BtnLogout.TouchUpInside += (s, e) => LogoutClick?.Invoke();
         }
 

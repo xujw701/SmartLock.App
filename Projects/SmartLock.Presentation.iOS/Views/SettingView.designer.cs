@@ -16,7 +16,7 @@ namespace SmartLock.Presentation.iOS.Views
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnFeedback { get; set; }
+        UIKit.UIButton BtnAbout { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -40,9 +40,9 @@ namespace SmartLock.Presentation.iOS.Views
 
         void ReleaseDesignerOutlets ()
         {
-            if (BtnFeedback != null) {
-                BtnFeedback.Dispose ();
-                BtnFeedback = null;
+            if (BtnAbout != null) {
+                BtnAbout.Dispose ();
+                BtnAbout = null;
             }
 
             if (BtnLogout != null) {

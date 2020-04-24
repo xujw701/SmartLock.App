@@ -61,6 +61,7 @@ namespace SmartLock.Presentation.Droid.Platform
             _viewcontrollerMappings.Add(typeof(EnvironmentController), typeof(EnvironmentView));
 
             _viewcontrollerMappings.Add(typeof(AttachmentController), typeof(AttachmentView));
+            _viewcontrollerMappings.Add(typeof(AboutController), typeof(AboutView));
         }
 
         public override void Pop()

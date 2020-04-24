@@ -3,7 +3,6 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Provider;
-using Android.Support.V4.Content;
 using Android.Views;
 using Android.Widget;
 using SmartLock.Model.Models;
@@ -24,13 +23,13 @@ namespace SmartLock.Presentation.Droid.Views
 
         private View _btnProfile;
         private View _btnPassword;
-        private View _btnFeedback;
+        private View _btnAbout;
         private Button _btnLogout;
 
         public event Action<byte[]> PortraitChanged;
         public event Action ProfileClick;
         public event Action PasswordClick;
-        public event Action FeedbackClick;
+        public event Action AboutClick;
         public event Action LogoutClick;
         public event Action Refresh;
 
@@ -47,13 +46,13 @@ namespace SmartLock.Presentation.Droid.Views
 
             _btnProfile = _view.FindViewById<View>(Resource.Id.btnProfile);
             _btnPassword = _view.FindViewById<View>(Resource.Id.btnPassword);
-            _btnFeedback = _view.FindViewById<View>(Resource.Id.btnFeedback);
+            _btnAbout = _view.FindViewById<View>(Resource.Id.btnAbout);
             _btnLogout = _view.FindViewById<Button>(Resource.Id.btnLogout);
 
             _ivPortrait.Click += (s, e) => ChooseCaptureMethod();
             _btnProfile.Click += (s, e) => ProfileClick?.Invoke();
             _btnPassword.Click += (s, e) => PasswordClick?.Invoke();
-            _btnFeedback.Click += (s, e) => FeedbackClick?.Invoke();
+            _btnAbout.Click += (s, e) => AboutClick?.Invoke();
             _btnLogout.Click += (s, e) => LogoutClick?.Invoke();
 
             return _view;

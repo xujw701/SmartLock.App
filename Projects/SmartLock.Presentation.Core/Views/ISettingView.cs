@@ -9,7 +9,7 @@ namespace SmartLock.Presentation.Core.Views
         event Action<byte[]> PortraitChanged;
         event Action ProfileClick;
         event Action PasswordClick;
-        event Action FeedbackClick;
+        event Action AboutClick;
         event Action LogoutClick;
         event Action Refresh;
 
