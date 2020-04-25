@@ -282,7 +282,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="20dp"
-                    android:text="Feedback history"
+                    android:text="Feedback"
                     android:textSize="18sp"
                     android:textColor="@color/text2_gray"/>
             </LinearLayout>
