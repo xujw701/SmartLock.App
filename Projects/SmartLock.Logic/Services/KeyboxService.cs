@@ -361,7 +361,7 @@ namespace SmartLock.Logic.Services
                 feedback.Address = keybox.PropertyAddress;
             }
 
-            return feedbacks;
+            return feedbacks.OrderByDescending(f => f.CreatedOn).ToList();
         }
 
         public void Clear()
