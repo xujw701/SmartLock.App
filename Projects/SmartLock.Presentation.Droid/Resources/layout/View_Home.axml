@@ -40,21 +40,6 @@
             android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
-        <Button
-            android:id="@+id/btnPlaceLock"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="start|center_vertical"
-            android:text="Place lock"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:paddingStart="12dp"
-            android:paddingEnd="16dp"
-            android:drawablePadding="6dp"
-            android:drawableStart="@drawable/embedded_add_icon"
-            android:background="@drawable/rounded_rectangle_add_lock"
-            android:visibility="visible"/>
     </LinearLayout>
     <View
         android:layout_width="55dp"
@@ -160,6 +145,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="48dp">
+                <TextView
+                  android:id="@+id/btnPlaceLock"
+                  android:layout_width="wrap_content"
+                  android:layout_height="56dp"
+                  android:layout_marginStart="16dp"
+                  android:gravity="center"
+                  android:textSize="12sp"
+                  android:fontFamily="sans-serif"
+                  android:textStyle="bold"
+                  android:textColor="#2f80ed"
+                  android:letterSpacing="0.03"
+                  android:text="Replace"/>
                 <ImageView
                     android:id="@+id/ivLockDisconnect"
                     android:layout_width="56dp"

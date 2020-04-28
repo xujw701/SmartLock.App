@@ -30,7 +30,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvGreeting;
         private TextView _tvName;
         private ImageView _ivMessage;
-        private Button _btnPlaceLock;
+        private TextView _btnPlaceLock;
 
         private View _searchingBtnContainer;
         private ImageView _ivScanButton;
@@ -77,7 +77,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvGreeting = _view.FindViewById<TextView>(Resource.Id.tvGreeting);
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
             _ivMessage = _view.FindViewById<ImageView>(Resource.Id.ivMessage);
-            _btnPlaceLock = _view.FindViewById<Button>(Resource.Id.btnPlaceLock);
+            _btnPlaceLock = _view.FindViewById<TextView>(Resource.Id.btnPlaceLock);
 
             _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
             _ivScanButton = _view.FindViewById<ImageView>(Resource.Id.ivScanButton);
@@ -229,7 +229,7 @@ namespace SmartLock.Presentation.Droid.Views
             ViewBase.CurrentActivity.RunOnUiThread(() =>
             {
                 _btnPlaceLock.Text = buttonText;
-                _btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
+                //_btnPlaceLock.Background = _context.GetDrawable(enabled ? Resource.Drawable.rounded_rectangle_add_lock : Resource.Drawable.rounded_rectangle_add_lock_disabled);
             });
         }
 

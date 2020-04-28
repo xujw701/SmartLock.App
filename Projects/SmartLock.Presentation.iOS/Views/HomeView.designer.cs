@@ -24,10 +24,6 @@ namespace SmartLock.Presentation.iOS.Views
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView IvAddLock { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView IvBattery { get; set; }
 
         [Outlet]
@@ -112,11 +108,6 @@ namespace SmartLock.Presentation.iOS.Views
             if (BtnAddLock != null) {
                 BtnAddLock.Dispose ();
                 BtnAddLock = null;
-            }
-
-            if (IvAddLock != null) {
-                IvAddLock.Dispose ();
-                IvAddLock = null;
             }
 
             if (IvBattery != null) {

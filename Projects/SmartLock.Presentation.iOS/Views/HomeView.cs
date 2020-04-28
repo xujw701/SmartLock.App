@@ -183,8 +183,8 @@ namespace SmartLock.Presentation.iOS.Views
 
         public void UpdatePlaceLockButton(string buttonText, bool enabled)
         {
-            BtnAddLock.SetTitle("    " + buttonText, UIControlState.Normal);
-            BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
+            BtnAddLock.SetTitle(buttonText, UIControlState.Normal);
+            //BtnAddLock.BackgroundColor = enabled ? UIColor.FromRGB(13, 115, 244) : UIColor.FromRGB(230, 230, 230);
         }
 
         [Export("ShowCountDown:")]
@@ -205,7 +205,6 @@ namespace SmartLock.Presentation.iOS.Views
         private void SetMode(int state, bool showPlaceLock = false)
         {
             BtnAddLock.Hidden = !(state == StateLock && showPlaceLock);
-            IvAddLock.Hidden = !(state == StateLock && showPlaceLock);
             IvMessage.Hidden = state != StateIdle;
             IvScanButton.Hidden = state != StateIdle;
             LblScanButton.Hidden = state != StateIdle;
