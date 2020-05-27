@@ -14,6 +14,7 @@ namespace SmartLock.Model.Services
         event Action OnKeyboxDisconnected;
         event Action OnLocked;
         event Action OnUnlocked;
+        event Action<bool> PinChanged;
 
         bool IsOn { get; }
         Keybox ConnectedKeybox { get; }
@@ -28,6 +29,8 @@ namespace SmartLock.Model.Services
         void DismssKeybox(Keybox keybox);
         Task StartLock();
         Task<bool> StartUnlock();
+        Task StartChangePin(string oldPin, string newPin);
+        Task UpdateKeyboxPin(string pin);
 
         Task<List<Keybox>> GetMyListingKeyboxes();
         Task<List<Keybox>> GetKeyboxesIUnlocked();

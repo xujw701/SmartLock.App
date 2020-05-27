@@ -13,6 +13,7 @@ namespace SmartLock.Model.Services
         event Action OnDeviceDisconnected;
         event Action OnLocked;
         event Action OnUnlocked;
+        event Action<bool> PinChanged;
 
         bool IsOn { get; }
         List<BleDevice> DiscoveredDevices { get; }
@@ -24,6 +25,7 @@ namespace SmartLock.Model.Services
         Task ConnectToDeviceAsync(string uuid);
         Task DisconnectDeviceAsync(string uuid);
         Task StartSetLock(bool isLock);
+        Task StartChangePin(string oldPin, string newPin);
         Task<int> GetBatteryLevel();
         void Clear();
     }

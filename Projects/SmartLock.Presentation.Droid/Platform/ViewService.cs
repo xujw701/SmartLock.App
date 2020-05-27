@@ -53,6 +53,7 @@ namespace SmartLock.Presentation.Droid.Platform
             _viewcontrollerMappings.Add(typeof(KeyboxHistoryController), typeof(KeyboxHistoryView));
             _viewcontrollerMappings.Add(typeof(KeyboxPlaceController), typeof(KeyboxPlaceView));
             _viewcontrollerMappings.Add(typeof(KeyboxPlaceUpdateController), typeof(KeyboxPlaceUpdateView));
+            _viewcontrollerMappings.Add(typeof(KeyboxPinController), typeof(KeyboxPinView));
             _viewcontrollerMappings.Add(typeof(PropertyFeedbackController), typeof(PropertyFeedbackView));
 
             _viewcontrollerMappings.Add(typeof(MyProfileController), typeof(MyProfileView));

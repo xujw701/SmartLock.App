@@ -82,6 +82,7 @@
     <Compile Include="Services\IMessageBoxService.cs" />
     <Compile Include="Services\IViewService.cs" />
     <Compile Include="Views\IView.cs" />
+    <Compile Include="Request\KeyboxPinPutDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

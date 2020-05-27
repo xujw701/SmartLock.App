@@ -33,6 +33,7 @@ namespace SmartLock.Logic.Services
 
         public event Action OnLocked;
         public event Action OnUnlocked;
+        public event Action<bool> PinChanged;
 
         public bool IsOn => _localBleService.IsOn;
         public List<Keybox> DiscoveredKeyboxes => _discoveredKeyboxes;
@@ -63,6 +64,7 @@ namespace SmartLock.Logic.Services
 
             _localBleService.OnLocked += LocalBleService_OnLocked;
             _localBleService.OnUnlocked += LocalBleService_OnUnlocked;
+            _localBleService.PinChanged += LocalBleService_PinChanged;
         }
 
         public async Task StartScanningForKeyboxesAsync()
@@ -129,6 +131,19 @@ namespace SmartLock.Logic.Services
             }
 
             return allow;
+        }
+
+        public async Task StartChangePin(string oldPin, string newPin)
+        {
+            if (ConnectedKeybox.UserId != _userSession.UserId)
+                throw new Exception("You are not allowed to change the PIN.");
+
+            await _localBleService.StartChangePin(oldPin, newPin);
+        }
+
+        public async Task UpdateKeyboxPin(string pin)
+        {
+            await _webService.UpdateKeyboxPin(ConnectedKeybox.KeyboxId, new KeyboxPinPutDto() { Pin = pin });
         }
 
         public async Task<List<Keybox>> GetMyListingKeyboxes()
@@ -476,6 +491,11 @@ namespace SmartLock.Logic.Services
         private void LocalBleService_OnUnlocked()
         {
             OnUnlocked?.Invoke();
+        }
+
+        private void LocalBleService_PinChanged(bool success)
+        {
+            PinChanged?.Invoke(success);
         }
 
         private async void HandleException(Exception exception)

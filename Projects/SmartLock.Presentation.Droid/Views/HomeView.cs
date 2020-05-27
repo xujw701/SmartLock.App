@@ -31,6 +31,7 @@ namespace SmartLock.Presentation.Droid.Views
         private TextView _tvName;
         private ImageView _ivMessage;
         private TextView _btnPlaceLock;
+        private TextView _btnChangePin;
 
         private View _searchingBtnContainer;
         private ImageView _ivScanButton;
@@ -59,6 +60,7 @@ namespace SmartLock.Presentation.Droid.Views
 
         public event Action MessageClick;
         public event Action PlaceKeyboxClicked;
+        public event Action ChangePinClicked;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
         public event Action<Keybox> Cancel;
@@ -78,6 +80,7 @@ namespace SmartLock.Presentation.Droid.Views
             _tvName = _view.FindViewById<TextView>(Resource.Id.tvName);
             _ivMessage = _view.FindViewById<ImageView>(Resource.Id.ivMessage);
             _btnPlaceLock = _view.FindViewById<TextView>(Resource.Id.btnPlaceLock);
+            _btnChangePin = _view.FindViewById<TextView>(Resource.Id.btnChangePin);
 
             _searchingBtnContainer = _view.FindViewById<View>(Resource.Id.searchingBtnContainer);
             _ivScanButton = _view.FindViewById<ImageView>(Resource.Id.ivScanButton);
@@ -106,6 +109,11 @@ namespace SmartLock.Presentation.Droid.Views
             _btnPlaceLock.Click += (s, e) =>
             {
                 PlaceKeyboxClicked?.Invoke();
+            };
+
+            _btnChangePin.Click += (s, e) =>
+            {
+                ChangePinClicked?.Invoke();
             };
 
             _ivScanButton.Click += (s, e) =>
@@ -237,6 +245,7 @@ namespace SmartLock.Presentation.Droid.Views
         {
             _ivMessage.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
             _btnPlaceLock.Visibility = state == StateLock && showPlaceLock ? ViewStates.Visible : ViewStates.Gone;
+            _btnChangePin.Visibility = state == StateLock && showPlaceLock ? ViewStates.Visible : ViewStates.Gone;
             _searchingBtnContainer.Visibility = state == StateIdle ? ViewStates.Visible : ViewStates.Gone;
             _rvBleList.Visibility = state == StateLockList ? ViewStates.Visible : ViewStates.Gone;
             _lockContainer.Visibility = state == StateLock ? ViewStates.Visible : ViewStates.Gone;

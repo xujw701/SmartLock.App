@@ -12,7 +12,7 @@ namespace SmartLock.Presentation.Droid.Platform
         {
             var currentActivity = ViewBase.CurrentActivity;
             if (currentActivity == null) return;
-            
+
             var builder = new AlertDialog.Builder(currentActivity);
             builder.SetMessage(message);
             builder.SetTitle(title);

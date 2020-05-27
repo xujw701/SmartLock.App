@@ -146,17 +146,30 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="48dp">
                 <TextView
-                  android:id="@+id/btnPlaceLock"
-                  android:layout_width="wrap_content"
-                  android:layout_height="56dp"
-                  android:layout_marginStart="16dp"
-                  android:gravity="center"
-                  android:textSize="12sp"
-                  android:fontFamily="sans-serif"
-                  android:textStyle="bold"
-                  android:textColor="#2f80ed"
-                  android:letterSpacing="0.03"
-                  android:text="Replace"/>
+                    android:id="@+id/btnPlaceLock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="16dp"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="#2f80ed"
+                    android:letterSpacing="0.03"
+                    android:text="Replace"/>
+                <TextView
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_below="@+id/btnPlaceLock"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif"
+                    android:textStyle="bold"
+                    android:textColor="#2f80ed"
+                    android:letterSpacing="0.03"
+                    android:text="Change PIN"/>
                 <ImageView
                     android:id="@+id/ivLockDisconnect"
                     android:layout_width="56dp"

@@ -318,6 +318,7 @@
     <Compile Include="Views\EnvironmentView.cs" />
     <Compile Include="Views\AttachmentView.cs" />
     <Compile Include="Views\AboutView.cs" />
+    <Compile Include="Views\KeyboxPinView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -355,6 +356,10 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\View_About.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\View_KeyboxPin.axml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

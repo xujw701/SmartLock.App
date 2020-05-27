@@ -10,6 +10,7 @@ namespace SmartLock.Presentation.Core.Views
     {
         event Action MessageClick;
         event Action PlaceKeyboxClicked;
+        event Action ChangePinClicked;
         event Action<bool> StartStop;
         event Action<Keybox> Connect;
         event Action<Keybox> Cancel;

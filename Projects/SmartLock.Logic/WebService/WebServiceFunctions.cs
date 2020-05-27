@@ -173,6 +173,8 @@ namespace SmartLock.Logic
             return null;
         }
 
+
+
         public async Task<DefaultCreatedPostResponseDto> CreateKeyboxProperty(int keyboxId, KeyboxPropertyPostPutDto keyboxPropertyPostDto)
         {
             var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/property");
@@ -203,6 +205,13 @@ namespace SmartLock.Logic
             }
 
             return null;
+        }
+
+        public async Task UpdateKeyboxPin(int keyboxId, KeyboxPinPutDto keyboxPinPutDto)
+        {
+            var uri = _environmentManager.FormatUriForSelectedEnvironment(APIACTION, $"keyboxes/{keyboxId}/pin");
+
+            await new WebServiceClient(_userSession).PutAsync(uri, keyboxPinPutDto);
         }
 
         public async Task UpdateKeyboxProperty(int keyboxId, int propertyId, KeyboxPropertyPostPutDto keyboxPropertyPutDto)

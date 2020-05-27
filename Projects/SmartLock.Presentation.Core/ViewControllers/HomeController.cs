@@ -61,6 +61,13 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 }
             };
 
+            View.ChangePinClicked += () =>
+            {
+                View.StopCountDown();
+
+                Push<KeyboxPinController>(vc => vc.Keybox = ConnectedKeybox);
+            };
+
             View.StartStop += (isScanning) => DoSafeAsync(async () => await StartStopKeybox(isScanning));
             View.Connect += (keybox) => DoSafeAsync(async () => await Connect(keybox));
             View.Cancel += (keybox) => DoSafeAsync(async () => await Cancel(keybox));
