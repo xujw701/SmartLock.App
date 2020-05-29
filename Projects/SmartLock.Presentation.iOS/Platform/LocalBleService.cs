@@ -21,8 +21,13 @@ namespace SmartLock.Presentation.iOS.Platform
         private const string BatteryCharacteristicId = "2a19";
 
         private const string ResponseLockActionHeader = "62";
+        private const string ResponseChangePinActionHeader = "60";
+
         private const string ResponseLockActionLcoked = "F0";
         private const string ResponseLockActionUnlcoked = "0F";
+
+        private const string ResponseSuccess = "F0";
+        private const string ResponseFail = "0F";
 
         private IBluetoothLE _ble;
         private IAdapter _adapter;
@@ -42,6 +47,7 @@ namespace SmartLock.Presentation.iOS.Platform
         public event Action OnDeviceDisconnected;
         public event Action OnLocked;
         public event Action OnUnlocked;
+        public event Action<bool> PinChanged;
 
         public bool IsOn => _ble.IsOn;
         public List<BleDevice> DiscoveredDevices => _discoveredBleDevices;
@@ -117,6 +123,15 @@ namespace SmartLock.Presentation.iOS.Platform
                 var openCommand = StringToByteArray("FE4F50454E00000000FD");
                 command = openCommand;
             }
+
+            await _mainCharacteristic.WriteAsync(command);
+        }
+
+        public async Task StartChangePin(string oldPin, string newPin)
+        {
+            if (_mainCharacteristic == null) throw new Exception("Connect to a device first");
+
+            var command = StringToByteArray($"FF{oldPin}{newPin}FE");
 
             await _mainCharacteristic.WriteAsync(command);
         }
@@ -233,6 +248,14 @@ namespace SmartLock.Presentation.iOS.Platform
                             OnLocked?.Invoke();
                         else if (stat.Equals(ResponseLockActionUnlcoked))
                             OnUnlocked?.Invoke();
+                    }
+                    else if (header.Equals(ResponseChangePinActionHeader))
+                    {
+                        var stat = bytes[1].ToString("X2");
+
+                        if (string.IsNullOrEmpty(stat)) return;
+
+                        PinChanged?.Invoke(stat.Equals(ResponseSuccess));
                     }
                 }
             }

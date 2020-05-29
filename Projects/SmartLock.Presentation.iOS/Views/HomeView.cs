@@ -28,6 +28,7 @@ namespace SmartLock.Presentation.iOS.Views
 
         public event Action MessageClick;
         public event Action PlaceKeyboxClicked;
+        public event Action ChangePinClicked;
         public event Action<bool> StartStop;
         public event Action<Keybox> Connect;
         public event Action<Keybox> Cancel;
@@ -54,6 +55,11 @@ namespace SmartLock.Presentation.iOS.Views
             BtnAddLock.TouchUpInside += (s, e) =>
             {
                 PlaceKeyboxClicked?.Invoke();
+            };
+
+            BtnChangePin.TouchUpInside += (s, e) =>
+            {
+                ChangePinClicked?.Invoke();
             };
 
             LblScanButton.AddGestureRecognizer(new UITapGestureRecognizer(() =>
@@ -205,6 +211,7 @@ namespace SmartLock.Presentation.iOS.Views
         private void SetMode(int state, bool showPlaceLock = false)
         {
             BtnAddLock.Hidden = !(state == StateLock && showPlaceLock);
+            BtnChangePin.Hidden = !(state == StateLock && showPlaceLock);
             IvMessage.Hidden = state != StateIdle;
             IvScanButton.Hidden = state != StateIdle;
             LblScanButton.Hidden = state != StateIdle;

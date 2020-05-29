@@ -1,4 +1,4 @@
-﻿using Android.Support.V7.App;
+﻿ using Android.Support.V7.App;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
@@ -257,7 +257,6 @@ namespace SmartLock.Presentation.Droid.Platform
                         else if (stat.Equals(ResponseLockActionUnlcoked))
                             OnUnlocked?.Invoke();
                     }
-
                     else if (header.Equals(ResponseChangePinActionHeader))
                     {
                         var stat = bytes[1].ToString("X2");

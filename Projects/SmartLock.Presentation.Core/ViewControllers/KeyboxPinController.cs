@@ -1,8 +1,11 @@
-﻿using SmartLock.Model.Models;
+﻿using SmartLock.Infrastructure;
+using SmartLock.Model.Models;
+using SmartLock.Model.Server;
 using SmartLock.Model.Services;
 using SmartLock.Presentation.Core.Views;
 using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace SmartLock.Presentation.Core.ViewControllers
@@ -30,7 +33,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             _keyboxService.PinChanged += (success) => View.OnPinChanged(success);
 
             View.BackClick += () => Pop();
-            View.SubmitClick += (old, new1, new2) => DoSafeAsync(async () => await SubmitData(old, new1, new2));
+            View.SubmitClick += (old, new1, new2) => DoSafeAsync(async () => await SubmitData(old, new1, new2), successAcction: () => View.IsBusy = true); ;
             View.PinChanged += (success) => DoSafeAsync(async () =>
             {
                 if (success)
@@ -43,6 +46,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
                 {
                     _messageBoxService.ShowMessage("Failed", "Failed to change PIN, old PIN is incorrect.");
                 }
+
+                View.IsBusy = false;
             });
         }
 
@@ -52,15 +57,11 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             if (string.IsNullOrEmpty(old) || string.IsNullOrEmpty(new1) || string.IsNullOrEmpty(new2))
             {
-                _messageBoxService.ShowMessage("Failed", "Please fill all the fields.");
-
-                return;
+                throw new Exception("Please fill all the fields.");
             }
             if (!new1.Equals(new2))
             {
-                _messageBoxService.ShowMessage("Failed", "New PIN doesn't match, please check it again.");
-
-                return;
+                throw new Exception("New PIN doesn't match, please check it again.");
             }
 
             if (!ValidatePins(old) || !ValidatePins(new2))
@@ -76,9 +77,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
             }
             catch (Exception)
             {
-                _messageBoxService.ShowMessage("Failed", "Failed to change PIN.");
-
-                return;
+                throw new Exception("Failed to change PIN.");
             }
         }
 
@@ -88,18 +87,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
 
             if (pinByte.Length != 6)
             {
-                _messageBoxService.ShowMessage("Failed", "PIN must be 6 digits.");
-
-                return false;
+                throw new Exception("PIN must be 6 digits.");
             }
 
             foreach (var p in pinByte)
             {
                 if (p != 1 && p != 2 && p != 3 && p != 4)
                 {
-                    _messageBoxService.ShowMessage("Failed", "PIN must be numbers between 1 and 4.");
-
-                    return false;
+                    throw new Exception("PIN must be numbers between 1 and 4.");
                 }
             }
 
@@ -126,6 +121,33 @@ namespace SmartLock.Presentation.Core.ViewControllers
                              //.Where(x => x % 2 == 0)
                              .Select(x => Convert.ToByte(hex.Substring(x, 1), 16))
                              .ToArray();
+        }
+
+        protected override async Task ShowErrorAsync(Exception exception)
+        {
+            var messageBoxService = IoC.Resolve<IMessageBoxService>();
+
+            if (exception is WebServiceClientException webServiceClientException)
+            {
+                if (webServiceClientException.Response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    await messageBoxService.ShowMessageAsync("Tips", "Your credentials could not be authenticated. Please log in again.");
+                    await IoC.Resolve<IUserService>().LogOut();
+                    ViewService.PopToRoot();
+                }
+                else
+                {
+                    await messageBoxService.ShowMessageAsync("Failed", exception.Message);
+                }
+            }
+            else if (exception is TaskCanceledException)
+            {
+                // Do nothing
+            }
+            else
+            {
+                await messageBoxService.ShowMessageAsync("Failed", exception.Message);
+            }
         }
     }
 }

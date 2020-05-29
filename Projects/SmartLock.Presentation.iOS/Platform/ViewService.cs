@@ -39,6 +39,7 @@ namespace SmartLock.Presentation.iOS.Platform
             _viewDictionary.Add(typeof(KeyboxPlaceController), vc => new KeyboxPlaceView(vc as KeyboxPlaceController));
             _viewDictionary.Add(typeof(KeyboxPlaceUpdateController), vc => new KeyboxPlaceUpdateView(vc as KeyboxPlaceUpdateController));
             _viewDictionary.Add(typeof(PropertyFeedbackController), vc => new PropertyFeedbackView(vc as PropertyFeedbackController));
+            _viewDictionary.Add(typeof(KeyboxPinController), vc => new KeyboxPinView(vc as KeyboxPinController));
 
             _viewDictionary.Add(typeof(FeedbackController), vc => new FeedbackView(vc as FeedbackController));
             _viewDictionary.Add(typeof(MyProfileController), vc => new MyProfileView(vc as MyProfileController));

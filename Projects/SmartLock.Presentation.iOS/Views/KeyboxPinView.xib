@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KeyboxPinView">
+            <connections>
+                <outlet property="BtnSubmit" destination="8112" id="name-outlet-8112"/>
+                <outlet property="EtNewPassword1" destination="13163" id="name-outlet-13163"/>
+                <outlet property="EtNewPassword2" destination="13879" id="name-outlet-13879"/>
+                <outlet property="EtOldPassword" destination="11638" id="name-outlet-11638"/>
+                <outlet property="IvBack" destination="922" id="name-outlet-922"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="1005">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_back" translatesAutoresizingMaskIntoConstraints="NO" id="922">
+                            <rect key="frame" x="20" y="32" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="923"/>
+                                <constraint firstAttribute="width" constant="24" id="924"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Change PIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="925">
+                            <rect key="frame" x="126" y="34" width="162" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" red="0.2642216682434082" green="0.30747264623641968" blue="0.39862668514251709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8112">
+                            <rect key="frame" x="20" y="410" width="105" height="46"/>
+                            <color key="backgroundColor" red="0.041664563119411469" green="0.34208473563194275" blue="0.99833709001541138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="8113"/>
+                            </constraints>
+                            <state key="normal" title="Change PIN">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old PIN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="11638" customClass="CustomTextField">
+                            <rect key="frame" x="20" y="86" width="367" height="64"/>
+                            <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="11639"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="password" keyboardType="numberPad" secureTextEntry="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New PIN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13163" customClass="CustomTextField">
+                            <rect key="frame" x="20" y="170" width="367" height="64"/>
+                            <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="13164"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="password" keyboardType="numberPad" secureTextEntry="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Repeat PIN" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13879" customClass="CustomTextField">
+                            <rect key="frame" x="20" y="246" width="367" height="64"/>
+                            <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="64" id="13880"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" textContentType="password" secureTextEntry="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="922" firstAttribute="top" secondItem="1005" secondAttribute="top" constant="32" id="2118"/>
+                        <constraint firstItem="922" firstAttribute="leading" secondItem="1005" secondAttribute="leading" constant="20" id="2198"/>
+                        <constraint firstItem="925" firstAttribute="centerY" secondItem="922" secondAttribute="centerY" id="2436"/>
+                        <constraint firstItem="925" firstAttribute="centerX" secondItem="1005" secondAttribute="centerX" id="2595"/>
+                        <constraint firstItem="8112" firstAttribute="leading" secondItem="1005" secondAttribute="leading" constant="20" id="8511"/>
+                        <constraint firstItem="11638" firstAttribute="top" secondItem="922" secondAttribute="bottom" constant="30" id="11735"/>
+                        <constraint firstItem="11638" firstAttribute="leading" secondItem="1005" secondAttribute="leading" constant="20" id="11894"/>
+                        <constraint firstItem="13163" firstAttribute="top" secondItem="11638" secondAttribute="bottom" constant="16" id="13244"/>
+                        <constraint firstItem="13163" firstAttribute="leading" secondItem="1005" secondAttribute="leading" constant="20" id="13403"/>
+                        <constraint firstItem="13163" firstAttribute="width" secondItem="11638" secondAttribute="width" id="13799"/>
+                        <constraint firstItem="13879" firstAttribute="top" secondItem="13163" secondAttribute="bottom" constant="16" id="14276"/>
+                        <constraint firstItem="13879" firstAttribute="leading" secondItem="1005" secondAttribute="leading" constant="20" id="14435"/>
+                        <constraint firstItem="13879" firstAttribute="width" secondItem="13163" secondAttribute="width" id="14515"/>
+                        <constraint firstItem="8112" firstAttribute="width" secondItem="11638" secondAttribute="width" id="16466"/>
+                        <constraint firstAttribute="bottom" secondItem="8112" secondAttribute="bottom" constant="36" id="18829"/>
+                        <constraint firstItem="8112" firstAttribute="top" secondItem="13879" secondAttribute="bottom" constant="100" id="19878"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="1005" firstAttribute="top" secondItem="2" secondAttribute="top" id="1166"/>
+                <constraint firstItem="1005" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="1246"/>
+                <constraint firstAttribute="trailing" secondItem="1005" secondAttribute="trailing" id="1326"/>
+                <constraint firstAttribute="bottom" secondItem="1005" secondAttribute="bottom" id="1564"/>
+            </constraints>
+            <point key="canvasLocation" x="72" y="59"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back" width="64" height="64"/>
+    </resources>
+</document>
