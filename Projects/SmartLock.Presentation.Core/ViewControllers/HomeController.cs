@@ -21,6 +21,7 @@ namespace SmartLock.Presentation.Core.ViewControllers
         private Property _property;
 
         private bool _startConnecting = false;
+        private bool _goneToPinView = false;
 
         private Keybox ConnectedKeybox => _keyboxService.ConnectedKeybox;
 
@@ -65,6 +66,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
             {
                 View.StopCountDown();
 
+                _goneToPinView = true;
+
                 Push<KeyboxPinController>(vc => vc.Keybox = ConnectedKeybox);
             };
 
@@ -84,6 +87,14 @@ namespace SmartLock.Presentation.Core.ViewControllers
             base.OnViewWillShow();
 
             UpdateUI();
+
+            if (_goneToPinView)
+            {
+                _goneToPinView = false;
+
+                View.StopCountDown();
+                View.StartCountDown(15);
+            }
         }
 
         private void UpdateUI()
