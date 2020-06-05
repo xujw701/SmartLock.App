@@ -41,6 +41,8 @@ namespace SmartLock.Presentation.Core.ViewControllers
                     await _keyboxService.UpdateKeyboxPin(_newPin);
 
                     _messageBoxService.ShowMessage("Success", "Your PIN has been updated successfully.");
+
+                    Pop();
                 }
                 else
                 {
